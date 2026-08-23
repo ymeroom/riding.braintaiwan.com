@@ -1,0 +1,147 @@
+import re
+
+files_itinerary = [
+    'C:/Users/ymero/Downloads/tokyo_fuji_cycling_itinerary_19days_v2.html',
+    'd:/2026東京單車騎旅/tokyo_fuji_cycling_itinerary_19days_v2.html'
+]
+
+culture_data = {
+    1: {
+        "anime": "《命運石之門 Steins;Gate》（秋葉原電器街、廣播會館）、《飆速宅男》（多摩川水岸特訓）",
+        "movie": "《正宗哥吉拉 Shin Godzilla》（多摩川防衛線、丸子橋作戰名場面）",
+        "history": "江戶五街道「東海道・第一京濱」（品川宿、鈴森、六鄉渡口歷史）；多摩川水運；高尾山天狗修驗道靈氣"
+    },
+    2: {
+        "anime": "《頭文字D》（甲州街道大垂水峠山道飆車傳說）；《搖曳露營△》（翻越山梨峠道）",
+        "movie": "《信長協奏曲》、《真田丸》（武田信玄甲斐國甲州街道軍用咽喉）",
+        "history": "大垂水峠（武藏國與相模國古分界）；相模湖（日本戰後第一座人工水庫）；秋山街道（武田氏隱密物資運輸裏街道）；都留市（俳聖松尾芭蕉隱居名所與甲斐絹）"
+    },
+    3: {
+        "anime": "《名偵探柯南：第11位前鋒》、《你的名字》（富士五湖神域意象）；《搖曳露營△》（山中湖露營、岬角溫泉）",
+        "movie": "《富士山下》；新倉山淺間公園五重塔（國家地理與全球攝影雜誌封面日本代表）",
+        "history": "忍野八海（富士山熔岩地下伏流水歷經80年天然過濾之世界文化遺產資產）；山中湖（五湖最高980m，鯨魚形水域）；富士講御師舊宅"
+    },
+    4: {
+        "anime": "《搖曳露營△ Yuru Camp》（撫子與凜初次邂逅封神聖地：本棲湖浩庵露營場、千圓紙幣逆富士！）",
+        "movie": "黑澤明電影外景地；《怪獸大戰爭》（西湖與富士樹海背景）",
+        "history": "日幣千圓紙幣名畫《湖畔之春》（岡田紅陽所攝之逆富士原景）；西湖療癒之里根場（甲州兜造茅草屋傳統聚落）；精進湖「子抱富士」；青木原樹海（貞觀6年熔岩林）"
+    },
+    5: {
+        "anime": "《幽靈公主 Princess Mononoke》（青木原原始苔蘚溶岩巨木林，如山獸神森林）；《搖曳露營△》（鳴澤冰穴探秘）",
+        "movie": "《日本沉沒》；日本地質科教片代表地",
+        "history": "富岳風穴與鳴澤冰穴（天然熔岩隧道，全年恆溫0度，江戶與明治天然蠶種冷藏庫）；甲州名物「餺飥麵（Hoto）」（戰國武田信玄陣中軍糧寶刀麵）"
+    },
+    6: {
+        "anime": "《搖曳露營△》（朝霧高原牧場露營篇）；《神劍闖江湖》（源賴朝富士卷狩歷史背景）",
+        "movie": "《鎌倉殿的13人》（NHK大河劇：源賴朝在朝霧高原舉辦壯觀「富士之卷狩」狩獵演習與曾我兄弟復仇）",
+        "history": "白糸之瀑（富士融雪伏流水從熔岩絕壁噴湧之天下名瀑，寬150m）；富士山本宮淺間大社（全日本1,300多座淺間神社總本社，德川家康造營）；富士宮炒麵（B級美食冠軍）"
+    },
+    7: {
+        "anime": "《Love Live! Sunshine!!》（沼津港、千本松原海岸聖地巡禮）；《櫻桃小丸子》（靜岡駿河灣風情）",
+        "movie": "《情書 Love Letter》（中山美穗遙望雪山海灣意境）",
+        "history": "《萬葉集》山部赤人名句「走出田子浦，抬頭望富士，皚皚白雪覆峰巔」；千本松原（弘法大師植樹防風林）；三嶋大社（源賴朝起兵祈願之伊豆國一之宮）；源兵衛川水鄉清泉"
+    },
+    8: {
+        "anime": "《伊豆的舞孃》（川端康成諾貝爾文學獎名作漫畫改編）",
+        "movie": "《月薪嬌妻逃避雖可恥但有用》（新垣結衣與星野源修善寺溫泉旅行）；《鎌倉殿的13人》（源賴家幽禁修禪寺）",
+        "history": "修善寺（西元807年弘法大師空海以獨鈷杵擊碎岩石湧出之「獨鈷之湯」）；夏目漱石養病名作《修善寺日記》；修善寺竹林小徑與朱紅桂橋"
+    },
+    9: {
+        "anime": "《藍海少女！Amanchu!》（伊東海岸、城崎海岸潛水與單車日常）；《名偵探柯南》（懸崖斷崖推理名場面）",
+        "movie": "《火曜懸疑劇場》（全日本最著名刑偵懸疑劇結尾懸崖對決聖地）；《海街日記》（相模灣蔚藍海風）",
+        "history": "城崎海岸（4000年前大室山火山噴發熔岩海蝕懸崖，23m門脇吊橋）；一碧湖（伊豆之瞳，十萬年前火山湖）；威廉·亞當斯（三浦按針在伊東建造日本第一艘西式帆船）"
+    },
+    10: {
+        "anime": "《夏色奇蹟》（靜岡伊豆海濱青春物語）；《Grand Blue 碧藍之海》",
+        "movie": "《家族之苦》（山田洋次執導之熱海海濱家族喜劇）；松本清張推理名作《點與線》（熱海溫泉旅情）",
+        "history": "網代港（江戶時代「風待ち港」南風避風港，號稱網代泊まり繁華古漁村）；南熱海長浜海岸（相模灣平緩白沙海灣，傳統柑橘與曬竹筴魚乾文化）"
+    },
+    11: {
+        "anime": "《煙花，應該和誰看？Fireworks》（岩井俊二原作、米津玄師主題曲之極致煙火名場面）；《櫻花莊的寵物女孩》（熱海煙火夜）",
+        "movie": "《東京家族》（小津安二郎《東京物語》致敬作中熱海溫泉名景）；尾崎紅葉《金色夜叉》（貫一與阿宮在熱海海灘的恩怨傳奇「熱海之月」）",
+        "history": "熱海海上花火大會（昭和27年西元1952年為復興熱海大火而始創，三面環山天然扇形海灣立體音響劇院）；來宮神社（樹齡2,100年本州第一大楠神木）；熱海梅園（日本第一遲紅葉祭）"
+    },
+    12: {
+        "anime": "《灌籃高手 SLAM DUNK》（湘南海岸、流川楓騎單車吹海風經典公路）；《飆速宅男》（箱根小田原直線大戰）",
+        "movie": "《海街日記》（是枝裕和導演代表作：綾瀨遙、長澤雅美四姐妹在湘南海岸的生活詩篇）；《太陽之歌》",
+        "history": "小田原城（戰國第一名將北條早雲與「後北條氏」五代難攻不落天下第一堅城，抵禦豐臣秀吉天下統一總攻）；相模灣柑橘道（早雲蜜柑發源地）；湘南海岸（日本明治近代衝浪與海水浴發源地）"
+    },
+    13: {
+        "anime": "《灌籃高手》（鎌倉高校前平交道，櫻木花道與赤木晴子揮手世紀名場面！）；《青春豬頭少年不會夢到兔女郎學姊》（江之島水族館與七里濱）；《TARI TARI》",
+        "movie": "《倒數第二次戀愛》（小泉今日子與中井貴一的鎌倉慢活熟齡神劇）；《海街日記》（極樂寺車站與長谷寺）",
+        "history": "鎌倉幕府（1192年源賴朝開創日本第一個武家政權）；長谷寺（西元736年創建，供奉9.18m十一面觀音巨木雕像與庭園秋楓倒影）；橫濱開港（1859年日本黑船來航後首批國際貿易港）"
+    },
+    14: {
+        "anime": "《機動戰士鋼彈 UC》（台場 DiverCity 1:1 等身大獨角獸鋼彈 RX-0 變形立像！）；《Love Live! 虹咲學園學園偶像同好會》（台場海濱公園、彩虹大橋巡禮）；《數碼寶貝》（台場富士電視台）",
+        "movie": "《大搜查線 Bayside Shakedown》（織田裕二經典名句：「封鎖不了彩虹大橋！」台場灣岸署傳奇）；《戀愛世代 Love Generation》（木村拓哉與松隆子彩虹大橋定情水晶蘋果）",
+        "history": "台場（幕末江戶幕府為抵禦美國黑船而於東京灣人工修築之砲台「御台場」）；橫濱山下公園（日本最早臨海公園，秋季銀杏大道與冰川丸號）；豐洲大橋（2020東京奧運選手村要道）"
+    },
+    15: {
+        "anime": "《烏龍派出所 Kochikame》（葛飾區龜有、柴又、中川水岸，兩津勘吉的故鄉！）；《秒速5公分》（新海誠導演刻畫之東京下町微雨鐵道黃昏）",
+        "movie": "《男人真命苦 Otoko wa Tsurai yo》（日本電影史上最長壽國民級喜劇電影，渥美清飾演「車寅次郎」在柴又帝釋天老街的人情物語）",
+        "history": "柴又帝釋天題經寺（西元1629年創建，雕刻長廊與邃溪園精緻庭園）；矢切之渡（東京都內唯一僅存江戶時代人力手搖木船渡口）；葛西臨海公園（日本最大117m鑽石大摩天輪）"
+    },
+    16: {
+        "anime": "《烏龍派出所》（中川圭一、秋本麗子與兩津勘吉的江戶川堤防單車巡邏線）；《四月是你的謊言》（水岸堤防夕陽騎行名場面）",
+        "movie": "《男人的真命苦》柴又外景系列",
+        "history": "江戶川與利根川水系（江戶幕府「利根川東遷事業」治水工程造就關東大平原萬畝良田）；下町昭和風情居酒屋（常磐線鐵道高架下百年人情小店）"
+    },
+    17: {
+        "anime": "《烏龍派出所》（水元公園水杉林、龜有香取神社）；《鬼滅之刃》（大正時代淺草繁華街夜景，炭治郎初遇鬼舞辻無慘之地！）",
+        "movie": "《淺草小子 Asakusa Kid》（北野武自傳電影，大泉洋與柳樂優彌重現昭和淺草法蘭西座脫口秀熱血）；《半澤直樹》",
+        "history": "水元公園（東京都內唯一水鄉公園，擁有 1,800 棵高聳水杉巨木林，11月底轉為璀璨金黃紅褐色，宛如歐洲童話森林）；淺草寺（西元628年創建之東京都最古老寺廟，雷門紅燈籠與仲見世通）"
+    },
+    18: {
+        "anime": "《東京喰種》、《東大特訓班 Dragon Zakura》（阿部寬熱血考進東大赤門）；《天氣之子》（神宮外苑與新宿天際線）",
+        "movie": "《東京愛情故事 Tokyo Love Story》（鈴木保奈美飾演的莉香與織田裕二飾演的完治在「明治神宮外苑銀杏大道」的世紀分別名場面！）；《HERO》（木村拓哉檢察官外苑片頭漫步）",
+        "history": "東京大學本鄉校區（加賀藩前田家江戶上屋敷古蹟「赤門」、安田講堂前百年參天巨型銀杏樹黃金地毯）；皇居（江戶幕府德川將軍居城「江戶城」舊址，二重橋與伏見櫓）；明治神宮外苑（1923年種植之146棵銀杏大道，300m黃金隧道見頃最盛期）"
+    },
+    19: {
+        "anime": "《Love Live!》（神田明神神社階梯特訓聖地、東條希巫女打工名所）；《命運石之門》（秋葉原柳森神社與電器街完結篇）",
+        "movie": "《秋葉原@DEEP》",
+        "history": "神田明神（西元730年創建，江戶總鎮守，供奉平將門命，庇佑商業繁盛與騎行平安）；日暮里谷中銀座（下町老街貓町）；776km 壯舉世界線圓滿閉環！"
+    }
+}
+
+for path in files_itinerary:
+    with open(path, 'r', encoding='utf-8') as f:
+        html = f.read()
+
+    # Split into sections based on <!-- Day X -->
+    day_blocks = re.split(r'(<!-- Day \d+ -->)', html)
+
+    for i in range(len(day_blocks)):
+        m = re.search(r'<!-- Day (\d+) -->', day_blocks[i])
+        if m:
+            day_num = int(m.group(1))
+            content_block = day_blocks[i+1]
+            c = culture_data.get(day_num)
+            if c:
+                # Remove any existing culture-box if present
+                content_block = re.sub(r'<div class="culture-box"[\s\S]*?<\/div>', '', content_block)
+                
+                culture_box = f'''<div class="culture-box" style="background: rgba(147, 51, 234, 0.07); border: 1px solid #C084FC; border-left: 5px solid #9333EA; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #4C1D95;">
+                    <strong style="color: #7E22CE; font-size: 13.5px; display: flex; align-items: center; gap: 6px;">🎬 影視動漫與歷史人文聖地巡禮：</strong>
+                    <div style="margin-top: 4px;">・<strong>📺 動畫/漫畫聖地：</strong> {c["anime"]}</div>
+                    <div style="margin-top: 2px;">・<strong>🎥 經典日劇/電影：</strong> {c["movie"]}</div>
+                    <div style="margin-top: 2px;">・<strong>🏯 歷史地理人文：</strong> {c["history"]}</div>
+                </div>'''
+
+                # Insert right before <div class="strategy-tag"> or right after <div class="koyo-box">
+                if '<div class="strategy-tag">' in content_block:
+                    content_block = content_block.replace('<div class="strategy-tag">', culture_box + '\n                <div class="strategy-tag">')
+                elif '<div class="koyo-box">' in content_block:
+                    # append after koyo-box
+                    content_block = re.sub(r'(<div class="koyo-box">[\s\S]*?<\/div>)', r'\1\n                ' + culture_box, content_block, count=1)
+                else:
+                    # insert before </div> of day-content
+                    content_block = content_block.replace('</div>\n        </div>', culture_box + '\n            </div>\n        </div>')
+
+                day_blocks[i+1] = content_block
+
+    html = ''.join(day_blocks)
+
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(html)
+
+print("Accurately inserted purple culture-box into all 19 Day Cards in both HTML files!")

@@ -1,0 +1,192 @@
+[
+  {
+    "day": 1,
+    "name": "Day 1: 秋葉原 ➔ 多摩川CR ➔ 淺川CR ➔ 高尾山口",
+    "dist_km": 88.2,
+    "gain": 248,
+    "loss": 62,
+    "start_e": 3,
+    "peak_e": 193,
+    "end_e": 193
+  },
+  {
+    "day": 2,
+    "name": "Day 2: 高尾山口 ➔ 大垂水峠 ➔ 相模湖 ➔ 縣道35秋山街道 ➔ 都留",
+    "dist_km": 61.0,
+    "gain": 1121,
+    "loss": 830,
+    "start_e": 193,
+    "peak_e": 674,
+    "end_e": 484
+  },
+  {
+    "day": 3,
+    "name": "Day 3 (好天氣): 都留 ➔ 忍野八海 ➔ 山中湖 ➔ 新倉山 ➔ 河口湖",
+    "dist_km": 53.2,
+    "gain": 799,
+    "loss": 431,
+    "start_e": 484,
+    "peak_e": 1006,
+    "end_e": 857
+  },
+  {
+    "day": 4,
+    "name": "Day 4: 河口湖 ➔ 湖北View Line ➔ 西湖 ➔ 精進湖 ➔ 本棲湖浩庵",
+    "dist_km": 30.0,
+    "gain": 163,
+    "loss": 121,
+    "start_e": 857,
+    "peak_e": 964,
+    "end_e": 899
+  },
+  {
+    "day": 5,
+    "name": "Day 5: 富士五湖核心緩衝日 (精進湖/樹海/鳴澤/溫泉休整)",
+    "dist_km": 38.1,
+    "gain": 234,
+    "loss": 201,
+    "start_e": 899,
+    "peak_e": 1019,
+    "end_e": 934
+  },
+  {
+    "day": 6,
+    "name": "Day 6: 本棲湖浩庵 ➔ 朝霧高原 ➔ 白糸之瀑 ➔ 富士宮",
+    "dist_km": 39.6,
+    "gain": 148,
+    "loss": 924,
+    "start_e": 899,
+    "peak_e": 986,
+    "end_e": 119
+  },
+  {
+    "day": 7,
+    "name": "Day 7: 富士宮 ➔ 潤井川CR ➔ 田子の浦 ➔ 駿河灣千本松原海堤 ➔ 沼津 ➔ 三島",
+    "dist_km": 41.3,
+    "gain": 44,
+    "loss": 118,
+    "start_e": 119,
+    "peak_e": 119,
+    "end_e": 24
+  },
+  {
+    "day": 8,
+    "name": "Day 8: 三島 ➔ 狩野川自行車道 ➔ 修善寺溫泉水口",
+    "dist_km": 20.9,
+    "gain": 167,
+    "loss": 76,
+    "start_e": 24,
+    "peak_e": 104,
+    "end_e": 103
+  },
+  {
+    "day": 9,
+    "name": "Day 9: 修善寺 ➔ 冷川峠 ➔ 一碧湖 ➔ 城崎海岸 ➔ 伊東川奈",
+    "dist_km": 47.9,
+    "gain": 871,
+    "loss": 931,
+    "start_e": 103,
+    "peak_e": 371,
+    "end_e": 41
+  },
+  {
+    "day": 10,
+    "name": "Day 10: 伊東川奈 ➔ 宇佐美 ➔ 網代舊街 ➔ Apt南熱海 (下多賀440)",
+    "dist_km": 17.4,
+    "gain": 314,
+    "loss": 352,
+    "start_e": 41,
+    "peak_e": 164,
+    "end_e": 4
+  },
+  {
+    "day": 11,
+    "name": "Day 11: 南熱海換宿 ➔ 熱海梅園紅葉 ➔ 晚上海上煙火 ➔ Izu Kansya",
+    "dist_km": 17.7,
+    "gain": 279,
+    "loss": 282,
+    "start_e": 4,
+    "peak_e": 148,
+    "end_e": 7
+  },
+  {
+    "day": 12,
+    "name": "Day 12: 南熱海 ➔ 縣道740柑橘道 ➔ 小田原城 ➔ 湘南海岸 ➔ 江之島",
+    "dist_km": 68.4,
+    "gain": 357,
+    "loss": 361,
+    "start_e": 7,
+    "peak_e": 162,
+    "end_e": 5
+  },
+  {
+    "day": 13,
+    "name": "Day 13: 江之島 ➔ 鎌倉長谷寺 ➔ 柏尾川水岸綠道 ➔ 橫濱港未來",
+    "dist_km": 32.4,
+    "gain": 61,
+    "loss": 54,
+    "start_e": 5,
+    "peak_e": 40,
+    "end_e": 2
+  },
+  {
+    "day": 14,
+    "name": "Day 14: 橫濱 ➔ 第一京濱/羽田 ➔ 豐洲大橋 ➔ 台場海濱公園",
+    "dist_km": 38.8,
+    "gain": 19,
+    "loss": 14,
+    "start_e": 2,
+    "peak_e": 8,
+    "end_e": 5
+  },
+  {
+    "day": 15,
+    "name": "Day 15: 台場 ➔ 葛西臨海公園 ➔ 中川水岸 ➔ 柴又 ➔ 金町花庵旅舍",
+    "dist_km": 28.5,
+    "gain": 9,
+    "loss": 16,
+    "start_e": 5,
+    "peak_e": 7,
+    "end_e": 1
+  },
+  {
+    "day": 16,
+    "name": "Day 16: 金町出發 ➔ 江戶川CR / 荒川 ➔ 小江戶川越 / 葛飾老街 ➔ 返回金町",
+    "dist_km": 104.6,
+    "gain": 29,
+    "loss": 27,
+    "start_e": 1,
+    "peak_e": 17,
+    "end_e": 2
+  },
+  {
+    "day": 17,
+    "name": "Day 17: 金町花庵 ➔ 水元公園水杉林 ➔ 柴又 ➔ 淺草雷門",
+    "dist_km": 16.6,
+    "gain": 4,
+    "loss": 4,
+    "start_e": 1,
+    "peak_e": 6,
+    "end_e": 3
+  },
+  {
+    "day": 18,
+    "name": "Day 18: 淺草 ➔ 東大本鄉銀杏 ➔ 皇居 ➔ 神宮外苑銀杏大道 ➔ 秋葉原",
+    "dist_km": 23.7,
+    "gain": 49,
+    "loss": 46,
+    "start_e": 3,
+    "peak_e": 34,
+    "end_e": 3
+  },
+  {
+    "day": 19,
+    "name": "Day 19: 秋葉原市區 ➔ 神田明神 ➔ CycleTrip還車 ➔ 日暮里搭車",
+    "dist_km": 7.9,
+    "gain": 9,
+    "loss": 13,
+    "start_e": 3,
+    "peak_e": 20,
+    "end_e": 5
+  }
+]

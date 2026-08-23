@@ -1,0 +1,211 @@
+[
+  {
+    "day": 1,
+    "title": "秋葉原 ➔ 銀座/品川 ➔ 國道15號 ➔ 六鄉橋 ➔ 多摩川自行車道 ➔ 府中/調布",
+    "dist_km": 50.4,
+    "ascent_m": 62,
+    "descent_m": 13,
+    "min_elev": 2,
+    "max_elev": 54,
+    "start_elev": 3,
+    "end_elev": 54
+  },
+  {
+    "day": 2,
+    "title": "府中 ➔ 淺川自行車道 ➔ 高尾 ➔ 津久井湖畔 (縣道515/517) ➔ 山梨縣道35號 (秋山街道) ➔ 都留",
+    "dist_km": 79.5,
+    "ascent_m": 838,
+    "descent_m": 385,
+    "min_elev": 54,
+    "max_elev": 612,
+    "start_elev": 54,
+    "end_elev": 508
+  },
+  {
+    "day": 3,
+    "title": "都留 ➔ 富士急行沿線裏道 ➔ 縣道713號 ➔ 富士吉田 (金鳥居) ➔ 山中湖",
+    "dist_km": 33.3,
+    "ascent_m": 879,
+    "descent_m": 402,
+    "min_elev": 482,
+    "max_elev": 995,
+    "start_elev": 508,
+    "end_elev": 984
+  },
+  {
+    "day": 4,
+    "title": "山中湖環湖 ➔ 忍野八海 ➔ 湖北View Line ➔ 河口湖 (紅葉迴廊/大石公園)",
+    "dist_km": 26.5,
+    "ascent_m": 108,
+    "descent_m": 260,
+    "min_elev": 815,
+    "max_elev": 1021,
+    "start_elev": 984,
+    "end_elev": 834
+  },
+  {
+    "day": 5,
+    "title": "河口湖 ➔ 湖北View Line ➔ 西湖 ➔ 精進湖 ➔ 本棲湖 ➔ 折返河口湖",
+    "dist_km": 49.2,
+    "ascent_m": 827,
+    "descent_m": 821,
+    "min_elev": 833,
+    "max_elev": 1285,
+    "start_elev": 834,
+    "end_elev": 839
+  },
+  {
+    "day": 6,
+    "title": "河口湖／富士吉田 彈性休整與深度賞楓 (新倉山/本町通/南岸)",
+    "dist_km": 15.4,
+    "ascent_m": 127,
+    "descent_m": 127,
+    "min_elev": 751,
+    "max_elev": 857,
+    "start_elev": 839,
+    "end_elev": 839
+  },
+  {
+    "day": 7,
+    "title": "河口湖 ➔ 朝霧高原 ➔ 富士宮 ➔ 田子の浦港 ➔ 駿河灣千本松原海堤 ➔ 沼津港 ➔ 三島",
+    "dist_km": 86.8,
+    "ascent_m": 321,
+    "descent_m": 1118,
+    "min_elev": 2,
+    "max_elev": 1114,
+    "start_elev": 839,
+    "end_elev": 42
+  },
+  {
+    "day": 8,
+    "title": "三島 ➔ 狩野川自行車專用道 ➔ 伊豆Gateway函南 ➔ 修善寺溫泉",
+    "dist_km": 21.9,
+    "ascent_m": 100,
+    "descent_m": 42,
+    "min_elev": 9,
+    "max_elev": 105,
+    "start_elev": 42,
+    "end_elev": 105
+  },
+  {
+    "day": 9,
+    "title": "修善寺 ➔ 縣道12號 ➔ 冷川峠 ➔ 伊豆高原 ➔ 城崎海岸",
+    "dist_km": 42.2,
+    "ascent_m": 826,
+    "descent_m": 916,
+    "min_elev": 13,
+    "max_elev": 442,
+    "start_elev": 105,
+    "end_elev": 15
+  },
+  {
+    "day": 10,
+    "title": "伊豆高原 ➔ 伊東溫泉 ➔ 宇佐美 ➔ 網代港舊道 ➔ 南熱海長濱 ➔ 熱海溫泉",
+    "dist_km": 31.5,
+    "ascent_m": 499,
+    "descent_m": 506,
+    "min_elev": 4,
+    "max_elev": 245,
+    "start_elev": 15,
+    "end_elev": 10
+  },
+  {
+    "day": 11,
+    "title": "熱海 ➔ 湯河原 ➔ 真鶴 ➔ 縣道740號柑橘山線 ➔ 早川漁港 ➔ 小田原城",
+    "dist_km": 23.5,
+    "ascent_m": 286,
+    "descent_m": 279,
+    "min_elev": 5,
+    "max_elev": 136,
+    "start_elev": 10,
+    "end_elev": 17
+  },
+  {
+    "day": 12,
+    "title": "小田原 ➔ 國道1號 ➔ 湘南海岸防風林道/國道134共用道 ➔ 茅崎 ➔ 江之島",
+    "dist_km": 38.7,
+    "ascent_m": 65,
+    "descent_m": 71,
+    "min_elev": 4,
+    "max_elev": 26,
+    "start_elev": 17,
+    "end_elev": 5
+  },
+  {
+    "day": 13,
+    "title": "江之島 ➔ 鎌倉高校前 ➔ 鶴岡八幡宮 ➔ 北鎌倉 ➔ 大船 ➔ 柏尾川步道 ➔ 戶塚 ➔ 橫濱港未來",
+    "dist_km": 33.5,
+    "ascent_m": 215,
+    "descent_m": 214,
+    "min_elev": 4,
+    "max_elev": 80,
+    "start_elev": 5,
+    "end_elev": 5
+  },
+  {
+    "day": 14,
+    "title": "橫濱 ➔ 鶴見 ➔ 羽田大鳥居 ➔ 築地/勝鬨 ➔ 豐洲大橋 ➔ 台場海濱公園",
+    "dist_km": 41.3,
+    "ascent_m": 12,
+    "descent_m": 18,
+    "min_elev": 1,
+    "max_elev": 7,
+    "start_elev": 5,
+    "end_elev": 6
+  },
+  {
+    "day": 15,
+    "title": "台場 ➔ 葛西臨海公園 ➔ 清砂大橋 ➔ 荒川右岸自行車專用道 ➔ 赤羽",
+    "dist_km": 38.0,
+    "ascent_m": 27,
+    "descent_m": 26,
+    "min_elev": -2,
+    "max_elev": 11,
+    "start_elev": 6,
+    "end_elev": 7
+  },
+  {
+    "day": 16,
+    "title": "赤羽 ➔ 荒川右岸 ➔ 入間川自行車道 ➔ 川越小江戶老街 ➔ 折返荒川中游",
+    "dist_km": 65.8,
+    "ascent_m": 36,
+    "descent_m": 41,
+    "min_elev": 2,
+    "max_elev": 17,
+    "start_elev": 7,
+    "end_elev": 3
+  },
+  {
+    "day": 17,
+    "title": "荒川中游 ➔ 葛飾水元公園 (水杉金黃林) ➔ 柴又帝釋天 ➔ 隅田川 ➔ 上野/淺草",
+    "dist_km": 36.4,
+    "ascent_m": 37,
+    "descent_m": 19,
+    "min_elev": -1,
+    "max_elev": 18,
+    "start_elev": 3,
+    "end_elev": 18
+  },
+  {
+    "day": 18,
+    "title": "上野 ➔ 東大銀杏 ➔ 明治神宮外苑銀杏大道 ➔ 皇居 ➔ 秋葉原",
+    "dist_km": 18.4,
+    "ascent_m": 73,
+    "descent_m": 87,
+    "min_elev": 3,
+    "max_elev": 35,
+    "start_elev": 18,
+    "end_elev": 3
+  },
+  {
+    "day": 19,
+    "title": "秋葉原市區巡禮 ➔ 還車 ➔ 京成 Skyliner 至成田機場",
+    "dist_km": 1.8,
+    "ascent_m": 0,
+    "descent_m": 2,
+    "min_elev": 3,
+    "max_elev": 9,
+    "start_elev": 3,
+    "end_elev": 3
+  }
+]
