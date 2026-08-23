@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>東京・富士五湖・伊豆・東京灣 19日秋季單車騎旅 ｜ 19天全路線地圖、標高剖面與在地避坑互動 Demo</title>
     <!-- Leaflet CSS & JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -428,6 +428,128 @@
             font-weight: 700;
             display: inline-block;
         }
+    
+        /* === Samsung S23 Ultra Mobile Optimizations for Master Map === */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 10px 80px 10px;
+                font-size: 14px;
+            }
+            header {
+                padding: 14px;
+                border-radius: 12px;
+                margin-bottom: 10px;
+            }
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .header-title h1 {
+                font-size: 18px;
+            }
+            .header-nav {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .nav-btn {
+                justify-content: center;
+                min-height: 44px;
+            }
+            .days-nav-wrapper {
+                padding: 8px 10px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+            }
+            .day-tab {
+                padding: 7px 10px;
+                min-width: 58px;
+                font-size: 12px;
+            }
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                margin-bottom: 10px;
+            }
+            .stat-box {
+                padding: 10px 8px;
+                border-radius: 8px;
+            }
+            .stat-box .val {
+                font-size: 16px;
+            }
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+            #map {
+                height: 380px;
+                border-radius: 10px;
+            }
+            .sidebar {
+                max-height: 320px;
+                padding: 12px;
+                border-radius: 10px;
+            }
+            .chart-card {
+                padding: 12px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+            }
+            .chart-container {
+                height: 180px;
+            }
+            .mobile-bottom-bar {
+                display: flex !important;
+            }
+        }
+
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+            z-index: 9999;
+            justify-content: space-around;
+            gap: 6px;
+        }
+        .mobile-bar-btn {
+            flex: 1;
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: #F8FAFC;
+            padding: 9px 4px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            min-height: 44px;
+        }
+        .mobile-bar-btn.primary {
+            background: #2563EB;
+            border-color: #3B82F6;
+            color: #FFFFFF;
+        }
+        .mobile-bar-btn.accent {
+            background: #D97724;
+            border-color: #F59E0B;
+            color: #FFFFFF;
+        }
+    
     </style>
 </head>
 <body>
