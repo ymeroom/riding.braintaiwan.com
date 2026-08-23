@@ -210,6 +210,53 @@
             justify-content: space-between;
         }
 
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .day-card {
+            scroll-margin-top: 40px;
+        }
+
+        .summary-row-clickable {
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .summary-row-clickable:hover {
+            background-color: #F0F9FF !important;
+        }
+
+        .day-jump-link {
+            display: inline-block;
+            color: inherit;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .day-jump-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #EFF6FF;
+            color: #1D4ED8;
+            border: 1px solid #BFDBFE;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+            margin-top: 4px;
+            transition: all 0.15s ease;
+        }
+
+        .summary-row-clickable:hover .day-jump-badge {
+            background: #2563EB;
+            color: #FFFFFF;
+            border-color: #1D4ED8;
+            transform: translateX(2px);
+        }
+
         /* 日程卡片 */
         .day-card {
             background: #FFFFFF;
@@ -661,7 +708,7 @@
         </div>
 
         <!-- 19天實測數據總表 -->
-        <h2 class="section-title">📊 19日每日里程、爬升、去年實測天氣與紅葉見頃總覽 (日本國土地理院 GSI 1m DEM 實測核實版)</h2>
+        <h2 class="section-title">📊 19日每日里程、爬升、去年實測天氣與紅葉見頃總覽 ｜ 💡 點擊任一日程即可直達下方詳細規劃</h2>
         <div class="table-wrapper">
             <table>
                 <thead>
@@ -676,8 +723,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                                        <tr>
-                        <td><strong>11/13（五）<br><span style="color:#B91C1C;">Day 1</span></strong><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
+                                        <tr class="summary-row-clickable" onclick="scrollToDay(1)" title="點擊直達 Day 1 詳細騎行日程">
+                        <td><strong>11/13（五）<br><span style="color:#B91C1C;">Day 1</span></strong><br><a href="#day-1" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(1); return false;">👇 詳細日程 ➔</a><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
                         <td>秋葉原 ➔ 銀座/品川 ➔ 國道15號 ➔ 六鄉橋 ➔ 多摩川CR ➔ 府中(50km) ➔ 高尾山口</td>
                         <td><strong>89.7 km</strong></td>
                         <td>+243m / -62m</td>
@@ -685,8 +732,8 @@
                         <td>☀️ 晴 ｜ 11.8°C ~ 19.6°C<br>降水 0.0mm ｜ 日照 9.4h</td>
                         <td>多摩水岸秋芒 ｜ 雙專用道全程零紅綠燈直達高尾山腳（海拔190m）</td>
                     </tr>
-                                        <tr>
-                        <td><strong>11/14（六）<br><span style="color:#B91C1C;">Day 2</span></strong><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
+                                        <tr class="summary-row-clickable" onclick="scrollToDay(2)" title="點擊直達 Day 2 詳細騎行日程">
+                        <td><strong>11/14（六）<br><span style="color:#B91C1C;">Day 2</span></strong><br><a href="#day-2" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(2); return false;">👇 詳細日程 ➔</a><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
                         <td>高尾山口 ➔ <strong>甲州街道(國道20)</strong> ➔ 大垂水峠(392m) ➔ 相模湖 ➔ 縣道35秋山街道 ➔ 都留</td>
                         <td><strong>61.0 km</strong></td>
                         <td>+1121m / -830m</td>
@@ -694,8 +741,8 @@
                         <td>☀️ 快晴 ｜ 7.8°C ~ 17.2°C<br>降水 0.0mm ｜ 日照 8.9h</td>
                         <td>秋山溪谷初紅 ｜ 清晨避開大車，秋山街道35km零貨車幽靜溪谷</td>
                     </tr>
-                                        <tr>
-                        <td><strong>11/15（日）<br><span style="color:#B91C1C;">Day 3</span></strong><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
+                                        <tr class="summary-row-clickable" onclick="scrollToDay(3)" title="點擊直達 Day 3 詳細騎行日程">
+                        <td><strong>11/15（日）<br><span style="color:#B91C1C;">Day 3</span></strong><br><a href="#day-3" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(3); return false;">👇 詳細日程 ➔</a><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
                         <td>由加利 ➔ <strong>【晴】山中湖完整環湖+忍野 / 【陰雨】新倉山五重塔直達</strong> ➔ 河口湖</td>
                         <td><strong>22.2 ~ 70.5 km</strong></td>
                         <td>+532m ~ +1030m</td>
@@ -703,8 +750,8 @@
                         <td>☀️ 快晴 ｜ 4.5°C ~ 15.1°C<br>降水 0.0mm ｜ 日照 9.6h</td>
                         <td>🔥 <strong>雙湖見頃最盛期</strong> ｜ 晴天環山中湖、陰雨天直取五重塔，晚賞夜楓點燈</td>
                     </tr>
-                                        <tr>
-                        <td><strong>11/16（一）<br><span style="color:#B91C1C;">Day 4</span></strong></td>
+                                        <tr class="summary-row-clickable" onclick="scrollToDay(4)" title="點擊直達 Day 4 詳細騎行日程">
+                        <td><strong>11/16（一）<br><span style="color:#B91C1C;">Day 4</span></strong><br><a href="#day-4" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(4); return false;">👇 詳細日程 ➔</a><br></td>
                         <td>清晨紅葉迴廊 ➔ <strong>【去過山中湖】爬五重塔往西騎本棲湖 / 【未去】補騎山中湖 / 附近漫遊</strong></td>
                         <td><strong>30.0 ~ 52.7 km</strong></td>
                         <td>+250m ~ +629m</td>
@@ -712,8 +759,8 @@
                         <td>☀️ 快晴 ｜ 3.2°C ~ 14.6°C<br>降水 0.0mm ｜ 日照 9.1h</td>
                         <td>🔥 <strong>紅葉迴廊見頃最高峰</strong> ｜ 依前日天候靈活啟動分支，西進逆富士或深度漫遊</td>
                     </tr>
-                    <tr>
-                        <td><strong>11/17（二）<br><span style="color:#B91C1C;">Day 5</span></strong></td>
+                    <tr class="summary-row-clickable" onclick="scrollToDay(5)" title="點擊直達 Day 5 詳細騎行日程">
+                        <td><strong>11/17（二）<br><span style="color:#B91C1C;">Day 5</span></strong><br><a href="#day-5" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(5); return false;">👇 詳細日程 ➔</a><br></td>
                         <td><strong>【五湖天候核心緩衝日】</strong> 精進湖 ➔ 青木原樹海 ➔ 鳴澤 ➔ 溫泉休整</td>
                         <td><strong>20.0 ~ 38.1 km</strong></td>
                         <td>+234m / -201m</td>
@@ -721,8 +768,8 @@
                         <td>☀️ 晴朗 ｜ 5.8°C ~ 16.4°C<br>降水 0.0mm ｜ 日照 8.8h</td>
                         <td>🔥 <strong>西湖/本棲湖深秋紅葉</strong> ｜ 高原天候定海神針，防雨防初雪防低溫</td>
                     </tr>
-                    <tr>
-                        <td><strong>11/18（三）<br><span style="color:#B91C1C;">Day 6</span></strong></td>
+                    <tr class="summary-row-clickable" onclick="scrollToDay(6)" title="點擊直達 Day 6 詳細騎行日程">
+                        <td><strong>11/18（三）<br><span style="color:#B91C1C;">Day 6</span></strong><br><a href="#day-6" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(6); return false;">👇 詳細日程 ➔</a><br></td>
                         <td>本棲湖浩庵（千圓逆富士） ➔ 朝霧高原牧場 ➔ 白糸之瀑 ➔ 富士宮市</td>
                         <td><strong>39.6 km</strong></td>
                         <td>+148m / -924m</td>
@@ -730,8 +777,8 @@
                         <td>☀️ 萬里晴空 ｜ 4.2°C ~ 15.8°C<br>降水 0.0mm ｜ 日照 9.0h</td>
                         <td>朝霧高原黃金芒草 ｜ 自海拔900m一路近千米大長下坡滑降富士宮</td>
                     </tr>
-                    <tr>
-                        <td><strong>11/19（四）<br><span style="color:#B91C1C;">Day 7</span></strong></td>
+                    <tr class="summary-row-clickable" onclick="scrollToDay(7)" title="點擊直達 Day 7 詳細騎行日程">
+                        <td><strong>11/19（四）<br><span style="color:#B91C1C;">Day 7</span></strong><br><a href="#day-7" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(7); return false;">👇 詳細日程 ➔</a><br></td>
                         <td>富士宮 ➔ 潤井川CR ➔ 田子の浦港 ➔ 駿河灣千本松原海堤 ➔ 沼津 ➔ 三島</td>
                         <td><strong>41.3 km</strong></td>
                         <td>+44m / -118m</td>
@@ -739,8 +786,8 @@
                         <td>☀️ 快晴 ｜ 2.2°C ~ 13.9°C<br>降水 0.0mm ｜ 日照 8.3h</td>
                         <td>田子之浦富士絕景 ｜ 全平緩海堤專用道，零紅綠燈狂飆沼津</td>
                     </tr>
-                    <tr>
-                        <td><strong>11/20（五）<br><span style="color:#B91C1C;">Day 8</span></strong><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
+                    <tr class="summary-row-clickable" onclick="scrollToDay(8)" title="點擊直達 Day 8 詳細騎行日程">
+                        <td><strong>11/20（五）<br><span style="color:#B91C1C;">Day 8</span></strong><br><a href="#day-8" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(8); return false;">👇 詳細日程 ➔</a><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
                         <td>三島 ➔ 狩野川自行車道 ➔ 修善寺溫泉（竹林小徑 / 桂橋）</td>
                         <td><strong>20.9 km</strong></td>
                         <td>+167m / -76m</td>
@@ -748,8 +795,8 @@
                         <td>☀️ 快晴 ｜ 6.9°C ~ 18.6°C<br>降水 0.0mm ｜ 日照 9.6h</td>
                         <td>🔥 <strong>修善寺・虹之鄉見頃</strong> ｜ 避開三連休人潮提早進駐名湯放鬆</td>
                     </tr>
-                    <tr>
-                        <td><strong>11/21（六）<br><span style="color:#B91C1C;">Day 9</span></strong><br><span class="badge badge-mod" style="font-size:10px;">三連休首日</span><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
+                    <tr class="summary-row-clickable" onclick="scrollToDay(9)" title="點擊直達 Day 9 詳細騎行日程">
+                        <td><strong>11/21（六）<br><span style="color:#B91C1C;">Day 9</span></strong><br><a href="#day-9" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(9); return false;">👇 詳細日程 ➔</a><br><span class="badge badge-mod" style="font-size:10px;">三連休首日</span><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
                         <td>修善寺 ➔ 避開天城峠（走冷川峠/一碧湖） ➔ 城崎海岸門脇吊橋 ➔ 伊東川奈</td>
                         <td><strong>47.9 km</strong></td>
                         <td>+871m / -931m</td>
@@ -757,8 +804,8 @@
                         <td>☀️ 快晴 ｜ 5.9°C ~ 19.3°C<br>降水 0.0mm ｜ 日照 9.3h</td>
                         <td>🔥 <strong>一碧湖伊豆之瞳見頃</strong> ｜ 門脇吊橋懸崖白浪與相模灣海景第一排住宿</td>
                     </tr>
-                    <tr>
-                        <td><strong>11/22（日）<br><span style="color:#B91C1C;">Day 10</span></strong><br><span class="badge badge-mod" style="font-size:10px;">三連休中日</span><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
+                    <tr class="summary-row-clickable" onclick="scrollToDay(10)" title="點擊直達 Day 10 詳細騎行日程">
+                        <td><strong>11/22（日）<br><span style="color:#B91C1C;">Day 10</span></strong><br><a href="#day-10" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(10); return false;">👇 詳細日程 ➔</a><br><span class="badge badge-mod" style="font-size:10px;">三連休中日</span><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
                         <td>伊東 ➔ 宇佐美 ➔ 避開危險隧道（走網代舊街） ➔ 南熱海・下多賀</td>
                         <td><strong>17.4 km</strong></td>
                         <td>+314m / -352m</td>
@@ -766,8 +813,8 @@
                         <td>☀️ 快晴 ｜ 7.6°C ~ 19.2°C<br>降水 0.0mm ｜ 日照 9.3h</td>
                         <td>🔥 <strong>網代灣長浜海景第一排</strong> ｜ 避開三連休熱海塞車潮，悠閒入住海景公寓</td>
                     </tr>
-                                        <tr>
-                        <td><strong>11/23（一）<br><span style="color:#B91C1C;">Day 11</span></strong><br><span class="badge badge-mod" style="font-size:10px;">勤勞感謝日</span><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
+                                        <tr class="summary-row-clickable" onclick="scrollToDay(11)" title="點擊直達 Day 11 詳細騎行日程">
+                        <td><strong>11/23（一）<br><span style="color:#B91C1C;">Day 11</span></strong><br><a href="#day-11" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(11); return false;">👇 詳細日程 ➔</a><br><span class="badge badge-mod" style="font-size:10px;">勤勞感謝日</span><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
                         <td>Apt南熱海 ➔ 熱海梅園紅葉祭 ➔ 來宮神社 ➔ 熱海銀座 ➔ <strong>晚上 20:20 熱海海上花火大會</strong></td>
                         <td><strong>12.2 km</strong></td>
                         <td>+250m / -244m</td>
@@ -775,8 +822,8 @@
                         <td>☀️ 快晴 ｜ 10.4°C ~ 19.7°C<br>降水 0.0mm ｜ 日照 9.7h</td>
                         <td>🎆 <strong>熱海海上煙火祭特設日</strong> ｜ <strong>入住熱海銀座，步行 3 分鐘直達海灘特等席！散場零塞車</strong></td>
                     </tr>
-                                        <tr>
-                        <td><strong>11/24（二）<br><span style="color:#B91C1C;">Day 12</span></strong></td>
+                                        <tr class="summary-row-clickable" onclick="scrollToDay(12)" title="點擊直達 Day 12 詳細騎行日程">
+                        <td><strong>11/24（二）<br><span style="color:#B91C1C;">Day 12</span></strong><br><a href="#day-12" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(12); return false;">👇 詳細日程 ➔</a><br></td>
                         <td>熱海銀座 ➔ 縣道740號柑橘道 ➔ 小田原城 ➔ 湘南海岸防風林 ➔ 江之島</td>
                         <td><strong>63.2 km</strong></td>
                         <td>+323m / -328m</td>
@@ -784,8 +831,8 @@
                         <td>☀️ 快晴 ｜ 8.9°C ~ 18.0°C<br>降水 0.0mm ｜ 日照 9.4h</td>
                         <td>灌籃高手湘南海岸 ｜ 熱海直接出發，小田原後一馬平川相模灣平路直達江之島</td>
                     </tr>
-                    <tr>
-                        <td><strong>11/25（三）<br><span style="color:#B91C1C;">Day 13</span></strong></td>
+                    <tr class="summary-row-clickable" onclick="scrollToDay(13)" title="點擊直達 Day 13 詳細騎行日程">
+                        <td><strong>11/25（三）<br><span style="color:#B91C1C;">Day 13</span></strong><br><a href="#day-13" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(13); return false;">👇 詳細日程 ➔</a><br></td>
                         <td>江之島 ➔ 鎌倉高校前平交道 ➔ 長谷寺 ➔ 柏尾川水岸綠道 ➔ 橫濱港未來</td>
                         <td><strong>32.4 km</strong></td>
                         <td>+61m / -54m</td>
@@ -793,8 +840,8 @@
                         <td>⛅ 陰/晴 ｜ 9.3°C ~ 12.4°C<br>降水 0.0mm ｜ 日照 0.0h</td>
                         <td>🔥 <strong>鎌倉長谷寺古寺紅葉</strong> ｜ 柏尾川水岸平整綠道直達橫濱</td>
                     </tr>
-                    <tr>
-                        <td><strong>11/26（四）<br><span style="color:#B91C1C;">Day 14</span></strong></td>
+                    <tr class="summary-row-clickable" onclick="scrollToDay(14)" title="點擊直達 Day 14 詳細騎行日程">
+                        <td><strong>11/26（四）<br><span style="color:#B91C1C;">Day 14</span></strong><br><a href="#day-14" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(14); return false;">👇 詳細日程 ➔</a><br></td>
                         <td>橫濱 ➔ 第一京濱/羽田 ➔ 築地 ➔ 豐洲大橋自行車道 ➔ 台場海濱公園</td>
                         <td><strong>38.8 km</strong></td>
                         <td>+19m / -14m</td>
@@ -802,8 +849,8 @@
                         <td>☀️ 快晴 ｜ 6.2°C ~ 18.6°C<br>降水 0.0mm ｜ 日照 9.0h</td>
                         <td>橫濱山下公園黃金銀杏 ➔ 豐洲大橋眺望東京灣與獨角獸鋼彈</td>
                     </tr>
-                    <tr>
-                        <td><strong>11/27（五）<br><span style="color:#B91C1C;">Day 15</span></strong><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
+                    <tr class="summary-row-clickable" onclick="scrollToDay(15)" title="點擊直達 Day 15 詳細騎行日程">
+                        <td><strong>11/27（五）<br><span style="color:#B91C1C;">Day 15</span></strong><br><a href="#day-15" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(15); return false;">👇 詳細日程 ➔</a><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
                         <td>台場 ➔ 葛西臨海公園 ➔ 中川水岸綠道 ➔ 柴又 ➔ 葛飾金町</td>
                         <td><strong>28.5 km</strong></td>
                         <td>+9m / -16m</td>
@@ -811,8 +858,8 @@
                         <td>☀️ 晴/多雲 ｜ 7.3°C ~ 16.2°C<br>降水 0.0mm ｜ 日照 3.7h</td>
                         <td>葛西海風與中川秋草 ｜ 避開市中心擁擠人潮，入住水元公園旁清幽下町旅舍</td>
                     </tr>
-                    <tr>
-                        <td><strong>11/28（六）<br><span style="color:#B91C1C;">Day 16</span></strong><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
+                    <tr class="summary-row-clickable" onclick="scrollToDay(16)" title="點擊直達 Day 16 詳細騎行日程">
+                        <td><strong>11/28（六）<br><span style="color:#B91C1C;">Day 16</span></strong><br><a href="#day-16" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(16); return false;">👇 詳細日程 ➔</a><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
                         <td>金町出發 ➔ <strong>【輕裝免行李】</strong> 江戶川CR / 荒川 ➔ 小江戶川越 / 葛飾老街 ➔ 返回金町</td>
                         <td><strong>35.0 ~ 55.0 km</strong></td>
                         <td>+29m / -27m</td>
@@ -820,8 +867,8 @@
                         <td>☀️ 快晴 ｜ 8.4°C ~ 19.8°C<br>降水 0.0mm ｜ 日照 9.1h</td>
                         <td>🔥 <strong>江戶老街與水岸金秋</strong> ｜ 週末免收行李輕裝暢快巡航，夜晚悠閒漫步下町居酒屋</td>
                     </tr>
-                    <tr>
-                        <td><strong>11/29（日）<br><span style="color:#B91C1C;">Day 17</span></strong></td>
+                    <tr class="summary-row-clickable" onclick="scrollToDay(17)" title="點擊直達 Day 17 詳細騎行日程">
+                        <td><strong>11/29（日）<br><span style="color:#B91C1C;">Day 17</span></strong><br><a href="#day-17" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(17); return false;">👇 詳細日程 ➔</a><br></td>
                         <td>金町退房 ➔ <strong>水元公園（萬棵水杉黃金森林見頃）</strong> ➔ 柴又帝釋天 ➔ 淺草/上野</td>
                         <td><strong>16.6 km</strong></td>
                         <td>+4m / -4m</td>
@@ -829,8 +876,8 @@
                         <td>☀️ 晴/多雲 ｜ 9.0°C ~ 15.3°C<br>降水 0.0mm ｜ 日照 5.2h</td>
                         <td>🔥 <strong>水元公園水杉見頃最高峰</strong> ｜ 清晨5分鐘直達無人水杉金黃森林，極致震撼</td>
                     </tr>
-                    <tr>
-                        <td><strong>11/30（一）<br><span style="color:#B91C1C;">Day 18</span></strong></td>
+                    <tr class="summary-row-clickable" onclick="scrollToDay(18)" title="點擊直達 Day 18 詳細騎行日程">
+                        <td><strong>11/30（一）<br><span style="color:#B91C1C;">Day 18</span></strong><br><a href="#day-18" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(18); return false;">👇 詳細日程 ➔</a><br></td>
                         <td>淺草 ➔ 東京大學本鄉（赤門/大銀杏地毯） ➔ 皇居 ➔ 明治神宮外苑銀杏見頃 ➔ 秋葉原</td>
                         <td><strong>23.7 km</strong></td>
                         <td>+49m / -46m</td>
@@ -838,8 +885,8 @@
                         <td>☀️ 快晴 ｜ 7.1°C ~ 16.3°C<br>降水 0.0mm ｜ 日照 8.9h</td>
                         <td>🔥 <strong>神宮外苑與東大黃金雨最盛期</strong> ｜ 莉香名場面巡禮</td>
                     </tr>
-                    <tr>
-                        <td><strong>12/01（二）<br><span style="color:#B91C1C;">Day 19</span></strong></td>
+                    <tr class="summary-row-clickable" onclick="scrollToDay(19)" title="點擊直達 Day 19 詳細騎行日程">
+                        <td><strong>12/01（二）<br><span style="color:#B91C1C;">Day 19</span></strong><br><a href="#day-19" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(19); return false;">👇 詳細日程 ➔</a><br></td>
                         <td>秋葉原還車（CycleTrip Base） ➔ 神田明神 ➔ 日暮里搭京成Skyliner ➔ 成田機場</td>
                         <td><strong>7.9 km</strong></td>
                         <td>+9m / -13m</td>
@@ -938,7 +985,7 @@
         </div>
 
         <!-- Day 1 -->
-        <div class="day-card">
+        <div class="day-card" id="day-1">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 1</span> 11/13（五）秋葉原取車 ➔ 國道15號平坦水岸 ➔ 六鄉橋 ➔ 多摩川自行車道 ➔ 府中／調布</div>
                 <div style="margin-top: 6px;"><a href="day1_route_map_demo.html" target="_blank" style="display: inline-flex; align-items: center; gap: 4px; background: #2563EB; color: #FFFFFF; padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-decoration: none;">🗺️ 開啟 Day 1 具體地圖 Demo (NAVITIME/Leaflet/GPX) ➔</a></div>
@@ -963,7 +1010,7 @@
         </div>
 
         <!-- Day 2 -->
-        <div class="day-card">
+        <div class="day-card" id="day-2">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 2</span> 11/14（六）府中 ➔ 淺川自行車道 ➔ 高尾／津久井湖畔 ➔ 縣道35號秋山街道 ➔ 都留</div>
                 <div class="day-stats">
@@ -987,7 +1034,7 @@
         </div>
 
         <!-- Day 3 -->
-        <div class="day-card">
+        <div class="day-card" id="day-3">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 3</span> 11/15（日）都留 ➔ 富士急行線生活裏道 ➔ 富士吉田 ➔ 山中湖</div>
                 <div class="day-stats">
@@ -1011,7 +1058,7 @@
         </div>
 
         <!-- Day 4 -->
-        <div class="day-card">
+        <div class="day-card" id="day-4">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 4</span> 11/16（一）山中湖環湖 ➔ 忍野八海 ➔ 湖北View Line ➔ 河口湖（紅葉迴廊）</div>
                 <div class="day-stats">
@@ -1035,7 +1082,7 @@
         </div>
 
         <!-- Day 5 -->
-        <div class="day-card">
+        <div class="day-card" id="day-5">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 5</span> 11/17（二）河口湖 ➔ 西湖 ➔ 精進湖 ➔ 本棲湖巡禮</div>
                 <div class="day-stats">
@@ -1059,7 +1106,7 @@
         </div>
 
         <!-- Day 6 -->
-        <div class="day-card">
+        <div class="day-card" id="day-6">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 6</span> 11/18（三）河口湖／富士吉田 彈性休整與深度賞楓</div>
                 <div class="day-stats">
@@ -1089,7 +1136,7 @@
         </div>
 
         <!-- Day 7 -->
-        <div class="day-card">
+        <div class="day-card" id="day-7">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 7</span> 11/19（四）河口湖 ➔ 朝霧高原 ➔ 富士宮 ➔ 駿河灣太平洋岸自行車道 (千本松原) ➔ 沼津／三島</div>
                 <div class="day-stats">
@@ -1113,7 +1160,7 @@
         </div>
 
         <!-- Day 8 -->
-        <div class="day-card">
+        <div class="day-card" id="day-8">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 8</span> 11/20（五）三島 ➔ 狩野川自行車道 ➔ 修善寺溫泉賞楓</div>
                 <div class="day-stats">
@@ -1137,7 +1184,7 @@
         </div>
 
         <!-- Day 9 -->
-        <div class="day-card">
+        <div class="day-card" id="day-9">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 9</span> 11/21（六・三連休首日）修善寺 ➔ 冷川峠 ➔ 伊豆高原／城崎海岸</div>
                 <div class="day-stats">
@@ -1161,7 +1208,7 @@
         </div>
 
         <!-- Day 10 -->
-        <div class="day-card">
+        <div class="day-card" id="day-10">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 10</span> 11/22（日・三連休次日）伊豆高原 ➔ 伊東 ➔ 宇佐美 ➔ 網代港舊道 ➔ 熱海溫泉</div>
                 <div class="day-stats">
@@ -1188,7 +1235,7 @@
         </div>
 
         <!-- Day 11 -->
-        <div class="day-card">
+        <div class="day-card" id="day-11">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 11</span> 11/23（一・連假收日）熱海 ➔ 湯河原 ➔ 真鶴 ➔ 縣道740號柑橘山線 ➔ 小田原城</div>
                 <div class="day-stats">
@@ -1218,7 +1265,7 @@
         </div>
 
         <!-- Day 12 -->
-        <div class="day-card">
+        <div class="day-card" id="day-12">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 12</span> 11/24（二）小田原 ➔ 國道1號 ➔ 湘南海岸防風林道／國道134共用道 ➔ 茅崎 ➔ 江之島</div>
                 <div class="day-stats">
@@ -1242,7 +1289,7 @@
         </div>
 
         <!-- Day 13 -->
-        <div class="day-card">
+        <div class="day-card" id="day-13">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 13</span> 11/25（三）江之島 ➔ 鎌倉平交道 ➔ 北鎌倉 ➔ 大船 ➔ 柏尾川步道 ➔ 橫濱港未來</div>
                 <div class="day-stats">
@@ -1266,7 +1313,7 @@
         </div>
 
         <!-- Day 14 -->
-        <div class="day-card">
+        <div class="day-card" id="day-14">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 14</span> 11/26（四）橫濱 ➔ 羽田大鳥居 ➔ 勝鬨／築地 ➔ 豐洲大橋 ➔ 台場海濱</div>
                 <div class="day-stats">
@@ -1293,7 +1340,7 @@
         </div>
 
         <!-- Day 15 -->
-        <div class="day-card">
+        <div class="day-card" id="day-15">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 15</span> 11/27（五）台場 ➔ 葛西臨海公園 ➔ 荒川自行車道（右岸） ➔ 赤羽</div>
                 <div class="day-stats">
@@ -1321,7 +1368,7 @@
         </div>
 
         <!-- Day 16 -->
-        <div class="day-card">
+        <div class="day-card" id="day-16">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 16</span> 11/28（六）赤羽 ➔ 荒川右岸 ➔ 入間川自行車道 ➔ 川越小江戶 ➔ 荒川中游</div>
                 <div class="day-stats">
@@ -1345,7 +1392,7 @@
         </div>
 
         <!-- Day 17 -->
-        <div class="day-card">
+        <div class="day-card" id="day-17">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 17</span> 11/29（日）荒川中游 ➔ 水元公園 (水杉金黃林) ➔ 柴又 ➔ 上野／淺草</div>
                 <div class="day-stats">
@@ -1369,7 +1416,7 @@
         </div>
 
         <!-- Day 18 -->
-        <div class="day-card">
+        <div class="day-card" id="day-18">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 18</span> 11/30（一）上野 ➔ 東大銀杏 ➔ 明治神宮外苑銀杏大道 ➔ 皇居 ➔ 秋葉原</div>
                 <div class="day-stats">
@@ -1393,7 +1440,7 @@
         </div>
 
         <!-- Day 19 -->
-        <div class="day-card">
+        <div class="day-card" id="day-19">
             <div class="day-header">
                 <div class="day-title"><span class="day-num">Day 19</span> 12/01（二）秋葉原巡禮 ➔ 16:00 前還車 ➔ 京成 Skyliner 前往成田機場</div>
                 <div class="day-stats">
@@ -1422,6 +1469,22 @@
         <p>東京・富士五湖・富士宮・伊豆・東京灣 19日秋季單車騎行計畫書 ｜ 日本在地車友避坑實戰 ＋ NAVITIME標高測算 ＋ 去年氣象廳實測與紅葉見頃整合版</p>
     </footer>
 </div>
+
+
+<script>
+function scrollToDay(dayNum) {
+    const el = document.getElementById('day-' + dayNum);
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        el.style.borderColor = '#2563EB';
+        el.style.boxShadow = '0 0 0 3px rgba(37, 99, 235, 0.35)';
+        setTimeout(() => {
+            el.style.borderColor = '';
+            el.style.boxShadow = '';
+        }, 1800);
+    }
+}
+</script>
 
 </body>
 </html>
