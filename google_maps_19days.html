@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19 Days Itinerary on Google Maps</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { width: 100vw; height: 100vh; }
+        .header-overlay {
+            position: absolute;
+            top: 15px; left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 15px;
+            color: #1e293b;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-overlay">🚴 2026 東京單車騎旅 19 天全路線 (Google 地圖版)</div>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([35.3606, 139.273], 9);
+
+        // Load Google Maps Tile Layer
+        L.tileLayer('http://mt0.google.com/vt/lyrs=m&hl=zh-TW&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            attribution: '&copy; Google Maps'
+        }).addTo(map);
+
+        
+        L.marker([35.628, 139.27]).addTo(map)
+         .bindPopup('<b>Day 1: 高尾/八王子</b>');
+    
+        L.marker([35.626, 139.119]).addTo(map)
+         .bindPopup('<b>Day 2: 上野原/相模湖</b>');
+    
+        L.marker([35.498, 138.769]).addTo(map)
+         .bindPopup('<b>Day 3: 富士河口湖</b>');
+    
+        L.marker([35.418, 138.868]).addTo(map)
+         .bindPopup('<b>Day 4: 山中湖</b>');
+    
+        L.marker([35.308, 138.934]).addTo(map)
+         .bindPopup('<b>Day 5: 御殿場</b>');
+    
+        L.marker([35.232, 139.106]).addTo(map)
+         .bindPopup('<b>Day 6: 箱根</b>');
+    
+        L.marker([35.257, 139.155]).addTo(map)
+         .bindPopup('<b>Day 7: 小田原</b>');
+    
+        L.marker([35.095, 139.073]).addTo(map)
+         .bindPopup('<b>Day 8: 熱海</b>');
+    
+        L.marker([34.971, 139.098]).addTo(map)
+         .bindPopup('<b>Day 9: 伊東</b>');
+    
+        L.marker([34.679, 138.945]).addTo(map)
+         .bindPopup('<b>Day 10: 下田</b>');
+    
+        L.marker([34.976, 138.932]).addTo(map)
+         .bindPopup('<b>Day 11: 伊豆</b>');
+    
+        L.marker([35.101, 138.859]).addTo(map)
+         .bindPopup('<b>Day 12: 沼津</b>');
+    
+        L.marker([35.161, 138.676]).addTo(map)
+         .bindPopup('<b>Day 13: 富士</b>');
+    
+        L.marker([34.975, 138.382]).addTo(map)
+         .bindPopup('<b>Day 14: 靜岡</b>');
+    
+        L.marker([35.319, 139.55]).addTo(map)
+         .bindPopup('<b>Day 15: 鎌倉</b>');
+    
+        L.marker([35.443, 139.638]).addTo(map)
+         .bindPopup('<b>Day 16: 橫濱</b>');
+    
+        L.marker([35.689, 139.691]).addTo(map)
+         .bindPopup('<b>Day 17: 東京</b>');
+    
+        L.marker([35.776, 140.318]).addTo(map)
+         .bindPopup('<b>Day 19: 成田</b>');
+    
+
+        var routeCoords = [
+            [35.628, 139.27],
+[35.626, 139.119],
+[35.498, 138.769],
+[35.418, 138.868],
+[35.308, 138.934],
+[35.232, 139.106],
+[35.257, 139.155],
+[35.095, 139.073],
+[34.971, 139.098],
+[34.679, 138.945],
+[34.976, 138.932],
+[35.101, 138.859],
+[35.161, 138.676],
+[34.975, 138.382],
+[35.319, 139.55],
+[35.443, 139.638],
+[35.689, 139.691],
+[35.776, 140.318],
+
+        ];
+        var polyline = L.polyline(routeCoords, {color: '#E11D48', weight: 4, opacity: 0.8}).addTo(map);
+        map.fitBounds(polyline.getBounds(), {padding: [50, 50]});
+    </script>
+</body>
+</html>
