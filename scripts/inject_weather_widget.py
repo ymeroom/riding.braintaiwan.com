@@ -28,11 +28,9 @@ css_block = """
     align-items: center;
     gap: 12px;
 }
-.weather-icon-img {
-    width: 40px;
-    height: 40px;
-    background: var(--primary-light, #e0e0e0);
-    border-radius: 50%;
+.weather-icon-emoji {
+    font-size: 32px;
+    line-height: 1;
 }
 .weather-temp {
     font-size: 18px;
@@ -53,23 +51,12 @@ css_block = """
     font-weight: 600;
     margin-top: 4px;
 }
-.weather-config-btn {
-    font-size: 11px;
-    color: var(--text-muted);
-    cursor: pointer;
-    text-decoration: underline;
-    background: none;
-    border: none;
-    padding: 0;
-}
 </style>
 """
 
 js_block = """
 <!-- WEATHER WIDGET JS -->
 <script>
-const OWM_API_KEY = localStorage.getItem('owm_api_key') || '';
-
 const DAY_LOCATIONS = {
     1: { lat: 35.628, lon: 139.270, name: "高尾/八王子", alt: "雨天建議：改搭京王線轉乘，或在沿線室內參觀" },
     2: { lat: 35.626, lon: 139.119, name: "上野原/相模湖", alt: "雨天建議：改搭 JR 中央本線至下個目的地，單車上火車" },
@@ -92,41 +79,47 @@ const DAY_LOCATIONS = {
     19: { lat: 35.776, lon: 140.318, name: "成田", alt: "雨天建議：搭乘 Skyliner 提早前往機場免稅店休息" }
 };
 
+function getWMOWheather(code) {
+    if (code === 0) return { e: '☀️', text: '晴朗' };
+    if (code >= 1 && code <= 3) return { e: '⛅', text: '多雲' };
+    if (code === 45 || code === 48) return { e: '🌫️', text: '濃霧' };
+    if (code >= 51 && code <= 55) return { e: '🌧️', text: '毛毛雨' };
+    if (code >= 61 && code <= 65) return { e: '🌧️', text: '降雨' };
+    if (code >= 71 && code <= 75) return { e: '❄️', text: '降雪' };
+    if (code >= 80 && code <= 82) return { e: '🌦️', text: '陣雨' };
+    if (code >= 95) return { e: '⛈️', text: '雷雨' };
+    return { e: '☁️', text: '未知天氣' };
+}
+
 async function fetchWeatherForDay(dayNum, container) {
-    if (!OWM_API_KEY) {
-        container.innerHTML = `<div style="font-size:12px;color:var(--text-muted);">☁️ 即時天氣預報模組。 <button class="weather-config-btn" onclick="setOWMKey()">點此輸入 OpenWeatherMap API Key 以啟用</button></div>`;
-        return;
-    }
     const loc = DAY_LOCATIONS[dayNum];
     if (!loc) return;
 
     try {
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${loc.lat}&lon=${loc.lon}&appid=${OWM_API_KEY}&units=metric&lang=zh_tw`);
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&current=temperature_2m,apparent_temperature,weather_code&daily=precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=1`;
+        const res = await fetch(url);
         const data = await res.json();
         
-        if (data.cod !== "200") {
-            container.innerHTML = `<div style="font-size:12px;color:red;">天氣載入失敗: ${data.message}</div>`;
+        if (data.error) {
+            container.innerHTML = `<div style="font-size:12px;color:red;">天氣載入失敗: ${data.reason}</div>`;
             return;
         }
 
-        const current = data.list[0];
-        const temp = Math.round(current.main.temp);
-        const feels_like = Math.round(current.main.feels_like);
-        const desc = current.weather[0].description;
-        const icon = current.weather[0].icon;
-        const pop = Math.round(current.pop * 100);
-        const isRain = pop >= 40 || current.weather[0].main.includes('Rain');
+        const temp = Math.round(data.current.temperature_2m);
+        const feels_like = Math.round(data.current.apparent_temperature);
+        const weatherInfo = getWMOWheather(data.current.weather_code);
+        const pop = data.daily.precipitation_probability_max[0] || 0;
+        const isRain = pop >= 40 || data.current.weather_code >= 50;
 
         let html = `
             <div class="weather-main-row">
                 <div class="weather-basic-info">
-                    <img src="https://openweathermap.org/img/wn/${icon}@2x.png" class="weather-icon-img" alt="weather icon">
+                    <span class="weather-icon-emoji">${weatherInfo.e}</span>
                     <div>
                         <div class="weather-temp">${temp}°C <span style="font-size:12px; font-weight:normal; color:var(--text-muted);">體感 ${feels_like}°C</span></div>
-                        <div class="weather-desc">📍 ${loc.name} | ${desc} | 降雨機率: ${pop}%</div>
+                        <div class="weather-desc">📍 ${loc.name} | ${weatherInfo.text} | 降雨機率: ${pop}%</div>
                     </div>
                 </div>
-                <button class="weather-config-btn" onclick="setOWMKey()">⚙️ 更新 Key</button>
             </div>
         `;
 
@@ -142,14 +135,6 @@ async function fetchWeatherForDay(dayNum, container) {
         container.innerHTML = html;
     } catch (err) {
         container.innerHTML = `<div style="font-size:12px;color:red;">天氣服務暫時無法連線</div>`;
-    }
-}
-
-function setOWMKey() {
-    const key = prompt("請輸入您的 OpenWeatherMap API Key (Free Tier 即可):", OWM_API_KEY);
-    if (key !== null) {
-        localStorage.setItem('owm_api_key', key.trim());
-        location.reload();
     }
 }
 
@@ -178,23 +163,17 @@ def process_html(filename):
     except FileNotFoundError:
         return
     
+    # 1. Clean out the old OWM injected JS/CSS if exists
+    # We will just replace everything between <!-- WEATHER WIDGET CSS --> and </style>
+    # and <!-- WEATHER WIDGET JS --> and </script>
+    html = re.sub(r'<!-- WEATHER WIDGET CSS -->.*?</style>', css_block.strip(), html, flags=re.DOTALL)
+    html = re.sub(r'<!-- WEATHER WIDGET JS -->.*?</script>', js_block.strip(), html, flags=re.DOTALL)
+    
+    # If they were not present, just inject them normally
     if '<!-- WEATHER WIDGET CSS -->' not in html:
-        html = html.replace('</head>', css_block + '\n</head>')
+        html = html.replace('</head>', '\n' + css_block.strip() + '\n</head>')
     if '<!-- WEATHER WIDGET JS -->' not in html:
-        html = html.replace('</body>', js_block + '\n</body>')
-
-    for day in range(1, 20):
-        widget_html = f'<div class="theme-weather-widget" id="weather-day-{day}" data-day="{day}">載入即時天氣預報中...</div>'
-        
-        # Avoid duplicate injection
-        if f'id="weather-day-{day}"' in html:
-            continue
-            
-        # Inject weather AFTER stats-bar
-        pattern = rf'(<div class="day-card" id="day-{day}">.*?<div class="day-stats"[^>]*>.*?</div>)'
-        
-        if re.search(pattern, html, flags=re.DOTALL):
-            html = re.sub(pattern, r'\1\n        ' + widget_html, html, count=1, flags=re.DOTALL)
+        html = html.replace('</body>', '\n' + js_block.strip() + '\n</body>')
 
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(html)
