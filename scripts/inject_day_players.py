@@ -48,7 +48,7 @@ def process_html(filename):
                 <div class="player-progress-bar"></div>
             </div>
             <div class="player-time">0:00 / 0:00</div>
-            <audio src="https://cdn1.suno.ai/{song_id}.mp3" preload="none" ontimeupdate="updateThemePlayerProgress(this)" onloadedmetadata="setPlayerDuration(this)" onended="resetThemePlayer(this)"></audio>
+            <audio src="https://audiopipe.suno.ai/?item_id={song_id}" preload="none" ontimeupdate="updateThemePlayerProgress(this)" onloadedmetadata="setPlayerDuration(this)" onended="resetThemePlayer(this)"></audio>
         </div>'''
 
         # We want to inject inside <div class="day-card" id="day-X">, after the <div class="day-stats" ...> ... </div>
