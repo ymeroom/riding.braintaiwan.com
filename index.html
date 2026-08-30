@@ -1195,6 +1195,33 @@ tr.wk-wet{background:#FEF2F2}
 .act-gpx{background:var(--accent)}
 .culture-box{background:rgba(147,51,234,.07);border:1px solid #C084FC;border-left:5px solid #9333EA;border-radius:8px;padding:12px 15px;margin:12px 0;font-size:12.5px;line-height:1.7;color:#4C1D95}
 .culture-box>strong{color:#7E22CE;font-size:13.5px;display:block;margin-bottom:4px}
+
+/* ── 撤退方案 ── */
+.bo-title{font-size:14px;font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.bo-badge{font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px}
+.bo-a{background:#DCFCE7;color:#166534}.bo-ab{background:#FEF3C7;color:#92400E}.bo-b{background:#FEE2E2;color:#991B1B}
+.bo-sub{font-size:12.5px;font-weight:700;margin:12px 0 6px;opacity:.85}
+.bo-line{border-radius:8px;padding:9px 12px;margin-bottom:8px;background:rgba(255,255,255,.65)}
+.bo-line.bo-cycle{border-left:4px solid #16A34A}
+.bo-line.bo-rinko{border-left:4px solid #64748B}
+.bo-line-head{font-size:12.5px;display:flex;gap:7px;align-items:baseline;flex-wrap:wrap}
+.bo-line-head strong{font-size:13px}
+.bo-line ul{margin:5px 0 0 17px;padding:0;font-size:12px;line-height:1.7}
+.bo-meta{font-size:11.5px;opacity:.8;margin-top:3px}
+.bo-warn{margin-top:6px;padding:6px 10px;border-radius:6px;background:var(--warning-bg);color:var(--warning-text);font-size:12px;font-weight:700}
+.bo-note{font-size:11.5px;opacity:.75;margin-top:6px;line-height:1.65}
+.bo-src{font-size:10.5px;opacity:.55;margin-top:5px}
+.bo-chips{display:flex;flex-wrap:wrap;gap:5px}
+.bo-st{font-size:11.5px;background:rgba(255,255,255,.8);border:1px solid rgba(30,58,138,.18);border-radius:6px;padding:3px 8px;white-space:nowrap}
+.bo-st b{color:#1D4ED8;margin-right:4px}
+.bo-st i{font-style:normal;opacity:.6;margin-left:4px;font-size:10.5px}
+.bo-st em{font-style:normal;margin-left:5px;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px}
+.bo-ok{background:#DCFCE7;color:#166534}
+.bo-x{background:#FEE2E2;color:#991B1B}
+.bo-gap{margin-top:10px;border-radius:8px;padding:10px 12px;background:var(--warning-bg);border:1px solid var(--warning-border)}
+.bo-gap-head{font-size:12.5px;font-weight:800;color:var(--warning-text)}
+.bo-lodging{margin:6px 0 0 17px;padding:0;font-size:12px;line-height:1.85;color:var(--warning-text)}
+.bo-det{font-size:10.5px;opacity:.7;margin-left:4px}
 .km-gap{background:#FFFBEB;border:1px solid #FCD34D;border-left:4px solid #D97706;border-radius:7px;padding:8px 12px;font-size:12px;color:#92400E;margin-top:8px;line-height:1.65}
 .data-source-note{background:#F8FAFC;border:1px solid var(--card-border);border-left:4px solid #1E293B;border-radius:8px;padding:10px 14px;font-size:12.5px;color:var(--text-muted);margin-bottom:14px;line-height:1.7}
 @media (max-width:768px){
@@ -1934,9 +1961,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 戶外活動大本營，門口與室內設專用單車架</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%85%AB%E7%8E%8B%E5%AD%90%E5%B8%82%E9%AB%98%E5%B0%BE%E7%94%BA1799-3+Mt.Takao+Base+Camp" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-a">策略 A · 沿線有站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.0km</b> 鶯谷<i>+2.6km</i></span><span class="bo-st"><b>9.1km</b> 高輪台<i>+1.3km</i></span><span class="bo-st"><b>18.3km</b> 蒲田</span><span class="bo-st"><b>27.5km</b> 元住吉<i>+1.8km</i></span><span class="bo-st"><b>37.1km</b> 津田山<i>+1.6km</i></span><span class="bo-st"><b>45.9km</b> 西調布<i>+1.2km</i></span><span class="bo-st"><b>55.4km</b> 谷保<i>+1.4km</i></span><span class="bo-st"><b>64.7km</b> 北野<i>+1.8km</i></span><span class="bo-st"><b>73.6km</b> 清滝</span></div><div class="bo-note">沿線共 279 站，上表為依里程均勻取樣；站名後的 +N km 為需偏離路線的距離。</div>
+                
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：晴 ｜ 氣溫 11.8°C ~ 19.6°C ｜ 降水 0.0mm ｜ 日照 9.4h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：多摩川水岸秋芒 ｜ 淺川水岸林木初染紅</div>
@@ -2039,9 +2069,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 官方確認：可安全停放單車</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B1%B1%E6%A2%A8%E7%9C%8C%E9%83%BD%E7%95%99%E5%B8%82%E4%B8%8A%E8%B0%B71%E4%B8%81%E7%9B%AE3-4+%E7%94%B1%E5%8A%A0%E5%88%A9%E6%97%85%E9%A4%A8" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-ab">策略 A ＋ B · 部分路段無站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.0km</b> 狭間<i>+2.3km</i></span><span class="bo-st"><b>0.9km</b> 高尾山</span><span class="bo-st"><b>14.9km</b> 相模湖</span><span class="bo-st"><b>19.7km</b> 藤野</span><span class="bo-st"><b>30.0km</b> 四方津</span><span class="bo-st"><b>33.8km</b> 梁川</span><span class="bo-st"><b>42.0km</b> 猿橋</span><span class="bo-st"><b>47.6km</b> 田野倉</span><span class="bo-st"><b>53.7km</b> 谷村町</span></div><div class="bo-note">沿線共 21 站，上表為依里程均勻取樣；站名後的 +N km 為需偏離路線的距離。</div>
+                <div class="bo-gap"><div class="bo-gap-head">⚠️ 無站區間 0.9–14.9 km（連續 14.0 km 無車站：高尾山 ➜ 相模湖）</div><div class="bo-note">此段無法搭車撤退，改採策略 B：於 20 km 內找住宿點。以下為沿線實查之登錄住宿（OpenStreetMap）：</div><ul class="bo-lodging"><li><b>第 3.9 km</b>：かぐや<span class="bo-det">偏離 0.2km</span>、TakaOne Activity &amp; Stay<span class="bo-det">偏離 3.1km</span>、Mt.TAKAO BASE CAMP hostel<span class="bo-det">偏離 3.2km</span></li><li><b>第 9.9 km</b>：桂月<span class="bo-det">偏離 1.9km</span>、Flower Villa Sagamiko<span class="bo-det">偏離 1.9km</span>、Shimizutei<span class="bo-det">偏離 2.3km</span></li></ul></div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 7.8°C ~ 17.2°C ｜ 降水 0.0mm ｜ 日照 8.9h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🍁 秋山溪谷見頃 ｜ 兩側山壁層林盡染</div>
@@ -2139,9 +2172,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 獨棟鄉村木屋，前廊與玄關空間充裕好停車</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B1%B1%E6%A2%A8%E7%9C%8C%E5%8D%97%E9%83%BD%E7%95%99%E9%83%A1%E5%84%82%E5%A3%AB%E6%B2%B3%E5%8F%A3%E6%B9%96%E7%94%BA%E6%B2%B3%E5%8F%A31916-3+Orange+Cabin+Inn" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-ab">策略 A ＋ B · 部分路段無站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-cycle"><div class="bo-line-head">🚴‍♂️ 免拆車<strong>富士急行線（富士山麓電気鉄道）サイクルトレイン</strong></div><div class=bo-meta>區間 大月～河口湖（上大月・禾生除外，其餘 16 站皆可上下車） ｜ 免費（只需普通車資）</div><ul><li>每人 1 台，每列車最多 8 台，超過請搭下一班</li><li>大月～富士山之間限搭大月方向第 1 車廂（自大月發車時為最後一節）</li><li>2022/9/26 起正式導入，非臨時措施</li></ul><div class="bo-src">查證：富士急行 fujikyu-railway.jp/cycletrain/ ／ TABIRIN</div></div><div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.0km</b> 赤坂<i>+2.0km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>8.5km</b> 三つ峠<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>11.2km</b> 寿<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>12.6km</b> 葭池温泉前<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>15.2km</b> 富士山<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>50.3km</b> 月江寺<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>50.6km</b> 下吉田<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>53.3km</b> 富士急ハイランド<i>+1.4km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>53.8km</b> 河口湖<i>+1.9km</i><em class="bo-ok">免拆車可</em></span></div><div class="bo-note">沿線共 14 站，上表為依里程均勻取樣；站名後的 +N km 為需偏離路線的距離。</div>
+                <div class="bo-gap"><div class="bo-gap-head">⚠️ 無站區間 15.2–50.3 km（連續 35.1 km 無車站：富士山 ➜ 月江寺）</div><div class="bo-note">此段無法搭車撤退，改採策略 B：於 20 km 內找住宿點。以下為沿線實查之登錄住宿（OpenStreetMap）：</div><ul class="bo-lodging"><li><b>第 18.2 km</b>：ホテルベル鐘山<span class="bo-det">偏離 0.3km</span>、ルートイン富士吉田<span class="bo-det">偏離 0.5km</span>、ペンション フォーレスト<span class="bo-det">偏離 1.6km</span></li><li><b>第 24.2 km</b>：レイク忍野<span class="bo-det">偏離 2.2km</span>、ホテルマウント富士<span class="bo-det">偏離 2.4km</span>、ペンション キャベツ畑<span class="bo-det">偏離 2.5km</span></li><li><b>第 30.2 km</b>：紀尾井荘<span class="bo-det">偏離 0.0km</span>、ゲストハウスティータイム<span class="bo-det">偏離 1.0km</span>、オステリア イゾラーナ<span class="bo-det">偏離 1.2km</span></li><li><b>第 42.2 km</b>：ペンション キャベツ畑<span class="bo-det">偏離 1.2km</span>、圭左右山荘<span class="bo-det">偏離 1.2km</span>、旅籠屋山中湖店<span class="bo-det">偏離 1.2km</span></li><li><b>第 48.2 km</b>：fugaku wood works x hitsuki guesthouse &amp; cafe<span class="bo-det">偏離 0.4km</span>、富士吉田シティホテル<span class="bo-det">偏離 0.7km</span>、ファミリーロッジ旅籠屋富士吉田店<span class="bo-det">偏離 0.8km</span></li></ul></div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 4.5°C ~ 15.1°C ｜ 降水 0.0mm ｜ 日照 9.6h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 雙湖見頃最盛期 ｜ 晴天環山中湖、陰天直取五重塔</div>
@@ -2230,9 +2266,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 湖畔民宿/青旅，提供單車友善停放</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9C%AC%E6%A3%B2%E6%B9%96%E6%B5%A9%E5%BA%B5" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-ab">策略 A ＋ B · 部分路段無站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-cycle"><div class="bo-line-head">🚴‍♂️ 免拆車<strong>富士急行線（富士山麓電気鉄道）サイクルトレイン</strong></div><div class=bo-meta>區間 大月～河口湖（上大月・禾生除外，其餘 16 站皆可上下車） ｜ 免費（只需普通車資）</div><ul><li>每人 1 台，每列車最多 8 台，超過請搭下一班</li><li>大月～富士山之間限搭大月方向第 1 車廂（自大月發車時為最後一節）</li><li>2022/9/26 起正式導入，非臨時措施</li></ul><div class="bo-src">查證：富士急行 fujikyu-railway.jp/cycletrain/ ／ TABIRIN</div></div><div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>4.3km</b> 河口湖<i>+1.9km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>4.8km</b> 富士急ハイランド<i>+1.4km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>5.8km</b> 下吉田<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>6.4km</b> 葭池温泉前<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>6.4km</b> 寿<i>+2.3km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>7.3km</b> 富士山<i>+1.8km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>7.3km</b> 月江寺<em class="bo-ok">免拆車可</em></span></div>
+                <div class="bo-gap"><div class="bo-gap-head">⚠️ 無站區間 7.3–41.1 km（連續 33.8 km 無車站：月江寺 ➜ 當日終點）</div><div class="bo-note">此段無法搭車撤退，改採策略 B：於 20 km 內找住宿點。以下為沿線實查之登錄住宿（OpenStreetMap）：</div><ul class="bo-lodging"><li><b>第 10.3 km</b>：Hotel New Century<span class="bo-det">偏離 0.8km</span>、湖風の宿 あさふじ<span class="bo-det">偏離 0.8km</span>、ホテルルートイン河口湖<span class="bo-det">偏離 0.8km</span></li><li><b>第 16.3 km</b>：People<span class="bo-det">偏離 1.4km</span>、ローザンヌ<span class="bo-det">偏離 1.4km</span>、Crayon<span class="bo-det">偏離 1.4km</span></li><li><b>第 22.3 km</b>：くわるび<span class="bo-det">偏離 0.5km</span>、樹海荘<span class="bo-det">偏離 0.5km</span>、富士緑の休暇村<span class="bo-det">偏離 3.0km</span></li><li><b>第 28.3 km</b>：Shojiko retreat<span class="bo-det">偏離 2.4km</span>、樹海荘<span class="bo-det">偏離 3.8km</span>、本栖びゅーほてる<span class="bo-det">偏離 4.0km</span></li><li><b>第 34.3 km</b>：本栖びゅーほてる<span class="bo-det">偏離 1.6km</span>、リゾートペンションもとす<span class="bo-det">偏離 2.1km</span>、リゾートペンションもとす<span class="bo-det">偏離 2.1km</span></li><li><b>第 40.3 km</b>：民宿　浩庵<span class="bo-det">偏離 0.5km</span>、本栖びゅーほてる<span class="bo-det">偏離 3.7km</span>、ヴィラ本栖<span class="bo-det">偏離 3.9km</span></li></ul></div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 3.2°C ~ 14.6°C ｜ 降水 0.0mm ｜ 日照 9.1h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 紅葉迴廊最高峰 ｜ 依前日天候靈活啟動分支</div>
@@ -2316,9 +2355,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 高原住宿基地，彈性停放</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9C%AC%E6%A3%B2%E6%B9%96%E6%B5%A9%E5%BA%B5" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-b">策略 B · 全線無站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                
+                <div class="bo-gap"><div class="bo-gap-head">⚠️ 無站區間 0.0–40.2 km（連續 40.2 km 無車站：當日起點 ➜ 當日終點）</div><div class="bo-note">此段無法搭車撤退，改採策略 B：於 20 km 內找住宿點。以下為沿線實查之登錄住宿（OpenStreetMap）：</div><ul class="bo-lodging"><li><b>第 3.0 km</b>：民宿　浩庵<span class="bo-det">偏離 1.6km</span>、本栖びゅーほてる<span class="bo-det">偏離 2.2km</span>、ヴィラ本栖<span class="bo-det">偏離 2.6km</span></li><li><b>第 9.0 km</b>：Shojiko retreat<span class="bo-det">偏離 1.1km</span>、本栖びゅーほてる<span class="bo-det">偏離 2.8km</span>、民宿　浩庵<span class="bo-det">偏離 3.4km</span></li><li><b>第 15.1 km</b>：じらごんの富士の館<span class="bo-det">偏離 2.8km</span>、富士緑の休暇村<span class="bo-det">偏離 2.8km</span>、樹海荘<span class="bo-det">偏離 2.8km</span></li><li><b>第 21.0 km</b>：ともゑ<span class="bo-det">偏離 1.0km</span>、吉野荘<span class="bo-det">偏離 1.3km</span>、富士緑の休暇村<span class="bo-det">偏離 1.8km</span></li><li><b>第 27.1 km</b>：樹海荘<span class="bo-det">偏離 2.8km</span>、富士緑の休暇村<span class="bo-det">偏離 3.0km</span>、じらごんの富士の館<span class="bo-det">偏離 3.1km</span></li><li><b>第 33.0 km</b>：本栖びゅーほてる<span class="bo-det">偏離 1.6km</span>、ヴィラ本栖<span class="bo-det">偏離 2.2km</span>、リゾートペンションもとす<span class="bo-det">偏離 2.2km</span></li><li><b>第 38.9 km</b>：民宿　浩庵<span class="bo-det">偏離 0.2km</span>、本栖びゅーほてる<span class="bo-det">偏離 3.1km</span>、ヴィラ本栖<span class="bo-det">偏離 3.3km</span></li></ul></div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：晴朗 ｜ 氣溫 5.8°C ~ 16.4°C ｜ 降水 0.0mm ｜ 日照 8.8h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 西湖/本棲湖深秋紅葉 ｜ 熔岩樹海蒼茫</div>
@@ -2407,9 +2449,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 市區商旅，可向櫃檯確認停放或攜入房</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AF%8C%E5%A3%AB%E5%B1%B1%E6%9C%AC%E5%AE%AE%E6%B7%BA%E9%96%93%E5%A4%A7%E7%A4%BE" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-ab">策略 A ＋ B · 部分路段無站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>37.7km</b> 西富士宮</span><span class="bo-st"><b>39.0km</b> 富士根<i>+2.6km</i></span><span class="bo-st"><b>39.0km</b> 源道寺<i>+1.4km</i></span><span class="bo-st"><b>39.1km</b> 富士宮</span></div>
+                <div class="bo-gap"><div class="bo-gap-head">⚠️ 無站區間 0.0–37.7 km（連續 37.7 km 無車站：當日起點 ➜ 西富士宮）</div><div class="bo-note">此段無法搭車撤退，改採策略 B：於 20 km 內找住宿點。以下為沿線實查之登錄住宿（OpenStreetMap）：</div><ul class="bo-lodging"><li><b>第 3.0 km</b>：民宿　浩庵<span class="bo-det">偏離 1.6km</span>、本栖びゅーほてる<span class="bo-det">偏離 2.2km</span>、ヴィラ本栖<span class="bo-det">偏離 2.6km</span></li><li><b>第 9.0 km</b>：ヴィラ本栖<span class="bo-det">偏離 2.2km</span>、リゾートペンションもとす<span class="bo-det">偏離 2.2km</span>、リゾートペンションもとす<span class="bo-det">偏離 2.2km</span></li><li><b>第 15.0 km</b>：ヴィラ本栖<span class="bo-det">偏離 6.4km</span>、リゾートペンションもとす<span class="bo-det">偏離 6.4km</span>、リゾートペンションもとす<span class="bo-det">偏離 6.4km</span></li><li><b>第 21.0 km</b>：休暇村富士<span class="bo-det">偏離 3.9km</span>、中京旅館<span class="bo-det">偏離 9.3km</span>、Homestay Ryokan<span class="bo-det">偏離 9.7km</span></li><li><b>第 27.0 km</b>：中京旅館<span class="bo-det">偏離 4.4km</span>、休暇村富士<span class="bo-det">偏離 4.4km</span>、Homestay Ryokan<span class="bo-det">偏離 4.7km</span></li><li><b>第 33.0 km</b>：Homestay Ryokan<span class="bo-det">偏離 1.3km</span>、中京旅館<span class="bo-det">偏離 2.4km</span>、メゾンヴァンベール I<span class="bo-det">偏離 3.0km</span></li></ul></div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：萬里晴空 ｜ 氣溫 4.2°C ~ 15.8°C ｜ 降水 0.0mm ｜ 日照 9.0h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：朝霧高原金黃芒草 ｜ 白糸之瀑水氣楓紅</div>
@@ -2497,9 +2542,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 市區商旅，可向櫃檯確認停放</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%89%E5%B6%8B%E5%A4%A7%E7%A4%BE" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-a">策略 A · 沿線有站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.0km</b> 西富士宮<i>+1.2km</i></span><span class="bo-st"><b>5.0km</b> 入山瀬</span><span class="bo-st"><b>10.8km</b> 新富士<i>+1.4km</i></span><span class="bo-st"><b>16.2km</b> 吉原</span><span class="bo-st"><b>20.3km</b> 東田子の浦</span><span class="bo-st"><b>30.5km</b> 片浜</span><span class="bo-st"><b>38.2km</b> 沼津</span><span class="bo-st"><b>40.9km</b> 大岡<i>+1.1km</i></span><span class="bo-st"><b>44.4km</b> 三島</span></div><div class="bo-note">沿線共 28 站，上表為依里程均勻取樣；站名後的 +N km 為需偏離路線的距離。</div>
+                
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 2.2°C ~ 13.9°C ｜ 降水 0.0mm ｜ 日照 8.3h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：田子之浦富士海景 ｜ 千本松原蒼翠黑松</div>
@@ -2582,9 +2630,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 傳統溫泉名宿，設有玄關室內/遮雨停放處</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9D%99%E5%B2%A1%E7%9C%8C%E4%BC%8A%E8%B1%86%E5%B8%82%E4%BF%AE%E5%96%84%E5%AF%BA3463-17+%E6%B8%A9%E6%B3%89%E5%AE%BF%E6%B0%B4%E5%8F%A3" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-a">策略 A · 沿線有站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-cycle"><div class="bo-line-head">🚴‍♂️ 免拆車<strong>伊豆箱根鉄道 駿豆線 サイクルトレイン</strong></div><div class=bo-meta>區間 三島～修善寺（三島広小路・原木・牧之郷除外） ｜ 只需普通車資</div><ul><li>⚠️ 有時間帶限制。平日：三島發 9:00–14:53／修善寺發 9:02–14:58；六日祝：三島發 7:11–17:50／修善寺發 7:05–17:52</li><li>特急「踊り子」不可搭乘</li><li>上車前須向站務員申報目的地</li><li>尖峰或多客時可能謝絕帶車</li></ul><div class="bo-note">Day 8（11/20 週五）適用平日時段，14:53 之後撤退就得改用輪行袋</div><div class="bo-src">查證：伊豆箱根鉄道 izuhakone.co.jp ／ TABIRIN</div></div><div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.0km</b> 三島<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>1.5km</b> 三島二日町<i>+1.0km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>5.7km</b> 大場<i>+1.8km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>7.6km</b> 原木<em class="bo-x">此站需輪行袋</em></span><span class="bo-st"><b>8.8km</b> 韮山<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>11.2km</b> 伊豆長岡<i>+1.1km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>14.3km</b> 田京<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>16.9km</b> 大仁<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>19.2km</b> 修善寺<em class="bo-ok">免拆車可</em></span></div><div class="bo-note">沿線共 14 站，上表為依里程均勻取樣；站名後的 +N km 為需偏離路線的距離。</div>
+                
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 6.9°C ~ 18.6°C ｜ 降水 0.0mm ｜ 日照 9.6h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 修善寺・虹之鄉見頃 ｜ 古湯楓紅</div>
@@ -2672,9 +2723,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 官方確認：海景民宿可安全停放單車</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9D%99%E5%B2%A1%E7%9C%8C%E4%BC%8A%E6%9D%B1%E5%B8%82%E6%96%B0%E4%BA%95484-30+KAWANA" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-ab">策略 A ＋ B · 部分路段無站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-cycle"><div class="bo-line-head">🚴‍♂️ 免拆車<strong>伊豆急行 サイクルトレイン</strong></div><div class=bo-meta>區間 南伊東～伊豆急下田 ｜ 免費 ｜ ☎ <a href="tel:0557531115">0557-53-1115（運輸部 運転車両課，平日 9:30–12:00／13:00–17:30）</a></div><ul><li>可上下車站：南伊東・川奈・城ヶ崎海岸・伊豆高原・伊豆熱川・伊豆稲取・河津・伊豆急下田（僅限有人站，窗口關閉時段不可）</li><li>區間內下車自由</li><li>每列車最多 6 台（1 號車 3 台、3 號車 3 台），每人 1 台</li><li>停放位置：1 號車與 3 號車的乘務員室附近</li><li>須向站務員申請；繁忙期有停止實施的期間，請查官方利用日曆</li></ul><div class="bo-warn">⚠️ JR伊東線（熱海～伊東）不屬本服務區間，該段務必事先備妥輪行袋</div><div class="bo-src">查證：伊豆急行官方 izukyu.co.jp/train/cycle.php</div></div><div class="bo-line bo-cycle"><div class="bo-line-head">🚴‍♂️ 免拆車<strong>伊豆箱根鉄道 駿豆線 サイクルトレイン</strong></div><div class=bo-meta>區間 三島～修善寺（三島広小路・原木・牧之郷除外） ｜ 只需普通車資</div><ul><li>⚠️ 有時間帶限制。平日：三島發 9:00–14:53／修善寺發 9:02–14:58；六日祝：三島發 7:11–17:50／修善寺發 7:05–17:52</li><li>特急「踊り子」不可搭乘</li><li>上車前須向站務員申報目的地</li><li>尖峰或多客時可能謝絕帶車</li></ul><div class="bo-note">Day 8（11/20 週五）適用平日時段，14:53 之後撤退就得改用輪行袋</div><div class="bo-src">查證：伊豆箱根鉄道 izuhakone.co.jp ／ TABIRIN</div></div><div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>2.0km</b> 大仁<i>+1.7km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>2.5km</b> 牧之郷<i>+1.2km</i><em class="bo-x">此站需輪行袋</em></span><span class="bo-st"><b>2.7km</b> 修善寺<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>24.8km</b> 南伊東<i>+2.4km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>31.0km</b> 富戸<i>+1.0km</i><em class="bo-x">此站需輪行袋</em></span><span class="bo-st"><b>33.7km</b> 伊豆高原<i>+1.5km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>34.1km</b> 城ヶ崎海岸<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>45.1km</b> 川奈<em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>47.5km</b> 伊東<i>+2.9km</i></span></div>
+                <div class="bo-gap"><div class="bo-gap-head">⚠️ 無站區間 2.7–24.8 km（連續 22.1 km 無車站：修善寺 ➜ 南伊東）</div><div class="bo-note">此段無法搭車撤退，改採策略 B：於 20 km 內找住宿點。以下為沿線實查之登錄住宿（OpenStreetMap）：</div><ul class="bo-lodging"><li><b>第 5.7 km</b>：ホテル オリーブの木<span class="bo-det">偏離 3.5km</span>、ホテル滝亭<span class="bo-det">偏離 3.7km</span>、桂川<span class="bo-det">偏離 3.7km</span></li><li><b>第 11.7 km</b>：伊豆市徳永<span class="bo-det">偏離 2.0km</span>、Bike Pack<span class="bo-det">偏離 2.0km</span>、民宿 カプリコーン<span class="bo-det">偏離 5.5km</span></li><li><b>第 17.7 km</b>：伊豆市徳永<span class="bo-det">偏離 1.3km</span>、Bike Pack<span class="bo-det">偏離 1.3km</span>、ホテルハーヴェスト天城高原<span class="bo-det">偏離 4.5km</span></li><li><b>第 23.7 km</b>：ウェルネスの森伊東<span class="bo-det">偏離 2.2km</span>、淘心庵米屋<span class="bo-det">偏離 2.4km</span>、伊豆高原サイレントヒルズ<span class="bo-det">偏離 2.9km</span></li></ul></div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 5.9°C ~ 19.3°C ｜ 降水 0.0mm ｜ 日照 9.3h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 一碧湖伊豆之瞳見頃 ｜ 熔岩海岸海藍</div>
@@ -2757,9 +2811,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 官方確認：海景公寓可安全停放單車</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9D%99%E5%B2%A1%E7%9C%8C%E7%86%B1%E6%B5%B7%E5%B8%82%E4%B8%8B%E5%A4%9A%E8%B2%BA440+Apt%E5%8D%97%E7%86%B1%E6%B5%B7" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-a">策略 A · 沿線有站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-cycle"><div class="bo-line-head">🚴‍♂️ 免拆車<strong>伊豆急行 サイクルトレイン</strong></div><div class=bo-meta>區間 南伊東～伊豆急下田 ｜ 免費 ｜ ☎ <a href="tel:0557531115">0557-53-1115（運輸部 運転車両課，平日 9:30–12:00／13:00–17:30）</a></div><ul><li>可上下車站：南伊東・川奈・城ヶ崎海岸・伊豆高原・伊豆熱川・伊豆稲取・河津・伊豆急下田（僅限有人站，窗口關閉時段不可）</li><li>區間內下車自由</li><li>每列車最多 6 台（1 號車 3 台、3 號車 3 台），每人 1 台</li><li>停放位置：1 號車與 3 號車的乘務員室附近</li><li>須向站務員申請；繁忙期有停止實施的期間，請查官方利用日曆</li></ul><div class="bo-warn">⚠️ JR伊東線（熱海～伊東）不屬本服務區間，該段務必事先備妥輪行袋</div><div class="bo-src">查證：伊豆急行官方 izukyu.co.jp/train/cycle.php</div></div><div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.0km</b> 川奈<i>+2.1km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>2.5km</b> 南伊東<i>+1.9km</i><em class="bo-ok">免拆車可</em></span><span class="bo-st"><b>3.2km</b> 伊東</span><span class="bo-st"><b>7.5km</b> 宇佐美</span><span class="bo-st"><b>16.7km</b> 伊豆多賀<i>+2.0km</i></span><span class="bo-st"><b>16.8km</b> 網代</span></div>
+                
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 7.6°C ~ 19.2°C ｜ 降水 0.0mm ｜ 日照 9.3h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：網代灣蔚藍海水 ｜ 沿岸柑橘金黃</div>
@@ -2852,9 +2909,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 位於熱海銀座商店街，文青旅舍設有室內/玄關單車停放空間</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9D%99%E5%B2%A1%E7%9C%8C%E7%86%B1%E6%B5%B7%E5%B8%82%E9%8A%80%E5%BA%A7%E7%94%BA7-8+guest+house+MARUYA" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-a">策略 A · 沿線有站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.0km</b> 網代</span><span class="bo-st"><b>2.5km</b> 伊豆多賀</span><span class="bo-st"><b>10.7km</b> 来宮</span><span class="bo-st"><b>12.2km</b> 熱海</span></div>
+                
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 10.4°C ~ 19.7°C ｜ 降水 0.0mm ｜ 日照 9.7h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🎆 熱海海上花火大會 ｜ 熱海梅園日本最晚紅葉祭</div>
@@ -2947,9 +3007,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 湘南單車友善飯店，多設停放處</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B1%9F%E4%B9%8B%E5%B3%B6" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-a">策略 A · 沿線有站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.2km</b> 来宮</span><span class="bo-st"><b>7.5km</b> 湯河原</span><span class="bo-st"><b>20.2km</b> 根府川</span><span class="bo-st"><b>24.8km</b> 風祭<i>+1.6km</i></span><span class="bo-st"><b>33.3km</b> 国府津</span><span class="bo-st"><b>37.7km</b> 二宮</span><span class="bo-st"><b>46.2km</b> 大磯<i>+1.0km</i></span><span class="bo-st"><b>57.9km</b> 茅ヶ崎<i>+1.4km</i></span><span class="bo-st"><b>65.5km</b> 西鎌倉<i>+2.3km</i></span></div><div class="bo-note">沿線共 40 站，上表為依里程均勻取樣；站名後的 +N km 為需偏離路線的距離。</div>
+                
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 8.9°C ~ 18.0°C ｜ 降水 0.0mm ｜ 日照 9.4h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：小田原城護城河楓紅 ｜ 灌籃高手湘南海岸</div>
@@ -3028,9 +3091,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 都會港灣飯店，可向櫃檯確認停放</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%A9%AB%E6%BF%B1%E6%B8%AF%E6%9C%AA%E4%BE%86" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-a">策略 A · 沿線有站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.4km</b> 鵠沼<i>+1.2km</i></span><span class="bo-st"><b>4.6km</b> 稲村ヶ崎</span><span class="bo-st"><b>9.6km</b> 湘南深沢</span><span class="bo-st"><b>12.9km</b> 大船</span><span class="bo-st"><b>14.4km</b> 本郷台<i>+1.9km</i></span><span class="bo-st"><b>19.6km</b> 踊場<i>+1.7km</i></span><span class="bo-st"><b>22.8km</b> 上永谷<i>+2.3km</i></span><span class="bo-st"><b>28.4km</b> 吉野町<i>+2.1km</i></span><span class="bo-st"><b>32.6km</b> 元町・中華街<i>+2.0km</i></span></div><div class="bo-note">沿線共 69 站，上表為依里程均勻取樣；站名後的 +N km 為需偏離路線的距離。</div>
+                
             </div>
             <div class="weather-box"><span class="weather-icon">⛅</span> 去年同日實測（氣象廳）：陰/晴 ｜ 氣溫 9.3°C ~ 12.4°C ｜ 降水 0.0mm ｜ 日照 0.0h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 鎌倉長谷寺古寺紅葉 ｜ 橫濱港灣夜景</div>
@@ -3109,9 +3175,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 灣區現代飯店，空間寬敞</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%A0%B4%E6%B5%B7%E6%BF%B1%E5%85%AC%E5%9C%92" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-a">策略 A · 沿線有站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.0km</b> 元町・中華街<i>+2.0km</i></span><span class="bo-st"><b>4.7km</b> 子安</span><span class="bo-st"><b>9.3km</b> 安善<i>+2.0km</i></span><span class="bo-st"><b>14.3km</b> 鈴木町</span><span class="bo-st"><b>18.8km</b> 梅屋敷</span><span class="bo-st"><b>23.6km</b> 品川シーサイド</span><span class="bo-st"><b>28.1km</b> 麻布十番<i>+1.4km</i></span><span class="bo-st"><b>32.9km</b> 月島<i>+1.3km</i></span><span class="bo-st"><b>37.5km</b> 台場</span></div><div class="bo-note">沿線共 187 站，上表為依里程均勻取樣；站名後的 +N km 為需偏離路線的距離。</div>
+                
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 6.2°C ~ 18.6°C ｜ 降水 0.0mm ｜ 日照 9.0h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：橫濱山下公園黃金銀杏 ｜ 東京灣彩虹大橋</div>
@@ -3195,9 +3264,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 官方確認：下町青年旅舍可安全停放單車</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E8%91%9B%E9%A3%BE%E5%8D%80%E9%87%91%E7%94%BA4-23-11+%E8%8A%B1%E5%BA%B5%E6%97%85%E8%88%8D" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-a">策略 A · 沿線有站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.0km</b> 日の出<i>+2.6km</i></span><span class="bo-st"><b>3.1km</b> 豊洲<i>+1.5km</i></span><span class="bo-st"><b>5.3km</b> 新木場</span><span class="bo-st"><b>10.0km</b> 舞浜<i>+1.7km</i></span><span class="bo-st"><b>13.8km</b> 西葛西</span><span class="bo-st"><b>17.5km</b> 瑞江<i>+2.5km</i></span><span class="bo-st"><b>21.0km</b> 篠崎<i>+2.8km</i></span><span class="bo-st"><b>24.6km</b> 新柴又</span><span class="bo-st"><b>27.5km</b> 亀有<i>+1.6km</i></span></div><div class="bo-note">沿線共 55 站，上表為依里程均勻取樣；站名後的 +N km 為需偏離路線的距離。</div>
+                
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：晴/多雲 ｜ 氣溫 7.3°C ~ 16.2°C ｜ 降水 0.0mm ｜ 日照 3.7h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：葛西海濱秋芒 ｜ 葛飾純樸下町風情</div>
@@ -3284,9 +3356,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 官方確認：連住免移車，安全安心</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E8%91%9B%E9%A3%BE%E5%8D%80%E9%87%91%E7%94%BA4-23-11+%E8%8A%B1%E5%BA%B5%E6%97%85%E8%88%8D" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-a">策略 A · 沿線有站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.1km</b> 京成金町</span><span class="bo-st"><b>0.3km</b> 金町</span><span class="bo-st"><b>8.0km</b> 三郷中央</span><span class="bo-st"><b>9.8km</b> 新三郷<i>+2.2km</i></span><span class="bo-st"><b>15.3km</b> 八潮</span><span class="bo-st"><b>20.0km</b> 谷塚<i>+1.5km</i></span><span class="bo-st"><b>22.8km</b> 大師前<i>+2.0km</i></span><span class="bo-st"><b>25.5km</b> 北綾瀬</span><span class="bo-st"><b>29.6km</b> 柴又<i>+1.4km</i></span></div><div class="bo-note">沿線共 29 站，上表為依里程均勻取樣；站名後的 +N km 為需偏離路線的距離。</div>
+                
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 8.4°C ~ 19.8°C ｜ 降水 0.0mm ｜ 日照 9.1h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 江戶老街與水岸金秋 ｜ 週末輕裝巡航</div>
@@ -3360,9 +3435,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 市區商旅，可向櫃檯確認停放</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B7%BA%E8%8D%89%E9%9B%B7%E9%96%80" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-a">策略 A · 沿線有站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.4km</b> 京成金町</span><span class="bo-st"><b>2.2km</b> 松戸<i>+2.8km</i></span><span class="bo-st"><b>5.5km</b> 亀有<i>+1.2km</i></span><span class="bo-st"><b>5.7km</b> 柴又<i>+1.5km</i></span><span class="bo-st"><b>7.3km</b> 青砥</span><span class="bo-st"><b>9.1km</b> 新小岩<i>+3.0km</i></span><span class="bo-st"><b>10.9km</b> 堀切<i>+1.5km</i></span><span class="bo-st"><b>13.2km</b> 曳舟</span><span class="bo-st"><b>14.6km</b> 浅草</span></div><div class="bo-note">沿線共 67 站，上表為依里程均勻取樣；站名後的 +N km 為需偏離路線的距離。</div>
+                
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：晴/多雲 ｜ 氣溫 9.0°C ~ 15.3°C ｜ 降水 0.0mm ｜ 日照 5.2h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 水元公園水杉見頃最高峰 ｜ 歐美童話巨木林</div>
@@ -3446,9 +3524,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 市區商旅，可向櫃檯確認停放</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%A7%8B%E8%91%89%E5%8E%9F" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-a">策略 A · 沿線有站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.0km</b> 南千住<i>+2.3km</i></span><span class="bo-st"><b>3.1km</b> 湯島</span><span class="bo-st"><b>6.0km</b> 本郷三丁目</span><span class="bo-st"><b>8.7km</b> 大手町</span><span class="bo-st"><b>12.6km</b> 霞ケ関</span><span class="bo-st"><b>15.6km</b> 六本木<i>+1.3km</i></span><span class="bo-st"><b>18.6km</b> 新大久保<i>+2.3km</i></span><span class="bo-st"><b>21.5km</b> 飯田橋</span><span class="bo-st"><b>24.8km</b> 人形町<i>+1.4km</i></span></div><div class="bo-note">沿線共 159 站，上表為依里程均勻取樣；站名後的 +N km 為需偏離路線的距離。</div>
+                
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 7.1°C ~ 16.3°C ｜ 降水 0.0mm ｜ 日照 8.9h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 神宮外苑與東大銀杏見頃最高峰 ｜ 黃金大道</div>
@@ -3527,9 +3608,12 @@ tr.wk-wet{background:#FEF2F2}
                 <div class="bike-store-info">🚲 順利還車完成</div>
                 <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%88%90%E7%94%B0%E5%9C%8B%E9%9A%9B%E6%A9%9F%E5%A0%B4" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a></div>
             </div>
-            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
+            <div class="bailout-box">
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge bo-a">策略 A · 沿線有站</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                <div class="bo-line bo-rinko"><div class="bo-line-head">🎒 需輪行袋<strong>JR 各線（輪行）</strong></div><div class=bo-meta>免費（以手回り品計）</div><ul><li>自行車必須「拆解後完全收進專用輪行袋」——把手、坐墊、輪胎露出袋外都不算收納完成</li><li>尺寸上限：三邊合計 250 cm 以內（單邊最長 2 m）、重量 30 kg 以內、每人 2 件</li><li>無需另購手回り品きっぷ，1999 年起輪行已免費</li><li>拆裝請避開剪票口與月台動線，找柱子後方或遠離導盲磚的角落</li></ul><div class="bo-src">查證：JR東日本 jreast.co.jp/kippu/20.html ／ JR東海 railway.jr-central.co.jp/ticket-rule/rule47.html</div></div>
+                <div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips"><span class="bo-st"><b>0.0km</b> 御徒町</span><span class="bo-st"><b>0.3km</b> 末広町</span><span class="bo-st"><b>0.6km</b> 大手町<i>+1.7km</i></span><span class="bo-st"><b>0.9km</b> 上野<i>+1.5km</i></span><span class="bo-st"><b>1.0km</b> 上野御徒町</span><span class="bo-st"><b>1.0km</b> 上野広小路</span><span class="bo-st"><b>2.0km</b> 仲御徒町</span><span class="bo-st"><b>2.0km</b> 稲荷町<i>+1.5km</i></span><span class="bo-st"><b>2.3km</b> 人形町<i>+1.4km</i></span></div><div class="bo-note">沿線共 60 站，上表為依里程均勻取樣；站名後的 +N km 為需偏離路線的距離。</div>
+                
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 6.4°C ~ 20.0°C ｜ 降水 0.0mm ｜ 日照 7.1h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：神田明神古松 ｜ 683.7km 世界線圓滿閉環</div>

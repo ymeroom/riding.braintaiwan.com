@@ -166,20 +166,115 @@ def render_hotel(d):
             </div>"""
 
 
+def _spread(stations, want=9):
+    """站太多時（都心動輒上百站）依里程均勻取樣，保留頭尾。"""
+    if len(stations) <= want:
+        return stations
+    lo, hi = stations[0]['km'], stations[-1]['km']
+    span = max(hi - lo, 0.1)
+    picked, used = [], set()
+    for i in range(want):
+        target = lo + span * i / (want - 1)
+        best = min((s for s in stations if id(s) not in used),
+                   key=lambda s: abs(s['km'] - target), default=None)
+        if best is not None:
+            used.add(id(best))
+            picked.append(best)
+    picked.sort(key=lambda s: s['km'])
+    return picked
+
+
 def render_bailout(d):
-    b = (d.get('logistics') or {}).get('bailout')
+    b = d.get('bailout')
     if not b:
-        return f"""            <div class="bailout-box bailout-todo">
-                <strong>🚃 撤退方案：待查證</strong>
-                <div style="margin-top:4px; font-size:12.5px;">最近車站、可輪行路線、末班時間與概略票價尚未逐日確認。</div>
-            </div>"""
+        return ''
+    STRAT = {
+        'A': ('策略 A · 沿線有站', 'bo-a'),
+        'A+B': ('策略 A ＋ B · 部分路段無站', 'bo-ab'),
+        'B': ('策略 B · 全線無站', 'bo-b'),
+    }
+    label, cls = STRAT.get(b['strategy'], ('撤退方案', 'bo-a'))
+
+    # 上車規定
+    lines_html = []
+    for ln in b['lines']:
+        cyc = ln['mode'].startswith('免拆車')
+        rules = ''.join(f'<li>{esc(r)}</li>' for r in ln.get('rules', []))
+        extra = []
+        if ln.get('section'):
+            extra.append(f"區間 {esc(ln['section'])}")
+        if ln.get('fee'):
+            extra.append(esc(ln['fee']))
+        if ln.get('tel'):
+            extra.append(f'☎ <a href="tel:{esc(ln["tel"]).split("（")[0].replace("-", "")}">{esc(ln["tel"])}</a>')
+        warn = (f'<div class="bo-warn">{esc(ln["warning"])}</div>' if ln.get('warning') else '')
+        note = (f'<div class="bo-note">{esc(ln["note"])}</div>' if ln.get('note') else '')
+        lines_html.append(
+            f'<div class="bo-line {"bo-cycle" if cyc else "bo-rinko"}">'
+            f'<div class="bo-line-head">{"🚴‍♂️ 免拆車" if cyc else "🎒 需輪行袋"}'
+            f'<strong>{esc(ln["label"])}</strong></div>'
+            f'{"<div class=bo-meta>" + " ｜ ".join(extra) + "</div>" if extra else ""}'
+            f'<ul>{rules}</ul>{warn}{note}'
+            f'<div class="bo-src">查證：{esc(ln.get("src"))}</div></div>')
+
+    # 沿線車站
+    st = b['stations']
+    if st:
+        shown = _spread(st)
+        # 交叉比對：サイクルトレイン 的排除站／限定站，避免推車到不能上車的站才發現
+        cycs = [l for l in b['lines'] if l['mode'].startswith('免拆車')]
+
+        def flag(name):
+            """只在能確定判斷時才標記：站必須屬於該免拆車路線，
+            再看它是否落在可上下車名單／排除名單。判不出來就不標。"""
+            for c in cycs:
+                on_line = set(c.get('line_stations') or [])
+                if on_line and name not in on_line:
+                    continue  # 這站不在這條線上，換下一條線判斷
+                allowed = set(c.get('allowed') or [])
+                excluded = set(c.get('excluded') or [])
+                if name in excluded or (allowed and name not in allowed):
+                    return '<em class="bo-x">此站需輪行袋</em>'
+                if name in allowed or (on_line and not allowed):
+                    return '<em class="bo-ok">免拆車可</em>'
+            return ''
+
+        chips = ''.join(
+            f'<span class="bo-st"><b>{s["km"]}km</b> {esc(s["name"])}'
+            f'{f"<i>+{s['off_km']}km</i>" if s["off_km"] >= 1.0 else ""}{flag(s["name"])}</span>'
+            for s in shown)
+        more = (f'<div class="bo-note">沿線共 {len(st)} 站，上表為依里程均勻取樣；'
+                f'站名後的 +N km 為需偏離路線的距離。</div>' if len(st) > len(shown) else '')
+        stations_html = f'<div class="bo-sub">🚉 沿線可撤退車站</div><div class="bo-chips">{chips}</div>{more}'
+    else:
+        stations_html = ''
+
+    # 沒站區 → 策略 B
+    gaps_html = []
+    for g in b['gaps']:
+        samples = []
+        for s in g.get('samples', []):
+            lodg = s.get('lodging') or []
+            if not lodg:
+                samples.append(f'<li><b>第 {s["at_km"]} km</b>：20 km 內查無登錄住宿 —— 此段最需避免天黑</li>')
+                continue
+            items = '、'.join(
+                f'{esc(x["name"])}<span class="bo-det">偏離 {x["detour_km"]}km</span>' for x in lodg[:3])
+            samples.append(f'<li><b>第 {s["at_km"]} km</b>：{items}</li>')
+        body = (f'<ul class="bo-lodging">{"".join(samples)}</ul>' if samples
+                else '<div class="bo-note">此段住宿查詢尚未完成。</div>')
+        gaps_html.append(
+            f'<div class="bo-gap"><div class="bo-gap-head">⚠️ 無站區間 {g["from_km"]}–{g["to_km"]} km'
+            f'（連續 {g["span_km"]} km 無車站：{esc(g["after"])} ➜ {esc(g["before"])}）</div>'
+            f'<div class="bo-note">此段無法搭車撤退，改採策略 B：於 20 km 內找住宿點。'
+            f'以下為沿線實查之登錄住宿（OpenStreetMap）：</div>{body}</div>')
+
     return f"""            <div class="bailout-box">
-                <strong>🚃 撤退方案（遇雨、機械故障或體力不支）</strong>
-                <ul>
-                    <li><strong>最近車站：</strong>{esc(b.get('station'))}（{esc(b.get('line'))}）</li>
-                    <li><strong>輪行：</strong>{esc(b.get('rinko'))}</li>
-                    <li><strong>末班／票價：</strong>{esc(b.get('last'))} ｜ 約 {esc(b.get('fare'))}</li>
-                </ul>
+                <div class="bo-title">🚃 撤退方案 <span class="bo-badge {cls}">{esc(label)}</span></div>
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                {''.join(lines_html)}
+                {stations_html}
+                {''.join(gaps_html)}
             </div>"""
 
 
@@ -694,6 +789,33 @@ tr.wk-wet{background:#FEF2F2}
 .act-gpx{background:var(--accent)}
 .culture-box{background:rgba(147,51,234,.07);border:1px solid #C084FC;border-left:5px solid #9333EA;border-radius:8px;padding:12px 15px;margin:12px 0;font-size:12.5px;line-height:1.7;color:#4C1D95}
 .culture-box>strong{color:#7E22CE;font-size:13.5px;display:block;margin-bottom:4px}
+
+/* ── 撤退方案 ── */
+.bo-title{font-size:14px;font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.bo-badge{font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px}
+.bo-a{background:#DCFCE7;color:#166534}.bo-ab{background:#FEF3C7;color:#92400E}.bo-b{background:#FEE2E2;color:#991B1B}
+.bo-sub{font-size:12.5px;font-weight:700;margin:12px 0 6px;opacity:.85}
+.bo-line{border-radius:8px;padding:9px 12px;margin-bottom:8px;background:rgba(255,255,255,.65)}
+.bo-line.bo-cycle{border-left:4px solid #16A34A}
+.bo-line.bo-rinko{border-left:4px solid #64748B}
+.bo-line-head{font-size:12.5px;display:flex;gap:7px;align-items:baseline;flex-wrap:wrap}
+.bo-line-head strong{font-size:13px}
+.bo-line ul{margin:5px 0 0 17px;padding:0;font-size:12px;line-height:1.7}
+.bo-meta{font-size:11.5px;opacity:.8;margin-top:3px}
+.bo-warn{margin-top:6px;padding:6px 10px;border-radius:6px;background:var(--warning-bg);color:var(--warning-text);font-size:12px;font-weight:700}
+.bo-note{font-size:11.5px;opacity:.75;margin-top:6px;line-height:1.65}
+.bo-src{font-size:10.5px;opacity:.55;margin-top:5px}
+.bo-chips{display:flex;flex-wrap:wrap;gap:5px}
+.bo-st{font-size:11.5px;background:rgba(255,255,255,.8);border:1px solid rgba(30,58,138,.18);border-radius:6px;padding:3px 8px;white-space:nowrap}
+.bo-st b{color:#1D4ED8;margin-right:4px}
+.bo-st i{font-style:normal;opacity:.6;margin-left:4px;font-size:10.5px}
+.bo-st em{font-style:normal;margin-left:5px;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px}
+.bo-ok{background:#DCFCE7;color:#166534}
+.bo-x{background:#FEE2E2;color:#991B1B}
+.bo-gap{margin-top:10px;border-radius:8px;padding:10px 12px;background:var(--warning-bg);border:1px solid var(--warning-border)}
+.bo-gap-head{font-size:12.5px;font-weight:800;color:var(--warning-text)}
+.bo-lodging{margin:6px 0 0 17px;padding:0;font-size:12px;line-height:1.85;color:var(--warning-text)}
+.bo-det{font-size:10.5px;opacity:.7;margin-left:4px}
 .km-gap{background:#FFFBEB;border:1px solid #FCD34D;border-left:4px solid #D97706;border-radius:7px;padding:8px 12px;font-size:12px;color:#92400E;margin-top:8px;line-height:1.65}
 .data-source-note{background:#F8FAFC;border:1px solid var(--card-border);border-left:4px solid #1E293B;border-radius:8px;padding:10px 14px;font-size:12.5px;color:var(--text-muted);margin-bottom:14px;line-height:1.7}
 @media (max-width:768px){

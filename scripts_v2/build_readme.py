@@ -54,6 +54,9 @@ data/trip.json            單一資料正本（路線、住宿、文化、NAVITI
 data/navitime_stats.json  NAVITIME 五種路線偏好的實測結果
 data/navitime_urls.json   各日 NAVITIME shape API 查詢網址
 data/meals.json           實地查證的餐廳（逐日補完中）
+data/rinko.json           各鐵道公司的單車上車規定（サイクルトレイン／輪行）
+data/bailout_stations.json  沿線可撤退車站與「沒站區」（OSM Overpass 實查）
+data/bailout_lodging.json   沒站區 20 km 內的實際住宿點
 data/songs.json           每日主題曲
 templates/index_template.html  網站模板（手寫區塊）
 scripts_v2/               生成腳本
@@ -67,6 +70,20 @@ python scripts_v2/build_trip_json.py                     # 合併成正本
 python scripts_v2/build_site.py                          # 產生 index.html
 python scripts_v2/build_readme.py                        # 產生 README.md
 ```
+
+## 🚃 撤退方案
+
+每日卡片內建兩種撤退策略，資料為實查而非估計：
+
+- **策略 A — 沿線有站**：以 OpenStreetMap Overpass 沿 NAVITIME 路線 3 km 內查出車站，
+  換算沿線里程後依序列出。並交叉比對各鐵道公司的サイクルトレイン規定，逐站標示
+  「免拆車可」或「此站需輪行袋」。
+- **策略 B — 沒站區**：相鄰站距超過 12 km 者標為無站區間，於該段每 6 km 取樣，
+  查出 20 km 內實際存在的住宿並附偏離距離。
+
+本路線有三條鐵路提供**免拆車**的サイクルトレイン：富士急行線（Day 3–4）、
+伊豆箱根鉄道駿豆線（Day 8–9，平日有時段限制）、伊豆急行（Day 9–10）。
+其餘路段依 JR 手回り品規定，須拆解並完全收進輪行袋。
 
 ## 🛠️ 技術棧
 

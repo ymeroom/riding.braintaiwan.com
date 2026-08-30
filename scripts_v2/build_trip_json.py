@@ -54,11 +54,51 @@ def parse_weather(s):
     return out
 
 
+def build_bailout(day, stations_db, lodging_db, rinko):
+    """撤退方案。策略依使用者定義：
+       A. 沿線有車站 → 裝輪行袋（或搭サイクルトレイン）到下一站
+       B. 沒站區 → 在 20 公里內找住宿點
+    """
+    st = stations_db.get(str(day)) or {}
+    stations = st.get('stations') or []
+    gaps = st.get('gaps') or []
+    if not stations and not gaps:
+        return None
+
+    # 適用的上車規定：預設 JR 輪行，加上該日有跑サイクルトレイン的路線
+    lines = [dict(rinko['jr_rinko'], key='jr_rinko')]
+    for key, v in rinko.items():
+        if key.startswith('_') or key == 'jr_rinko':
+            continue
+        if day in (v.get('days') or []):
+            lines.insert(0, dict(v, key=key))
+
+    # 沒站區配上實查住宿
+    lodging_by_gap = {}
+    for g in (lodging_db.get(str(day)) or []):
+        lodging_by_gap[(g['from_km'], g['to_km'])] = g.get('samples') or []
+    gaps_out = []
+    for g in gaps:
+        gaps_out.append({**g, 'samples': lodging_by_gap.get((g['from_km'], g['to_km']), [])})
+
+    strategy = 'B' if not stations else ('A+B' if gaps else 'A')
+    return {
+        'strategy': strategy,
+        'lines': lines,
+        'stations': stations,
+        'station_count': len(stations),
+        'gaps': gaps_out,
+    }
+
+
 def main():
     route = load('all_19days_route_data.json')
     nav = load('data/navitime_stats.json', {})
     meals = load('data/meals.json', {})
     logi = load('data/logistics.json', {})
+    stations_db = load('data/bailout_stations.json', {})
+    lodging_db = load('data/bailout_lodging.json', {})
+    rinko = load('data/rinko.json', {})
 
     days = []
     for e in sorted(route, key=lambda x: x['day']):
@@ -85,6 +125,7 @@ def main():
             'culture': e.get('culture') or {},
             'meals': meals.get(str(d), {}),
             'logistics': logi.get(str(d), {}),
+            'bailout': build_bailout(d, stations_db, lodging_db, rinko),
             'gpx': f'day{d}_track.gpx',
             'map_demo': f'day{d}_route_map_demo.html' if d in (1, 2) else None,
             'elev_profile': e.get('elev_profile') or [],

@@ -1,0 +1,1298 @@
+{
+ "2": [
+  {
+   "from_km": 0.9,
+   "to_km": 14.9,
+   "span_km": 14.0,
+   "after": "高尾山",
+   "before": "相模湖",
+   "samples": [
+    {
+     "at_km": 3.9,
+     "lodging": [
+      {
+       "name": "かぐや",
+       "kind": "hotel",
+       "detour_km": 0.2,
+       "lat": 35.61635,
+       "lon": 139.24572,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "TakaOne Activity & Stay",
+       "kind": "hotel",
+       "detour_km": 3.1,
+       "lat": 35.63221,
+       "lon": 139.27079,
+       "phone": "",
+       "web": "https://takaone.jp/"
+      },
+      {
+       "name": "Mt.TAKAO BASE CAMP hostel",
+       "kind": "hostel",
+       "detour_km": 3.2,
+       "lat": 35.63479,
+       "lon": 139.27044,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "資材置き場",
+       "kind": "guest_house",
+       "detour_km": 4.4,
+       "lat": 35.59142,
+       "lon": 139.28111,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 9.9,
+     "lodging": [
+      {
+       "name": "桂月",
+       "kind": "hotel",
+       "detour_km": 1.9,
+       "lat": 35.61377,
+       "lon": 139.19258,
+       "phone": "+81-42-649-0565",
+       "web": "https://www.keigetsu.org/"
+      },
+      {
+       "name": "Flower Villa Sagamiko",
+       "kind": "hotel",
+       "detour_km": 1.9,
+       "lat": 35.60385,
+       "lon": 139.19663,
+       "phone": "+81426820891",
+       "web": ""
+      },
+      {
+       "name": "Shimizutei",
+       "kind": "hotel",
+       "detour_km": 2.3,
+       "lat": 35.6126,
+       "lon": 139.18838,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "かぐや",
+       "kind": "hotel",
+       "detour_km": 2.9,
+       "lat": 35.61635,
+       "lon": 139.24572,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "3": [
+  {
+   "from_km": 15.2,
+   "to_km": 50.3,
+   "span_km": 35.1,
+   "after": "富士山",
+   "before": "月江寺",
+   "samples": [
+    {
+     "at_km": 18.2,
+     "lodging": [
+      {
+       "name": "ホテルベル鐘山",
+       "kind": "hotel",
+       "detour_km": 0.3,
+       "lat": 35.45979,
+       "lon": 138.80801,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ルートイン富士吉田",
+       "kind": "hotel",
+       "detour_km": 0.5,
+       "lat": 35.46468,
+       "lon": 138.80377,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ペンション フォーレスト",
+       "kind": "guest_house",
+       "detour_km": 1.6,
+       "lat": 35.45047,
+       "lon": 138.81724,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "fugaku wood works x hitsuki guesthouse & cafe",
+       "kind": "chalet",
+       "detour_km": 2.0,
+       "lat": 35.47614,
+       "lon": 138.79358,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 24.2,
+     "lodging": [
+      {
+       "name": "レイク忍野",
+       "kind": "hotel",
+       "detour_km": 2.2,
+       "lat": 35.46161,
+       "lon": 138.83427,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ホテルマウント富士",
+       "kind": "hotel",
+       "detour_km": 2.4,
+       "lat": 35.43441,
+       "lon": 138.85476,
+       "phone": "+81-3-3376-1121",
+       "web": ""
+      },
+      {
+       "name": "ペンション キャベツ畑",
+       "kind": "hostel",
+       "detour_km": 2.5,
+       "lat": 35.43505,
+       "lon": 138.84703,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "鱒の家",
+       "kind": "hotel",
+       "detour_km": 2.5,
+       "lat": 35.45783,
+       "lon": 138.83048,
+       "phone": "",
+       "web": "http://www.afp.co.jp/Masunoie/"
+      }
+     ]
+    },
+    {
+     "at_km": 30.2,
+     "lodging": [
+      {
+       "name": "紀尾井荘",
+       "kind": "guest_house",
+       "detour_km": 0.0,
+       "lat": 35.42765,
+       "lon": 138.86843,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ゲストハウスティータイム",
+       "kind": "guest_house",
+       "detour_km": 1.0,
+       "lat": 35.42762,
+       "lon": 138.87969,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "オステリア イゾラーナ",
+       "kind": "guest_house",
+       "detour_km": 1.2,
+       "lat": 35.4257,
+       "lon": 138.88166,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ホテルマウント富士",
+       "kind": "hotel",
+       "detour_km": 1.4,
+       "lat": 35.43441,
+       "lon": 138.85476,
+       "phone": "+81-3-3376-1121",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 42.2,
+     "lodging": [
+      {
+       "name": "ペンション キャベツ畑",
+       "kind": "hostel",
+       "detour_km": 1.2,
+       "lat": 35.43505,
+       "lon": 138.84703,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "圭左右山荘",
+       "kind": "hostel",
+       "detour_km": 1.2,
+       "lat": 35.43091,
+       "lon": 138.84316,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "旅籠屋山中湖店",
+       "kind": "motel",
+       "detour_km": 1.2,
+       "lat": 35.43158,
+       "lon": 138.84361,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ファミリーロッジ旅籠屋山中湖店",
+       "kind": "motel",
+       "detour_km": 1.2,
+       "lat": 35.43159,
+       "lon": 138.84341,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 48.2,
+     "lodging": [
+      {
+       "name": "fugaku wood works x hitsuki guesthouse & cafe",
+       "kind": "chalet",
+       "detour_km": 0.4,
+       "lat": 35.47614,
+       "lon": 138.79358,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "富士吉田シティホテル",
+       "kind": "hotel",
+       "detour_km": 0.7,
+       "lat": 35.48495,
+       "lon": 138.79472,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ファミリーロッジ旅籠屋富士吉田店",
+       "kind": "motel",
+       "detour_km": 0.8,
+       "lat": 35.4851,
+       "lon": 138.79278,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "Mount Fuji Hostel Michael's",
+       "kind": "hostel",
+       "detour_km": 1.4,
+       "lat": 35.49091,
+       "lon": 138.80092,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "4": [
+  {
+   "from_km": 7.3,
+   "to_km": 41.1,
+   "span_km": 33.8,
+   "after": "月江寺",
+   "before": "當日終點",
+   "samples": [
+    {
+     "at_km": 10.3,
+     "lodging": [
+      {
+       "name": "Hotel New Century",
+       "kind": "hotel",
+       "detour_km": 0.8,
+       "lat": 35.51326,
+       "lon": 138.77349,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "湖風の宿 あさふじ",
+       "kind": "hotel",
+       "detour_km": 0.8,
+       "lat": 35.51222,
+       "lon": 138.77496,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ホテルルートイン河口湖",
+       "kind": "hotel",
+       "detour_km": 0.8,
+       "lat": 35.51245,
+       "lon": 138.77448,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ホテルニューセンチュリー",
+       "kind": "hotel",
+       "detour_km": 0.8,
+       "lat": 35.51326,
+       "lon": 138.77349,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 16.3,
+     "lodging": [
+      {
+       "name": "People",
+       "kind": "guest_house",
+       "detour_km": 1.4,
+       "lat": 35.52332,
+       "lon": 138.72289,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ローザンヌ",
+       "kind": "guest_house",
+       "detour_km": 1.4,
+       "lat": 35.52313,
+       "lon": 138.72317,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "Crayon",
+       "kind": "guest_house",
+       "detour_km": 1.4,
+       "lat": 35.52342,
+       "lon": 138.7237,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "民宿 やまと",
+       "kind": "guest_house",
+       "detour_km": 1.4,
+       "lat": 35.52213,
+       "lon": 138.74375,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 22.3,
+     "lodging": [
+      {
+       "name": "くわるび",
+       "kind": "hotel",
+       "detour_km": 0.5,
+       "lat": 35.50404,
+       "lon": 138.68327,
+       "phone": "+81 0555-82-2921",
+       "web": "https://www.hamayouresort.com/"
+      },
+      {
+       "name": "樹海荘",
+       "kind": "hotel",
+       "detour_km": 0.5,
+       "lat": 35.50169,
+       "lon": 138.67286,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "富士緑の休暇村",
+       "kind": "hotel",
+       "detour_km": 3.0,
+       "lat": 35.47669,
+       "lon": 138.68876,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ともゑ",
+       "kind": "guest_house",
+       "detour_km": 3.0,
+       "lat": 35.47996,
+       "lon": 138.69659,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 28.3,
+     "lodging": [
+      {
+       "name": "Shojiko retreat",
+       "kind": "guest_house",
+       "detour_km": 2.4,
+       "lat": 35.49509,
+       "lon": 138.61042,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "樹海荘",
+       "kind": "hotel",
+       "detour_km": 3.8,
+       "lat": 35.50169,
+       "lon": 138.67286,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "本栖びゅーほてる",
+       "kind": "hotel",
+       "detour_km": 4.0,
+       "lat": 35.46041,
+       "lon": 138.60437,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "リゾートペンションもとす",
+       "kind": "hotel",
+       "detour_km": 4.5,
+       "lat": 35.45481,
+       "lon": 138.60444,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 34.3,
+     "lodging": [
+      {
+       "name": "本栖びゅーほてる",
+       "kind": "hotel",
+       "detour_km": 1.6,
+       "lat": 35.46041,
+       "lon": 138.60437,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "リゾートペンションもとす",
+       "kind": "hotel",
+       "detour_km": 2.1,
+       "lat": 35.45481,
+       "lon": 138.60444,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "リゾートペンションもとす",
+       "kind": "guest_house",
+       "detour_km": 2.1,
+       "lat": 35.45493,
+       "lon": 138.60447,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ヴィラ本栖",
+       "kind": "hotel",
+       "detour_km": 2.2,
+       "lat": 35.455,
+       "lon": 138.60262,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 40.3,
+     "lodging": [
+      {
+       "name": "民宿　浩庵",
+       "kind": "hotel",
+       "detour_km": 0.5,
+       "lat": 35.47358,
+       "lon": 138.57335,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "本栖びゅーほてる",
+       "kind": "hotel",
+       "detour_km": 3.7,
+       "lat": 35.46041,
+       "lon": 138.60437,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ヴィラ本栖",
+       "kind": "hotel",
+       "detour_km": 3.9,
+       "lat": 35.455,
+       "lon": 138.60262,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "リゾートペンションもとす",
+       "kind": "hotel",
+       "detour_km": 4.0,
+       "lat": 35.45481,
+       "lon": 138.60444,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "5": [
+  {
+   "from_km": 0.0,
+   "to_km": 40.2,
+   "span_km": 40.2,
+   "after": "當日起點",
+   "before": "當日終點",
+   "samples": [
+    {
+     "at_km": 3.0,
+     "lodging": [
+      {
+       "name": "民宿　浩庵",
+       "kind": "hotel",
+       "detour_km": 1.6,
+       "lat": 35.47358,
+       "lon": 138.57335,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "本栖びゅーほてる",
+       "kind": "hotel",
+       "detour_km": 2.2,
+       "lat": 35.46041,
+       "lon": 138.60437,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ヴィラ本栖",
+       "kind": "hotel",
+       "detour_km": 2.6,
+       "lat": 35.455,
+       "lon": 138.60262,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "リゾートペンションもとす",
+       "kind": "hotel",
+       "detour_km": 2.7,
+       "lat": 35.45481,
+       "lon": 138.60444,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 9.0,
+     "lodging": [
+      {
+       "name": "Shojiko retreat",
+       "kind": "guest_house",
+       "detour_km": 1.1,
+       "lat": 35.49509,
+       "lon": 138.61042,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "本栖びゅーほてる",
+       "kind": "hotel",
+       "detour_km": 2.8,
+       "lat": 35.46041,
+       "lon": 138.60437,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "民宿　浩庵",
+       "kind": "hotel",
+       "detour_km": 3.4,
+       "lat": 35.47358,
+       "lon": 138.57335,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ヴィラ本栖",
+       "kind": "hotel",
+       "detour_km": 3.4,
+       "lat": 35.455,
+       "lon": 138.60262,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 15.1,
+     "lodging": [
+      {
+       "name": "じらごんの富士の館",
+       "kind": "hotel",
+       "detour_km": 2.8,
+       "lat": 35.47549,
+       "lon": 138.68906,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "富士緑の休暇村",
+       "kind": "hotel",
+       "detour_km": 2.8,
+       "lat": 35.47669,
+       "lon": 138.68876,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "樹海荘",
+       "kind": "hotel",
+       "detour_km": 2.8,
+       "lat": 35.50169,
+       "lon": 138.67286,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "くわるび",
+       "kind": "hotel",
+       "detour_km": 3.5,
+       "lat": 35.50404,
+       "lon": 138.68327,
+       "phone": "+81 0555-82-2921",
+       "web": "https://www.hamayouresort.com/"
+      }
+     ]
+    },
+    {
+     "at_km": 21.0,
+     "lodging": [
+      {
+       "name": "ともゑ",
+       "kind": "guest_house",
+       "detour_km": 1.0,
+       "lat": 35.47996,
+       "lon": 138.69659,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "吉野荘",
+       "kind": "hotel",
+       "detour_km": 1.3,
+       "lat": 35.48367,
+       "lon": 138.72082,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "富士緑の休暇村",
+       "kind": "hotel",
+       "detour_km": 1.8,
+       "lat": 35.47669,
+       "lon": 138.68876,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "じらごんの富士の館",
+       "kind": "hotel",
+       "detour_km": 1.9,
+       "lat": 35.47549,
+       "lon": 138.68906,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 27.1,
+     "lodging": [
+      {
+       "name": "樹海荘",
+       "kind": "hotel",
+       "detour_km": 2.8,
+       "lat": 35.50169,
+       "lon": 138.67286,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "富士緑の休暇村",
+       "kind": "hotel",
+       "detour_km": 3.0,
+       "lat": 35.47669,
+       "lon": 138.68876,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "じらごんの富士の館",
+       "kind": "hotel",
+       "detour_km": 3.1,
+       "lat": 35.47549,
+       "lon": 138.68906,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "くわるび",
+       "kind": "hotel",
+       "detour_km": 3.6,
+       "lat": 35.50404,
+       "lon": 138.68327,
+       "phone": "+81 0555-82-2921",
+       "web": "https://www.hamayouresort.com/"
+      }
+     ]
+    },
+    {
+     "at_km": 33.0,
+     "lodging": [
+      {
+       "name": "本栖びゅーほてる",
+       "kind": "hotel",
+       "detour_km": 1.6,
+       "lat": 35.46041,
+       "lon": 138.60437,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ヴィラ本栖",
+       "kind": "hotel",
+       "detour_km": 2.2,
+       "lat": 35.455,
+       "lon": 138.60262,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "リゾートペンションもとす",
+       "kind": "hotel",
+       "detour_km": 2.2,
+       "lat": 35.45481,
+       "lon": 138.60444,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "リゾートペンションもとす",
+       "kind": "guest_house",
+       "detour_km": 2.2,
+       "lat": 35.45493,
+       "lon": 138.60447,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 38.9,
+     "lodging": [
+      {
+       "name": "民宿　浩庵",
+       "kind": "hotel",
+       "detour_km": 0.2,
+       "lat": 35.47358,
+       "lon": 138.57335,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "本栖びゅーほてる",
+       "kind": "hotel",
+       "detour_km": 3.1,
+       "lat": 35.46041,
+       "lon": 138.60437,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ヴィラ本栖",
+       "kind": "hotel",
+       "detour_km": 3.3,
+       "lat": 35.455,
+       "lon": 138.60262,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "リゾートペンションもとす",
+       "kind": "hotel",
+       "detour_km": 3.5,
+       "lat": 35.45481,
+       "lon": 138.60444,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "6": [
+  {
+   "from_km": 0.0,
+   "to_km": 37.7,
+   "span_km": 37.7,
+   "after": "當日起點",
+   "before": "西富士宮",
+   "samples": [
+    {
+     "at_km": 3.0,
+     "lodging": [
+      {
+       "name": "民宿　浩庵",
+       "kind": "hotel",
+       "detour_km": 1.6,
+       "lat": 35.47358,
+       "lon": 138.57335,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "本栖びゅーほてる",
+       "kind": "hotel",
+       "detour_km": 2.2,
+       "lat": 35.46041,
+       "lon": 138.60437,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ヴィラ本栖",
+       "kind": "hotel",
+       "detour_km": 2.6,
+       "lat": 35.455,
+       "lon": 138.60262,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "リゾートペンションもとす",
+       "kind": "hotel",
+       "detour_km": 2.7,
+       "lat": 35.45481,
+       "lon": 138.60444,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 9.0,
+     "lodging": [
+      {
+       "name": "ヴィラ本栖",
+       "kind": "hotel",
+       "detour_km": 2.2,
+       "lat": 35.455,
+       "lon": 138.60262,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "リゾートペンションもとす",
+       "kind": "hotel",
+       "detour_km": 2.2,
+       "lat": 35.45481,
+       "lon": 138.60444,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "リゾートペンションもとす",
+       "kind": "guest_house",
+       "detour_km": 2.2,
+       "lat": 35.45493,
+       "lon": 138.60447,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "本栖びゅーほてる",
+       "kind": "hotel",
+       "detour_km": 2.8,
+       "lat": 35.46041,
+       "lon": 138.60437,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 15.0,
+     "lodging": [
+      {
+       "name": "ヴィラ本栖",
+       "kind": "hotel",
+       "detour_km": 6.4,
+       "lat": 35.455,
+       "lon": 138.60262,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "リゾートペンションもとす",
+       "kind": "hotel",
+       "detour_km": 6.4,
+       "lat": 35.45481,
+       "lon": 138.60444,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "リゾートペンションもとす",
+       "kind": "guest_house",
+       "detour_km": 6.4,
+       "lat": 35.45493,
+       "lon": 138.60447,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "本栖びゅーほてる",
+       "kind": "hotel",
+       "detour_km": 7.0,
+       "lat": 35.46041,
+       "lon": 138.60437,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 21.0,
+     "lodging": [
+      {
+       "name": "休暇村富士",
+       "kind": "hotel",
+       "detour_km": 3.9,
+       "lat": 35.34144,
+       "lon": 138.55338,
+       "phone": "+81 544-54-5200",
+       "web": "https://www.qkamura.or.jp/fuji/"
+      },
+      {
+       "name": "中京旅館",
+       "kind": "hotel",
+       "detour_km": 9.3,
+       "lat": 35.27583,
+       "lon": 138.57854,
+       "phone": "+81 54-4580-040",
+       "web": "https://chu-kyo.net/"
+      },
+      {
+       "name": "Homestay Ryokan",
+       "kind": "hotel",
+       "detour_km": 9.7,
+       "lat": 35.27165,
+       "lon": 138.58985,
+       "phone": "+81 54-4587-647",
+       "web": ""
+      },
+      {
+       "name": "佐野清涼荘 (Sano Seiryo-so)",
+       "kind": "chalet",
+       "detour_km": 9.7,
+       "lat": 35.31323,
+       "lon": 138.50009,
+       "phone": "",
+       "web": "https://www.town.nanbu.yamanashi.jp/shisetu/seiryousou.html"
+      }
+     ]
+    },
+    {
+     "at_km": 27.0,
+     "lodging": [
+      {
+       "name": "中京旅館",
+       "kind": "hotel",
+       "detour_km": 4.4,
+       "lat": 35.27583,
+       "lon": 138.57854,
+       "phone": "+81 54-4580-040",
+       "web": "https://chu-kyo.net/"
+      },
+      {
+       "name": "休暇村富士",
+       "kind": "hotel",
+       "detour_km": 4.4,
+       "lat": 35.34144,
+       "lon": 138.55338,
+       "phone": "+81 544-54-5200",
+       "web": "https://www.qkamura.or.jp/fuji/"
+      },
+      {
+       "name": "Homestay Ryokan",
+       "kind": "hotel",
+       "detour_km": 4.7,
+       "lat": 35.27165,
+       "lon": 138.58985,
+       "phone": "+81 54-4587-647",
+       "web": ""
+      },
+      {
+       "name": "メゾンヴァンベール I",
+       "kind": "hostel",
+       "detour_km": 7.5,
+       "lat": 35.25698,
+       "lon": 138.63342,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 33.0,
+     "lodging": [
+      {
+       "name": "Homestay Ryokan",
+       "kind": "hotel",
+       "detour_km": 1.3,
+       "lat": 35.27165,
+       "lon": 138.58985,
+       "phone": "+81 54-4587-647",
+       "web": ""
+      },
+      {
+       "name": "中京旅館",
+       "kind": "hotel",
+       "detour_km": 2.4,
+       "lat": 35.27583,
+       "lon": 138.57854,
+       "phone": "+81 54-4580-040",
+       "web": "https://chu-kyo.net/"
+      },
+      {
+       "name": "メゾンヴァンベール I",
+       "kind": "hostel",
+       "detour_km": 3.0,
+       "lat": 35.25698,
+       "lon": 138.63342,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "富士山ゲストハウス掬水",
+       "kind": "hostel",
+       "detour_km": 4.4,
+       "lat": 35.22782,
+       "lon": 138.61148,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "9": [
+  {
+   "from_km": 2.7,
+   "to_km": 24.8,
+   "span_km": 22.1,
+   "after": "修善寺",
+   "before": "南伊東",
+   "samples": [
+    {
+     "at_km": 5.7,
+     "lodging": [
+      {
+       "name": "ホテル オリーブの木",
+       "kind": "hotel",
+       "detour_km": 3.5,
+       "lat": 34.98952,
+       "lon": 138.94233,
+       "phone": "",
+       "web": "http://izu.tokinosumika.com/olive/"
+      },
+      {
+       "name": "ホテル滝亭",
+       "kind": "hotel",
+       "detour_km": 3.7,
+       "lat": 34.97308,
+       "lon": 138.93227,
+       "phone": "",
+       "web": "http://www.takitei.net/,http://www.takitei.net/en/"
+      },
+      {
+       "name": "桂川",
+       "kind": "hotel",
+       "detour_km": 3.7,
+       "lat": 34.97175,
+       "lon": 138.93248,
+       "phone": "",
+       "web": "http://www.katuragawa.net/"
+      },
+      {
+       "name": "AKARI et KAORI（アカリ エ カオリ）",
+       "kind": "hotel",
+       "detour_km": 3.9,
+       "lat": 34.97039,
+       "lon": 138.92991,
+       "phone": "+81-0558-72-0331",
+       "web": "https://www.akari-et-kaori.com/"
+      }
+     ]
+    },
+    {
+     "at_km": 11.7,
+     "lodging": [
+      {
+       "name": "伊豆市徳永",
+       "kind": "guest_house",
+       "detour_km": 2.0,
+       "lat": 34.94254,
+       "lon": 139.02755,
+       "phone": "0558831922",
+       "web": "https://www.bike89.com/"
+      },
+      {
+       "name": "Bike Pack",
+       "kind": "guest_house",
+       "detour_km": 2.0,
+       "lat": 34.94257,
+       "lon": 139.02758,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "民宿 カプリコーン",
+       "kind": "hotel",
+       "detour_km": 5.5,
+       "lat": 34.91885,
+       "lon": 138.98286,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "青山やまと",
+       "kind": "hotel",
+       "detour_km": 6.3,
+       "lat": 34.96133,
+       "lon": 139.08674,
+       "phone": "",
+       "web": "https://www.seizanyamato.jp/index.html,http://www.seizanyamato.jp/en/"
+      }
+     ]
+    },
+    {
+     "at_km": 17.7,
+     "lodging": [
+      {
+       "name": "伊豆市徳永",
+       "kind": "guest_house",
+       "detour_km": 1.3,
+       "lat": 34.94254,
+       "lon": 139.02755,
+       "phone": "0558831922",
+       "web": "https://www.bike89.com/"
+      },
+      {
+       "name": "Bike Pack",
+       "kind": "guest_house",
+       "detour_km": 1.3,
+       "lat": 34.94257,
+       "lon": 139.02758,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "ホテルハーヴェスト天城高原",
+       "kind": "hotel",
+       "detour_km": 4.5,
+       "lat": 34.89226,
+       "lon": 139.0285,
+       "phone": "",
+       "web": "https://www.resorthotels109.com/amagikogen/,http://www.resorthotels109.com/en/amagikogen/index.html"
+      },
+      {
+       "name": "民宿 カプリコーン",
+       "kind": "hotel",
+       "detour_km": 4.9,
+       "lat": 34.91885,
+       "lon": 138.98286,
+       "phone": "",
+       "web": ""
+      }
+     ]
+    },
+    {
+     "at_km": 23.7,
+     "lodging": [
+      {
+       "name": "ウェルネスの森伊東",
+       "kind": "hotel",
+       "detour_km": 2.2,
+       "lat": 34.95321,
+       "lon": 139.08958,
+       "phone": "",
+       "web": "https://www.hotespa.net/hotels/ito/"
+      },
+      {
+       "name": "淘心庵米屋",
+       "kind": "hotel",
+       "detour_km": 2.4,
+       "lat": 34.95697,
+       "lon": 139.08643,
+       "phone": "",
+       "web": "http://toshinan-komeya.jp/"
+      },
+      {
+       "name": "伊豆高原サイレントヒルズ",
+       "kind": "hotel",
+       "detour_km": 2.9,
+       "lat": 34.91239,
+       "lon": 139.08533,
+       "phone": "",
+       "web": ""
+      },
+      {
+       "name": "青山やまと",
+       "kind": "hotel",
+       "detour_km": 2.9,
+       "lat": 34.96133,
+       "lon": 139.08674,
+       "phone": "",
+       "web": "https://www.seizanyamato.jp/index.html,http://www.seizanyamato.jp/en/"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
