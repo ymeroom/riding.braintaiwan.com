@@ -127,16 +127,19 @@ def render_meals(d):
         for o in opts:
             link = (f' （<a href="{esc(o["map"])}" target="_blank" rel="noopener">📍 Google Maps 導航 ↗</a>）'
                     if o.get('map') else '')
+            tel = (f'<a href="tel:{esc(o["tel"]).replace("-", "")}" class="meal-tel">📞 {esc(o["tel"])}</a>'
+                   if o.get('tel') else '')
             meta = []
             if o.get('hours'):
-                meta.append(f"營業 {esc(o['hours'])}")
+                meta.append(f"🕐 {esc(o['hours'])}")
             if o.get('closed'):
                 meta.append(f"公休 {esc(o['closed'])}")
             if o.get('bike'):
-                meta.append(f"🚲 {esc(o['bike'])}")
+                meta.append(f"📍 {esc(o['bike'])}")
             metaline = (f'<br><span class="meal-meta">{" ｜ ".join(meta)}</span>' if meta else '')
+            src = (f'<span class="meal-src">查證：{esc(o["src"])}</span>' if o.get('src') else '')
             lis.append(f'<li><strong>{esc(o.get("name"))}</strong>'
-                       f'{" — " + esc(o["note"]) if o.get("note") else ""}{link}{metaline}</li>')
+                       f'{" — " + esc(o["note"]) if o.get("note") else ""}{link}{tel}{metaline}{src}</li>')
         out.append(f"""            <div class="meal-box {cls}">
                 <strong>{label}{" — " + esc(m.get(key + "_note")) if m.get(key + "_note") else ""}</strong>
                 <ul>{"".join(lis)}</ul>
@@ -672,6 +675,9 @@ tr.wk-wet{background:#FEF2F2}
 .meal-dinner{background:#FFFBEB;border:1px solid #FCD34D;border-left:4px solid #D97706;color:#92400E}
 .meal-todo{background:#F8FAFC;border:1px dashed #CBD5E1;color:var(--text-muted)}
 .meal-meta{font-size:11.5px;opacity:.85}
+.meal-src{display:block;font-size:10.5px;opacity:.6;margin-top:2px}
+.meal-tel{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:5px;background:rgba(0,0,0,.08);font-size:11.5px;font-weight:700;text-decoration:none;color:inherit}
+.meal-verified{font-size:11px;color:var(--text-muted);margin-bottom:10px;padding:6px 10px;background:#F8FAFC;border-radius:6px;border-left:3px solid #16A34A}
 /* ── 撤退方案 ── */
 .bailout-box{background:#EFF6FF;border:1px solid #93C5FD;border-left:4px solid #2563EB;border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:#1E3A8A;line-height:1.7}
 .bailout-box ul{margin:6px 0 0 17px;padding:0}
