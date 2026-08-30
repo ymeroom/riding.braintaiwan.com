@@ -1,0 +1,71 @@
+{
+ "_note": "每日餐食。lunch/dinner 為陣列，依推薦順序排列。欄位：name 店名、note 說明、map Google Maps 導航連結、hours 營業時間、closed 公休、bike 單車停放。未查證的日子留空，由 build_site.py 顯示「待查證」而非填入未經確認的店家。",
+ "1": {
+  "lunch_note": "第 19.5 km 處，蒲田",
+  "lunch": [
+   {
+    "name": "とんかつ 檍（Aoki）蒲田本店",
+    "note": "平日限定「上等里肌豬排定食」— 170g 林SPF特選黑豚，肉質粉嫩多汁，配大碗熱豚汁",
+    "map": "https://www.google.com/maps/search/?api=1&query=とんかつ檍+蒲田本店",
+    "bike": "大田區公設蒲田東口駐輪場，前 2 小時免費"
+   }
+  ],
+  "dinner_note": "抵達高尾山口後，依抵達時間三選一",
+  "dinner": [
+   {
+    "name": "高橋家（180年老舖）",
+    "note": "方案 A・早到首選：山藥泥蕎麥麵 ＋ 舞菇天婦羅。須 16:30 前抵達壓線",
+    "map": "https://www.google.com/maps/search/?api=1&query=高橋家+高尾山口",
+    "hours": "至 17:30 閉店",
+    "bike": "旅館步行 3 分鐘"
+   },
+   {
+    "name": "京王高尾山溫泉 極樂湯 食堂",
+    "note": "方案 B・最強保底：穿浴衣享用高尾山藥泥蕎麥麵定食與冰生啤",
+    "map": "https://www.google.com/maps/search/?api=1&query=京王高尾山温泉+極楽湯",
+    "hours": "至 22:00（L.O. 21:30）",
+    "bike": "旅館步行 3 分鐘"
+   },
+   {
+    "name": "Mt. Takao Base Camp 一樓 Cafe & Bar",
+    "note": "方案 C・夜間小酌：多摩在地精釀生啤 ✕ 特製手打牛肉漢堡",
+    "hours": "週五營業至 20:30",
+    "bike": "住宿內，零移動"
+   }
+  ]
+ },
+ "2": {
+  "lunch_note": "第 42 km 處，甲斐猿橋畔",
+  "lunch": [
+   {
+    "name": "大黑屋（猿橋畔）",
+    "note": "絕景手打蕎麥麵／忠治烏龍麵 — 和風座席正對 30 公尺深峽谷懸空木橋，賞滿山楓紅",
+    "map": "https://www.google.com/maps/search/?api=1&query=大黒屋+山梨県大月市猿橋町"
+   },
+   {
+    "name": "大月站前 濱野屋",
+    "note": "備案：大月名物「おつけだんご」手作蔬菜小麥糰子湯定食"
+   }
+  ],
+  "dinner_note": "由加利旅館泡完大浴場後，步行 2–4 分鐘",
+  "dinner": [
+   {
+    "name": "炭火串焼 居酒屋 どんぐり",
+    "note": "職人炭火現烤串燒拼盤 ✕ 甲斐名物烤香魚 ✕ 山梨在地清酒七賢",
+    "map": "https://www.google.com/maps/search/?api=1&query=居酒屋+どんぐり+都留市",
+    "bike": "旅館步行 2 分鐘"
+   },
+   {
+    "name": "富士山名水手打 吉田烏龍麵",
+    "note": "極具嚼勁粗麵 ✕ 燉肉片 ✕ 鮮甜高麗菜，配獨門香辣醬「すりだね」",
+    "bike": "旅館步行 3 分鐘"
+   },
+   {
+    "name": "江戸八（Edohachi）",
+    "note": "刺身天婦羅御膳 ✕ 特選厚切炸豬排，富士山名水炊煮白米飯",
+    "map": "https://www.google.com/maps/search/?api=1&query=江戸八+都留市",
+    "bike": "旅館步行 4 分鐘"
+   }
+  ]
+ }
+}

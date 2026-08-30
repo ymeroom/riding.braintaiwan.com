@@ -1,0 +1,97 @@
+{
+ "1": {
+  "track": "b4c5081c-07a0-441b-aa07-68687370e763",
+  "title": "世界線的起跑線 World Line Departure",
+  "audio": "assets/audio/day1.mp3"
+ },
+ "2": {
+  "track": "eb2bc0f7-a0c9-41fe-9582-a46b0475544f",
+  "title": "峠道狂詩曲 Toge Rhapsody",
+  "audio": "assets/audio/day2.mp3"
+ },
+ "3": {
+  "track": "9e16899e-3da1-497b-9f8d-be1b8ca02e4f",
+  "title": "水鏡神域 Mirrored Sacred Realm",
+  "audio": "assets/audio/day3.mp3"
+ },
+ "4": {
+  "track": "a09fb409-c062-4e74-8309-f41f41fe75b4",
+  "title": "千圓紙幣的晨光 Morning Glow on the 1000-Yen Bill",
+  "audio": "assets/audio/day4.mp3"
+ },
+ "5": {
+  "track": "7d5aa6bf-bcb1-4eb9-a918-f3d4d3aefee0",
+  "title": "山獸神之森的休止符 Sanctuary of the Ancient Woods",
+  "audio": "assets/audio/day5.mp3"
+ },
+ "6": {
+  "track": "794e46a0-f3d6-4708-a296-e3dc686b6562",
+  "title": "破風降臨千米疾走 Thousand-Meter Wind Descent",
+  "audio": "assets/audio/day6.mp3"
+ },
+ "7": {
+  "track": "93515f35-b721-4738-ac58-16107ab36e45",
+  "title": "駿河灣的蔚藍防潮堤 Suruga Blue Sea Wall",
+  "audio": "assets/audio/day7.mp3"
+ },
+ "8": {
+  "track": "2d68100f-8d2c-47a5-97c0-7d83beb1d49d",
+  "title": "修善寺竹林幽夢 Bamboo Dream of Shuzenji",
+  "audio": "assets/audio/day8.mp3"
+ },
+ "9": {
+  "track": "213183d2-c104-4742-b1a3-412039f5f2f4",
+  "title": "熔岩懸崖與伊豆之瞳 Lava Cliffs and Eye of Izu",
+  "audio": "assets/audio/day9.mp3"
+ },
+ "10": {
+  "track": "8197d974-bb65-4b20-8b28-19b869f7176e",
+  "title": "網代夕照的避風港 Ajiro Golden Haven",
+  "audio": "assets/audio/day10.mp3"
+ },
+ "11": {
+  "track": "4b4d938c-3588-43c9-9156-a212bad75d66",
+  "title": "海灣夜空的最後花火 Fireworks Over the Caldera Bay",
+  "audio": "assets/audio/day11.mp3"
+ },
+ "12": {
+  "track": "6b6a9097-9004-4986-b7b0-623e1866263a",
+  "title": "早雲柑橘道與湘南風 Mandarin Groves and Shonan Breeze",
+  "audio": "assets/audio/day12.mp3"
+ },
+ "13": {
+  "track": "a198d2cd-02a7-4d1e-a98a-e8ec915c8948",
+  "title": "高校前的命運路口 Destiny Crossing at Kamakura High",
+  "audio": "assets/audio/day13.mp3"
+ },
+ "14": {
+  "track": "16c99546-0191-4ace-a32b-41721ea42a5a",
+  "title": "獨角獸與彩虹之橋 Unicorn on the Rainbow Bridge",
+  "audio": "assets/audio/day14.mp3"
+ },
+ "15": {
+  "track": "5aee88b8-34aa-486c-883f-f5728270552a",
+  "title": "葛飾下町的昭和人情 Shitamachi Memories of Katsushika",
+  "audio": "assets/audio/day15.mp3"
+ },
+ "16": {
+  "track": "736d5dc9-9ce3-469d-9f8f-be48650295d5",
+  "title": "江戶川無重力巡航 Zero-Gravity Cruise on Edogawa",
+  "audio": "assets/audio/day16.mp3"
+ },
+ "17": {
+  "track": "a1bd8255-42e6-4e35-8a52-21277835feda",
+  "title": "萬棵水杉的黃金童話 Golden Fairy Tale of Metasequoia",
+  "audio": "assets/audio/day17.mp3"
+ },
+ "18": {
+  "track": "03040421-dfe7-4c7d-8f24-6c94f8160199",
+  "title": "神宮外苑的黃金雨 Golden Rain at Jingu Gaien",
+  "audio": "assets/audio/day18.mp3"
+ },
+ "19": {
+  "track": "2e2ae766-816f-43e7-80b2-47fe3fb5b16b",
+  "title": "776公里的世界線閉環 Closing the 776km World Line",
+  "audio": "assets/audio/day19.mp3"
+ }
+}

@@ -1,63 +1,75 @@
-# 🚴 2026 東京・富士五湖・伊豆・東京灣 19日秋季單車騎旅 (19-Day Autumn Cycling Expedition)
+# 🚴 2026 東京・富士五湖・伊豆・東京灣 19日秋季單車騎旅
 
-> **Official Portal**: [https://riding.braintaiwan.com](https://riding.braintaiwan.com)  
-> **騎行時間**: 2026 年 11 月 13 日（五）～ 12 月 1 日（二）共 19 日  
-> **總里程與爬升**: 776.2 km ｜ +4,925 m (日本國土地理院 GSI 1m DEM 數值高程模型實測核實)
+> **Official Portal**: [https://riding.braintaiwan.com](https://riding.braintaiwan.com)
+> **騎行期間**: 2026 年 11 月 13 日（五）～ 12 月 1 日（二），共 19 日
+> **總里程與爬升**: **683.7 km ｜ +4,923 m**
 
----
+## 📐 數據來源
 
-## 🌟 核心三大互動系統 (Core Web Applications)
+里程與爬升皆取自 **NAVITIME 自転車ルート検索**（路線偏好「坡少」），非估算值：
 
-1. **📋 [19日每日詳細行程表與文化導覽 (Master Itinerary)](https://riding.braintaiwan.com/tokyo_fuji_cycling_itinerary_19days_v2.html)**
-   * 日本氣象廳 2025 年同期 19 日實測氣象數據（最高/最低溫、降水、日照時數）。
-   * 富士五湖・中伊豆・修善寺・神宮外苑歷史紅葉與銀杏見頃實績。
-   * 19 天影視動漫聖地巡禮（《命運石之門》、《搖曳露營△》、《灌籃高手》、《Love Live!》、《大搜查線》、《東京愛情故事》等）。
-   * 每日單車避坑實戰路線、黑名單路段對照表與單車友善飯店停放狀態清單。
+- **距離**：對 NAVITIME 路線幾何逐點以 haversine 累加。抽驗單日與 NAVITIME 網頁顯示值一致（熱海→江之島 56.6 km 完全吻合）。
+- **爬升**：NAVITIME 路線幾何的座標為 `[經度, 緯度, 標高]` 三維，標高即其標高剖面圖的資料源。以 **3 公尺遲滯門檻**累加，與 Garmin／Strava 計法一致。
+- **「實走」里程**：NAVITIME 只取得每日 4–8 個路線節點，節點之間由它自選路徑。本計畫刻意繞走自行車專用道與避坑舊道，故部分日程實走里程與 NAVITIME 最短路徑有出入，表中另行標註。
 
-2. **🗺️ [19日全路線地圖、標高剖面與互動時間軸 Demo (Master Map Explorer)](https://riding.braintaiwan.com/tokyo_cycling_19days_map_demo.html)**
-   * Leaflet.js ✕ 國土地理院 DEM ✕ OSRM 單車幾何路網。
-   * 19 天可點擊飛行動畫定位之發光時間軸（Interactive Timeline）。
-   * 國土地理院 1m 高精度數值高程剖面（Chart.js 滑鼠連動）。
-   * 支援 Google 地圖、NAVITIME 導航直連與一鍵下載當日 GPX。
+單一資料正本為 `data/trip.json`；`index.html` 與本 README 皆由 `scripts_v2/build_site.py`、`scripts_v2/build_readme.py` 生成，不手工編輯。
 
-3. **🎵 [19首 Suno AI 雙主唱雙風格音樂詞庫 (Suno Cycling Soundtrack Library)](https://riding.braintaiwan.com/suno_cycling_soundtrack_19days.html)**
-   * **雙主唱配置**: 45 歲台灣男性（中文主歌） ✕ 25 歲日本女性（日語主歌） ✕ 雙語合唱。
-   * **雙風格即時切換**:
-     * 🎸 **【熱血動漫搖滾版】**(Anime Rock / J-POP / Anisong)
-     * ☕ **【放鬆民謠爵士版】**(Folk / Bossa Nova / Acoustic Jazz / Chillout)
-   * 雙一鍵複製系統（提示詞與全曲歌詞獨立一鍵複製）。
+## 🗓️ 19 日行程總表
 
----
+| 天數 | 日期 | 騎行區間 | 里程 | 爬升/下降 | 住宿 | 軌跡 |
+| :---: | :---: | :--- | :---: | :---: | :--- | :---: |
+| **Day 01** | 11/13（五） | 秋葉原 ➔ 銀座/品川 ➔ 國道15號(第一京濱) ➔ 六鄉橋 ➔ 多摩川自行車道 ➔ 府中 (50.4 | 73.7 km<br><sub>實走 81.5 km</sub> | +238m / -50m | ✅ Mt. Takao Base Camp | [GPX](day1_track.gpx) |
+| **Day 02** | 11/14（六） | 高尾山口 ➔ 甲州街道(國道20) ➔ 大垂水峠(392m) ➔ 千木良 ➔ 相模湖 ➔ 日本三奇橋(猿 | 53.7 km<br><sub>實走 60.4 km</sub> | +769m / -482m | ✅ ビジネス旅館 由加利 (Yukari Ryokan) | [GPX](day2_track.gpx) |
+| **Day 03** | 11/15（日） | 由加利旅館 ➔【晴天版】山中湖完整環湖一圈+忍野八海 / 【陰雨天版】新倉山五重塔 ➔ 河口湖 (宿 O | 57.8 km<br><sub>實走 53.2 km</sub> | +892m / -518m | ✅ Orange Cabin Inn far from  | [GPX](day3_track.gpx) |
+| **Day 04** | 11/16（一） | 清晨紅葉迴廊 ➔【情境A】五重塔+往西騎本棲湖浩庵 / 【情境B】補騎山中湖 / 【情境C】河口湖西湖漫 | 41.1 km | +383m / -342m | 🔍 本棲湖 民宿 浩庵 / 河口湖機動 (kagelow | [GPX](day4_track.gpx) |
+| **Day 05** | 11/17（二） | 【富士五湖核心天候緩衝日】應變高原多變氣候 ➔ 補完五湖 ➔ 樹海步道 ➔ 溫泉休整 | 40.2 km<br><sub>實走 38.1 km</sub> | +267m / -276m | 🔍 本棲湖浩庵 / 河口湖 / 富士吉田 | [GPX](day5_track.gpx) |
+| **Day 06** | 11/18（三） | 本棲湖浩庵 ➔ 朝霧高原 ➔ 白糸之瀑 ➔ 富士宮 (千米長下坡) | 39.1 km | +162m / -949m | 🔍 富士宮市區商務溫泉飯店 | [GPX](day6_track.gpx) |
+| **Day 07** | 11/19（四） | 富士宮 ➔ 潤井川CR ➔ 田子の浦港 ➔ 駿河灣千本松原海堤 ➔ 三島 | 44.4 km<br><sub>實走 41.3 km</sub> | +67m / -161m | 🔍 三島市區飯店 | [GPX](day7_track.gpx) |
+| **Day 08** | 11/20（五） | 三島 ➔ 狩野川自行車道 ➔ 修善寺溫泉水口 (提早避開三連休) | 21.9 km | +116m / -37m | ✅ Onsen Yado Mizuguchi (温泉宿  | [GPX](day8_track.gpx) |
+| **Day 09** | 11/21（六） | 修善寺 ➔ 避開天城峠 (走冷川峠) ➔ 一碧湖 ➔ 城崎海岸 ➔ 伊東川奈 | 47.5 km | +862m / -916m | ✅ kawana seaview standard (K | [GPX](day9_track.gpx) |
+| **Day 10** | 11/22（日） | 伊東川奈 ➔ 宇佐美 ➔ 避開危險長隧道 (走網代舊街) ➔ Apt南熱海 | 16.8 km | +164m / -203m | ✅ Apt南熱海-網代 | [GPX](day10_track.gpx) |
+| **Day 11** | 11/23（一） | Apt南熱海 ➔ 熱海梅園最晚紅葉 ➔ 熱海銀座商店街 ➔ 晚上 20:20 熱海海上花火大會 (宿 g | 12.7 km<br><sub>實走 10.8 km</sub> | +235m / -234m | ✅ guest house MARUYA | [GPX](day11_track.gpx) |
+| **Day 12** | 11/24（二） | 熱海銀座 MARUYA ➔ 縣道740號柑橘道 ➔ 小田原城 ➔ 湘南海岸防風林 ➔ 江之島 | 65.6 km<br><sub>實走 61.5 km</sub> | +468m / -468m | 🔍 江之島 / 藤澤市區飯店 | [GPX](day12_track.gpx) |
+| **Day 13** | 11/25（三） | 江之島 ➔ 鎌倉高校前平交道 ➔ 長谷寺 ➔ 柏尾川水岸 ➔ 橫濱港未來 | 32.6 km | +111m / -113m | 🔍 橫濱港未來飯店 | [GPX](day13_track.gpx) |
+| **Day 14** | 11/26（四） | 橫濱 ➔ 第一京濱/羽田 ➔ 豐洲大橋 ➔ 台場海濱公園 | 37.6 km | +45m / -45m | 🔍 台場 / 有明飯店 | [GPX](day14_track.gpx) |
+| **Day 15** | 11/27（五） | 台場 ➔ 葛西臨海公園 ➔ 中川水岸綠道 ➔ 柴又 ➔ 葛飾金町花庵 | 27.5 km | +37m / -41m | ✅ 花庵旅舍 (Hostel Hana An) | [GPX](day15_track.gpx) |
+| **Day 16** | 11/28（六） | 金町出發 ➔【輕裝免行李】江戶川CR / 荒川 ➔ 葛飾老街 ➔ 金町 | 29.8 km<br><sub>實走 45.0 km</sub> | +19m / -17m | ✅ 花庵旅舍 (Hostel Hana An) | [GPX](day16_track.gpx) |
+| **Day 17** | 11/29（日） | 金町退房 ➔ 水元公園（萬棵水杉黃金森林見頃）➔ 柴又 ➔ 淺草 | 14.6 km<br><sub>實走 16.6 km</sub> | +17m / -14m | 🔍 淺草 / 上野 / 東京市區飯店 | [GPX](day17_track.gpx) |
+| **Day 18** | 11/30（一） | 淺草 ➔ 東大本鄉銀杏 ➔ 皇居 ➔ 明治神宮外苑銀杏大道 ➔ 秋葉原 | 24.8 km | +48m / -48m | 🔍 秋葉原 / 上野飯店 | [GPX](day18_track.gpx) |
+| **Day 19** | 12/01（二） | 秋葉原市區 ➔ 神田明神 ➔ CycleTrip Base 還車 ➔ 日暮里 ➔ 機場 | 2.3 km<br><sub>實走 7.9 km</sub> | +23m / -23m | 🔍 返台溫暖的家 | [GPX](day19_track.gpx) |
 
-## 💾 19日 GPX 軌跡檔清單 (GPX Track Navigation Files)
+已完成訂房 **9 / 19** 晚。
 
-| 天數 | 日期 | 騎行區間 | 實測里程 | 爬升/下降 | GPX 軌跡下載 |
-| :---: | :---: | :--- | :---: | :---: | :---: |
-| **Day 01** | 11/13 (五) | 秋葉原 ➔ 多摩川自行車道 ➔ 府中 ➔ 高尾山口 | 89.7 km | +243m / -238m | [day1_track.gpx](day1_track.gpx) |
-| **Day 02** | 11/14 (六) | 高尾山口 ➔ 大垂水峠 ➔ 縣道35秋山街道 ➔ 都留 | 61.0 km | +1121m / -832m | [day2_track.gpx](day2_track.gpx) |
-| **Day 03** | 11/15 (日) | 都留 ➔ 忍野八海 ➔ 山中湖環湖 ➔ 河口湖 | 70.5 km | +1030m / -682m | [day3_track.gpx](day3_track.gpx) |
-| **Day 04** | 11/16 (一) | 河口湖紅葉迴廊 ➔ 湖北View Line ➔ 本棲湖浩庵 | 41.9 km | +461m / -388m | [day4_track.gpx](day4_track.gpx) |
-| **Day 05** | 11/17 (二) | 富士五湖核心緩衝日 ➔ 樹海地質 ➔ 溫泉休整 | 38.1 km | +234m / -234m | [day5_track.gpx](day5_track.gpx) |
-| **Day 06** | 11/18 (三) | 本棲湖浩庵 ➔ 朝霧高原 ➔ 白糸之瀑 ➔ 富士宮 | 39.6 km | +148m / -924m | [day6_track.gpx](day6_track.gpx) |
-| **Day 07** | 11/19 (四) | 富士宮 ➔ 田子浦 ➔ 千本松原海堤 ➔ 三島 | 41.3 km | +44m / -118m | [day7_track.gpx](day7_track.gpx) |
-| **Day 08** | 11/20 (五) | 三島 ➔ 狩野川自行車道 ➔ 修善寺溫泉水口 | 20.9 km | +167m / -123m | [day8_track.gpx](day8_track.gpx) |
-| **Day 09** | 11/21 (六) | 修善寺 ➔ 縣道12冷川峠 ➔ 城崎海岸 ➔ 伊東川奈 | 47.9 km | +871m / -898m | [day9_track.gpx](day9_track.gpx) |
-| **Day 10** | 11/22 (日) | 伊東川奈 ➔ 宇佐美 ➔ 網代舊街 ➔ Apt南熱海 | 17.4 km | +314m / -369m | [day10_track.gpx](day10_track.gpx) |
-| **Day 11** | 11/23 (一) | Apt南熱海 ➔ 熱海梅園 ➔ 熱海銀座 ➔ 海上花火 | 12.2 km | +250m / -244m | [day11_track.gpx](day11_track.gpx) |
-| **Day 12** | 11/24 (二) | 熱海銀座 MARUYA ➔ 縣道740柑橘道 ➔ 江之島 | 63.2 km | +323m / -328m | [day12_track.gpx](day12_track.gpx) |
-| **Day 13** | 11/25 (三) | 江之島 ➔ 鎌倉高校前 ➔ 柏尾川綠道 ➔ 橫濱 | 32.4 km | +61m / -63m | [day13_track.gpx](day13_track.gpx) |
-| **Day 14** | 11/26 (四) | 橫濱 ➔ 第一京濱/羽田 ➔ 豐洲大橋 ➔ 台場 | 38.8 km | +19m / -14m | [day14_track.gpx](day14_track.gpx) |
-| **Day 15** | 11/27 (五) | 台場 ➔ 葛西臨海公園 ➔ 中川綠道 ➔ 葛飾金町 | 28.5 km | +9m / -16m | [day15_track.gpx](day15_track.gpx) |
-| **Day 16** | 11/28 (六) | 金町出發 ➔【輕裝免行李】江戶川CR ➔ 金町 | 35.0 km | +29m / -27m | [day16_track.gpx](day16_track.gpx) |
-| **Day 17** | 11/29 (日) | 金町退房 ➔ 水元公園萬棵水杉黃金森林 ➔ 淺草 | 16.6 km | +4m / -4m | [day17_track.gpx](day17_track.gpx) |
-| **Day 18** | 11/30 (一) | 淺草 ➔ 東大赤門銀杏 ➔ 神宮外苑銀杏大道 ➔ 秋葉原 | 23.7 km | +49m / -46m | [day18_track.gpx](day18_track.gpx) |
-| **Day 19** | 12/01 (二) | 秋葉原 ➔ 神田明神 ➔ CycleTrip還車 ➔ 機場 | 7.9 km | +9m / -13m | [day19_track.gpx](day19_track.gpx) |
+## 🌟 核心互動系統
 
----
+1. **[19日詳細行程表與天氣作戰室](https://riding.braintaiwan.com/)** — 每日路線節點、住宿、避坑實戰、聖地巡禮，外加按「時間 × 地點」的逐時降雨矩陣（依你的出發時間與均速推算通過各節點的時刻）。
+2. **[19日全路線地圖與標高剖面](https://riding.braintaiwan.com/tokyo_cycling_19days_map_demo.html)** — Leaflet ✕ 國土地理院 DEM ✕ 互動時間軸。
+3. **[19首 Suno AI 雙主唱雙風格音樂詞庫](https://riding.braintaiwan.com/suno_cycling_soundtrack_19days.html)**
 
-## 🛠️ 技術棧 (Tech Stack)
+## 🛠️ 專案結構
 
-* **GIS & Routing**: OSRM (Open Source Routing Machine), GSI 1m DEM (日本國土地理院數值標高模型), Leaflet.js
-* **Elevation Analytics**: Chart.js Interactive Elevation Profile
-* **Music & Lyrics Engineering**: Suno AI v3.5/v4/v5 Dual-Vocal & Dual-Style Prompting Engine
-* **Deployment**: GitHub Pages / Cloudflare Pages custom domain (`riding.braintaiwan.com`)
+```
+data/trip.json            單一資料正本（路線、住宿、文化、NAVITIME 數據）
+data/navitime_stats.json  NAVITIME 五種路線偏好的實測結果
+data/navitime_urls.json   各日 NAVITIME shape API 查詢網址
+data/meals.json           實地查證的餐廳（逐日補完中）
+data/songs.json           每日主題曲
+templates/index_template.html  網站模板（手寫區塊）
+scripts_v2/               生成腳本
+```
+
+重新生成網站：
+
+```bash
+python scripts_v2/compute_navitime.py <shape 快取目錄>   # 重算 NAVITIME 數據
+python scripts_v2/build_trip_json.py                     # 合併成正本
+python scripts_v2/build_site.py                          # 產生 index.html
+python scripts_v2/build_readme.py                        # 產生 README.md
+```
+
+## 🛠️ 技術棧
+
+- **路線與標高**: NAVITIME 自転車ルート（距離、三維標高幾何）
+- **天氣**: Open-Meteo（免金鑰）逐時多點預報 + 日本氣象廳去年同期實測
+- **地圖**: Leaflet.js ✕ 國土地理院 DEM ｜ **圖表**: Chart.js
+- **部署**: GitHub Pages / Cloudflare Pages（`riding.braintaiwan.com`）

@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>東京・富士五湖・富士宮・伊豆・東京灣 19日秋季單車騎行計畫書（在地車友避坑＋NAVITIME標高＋去年氣象與紅葉實績整合版）</title>
+    <style>
+        :root {
+            --primary: #8C2D19; /* 紅葉深赭紅 */
+            --primary-light: #FDF6F0;
+            --secondary: #2B4C59; /* 富士深青藍 */
+            --secondary-light: #EBF3F5;
+            --accent: #D97724; /* 銀杏金黃/暖橘 */
+            --text-dark: #2D3748;
+            --text-muted: #64748B;
+            --bg-light: #F8FAFC;
+            --card-border: #E2E8F0;
+            --warning-bg: #FEF2F2;
+            --warning-border: #F87171;
+            --warning-text: #991B1B;
+            --success-bg: #ECFDF5;
+            --success-border: #34D399;
+            --success-text: #065F46;
+            --tip-bg: #EFF6FF;
+            --tip-border: #60A5FA;
+            --tip-text: #1E40AF;
+            --koyo-bg: #FFFBEB;
+            --koyo-border: #FCD34D;
+            --koyo-text: #92400E;
+            --weather-bg: #F0F9FF;
+            --weather-border: #BAE6FD;
+            --weather-text: #0C4A6E;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang TC", "Microsoft JhengHei", sans-serif;
+            background-color: #F1F5F9;
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        /* 頂部橫幅 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #B9381E 60%, var(--accent) 100%);
+            color: #FFFFFF;
+            padding: 40px 32px;
+        }
+
+        .hero h1 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 14.5px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .meta-tag {
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(4px);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 500;
+        }
+
+        /* 核心內容區 */
+        .content {
+            padding: 32px;
+        }
+
+        h2.section-title {
+            font-size: 18.5px;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 12px;
+            margin: 36px 0 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        h2.section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        /* 摘要指標卡片 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--bg-light);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .stat-card .val {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .stat-card .label {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* 警示與避坑區塊 */
+        .callout-box {
+            background: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            border-left: 5px solid var(--warning-text);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            color: var(--warning-text);
+        }
+
+        .callout-box h3 {
+            font-size: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .callout-box ul {
+            padding-left: 20px;
+            font-size: 13.5px;
+        }
+
+        .callout-box li {
+            margin-bottom: 6px;
+        }
+
+        /* 氣象與避坑提示框 */
+        .tip-box {
+            background: var(--weather-bg);
+            border: 1px solid var(--weather-border);
+            border-left: 5px solid #0284C7;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            color: var(--weather-text);
+        }
+
+        .tip-box h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #0369A1;
+        }
+
+        .tip-box ul {
+            padding-left: 20px;
+            font-size: 13.5px;
+        }
+
+        .tip-box li {
+            margin-bottom: 6px;
+        }
+
+        /* 階段標籤卡 */
+        .stage-header {
+            background: var(--secondary-light);
+            border: 1px solid #CBD5E1;
+            color: var(--secondary);
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            margin: 28px 0 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .day-card {
+            scroll-margin-top: 40px;
+        }
+
+        .summary-row-clickable {
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .summary-row-clickable:hover {
+            background-color: #F0F9FF !important;
+        }
+
+        .day-jump-link {
+            display: inline-block;
+            color: inherit;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .day-jump-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #EFF6FF;
+            color: #1D4ED8;
+            border: 1px solid #BFDBFE;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+            margin-top: 4px;
+            transition: all 0.15s ease;
+        }
+
+        .summary-row-clickable:hover .day-jump-badge {
+            background: #2563EB;
+            color: #FFFFFF;
+            border-color: #1D4ED8;
+            transform: translateX(2px);
+        }
+
+        /* 日程卡片 */
+        .day-card {
+            background: #FFFFFF;
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            padding: 20px;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .day-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            border-color: #CBD5E1;
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-bottom: 1px solid #F1F5F9;
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+        }
+
+        .day-title {
+            font-size: 15.5px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .day-title span.day-num {
+            background: var(--primary);
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-right: 6px;
+        }
+
+        .day-stats {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--secondary);
+            background: var(--secondary-light);
+            padding: 4px 10px;
+            border-radius: 15px;
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .elev-pill {
+            background: rgba(43, 76, 89, 0.1);
+            padding: 1px 6px;
+            border-radius: 10px;
+        }
+
+        .weather-pill {
+            background: #E0F2FE;
+            color: #0369A1;
+            border: 1px solid #7DD3FC;
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .koyo-pill {
+            background: #FEF3C7;
+            color: #92400E;
+            border: 1px solid #FCD34D;
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .day-content {
+            font-size: 13.8px;
+            color: #334155;
+        }
+
+        .day-content p {
+            margin-bottom: 8px;
+        }
+
+        .route-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .step-label {
+            font-weight: 600;
+            color: var(--text-muted);
+            min-width: 50px;
+        }
+
+        .weather-box {
+            background: var(--weather-bg);
+            border: 1px solid var(--weather-border);
+            border-left: 4px solid #0284C7;
+            border-radius: 6px;
+            padding: 7px 12px;
+            margin-top: 6px;
+            margin-bottom: 6px;
+            font-size: 12.8px;
+            color: var(--weather-text);
+            line-height: 1.5;
+        }
+
+        .weather-box strong {
+            color: #0369A1;
+        }
+
+        .koyo-box {
+            background: var(--koyo-bg);
+            border: 1px solid var(--koyo-border);
+            border-left: 4px solid var(--accent);
+            border-radius: 6px;
+            padding: 7px 12px;
+            margin-top: 6px;
+            margin-bottom: 6px;
+            font-size: 12.8px;
+            color: var(--koyo-text);
+            line-height: 1.5;
+        }
+
+        .koyo-box strong {
+            color: #B45309;
+        }
+
+        .strategy-tag {
+            display: inline-block;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 6px;
+            padding: 9px 13px;
+            margin-top: 6px;
+            font-size: 12.8px;
+            color: #475569;
+            width: 100%;
+            line-height: 1.5;
+        }
+
+        .strategy-tag strong {
+            color: var(--primary);
+        }
+
+        .highlight-text {
+            color: #B91C1C;
+            font-weight: 600;
+        }
+
+        .verified-badge {
+            display: inline-block;
+            background: #DCFCE7;
+            color: #166534;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-left: 6px;
+        }
+
+        
+        .badge-booked {
+            background: #059669;
+            color: #FFFFFF;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 3px;
+            letter-spacing: 0.3px;
+            box-shadow: 0 1px 3px rgba(5, 150, 105, 0.2);
+        }
+        .map-link {
+            color: #0284C7;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+        }
+        .map-link:hover {
+            text-decoration: underline;
+            color: #0369A1;
+        }
+
+        /* 避坑速查表格 */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 16px;
+            margin-bottom: 24px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.8px;
+            text-align: left;
+        }
+
+        th {
+            background: var(--secondary);
+            color: #FFFFFF;
+            padding: 10px 12px;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--card-border);
+            color: #334155;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        .badge-avoid {
+            background: #FEE2E2;
+            color: #991B1B;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 11.5px;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        .badge-take {
+            background: #DCFCE7;
+            color: #166534;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 11.5px;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        /* 頁尾 */
+        footer {
+            background: #F8FAFC;
+            border-top: 1px solid var(--card-border);
+            padding: 20px 32px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px 16px;
+            }
+            .hero {
+                padding: 30px 20px;
+            }
+            .hero h1 {
+                font-size: 21px;
+            }
+        }
+    
+        /* === Samsung Galaxy S23 Ultra & Mobile OLED Visual Optimizations === */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 80px; /* Space for floating bottom bar */
+                font-size: 14.5px;
+                -webkit-font-smoothing: antialiased;
+            }
+            .container {
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .hero {
+                padding: 24px 16px;
+                border-radius: 0;
+            }
+            .hero h1 {
+                font-size: 20px;
+                line-height: 1.35;
+            }
+            .hero p {
+                font-size: 12.5px;
+            }
+            .hero-meta {
+                gap: 6px;
+            }
+            .meta-tag {
+                font-size: 11.5px;
+                padding: 5px 10px;
+            }
+            .content {
+                padding: 16px 12px;
+            }
+            /* Stats Grid: 2 columns on mobile */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                margin-bottom: 18px;
+            }
+            .stat-card {
+                padding: 12px 10px;
+                border-radius: 10px;
+            }
+            .stat-card .val {
+                font-size: 19px;
+            }
+            .stat-card .label {
+                font-size: 11px;
+            }
+            
+            /* Table Horizontal Scroll with Sticky First Column */
+            .summary-table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                border-radius: 10px;
+                border: 1px solid #CBD5E1;
+                margin-bottom: 24px;
+                position: relative;
+            }
+            .summary-table {
+                min-width: 680px;
+                font-size: 12.5px;
+            }
+            .summary-table th, .summary-table td {
+                padding: 10px 8px;
+            }
+            .summary-table td:first-child, .summary-table th:first-child {
+                position: sticky;
+                left: 0;
+                background: #F8FAFC;
+                z-index: 2;
+                font-weight: 800;
+                box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+            }
+            .summary-table tr:hover td:first-child {
+                background: #EEF2FF;
+            }
+
+            /* Day Cards */
+            .day-card {
+                padding: 16px 14px;
+                border-radius: 12px;
+                margin-bottom: 18px;
+            }
+            .day-title {
+                font-size: 16px;
+                line-height: 1.4;
+            }
+            .day-stats {
+                font-size: 12.5px;
+                margin-bottom: 12px;
+            }
+            .route-step {
+                font-size: 13px;
+                line-height: 1.6;
+            }
+            .hotel-box {
+                padding: 12px 14px;
+                font-size: 13px;
+                border-radius: 10px;
+            }
+            .hotel-link {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 8px 14px;
+                font-size: 13px;
+                margin-top: 6px;
+            }
+            
+            /* Floating Bottom Bar */
+            .mobile-bottom-bar {
+                display: flex !important;
+            }
+        }
+
+        .table-swipe-hint {
+            display: none;
+            background: #EFF6FF;
+            border: 1px solid #BFDBFE;
+            color: #1D4ED8;
+            padding: 7px 12px;
+            font-size: 11.5px;
+            font-weight: 700;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .table-swipe-hint {
+                display: block;
+            }
+        }
+
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+            z-index: 9999;
+            justify-content: space-around;
+            gap: 6px;
+        }
+
+        .mobile-bar-btn {
+            flex: 1;
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: #F8FAFC;
+            padding: 9px 4px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            min-height: 44px;
+        }
+        .mobile-bar-btn.primary {
+            background: #2563EB;
+            border-color: #3B82F6;
+            color: #FFFFFF;
+        }
+        .mobile-bar-btn.accent {
+            background: #D97724;
+            border-color: #F59E0B;
+            color: #FFFFFF;
+        }
+    
+    
+        /* ==========================================================================
+           🎨 5 大主題風格系統 (5 Visual Themes Engine)
+           1. 文藝青年風格 (Indie / Muji / Warm Minimalist)
+           2. 運動風格 (Athletic / High-Energy Strava / Neon)
+           3. 哈日風格 (J-Pop / 和風朱赤 / 日本動漫)
+           4. 單車風格 (Pro Cycling / Rapha Asphalt & Hi-Vis Pink)
+           5. 休閒風格 (Outdoor Camping / Nature Chill)
+           ========================================================================== */
+
+        /* 預設主題：4. 單車風格 (Cycling) 或 可自由切換 */
+        :root, [data-theme="cycling"] {
+            --bg-body: #12141A;
+            --bg-container: #181B22;
+            --card-bg: #212631;
+            --card-border: #333B4D;
+            --text-main: #F3F4F6;
+            --text-sub: #9CA3AF;
+            --text-muted: #6B7280;
+            --brand-primary: #FB7185; /* Rapha Hi-Vis Pink */
+            --brand-secondary: #FBBF24; /* Tour de France Yellow */
+            --brand-accent: #38BDF8;
+            --hero-bg: linear-gradient(135deg, #181B22 0%, #2A1728 50%, #0F172A 100%);
+            --hero-text: #FFFFFF;
+            --stat-val: #FB7185;
+            --table-header-bg: #262D3D;
+            --table-header-text: #F3F4F6;
+            --table-stripe: #1C212B;
+            --day-title-color: #FB7185;
+            --day-num-bg: #FB7185;
+            --day-num-text: #FFFFFF;
+            --elev-pill-bg: #881337;
+            --elev-pill-text: #FECDD3;
+            --theme-tag: "🚴 單車專業風 (Rapha Racing)";
+        }
+
+        /* 1. 文藝青年風格 (Indie / Muji / Kraft) */
+        [data-theme="indie"] {
+            --bg-body: #F4EFEA;
+            --bg-container: #FAF7F2;
+            --card-bg: #FFFFFF;
+            --card-border: #E5DDD3;
+            --text-main: #3E3832;
+            --text-sub: #786C60;
+            --text-muted: #9E9184;
+            --brand-primary: #8C6239; /* Morandi Cedar */
+            --brand-secondary: #607274; /* Earth Grey-Green */
+            --brand-accent: #B06161;
+            --hero-bg: linear-gradient(135deg, #5C4B40 0%, #8C6239 50%, #4A3E37 100%);
+            --hero-text: #FFFDF9;
+            --stat-val: #8C6239;
+            --table-header-bg: #EDE5DC;
+            --table-header-text: #3E3832;
+            --table-stripe: #F9F6F1;
+            --day-title-color: #5C4B40;
+            --day-num-bg: #8C6239;
+            --day-num-text: #FFFFFF;
+            --elev-pill-bg: #EDE5DC;
+            --elev-pill-text: #5C4B40;
+            --theme-tag: "🌿 文藝青年風 (Muji Minimal)";
+        }
+
+        /* 2. 運動風格 (Athletic / Strava / Neon) */
+        [data-theme="sport"] {
+            --bg-body: #080B11;
+            --bg-container: #0F172A;
+            --card-bg: #1E293B;
+            --card-border: #334155;
+            --text-main: #F8FAFC;
+            --text-sub: #94A3B8;
+            --text-muted: #64748B;
+            --brand-primary: #FC4C02; /* Strava Energy Orange */
+            --brand-secondary: #10B981; /* High-Volt Emerald */
+            --brand-accent: #06B6D4; /* Electric Cyan */
+            --hero-bg: linear-gradient(135deg, #0F172A 0%, #7C2D12 50%, #1E1B4B 100%);
+            --hero-text: #FFFFFF;
+            --stat-val: #FC4C02;
+            --table-header-bg: #1E293B;
+            --table-header-text: #F8FAFC;
+            --table-stripe: #131D31;
+            --day-title-color: #FC4C02;
+            --day-num-bg: #FC4C02;
+            --day-num-text: #FFFFFF;
+            --elev-pill-bg: #431407;
+            --elev-pill-text: #FFEDD5;
+            --theme-tag: "⚡ 運動極限風 (Strava Pro)";
+        }
+
+        /* 3. 哈日風格 (J-Pop / 和風朱赤 / 傳統與動漫) */
+        [data-theme="japan"] {
+            --bg-body: #FDF8F5;
+            --bg-container: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --card-border: #FBCFE8;
+            --text-main: #1F2937;
+            --text-sub: #4B5563;
+            --text-muted: #9CA3AF;
+            --brand-primary: #DC2626; /* 神社朱赤 */
+            --brand-secondary: #DB2777; /* 櫻花粉紅 */
+            --brand-accent: #2563EB; /* 藍染 Indigo */
+            --hero-bg: linear-gradient(135deg, #881337 0%, #BE123C 50%, #991B1B 100%);
+            --hero-text: #FFFFFF;
+            --stat-val: #DC2626;
+            --table-header-bg: #FFE4E6;
+            --table-header-text: #9F1239;
+            --table-stripe: #FFF1F2;
+            --day-title-color: #BE123C;
+            --day-num-bg: #DC2626;
+            --day-num-text: #FFFFFF;
+            --elev-pill-bg: #FFE4E6;
+            --elev-pill-text: #9F1239;
+            --theme-tag: "🎌 哈日和風 (J-Pop / 朱赤)";
+        }
+
+        /* 5. 休閒風格 (Outdoor Camping / Nature Chill) */
+        [data-theme="outdoor"] {
+            --bg-body: #F0FDF4;
+            --bg-container: #F7FEE7;
+            --card-bg: #FFFFFF;
+            --card-border: #BBF7D0;
+            --text-main: #14532D;
+            --text-sub: #374151;
+            --text-muted: #6B7280;
+            --brand-primary: #059669; /* Forest Pine */
+            --brand-secondary: #D97706; /* Campfire Ochre */
+            --brand-accent: #0284C7; /* Mountain Lake */
+            --hero-bg: linear-gradient(135deg, #064E3B 0%, #047857 50%, #78350F 100%);
+            --hero-text: #FFFFFF;
+            --stat-val: #059669;
+            --table-header-bg: #DCFCE7;
+            --table-header-text: #14532D;
+            --table-stripe: #F0FDF4;
+            --day-title-color: #065F46;
+            --day-num-bg: #059669;
+            --day-num-text: #FFFFFF;
+            --elev-pill-bg: #DCFCE7;
+            --elev-pill-text: #14532D;
+            --theme-tag: "⛺ 休閒野營風 (Snow Peak Nature)";
+        }
+
+        /* 主題切換控制列 (Theme Switcher Floating / Header Bar) */
+        .theme-switcher-bar {
+            background: rgba(15, 23, 42, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 10px 14px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .theme-switcher-title {
+            color: #F8FAFC;
+            font-size: 13.5px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .theme-btn-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .theme-pill-btn {
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: #CBD5E1;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.18s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            user-select: none;
+        }
+
+        .theme-pill-btn:hover {
+            transform: translateY(-1px);
+            color: #FFFFFF;
+            border-color: #64748B;
+        }
+
+        .theme-pill-btn.active {
+            background: #2563EB;
+            color: #FFFFFF;
+            border-color: #60A5FA;
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.5);
+        }
+
+        /* 根據當前主題渲染對應主色 */
+        body {
+            background-color: var(--bg-body) !important;
+            color: var(--text-main) !important;
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+
+        .container {
+            background-color: var(--bg-container) !important;
+            border-color: var(--card-border) !important;
+        }
+
+        .hero {
+            background: var(--hero-bg) !important;
+        }
+
+        .hero h1, .hero p {
+            color: var(--hero-text) !important;
+        }
+
+        .stat-card {
+            background: var(--card-bg) !important;
+            border-color: var(--card-border) !important;
+        }
+
+        .stat-card .val {
+            color: var(--stat-val) !important;
+        }
+
+        .stat-card .label {
+            color: var(--text-sub) !important;
+        }
+
+        .summary-table-container {
+            border-color: var(--card-border) !important;
+        }
+
+        .summary-table th {
+            background: var(--table-header-bg) !important;
+            color: var(--table-header-text) !important;
+        }
+
+        .summary-table tr:nth-child(even) td {
+            background: var(--table-stripe) !important;
+        }
+
+        .day-card {
+            background: var(--card-bg) !important;
+            border-color: var(--card-border) !important;
+        }
+
+        .day-title {
+            color: var(--day-title-color) !important;
+        }
+
+        .day-num {
+            background: var(--day-num-bg) !important;
+            color: var(--day-num-text) !important;
+        }
+
+        .elev-pill {
+            background: var(--elev-pill-bg) !important;
+            color: var(--elev-pill-text) !important;
+        }
+
+        @media (max-width: 768px) {
+            .theme-switcher-bar {
+                padding: 10px 10px;
+                border-radius: 12px;
+                margin-bottom: 14px;
+            }
+            .theme-btn-group {
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+            .theme-pill-btn {
+                justify-content: center;
+                padding: 8px 6px;
+                font-size: 11.5px;
+                border-radius: 8px;
+            }
+            .theme-pill-btn:nth-child(4), .theme-pill-btn:nth-child(5) {
+                grid-column: span 1.5;
+            }
+        }
+
+    
+        /* ==========================================================================
+           🎨 5 大主題風格置頂切換列 (Sticky Top 5-Themes Switcher Bar)
+           ========================================================================== */
+        .top-theme-sticky-nav {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 99999;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 2px solid rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            margin-bottom: 12px;
+        }
+
+        .theme-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .theme-nav-title {
+            color: #FFFFFF;
+            font-size: 13.5px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .theme-btn-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .theme-pill-btn {
+            background: #1E293B;
+            border: 1px solid #475569;
+            color: #E2E8F0;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            user-select: none;
+        }
+
+        .theme-pill-btn:hover {
+            transform: translateY(-1px);
+            color: #FFFFFF;
+            border-color: #94A3B8;
+            background: #334155;
+        }
+
+        .theme-pill-btn.active {
+            background: #2563EB !important;
+            color: #FFFFFF !important;
+            border-color: #60A5FA !important;
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.6) !important;
+        }
+
+        @media (max-width: 768px) {
+            .top-theme-sticky-nav {
+                padding: 6px 8px;
+            }
+            .theme-nav-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .theme-btn-group {
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 5px;
+            }
+            .theme-pill-btn {
+                justify-content: center;
+                padding: 8px 4px;
+                font-size: 11px;
+                border-radius: 6px;
+            }
+            .theme-pill-btn:nth-child(4), .theme-pill-btn:nth-child(5) {
+                grid-column: span 1.5;
+            }
+        }
+
+    
+/*{{EXTRA_CSS}}*/
+</style>
+
+<!-- SUNO INLINE PLAYER CSS -->
+<style>
+.theme-music-player {
+    display: flex;
+    align-items: center;
+    background: var(--primary-light, #f0f0f0);
+    border: 1px solid var(--card-border, #ccc);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 12px 0 16px 0;
+    gap: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+.theme-music-player .player-btn {
+    background: var(--primary, #333);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.1s ease, background 0.2s ease;
+}
+.theme-music-player .player-btn:active {
+    transform: scale(0.95);
+}
+.theme-music-player .player-btn svg {
+    width: 22px;
+    height: 22px;
+}
+.theme-music-player .player-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+}
+.theme-music-player .player-label {
+    font-size: 11px;
+    color: var(--primary, #333);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+.theme-music-player .player-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark, #000);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.theme-music-player .player-progress-container {
+    flex: 1.5;
+    height: 6px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+.theme-music-player .player-progress-bar {
+    height: 100%;
+    background: var(--accent, #666);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+.theme-music-player .player-time {
+    font-size: 12px;
+    color: var(--text-muted, #555);
+    font-variant-numeric: tabular-nums;
+    min-width: 75px;
+    text-align: right;
+    font-weight: 500;
+}
+/* Mobile optimization */
+@media (max-width: 600px) {
+    .theme-music-player {
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+    .theme-music-player .player-progress-container {
+        flex-basis: 100%;
+        order: 4;
+        margin-top: 8px;
+    }
+    .theme-music-player .player-time {
+        order: 3;
+        flex-basis: auto;
+    }
+}
+</style>
+
+
+<!-- WEATHER WIDGET CSS -->
+<style>
+.theme-weather-widget {
+    background: var(--bg-light, #f8fafc);
+    border: 1px solid var(--card-border, #e2e8f0);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin: 12px 0 16px 0;
+    font-size: 14px;
+    color: var(--text-dark, #1e293b);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.weather-main-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.weather-basic-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.weather-icon-emoji {
+    font-size: 32px;
+    line-height: 1;
+}
+.weather-temp {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary, #333);
+}
+.weather-desc {
+    font-size: 13px;
+    color: var(--text-muted, #64748b);
+}
+.weather-rain-alert {
+    background: var(--warning-bg, #fef2f2);
+    border-left: 4px solid var(--warning-border, #f87171);
+    color: var(--warning-text, #991b1b);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+</style>
+
+</head>
+<body>
+
+<!-- 🎨 5 大主題風格置頂即時切換列 (Sticky Top) -->
+<div class="top-theme-sticky-nav">
+    <div class="theme-nav-inner">
+        <div class="theme-nav-title">
+            <span>🎨 5 大風格切換：</span>
+            <span id="current-theme-name" style="color: #38BDF8; font-weight: 800;">🚴 4. 單車風格</span>
+        </div>
+        <div class="theme-btn-group">
+            <button type="button" class="theme-pill-btn" onclick="setTheme('indie')">🌿 1. 文藝青年</button>
+            <button type="button" class="theme-pill-btn" onclick="setTheme('sport')">⚡ 2. 運動風格</button>
+            <button type="button" class="theme-pill-btn" onclick="setTheme('japan')">🎌 3. 哈日風格</button>
+            <button type="button" class="theme-pill-btn active" onclick="setTheme('cycling')">🚴 4. 單車風格</button>
+            <button type="button" class="theme-pill-btn" onclick="setTheme('outdoor')">⛺ 5. 休閒風格</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <!-- 橫幅 -->
+    <header class="hero">
+        <h1>東京・富士五湖・富士宮・伊豆・東京灣 19日秋季單車騎行計畫</h1>
+        <p>【日本在地車友避坑實戰 ＋ NAVITIME標高測算 ＋ 去年氣象廳實測與紅葉見頃整合版】</p>
+        <div class="hero-meta">
+            <span class="meta-tag">📅 日期：11/13（五）- 12/01（二）</span>
+            <span class="meta-tag">🚲 取還車：CycleTrip Base 秋葉原</span>
+            <span class="meta-tag">☀️ 氣候：關東冬晴黃金期（東京5年平均晴天率 82.1%）</span>
+            <span class="meta-tag">🍁 紅葉：富士五湖(最盛期) ➔ 伊豆溫泉 ➔ 鎌倉 ➔ 都心黃金銀杏</span>
+            <a href="tokyo_cycling_19days_map_demo.html" target="_blank" class="meta-tag" style="background: #2563EB; color: #FFFFFF; font-weight: 700; text-decoration: none;">🗺️ 19日 全路線互動地圖與標高 Demo ➔</a>
+            <a href="suno_cycling_soundtrack_19days.html" target="_blank" class="meta-tag" style="background: #F59E0B; color: #1E293B; font-weight: 700; text-decoration: none;">🎵 19日 Suno AI 音樂詞庫 ➔</a>
+            <a href="cycling_player.html" target="_blank" class="meta-tag" style="background: linear-gradient(135deg, #10B981, #06B6D4); color: #FFFFFF; font-weight: 800; text-decoration: none; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);">🎧 19日主題曲動態歌詞播放器 (PWA離線) ➔</a>
+        </div>
+    </header>
+
+    <div class="content">
+        <!-- 核心指標 -->
+        <!--{{STATS_GRID}}-->
+
+        <!-- 氣象與緩衝分析 -->
+        <div class="tip-box">
+            <h3>☀️ 氣象歷史與抗天候緩衝分析（日本氣象廳 JMA 實測資料）</h3>
+            <ul>
+                <li><strong>東京市區 5 年平均晴天率高達 82.1%</strong>：11 月下旬至 12 月初為「關東冬晴（関東の冬晴れ）」高壓控制期，雨量僅為夏季的 1/4。去年（2025年）同期 19 天全期 0.0mm 降雨，前年（2023年）僅 1 天降雨。</li>
+                <li><strong>緩衝日充裕</strong>：
+                    <ul><!--{{BUFFER_DAYS}}--></ul>
+                </li>
+            </ul>
+        </div>
+
+                        <!-- 出發前關鍵購票、裝備與穿搭提醒專區 -->
+        <div style="background: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 12px; padding: 22px; margin-bottom: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+            <h2 style="font-size: 18px; color: #1E293B; margin-top: 0; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #E2E8F0; padding-bottom: 10px;">
+                📋 出發前關鍵待辦、取車裝備與洋蔥穿搭提醒事項
+            </h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+                
+                <!-- 區塊一：10/20 購票提醒 -->
+                <div style="background: #F0FDF4; border: 1px solid #86EFAC; border-left: 5px solid #16A34A; border-radius: 8px; padding: 16px;">
+                    <h3 style="font-size: 15px; color: #15803D; margin-top: 0; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+                        ⏰ 一、 機場交通與 10/20 購票提醒
+                    </h3>
+                    <ul style="margin-left: 18px; font-size: 13.5px; line-height: 1.65; color: #166534; padding-left: 0;">
+                        <li><strong>📅 10/20（二）重要購票（出發前24天）：</strong> 購買「外國人特惠 Skyliner e-ticket」（全包式 ¥2,310）。
+                            <br>・<strong>票券內容</strong>：已包含「乘車券」＋「特急指定席券」（<span style="color:#B91C1C; font-weight:700;">完全不需要 Suica！</span>）。
+                        </li>
+                        <li><strong>零排隊刷臉進站【Face Check in Go】：</strong> 官網買完後上傳自拍照註冊臉部。下機抵達成田機場改札口走「人臉辨識專用通道」，刷臉 1 秒開門進站，閘門自動吐出座位小票，100% 免排隊！</li>
+                        <li><strong>日暮里站轉乘神技：</strong> 坐到日暮里站內專用轉乘口，站內直接轉 JR 山手線/京濱東北線 2 站（4分鐘）直達秋葉原。</li>
+                    </ul>
+                </div>
+
+                <!-- 區塊二：CycleTrip 取車與裝備避坑 -->
+                <div style="background: #EFF6FF; border: 1px solid #93C5FD; border-left: 5px solid #2563EB; border-radius: 8px; padding: 16px;">
+                    <h3 style="font-size: 15px; color: #1D4ED8; margin-top: 0; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+                        🚲 二、 CycleTrip Base 取車與配件確認
+                    </h3>
+                    <ul style="margin-left: 18px; font-size: 13.5px; line-height: 1.65; color: #1E40AF; padding-left: 0;">
+                        <li><strong>車輛配件確認（出發前/現場逐項檢查）：</strong>
+                            <br>・💡 <strong>高流明前燈（重要）</strong>：11 月中旬日本約 16:30 即日落，建議前燈流明數在 <strong>400～800 lumens</strong> 以上。
+                            <br>・💡 <strong>後警示燈（紅色高亮）</strong>：騎行秋山街道（Day 2）與伊豆海岸隧道時必備。
+                            <br>・💡 <strong>簡易維修組</strong>：確認隨車附有隨身打氣筒、挖胎棒、備用內胎（確認同規格氣嘴長度）。
+                        </li>
+                        <li><strong>單車保險（CDW）：</strong> 取車時建議加購店家提供的<strong>「免責補償保險（事故自負額減免）」</strong>，騎行更安心無憂。</li>
+                    </ul>
+                </div>
+
+                <!-- 區塊三：洋蔥式穿搭法則 -->
+                <div style="background: #FFFBEB; border: 1px solid #FCD34D; border-left: 5px solid #D97706; border-radius: 8px; padding: 16px; grid-column: 1 / -1;">
+                    <h3 style="font-size: 15px; color: #B45309; margin-top: 0; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+                        🧥 三、 11 月中下旬「洋蔥式分層穿搭法則」（應對 15°C 巨大溫差）
+                    </h3>
+                    <p style="font-size: 13.5px; color: #92400E; margin-top: 0; margin-bottom: 10px;">
+                        這趟騎旅跨越了<strong>「海拔近 1,000m 的富士五湖高原（3°C～15°C）」</strong>與<strong>「溫暖的伊豆相模灣海岸（10°C～20°C）」</strong>，溫差高達 15 度：
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; font-size: 13px; color: #78350F;">
+                        <div style="background: rgba(255,255,255,0.7); padding: 10px; border-radius: 6px;">
+                            <strong>👕 底層（排汗）：</strong><br>長袖透氣排汗排濕底衫（避免流汗後在高原吹風受寒）。
+                        </div>
+                        <div style="background: rgba(255,255,255,0.7); padding: 10px; border-radius: 6px;">
+                            <strong>🧥 中層（保暖）：</strong><br>輕量單車刷毛中層或排汗保暖車衣。
+                        </div>
+                        <div style="background: rgba(255,255,255,0.7); padding: 10px; border-radius: 6px;">
+                            <strong>🌬️ 外層（防風・必備）：</strong><br>超輕量防風防潑水風衣，可摺疊收進後背口袋。在「Day 6 朝霧高原千米長下坡」與「清晨河口湖」時穿上禦寒。
+                        </div>
+                        <div style="background: rgba(255,255,255,0.7); padding: 10px; border-radius: 6px;">
+                            <strong>🧤 配件（關鍵細節）：</strong><br>
+                            ・<strong>防風長指手套</strong>（下坡與清晨防凍手）。<br>
+                            ・<strong>魔術頭巾 / 護頸</strong>（防冷風灌入領口）。<br>
+                            ・<strong>太陽眼鏡 / 變色鏡片</strong>（秋冬日照角度低，傍晚陽光斜射刺眼）。
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 重點預警 -->
+        <div class="callout-box">
+            <h3>⚠️ 日本在地車友安全警告與訂房重點（國定三連休警告）</h3>
+            <ul>
+                <li><strong>11/21(六) - 11/23(一) 日本「勤勞感謝日」三連休</strong>：正逢修善寺、熱海、箱根紅葉最高峰，伊豆溫泉旅館極易客滿或大幅加價，請務必<strong>優先完成中伊豆／熱海／小田原住宿預訂</strong>。</li>
+                <li><strong>11/15 - 11/18 河口湖紅葉祭期間</strong>：湖景友善單車住宿極為搶手，請儘速鎖定可免費取消之房源。</li>
+                <li><strong>⛔ 絕對不可進入之單車禁行路段</strong>：
+                    <ul>
+                        <li><strong>國道 1 號 富士由比 Bypass / 沼津 Bypass</strong>：100%「自動車專用道路」，自行車嚴禁進入！</li>
+                        <li><strong>國道 357 號 東京港海底隧道 &amp; 東京 Gate Bridge</strong>：嚴禁自行車通行！</li>
+                        <li><strong>真鶴道路（新道）</strong>：自動車專用道路，單車必須走舊道至真鶴站轉縣道 740 號。</li>
+                    </ul>
+                </li>
+                <li><strong>⚠️ 東伊豆最險惡隧道群（Day 10 宇佐美～網代～熱海）</strong>：國道 135 號連環暗黑隧道無路肩且大車密集，強烈建議<strong>清晨 07:30 前出發＋走網代港舊街道</strong>，或採用<strong>JR 伊東線 2 站兩鐵輪行神技</strong>。</li>
+            </ul>
+        </div>
+
+                                        <!-- 住宿飯店單車擺放友善度實測清單 -->
+        <div style="background: #F8FAFC; border: 1px solid #CBD5E1; border-left: 5px solid #059669; border-radius: 10px; padding: 18px 22px; margin-bottom: 24px;">
+            <h3 style="font-size: 16px; color: #065F46; margin-top: 0; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                🚲 19日已訂住宿「單車停放/進房友善度」實測核實狀態
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; font-size: 13px;">
+                <div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 10px 14px; border-radius: 6px;">
+                    <strong style="color: #047857;">✅ 官方明確確認可放單車：</strong>
+                    <ul style="margin-left: 16px; margin-top: 4px; color: #065F46; line-height: 1.6;">
+                        <li><strong>11/14 由加利旅館 (Yukari)</strong>：都留市，明確可放單車</li>
+                        <li><strong>11/21 KAWANA Seaview Standard</strong>：伊東川奈，明確可放單車</li>
+                        <li><strong>11/22 Apt南熱海-網代</strong>：南熱海長浜，明確可放單車</li>
+                        <li><strong>11/27-29 花庵旅舍 (Hostel Hana An)</strong>：葛飾金町，明確可放單車</li>
+                    </ul>
+                </div>
+                <div style="background: #F0FDF4; border: 1px solid #BBF7D0; padding: 10px 14px; border-radius: 6px;">
+                    <strong style="color: #15803D;">👍 戶外基地/獨棟木屋（空間充裕可放）：</strong>
+                    <ul style="margin-left: 16px; margin-top: 4px; color: #166534; line-height: 1.6;">
+                        <li><strong>11/13 Mt.Takao Base Camp</strong>：高尾山戶外基地，設單車專用車架</li>
+                        <li><strong>11/15 Orange Cabin Inn</strong>：河口湖獨立木屋，玄關前廊寬敞</li>
+                        <li><strong>11/20 温泉宿 水口 (Mizuguchi)</strong>：修善寺傳統名湯，玄關內側/遮雨處</li>
+                        <li><strong>11/23 guest house MARUYA</strong>：熱海銀座町7-8，文青設計旅舍，步行3分鐘直達海灘看花火，設室內/玄關單車停放空間</li>
+                    </ul>
+                </div>
+                <div style="background: #FEF2F2; border: 1px solid #FECACA; padding: 10px 14px; border-radius: 6px; grid-column: 1 / -1;">
+                    <strong style="color: #B91C1C;">⛔ 確定無法停放單車（避坑黑名單）：</strong>
+                    <span style="color: #991B1B; margin-left: 8px;"><strong>GRAND HOSTEL LDK TOKYO Nishikasai (西葛西)</strong> —— 官方確認無單車停放空間且禁止攜帶進房，已果斷剔除避坑！</span>
+                </div>
+            </div>
+        </div>
+
+        <!--{{WEATHER_WAR_ROOM}}-->
+
+        <!-- 19天實測數據總表（由 data/trip.json 生成） -->
+        <!--{{SUMMARY_TABLE}}-->
+
+        <!-- 避坑路段對照表 -->
+        <h2 class="section-title">安全防護：黑名單路段與避坑實用路線對照</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">日程 / 區間</th>
+                        <th style="width: 25%;">避開之危險 / 違規 / 陷阱路段</th>
+                        <th style="width: 32%;">日本在地車友實用替代路線</th>
+                        <th style="width: 28%;">核心優勢與實戰效果</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Day 1<br>東京出城段</strong></td>
+                        <td><span class="badge-avoid">世田谷區綠道 (暗渠步道)</span><br><small style="color:#777;">多處設有「自転車進入禁止」與密集路擋，步行者多需強制牽車</small></td>
+                        <td><span class="badge-take">國道 15 號 (第一京濱) ➔ 六鄉橋切入多摩川</span><span class="verified-badge">車友首選</span></td>
+                        <td>平坦寬路肩出城，由六鄉橋直接切入全封閉多摩川車道，一路順暢逆流緩上，零紅綠燈。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 2<br>八王子➔相模湖</strong></td>
+                        <td><span class="badge-avoid">國道 20 號 (大垂水峠下坡減速條)</span><br><small style="color:#777;">路窄、大車多，路面設密集金屬減速拱，易打滑爆胎</small></td>
+                        <td><span class="badge-take">高尾 ➔ 町田街道 ➔ 國道 413 ➔ 津久井湖畔 (縣道 515/517) ➔ 縣道 35</span></td>
+                        <td>全程避開國道 20 號大車與減速路拱，沿津久井湖幽靜林蔭平緩切入秋山街道。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 3<br>都留➔富士吉田</strong></td>
+                        <td><span class="badge-avoid">國道 139 號高速物流段</span><br><small style="color:#777;">砂石車、遊覽車多且路肩窄；古鎌倉道為碎石健行路</small></td>
+                        <td><span class="badge-take">富士急行線沿線生活農路 ＋ 縣道 713 號 (大野夏狩線)</span></td>
+                        <td>沿富士急行線鐵路西側與桂川農田小徑平緩爬升，完全無大型車輛干擾。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 7<br>富士宮➔沼津/三島</strong></td>
+                        <td><span class="badge-avoid">國道 1 號 Bypass (自動車專用道) / 根方街道</span><br><small style="color:#777;">國道 1 號單車違法禁入；根方街道路窄盲彎多且水溝無蓋</small></td>
+                        <td><span class="badge-take">潤井川 ➔ 田子の浦港 ➔ 駿河灣太平洋岸自行車道 (千本松原海堤)</span><span class="verified-badge">黃金路線</span></td>
+                        <td>全封閉海堤專用道、完全零汽車干擾、路面平坦筆直，享駿河灣海景與回頭富士山全景。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 10<br>伊東➔熱海</strong></td>
+                        <td><span class="badge-avoid">國道 135 號宇佐美/新網代長暗黑隧道群</span><br><small style="color:#777;">新網代隧道長2km無路肩，伊豆單車最大鬼門關</small></td>
+                        <td><span class="badge-take">清晨 07:30 前出發 ＋ 網代港舊街道 (或 JR 宇佐美/網代站搭 2 站輪行)</span></td>
+                        <td>避開日間觀光車潮與部分長隧道；若遇強風或大車可善用 10 分鐘火車輪行直達熱海。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 11<br>熱海➔小田原</strong></td>
+                        <td><span class="badge-avoid">真鶴道路 (自動車專用) / 國道 135 號江之浦隧道</span><br><small style="color:#777;">無路肩、砂石車密集、視野極差</small></td>
+                        <td><span class="badge-take">真鶴站前左轉 ➔ 神奈川縣道 740 號 (根府川山線舊道)</span><span class="verified-badge">神級景觀路</span></td>
+                        <td>避開危險隧道，穿梭於柑橘園山腰，俯瞰相模灣與 JR 白糸川鐵橋，坡度平緩（4-6%）。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 12<br>湘南海岸段</strong></td>
+                        <td><span class="badge-avoid">湘南海岸自行車道 (冬季深沙積砂區間)</span><br><small style="color:#777;">強海風導致「砂沒」沙丘，公路車極易打滑摔車</small></td>
+                        <td><span class="badge-take">遇積砂即切出 ➔ 國道 134 號寬幅人行/自行車共用道</span></td>
+                        <td>保障公路車抓地力，平順巡航於防風林與相模灣畔，安全抵達江之島。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 13<br>鎌倉➔橫濱</strong></td>
+                        <td><span class="badge-avoid">金澤街道 朝比奈峠 (砂石車多/陡窄)</span><br><small style="color:#777;">路肩狹小且有隧道盲彎，大車頻繁</small></td>
+                        <td><span class="badge-take">北鎌倉 ➔ 大船 ➔ 柏尾川自行車步道 (プロムナード) ➔ 戶塚 ➔ 舊東海道</span></td>
+                        <td>沿柏尾川平坦綠道巡航，完全避開山路大車與陡坡，輕鬆直抵橫濱港未來。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 14<br>羽田➔台場</strong></td>
+                        <td><span class="badge-avoid">東京港海底隧道 (禁行) / 彩虹大橋推車</span><br><small style="color:#777;">彩虹大橋禁騎需租滑輪牽車步行 1.7km</small></td>
+                        <td><span class="badge-take">勝鬨/築地 ➔ 豐洲大橋 (獨立寬敞單車道) ➔ 有明 ➔ 台場</span></td>
+                        <td>全騎乘免下車推行，走現代化寬廣跨海大橋，盡覽東京灣天際線。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 15-16<br>荒川河濱段</strong></td>
+                        <td><span class="badge-avoid">荒川左岸 (碎石斷點多) ＋ 強衝車擋欄杆</span><br><small style="color:#777;">左岸路面粗糙；車擋過窄易卡踏板摔車</small></td>
+                        <td><span class="badge-take">全程主騎「荒川右岸」專用道 ＋ 車擋大幅減速牽行 ＋ 提早出發避開落山風</span></td>
+                        <td>全柏油平整鋪裝，提早出發可有效對抗午後從群馬吹來的西北強烈逆風（赤城おろし）。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 詳細行程（由 data/trip.json 生成） -->
+        <!--{{DAY_CARDS}}-->
+
+    </div>
+
+    <footer>
+        <p>東京・富士五湖・富士宮・伊豆・東京灣 19日秋季單車騎行計畫書 ｜ 日本在地車友避坑實戰 ＋ NAVITIME標高測算 ＋ 去年氣象廳實測與紅葉見頃整合版</p>
+    </footer>
+</div>
+
+
+<script>
+function scrollToDay(dayNum) {
+    const el = document.getElementById('day-' + dayNum);
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        el.style.borderColor = '#2563EB';
+        el.style.boxShadow = '0 0 0 3px rgba(37, 99, 235, 0.35)';
+        setTimeout(() => {
+            el.style.borderColor = '';
+            el.style.boxShadow = '';
+        }, 1800);
+    }
+}
+</script>
+
+
+<script>
+// Theme Switcher Logic
+const THEMES = {
+    'indie': { name: '🌿 文藝青年風 (Muji Minimal)', color: '#8C6239' },
+    'sport': { name: '⚡ 運動極限風 (Strava Pro)', color: '#FC4C02' },
+    'japan': { name: '🎌 哈日和風 (J-Pop / 朱赤)', color: '#DC2626' },
+    'cycling': { name: '🚴 單車專業風 (Rapha Racing)', color: '#FB7185' },
+    'outdoor': { name: '⛺ 休閒野營風 (Snow Peak Chill)', color: '#059669' }
+};
+
+function setTheme(themeKey) {
+    if (!THEMES[themeKey]) themeKey = 'cycling';
+    
+    // Apply data-theme to root
+    document.documentElement.setAttribute('data-theme', themeKey);
+    localStorage.setItem('riding_preferred_theme', themeKey);
+
+    // Update active button
+    document.querySelectorAll('.theme-pill-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(themeKey)) {
+            btn.classList.add('active');
+        }
+    });
+
+    // Update indicator text
+    const label = document.getElementById('current-theme-name');
+    if (label) {
+        label.textContent = THEMES[themeKey].name;
+        label.style.color = THEMES[themeKey].color;
+    }
+}
+
+// Auto load preferred theme from localStorage (default: cycling)
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('riding_preferred_theme') || 'cycling';
+    setTheme(savedTheme);
+});
+</script>
+
+
+<!-- SUNO INLINE PLAYER JS -->
+<script>
+let currentlyPlayingAudio = null;
+let currentlyPlayingBtn = null;
+
+function toggleThemePlayer(btn) {
+    const playerDiv = btn.closest('.theme-music-player');
+    const audio = playerDiv.querySelector('audio');
+    const playIcon = btn.querySelector('.icon-play');
+    const pauseIcon = btn.querySelector('.icon-pause');
+
+    if (audio.paused) {
+        if (currentlyPlayingAudio && currentlyPlayingAudio !== audio) {
+            currentlyPlayingAudio.pause();
+            if (currentlyPlayingBtn) {
+                currentlyPlayingBtn.querySelector('.icon-pause').style.display = 'none';
+                currentlyPlayingBtn.querySelector('.icon-play').style.display = 'block';
+            }
+        }
+        audio.play();
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+        currentlyPlayingAudio = audio;
+        currentlyPlayingBtn = btn;
+    } else {
+        audio.pause();
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        currentlyPlayingAudio = null;
+        currentlyPlayingBtn = null;
+    }
+}
+
+function updateThemePlayerProgress(audio) {
+    const playerDiv = audio.closest('.theme-music-player');
+    const progressBar = playerDiv.querySelector('.player-progress-bar');
+    const timeDisplay = playerDiv.querySelector('.player-time');
+    if (audio.duration) {
+        const percent = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = percent + '%';
+        timeDisplay.innerText = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+    }
+}
+
+function seekThemePlayer(event, container) {
+    const playerDiv = container.closest('.theme-music-player');
+    const audio = playerDiv.querySelector('audio');
+    if (audio.duration) {
+        const rect = container.getBoundingClientRect();
+        const pos = (event.clientX - rect.left) / rect.width;
+        audio.currentTime = pos * audio.duration;
+    }
+}
+
+function formatTime(sec) {
+    if (isNaN(sec)) return "0:00";
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+}
+
+function setPlayerDuration(audio) {
+    const playerDiv = audio.closest('.theme-music-player');
+    const timeDisplay = playerDiv.querySelector('.player-time');
+    timeDisplay.innerText = "0:00 / " + formatTime(audio.duration);
+}
+
+function resetThemePlayer(audio) {
+    const playerDiv = audio.closest('.theme-music-player');
+    const btn = playerDiv.querySelector('.player-btn');
+    if(btn) {
+        btn.querySelector('.icon-pause').style.display = 'none';
+        btn.querySelector('.icon-play').style.display = 'block';
+    }
+    const pb = playerDiv.querySelector('.player-progress-bar');
+    if(pb) pb.style.width = '0%';
+    audio.currentTime = 0;
+}
+</script>
+
+
+<!--{{WEATHER_JS}}-->
+
+
+</body>
+</html>
