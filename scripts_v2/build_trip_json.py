@@ -99,6 +99,9 @@ def main():
     stations_db = load('data/bailout_stations.json', {})
     lodging_db = load('data/bailout_lodging.json', {})
     rinko = load('data/rinko.json', {})
+    support = load('data/support_poi.json', {})
+    emergency = load('data/emergency.json', {})
+    prefs = load('data/day_prefectures.json', {})
 
     days = []
     for e in sorted(route, key=lambda x: x['day']):
@@ -126,6 +129,8 @@ def main():
             'meals': meals.get(str(d), {}),
             'logistics': logi.get(str(d), {}),
             'bailout': build_bailout(d, stations_db, lodging_db, rinko),
+            'support': support.get(str(d)) or {},
+            'prefectures': prefs.get(str(d)) or [],
             'gpx': f'day{d}_track.gpx',
             'map_demo': f'day{d}_route_map_demo.html' if d in (1, 2) else None,
             'elev_profile': e.get('elev_profile') or [],
@@ -141,6 +146,7 @@ def main():
             'source': f'NAVITIME 自転車ルート（{PREF}）實測；標高取自 NAVITIME shape API 三維座標',
             'booked': sum(1 for x in days if x['hotel']['booked']),
         },
+        'emergency': emergency,
         'stages': [{'no': i + 1, 'from': a, 'to': b, 'label': l} for i, (a, b, l) in enumerate(STAGES)],
         'days': days,
     }

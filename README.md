@@ -56,6 +56,9 @@ data/meals.json           實地查證的餐廳（逐日補完中）
 data/rinko.json           各鐵道公司的單車上車規定（サイクルトレイン／輪行）
 data/bailout_stations.json  沿線可撤退車站與「沒站區」（OSM Overpass 實查）
 data/bailout_lodging.json   沒站區 20 km 內的實際住宿點
+data/support_poi.json     沿線單車店與醫院（OSM Overpass 實查）
+data/emergency.json       緊急聯絡（119／110／JNTO 熱線／都縣別救急相談）
+data/day_prefectures.json 各日經過的都縣（路線座標反向地理編碼求得）
 data/songs.json           每日主題曲
 templates/index_template.html  網站模板（手寫區塊）
 scripts_v2/               生成腳本
@@ -83,6 +86,15 @@ python scripts_v2/build_readme.py                        # 產生 README.md
 本路線有三條鐵路提供**免拆車**的サイクルトレイン：富士急行線（Day 3–4）、
 伊豆箱根鉄道駿豆線（Day 8–9，平日有時段限制）、伊豆急行（Day 9–10）。
 其餘路段依 JR 手回り品規定，須拆解並完全收進輪行袋。
+
+## 🔧 沿線支援與緊急聯絡
+
+- **單車店**：沿路線 5 km 內查詢 `shop=bicycle`。**Day 3、4、5、9、10、11 沿線查無任何登錄單車店** ——
+  富士五湖與伊豆這兩段共六天必須完全自給，補胎工具、備胎與鏈條扣務必自帶。
+- **醫院**：沿路線 10 km 內查詢 `amenity=hospital`，標示偏離距離。
+- **緊急聯絡**：119（救急）／110（警察）／Japan Visitor Hotline `050-3816-2787`（24 小時多語）
+  ／各都縣的救急相談電話，依當日實際所在都縣自動對應。
+- **單車事故務必報警**：交通事故証明書只有報警後才核發，而保險理賠需要它。
 
 ## 🛠️ 技術棧
 

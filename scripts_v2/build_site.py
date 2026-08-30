@@ -269,9 +269,21 @@ def render_bailout(d):
             f'<div class="bo-note">此段無法搭車撤退，改採策略 B：於 20 km 內找住宿點。'
             f'以下為沿線實查之登錄住宿（OpenStreetMap）：</div>{body}</div>')
 
+    cyc_names = '、'.join(l['label'].split('（')[0] for l in b['lines'] if l['mode'].startswith('免拆車'))
+    if b['strategy'] == 'B':
+        premise = ('<div class="bo-premise bo-premise-b">🎒 <strong>已備輪行袋，但本日派不上用場</strong> —— '
+                   '全線 3 km 內沒有任何車站，無法搭車撤退。今天唯一的退路是下方的策略 B：'
+                   '就近找住宿。行前請把水、糧食與保暖層帶足。</div>')
+    else:
+        premise = ('<div class="bo-premise">🎒 <strong>已備輪行袋</strong> —— 只要到得了車站，策略 A 隨時成立。'
+                   + (f'本日另有 <strong>{esc(cyc_names)}</strong> 提供免拆車服務，可省下拆裝的 15–20 分鐘。'
+                      if cyc_names else '本日無免拆車路線，一律需拆解裝袋。')
+                   + ('　⚠️ 但本日有無站區間（見下方），該段仍須改用策略 B。' if b['gaps'] else '')
+                   + '</div>')
     return f"""            <div class="bailout-box">
                 <div class="bo-title">🚃 撤退方案 <span class="bo-badge {cls}">{esc(label)}</span></div>
-                <div class="bo-sub">🚆 本日適用的單車上車規定</div>
+                {premise}
+                <div class="bo-sub">🚆 本日適用的單車上車規定</div>""" + f"""
                 {''.join(lines_html)}
                 {stations_html}
                 {''.join(gaps_html)}
@@ -333,6 +345,7 @@ def render_day_cards(trip, songs):
 {render_meals(d)}
 {render_hotel(d)}
 {render_bailout(d)}
+{render_support(d, trip)}
             <div class="weather-box"><span class="weather-icon">{esc(w['icon'])}</span> 去年同日實測（氣象廳）：{esc(w['text'])} ｜ 氣溫 {w['lo']}°C ~ {w['hi']}°C ｜ 降水 {w['rain']}mm ｜ 日照 {w['sun']}h</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：{esc(d['foliage'])}</div>
             <div class="highlight-badge">{d['expert_tip'] or ''}</div>
@@ -341,6 +354,87 @@ def render_day_cards(trip, songs):
             </div>
         </div>""")
     return '\n'.join(out)
+
+
+# ─────────────────── 緊急聯絡 / 沿線支援 ───────────────────
+
+def render_emergency_card(trip):
+    em = trip.get('emergency') or {}
+    if not em:
+        return ''
+    core = ''.join(
+        f'<a class="em-card" href="tel:{esc(c["tel"]).replace("-", "")}">'
+        f'<div class="em-num">{esc(c["tel"])}</div>'
+        f'<div class="em-label">{esc(c["label"])}</div>'
+        f'<div class="em-when">{esc(c["when"])}</div>'
+        f'<div class="em-note">{esc(c["note"])}</div></a>'
+        for c in em.get('core', []))
+    pa = em.get('prefecture_advice') or {}
+    rows = ''.join(
+        f'<tr><td><strong>{esc(k)}</strong></td><td>{esc(v["name"])}</td>'
+        f'<td>{esc(v["short"]) or "—"}</td>'
+        f'<td>{"".join(f"<a href=tel:{n.strip().replace('-', '')}>{esc(n.strip())}</a> " for n in v["tel"].split("／"))}</td>'
+        f'<td>{esc(v["hours"])}</td></tr>'
+        for k, v in pa.items() if not k.startswith('_'))
+    acc = em.get('accident_checklist') or {}
+    steps = ''.join(f'<li>{esc(s)}</li>' for s in acc.get('steps', []))
+    return f"""        <h2 class="section-title">🚨 緊急聯絡 ｜ 出事時第一時間要打的電話</h2>
+        <div class="emergency-block">
+            <div class="em-grid">{core}</div>
+            <div class="em-sub">{esc(pa.get('_label'))}</div>
+            <div class="em-note-line">{esc(pa.get('_note'))}</div>
+            <div class="table-wrapper"><table class="em-table"><thead><tr>
+                <th>都縣</th><th>窗口</th><th>短碼</th><th>完整號碼</th><th>時間</th>
+            </tr></thead><tbody>{rows}</tbody></table></div>
+            <div class="em-checklist"><strong>🩹 {esc(acc.get('_label'))}</strong><ol>{steps}</ol></div>
+            <div class="em-src">{esc(em.get('_verified'))} ｜ 來源：{esc(pa.get('_src'))}</div>
+        </div>"""
+
+
+def render_support(d, trip):
+    """沿線單車店與醫院 + 當日所在都縣的救急相談電話。"""
+    sp = d.get('support') or {}
+    bikes, hosps = sp.get('bike_shops') or [], sp.get('hospitals') or []
+    if not bikes and not hosps and not d.get('prefectures'):
+        return ''
+
+    def chips(items, cls, empty):
+        if not items:
+            return f'<div class="sp-empty">{empty}</div>'
+        out = []
+        for x in items:
+            tel = (f'<a href="tel:{esc(x["tel"]).replace("-", "").replace("+81", "0").replace(" ", "")}">📞</a>'
+                   if x.get('tel') else '')
+            hrs = f'<i>{esc(x["hours"])}</i>' if x.get('hours') else ''
+            off = f'<u>+{x["off_km"]}km</u>' if x['off_km'] >= 0.5 else ''
+            out.append(f'<span class="sp-chip {cls}"><b>{x["km"]}km</b> {esc(x["name"])}{off}{tel}{hrs}</span>')
+        return f'<div class="sp-chips">{"".join(out)}</div>'
+
+    pa = ((trip.get('emergency') or {}).get('prefecture_advice')) or {}
+    pref_rows = []
+    for p in d.get('prefectures', []):
+        v = pa.get(p)
+        if not v:
+            continue
+        nums = ' ／ '.join(
+            f'<a href="tel:{n.strip().replace("-", "")}">{esc(n.strip())}</a>' for n in v['tel'].split('／'))
+        pref_rows.append(f'<li><strong>{esc(p)}</strong> {esc(v["name"])}：'
+                         f'{esc(v["short"]) + " ／ " if v["short"] else ""}{nums}（{esc(v["hours"])}）</li>')
+    pref_html = (f'<div class="sp-label">🚨 本日所在都縣・該叫救護車嗎</div><ul class="sp-pref">{"".join(pref_rows)}</ul>'
+                 if pref_rows else '')
+
+    bt, ht = sp.get('bike_total', 0), sp.get('hospital_total', 0)
+    more_b = f'（沿線 5 km 內共 {bt} 家，依里程取樣）' if bt > len(bikes) else ''
+    more_h = f'（沿線 10 km 內共 {ht} 家，依里程取樣）' if ht > len(hosps) else ''
+    return f"""            <div class="support-box">
+                <div class="sp-title">🔧 沿線支援</div>
+                <div class="sp-label">🚲 單車店 <span class="sp-more">{more_b}</span></div>
+                {chips(bikes, 'sp-bike', '⚠️ 本日路線 5 km 內查無登錄單車店 —— 補胎工具與備胎務必自帶，出發前檢查胎壓與煞車。')}
+                <div class="sp-label">🏥 醫院 <span class="sp-more">{more_h}</span></div>
+                {chips(hosps, 'sp-hosp', '⚠️ 本日路線 10 km 內查無登錄醫院。')}
+                {pref_html}
+                <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
+            </div>"""
 
 
 # ─────────────────── 首屏數字卡 / 緩衝日 ───────────────────
@@ -773,6 +867,41 @@ tr.wk-wet{background:#FEF2F2}
 .meal-src{display:block;font-size:10.5px;opacity:.6;margin-top:2px}
 .meal-tel{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:5px;background:rgba(0,0,0,.08);font-size:11.5px;font-weight:700;text-decoration:none;color:inherit}
 .meal-verified{font-size:11px;color:var(--text-muted);margin-bottom:10px;padding:6px 10px;background:#F8FAFC;border-radius:6px;border-left:3px solid #16A34A}
+/* ── 緊急聯絡 ── */
+.emergency-block{background:#FFF;border:1px solid var(--card-border);border-left:5px solid #DC2626;border-radius:12px;padding:18px;margin-bottom:28px}
+.em-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:11px;margin-bottom:16px}
+.em-card{display:block;background:#FEF2F2;border:1px solid #FCA5A5;border-radius:9px;padding:12px 14px;text-decoration:none;color:#7F1D1D;transition:transform .12s}
+.em-card:hover{transform:translateY(-2px)}
+.em-num{font-size:22px;font-weight:900;letter-spacing:.5px;color:#B91C1C}
+.em-label{font-size:13px;font-weight:800;margin-top:2px}
+.em-when{font-size:11.5px;opacity:.9;margin-top:4px;font-weight:700}
+.em-note{font-size:11px;opacity:.8;margin-top:5px;line-height:1.6}
+.em-sub{font-size:13.5px;font-weight:800;margin:14px 0 4px}
+.em-note-line{font-size:12px;color:var(--text-muted);margin-bottom:9px;line-height:1.65}
+table.em-table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:560px}
+table.em-table th,table.em-table td{border:1px solid var(--card-border);padding:7px 9px;text-align:left}
+table.em-table th{background:#F8FAFC;font-size:11.5px;color:var(--text-muted)}
+table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:nowrap}
+.em-checklist{margin-top:14px;background:#FFFBEB;border:1px solid #FCD34D;border-radius:9px;padding:12px 14px;font-size:12.5px;color:#92400E}
+.em-checklist ol{margin:6px 0 0 18px;padding:0;line-height:1.85}
+.em-src{font-size:10.5px;color:var(--text-muted);margin-top:10px}
+/* ── 沿線支援 ── */
+.support-box{background:#F8FAFC;border:1px solid var(--card-border);border-left:4px solid #0F766E;border-radius:8px;padding:12px 14px;margin-bottom:12px}
+.sp-title{font-size:13.5px;font-weight:800;color:#0F766E;margin-bottom:8px}
+.sp-label{font-size:12px;font-weight:800;margin:9px 0 5px;opacity:.9}
+.sp-more{font-weight:500;opacity:.65;font-size:11px}
+.sp-chips{display:flex;flex-wrap:wrap;gap:5px}
+.sp-chip{font-size:11.5px;background:#FFF;border:1px solid var(--card-border);border-radius:6px;padding:3px 8px;white-space:nowrap}
+.sp-chip b{margin-right:4px}
+.sp-chip u{text-decoration:none;opacity:.6;margin-left:4px;font-size:10.5px}
+.sp-chip i{font-style:normal;opacity:.6;margin-left:5px;font-size:10.5px}
+.sp-chip a{margin-left:5px;text-decoration:none}
+.sp-bike b{color:#0F766E}
+.sp-hosp b{color:#B91C1C}
+.sp-empty{font-size:12px;background:var(--warning-bg);border:1px solid var(--warning-border);color:var(--warning-text);border-radius:7px;padding:8px 11px;line-height:1.65}
+.sp-pref{margin:4px 0 0 17px;padding:0;font-size:12px;line-height:1.85}
+.sp-pref a{color:#B91C1C;font-weight:700;text-decoration:none}
+.sp-src{font-size:10.5px;color:var(--text-muted);margin-top:8px}
 /* ── 撤退方案 ── */
 .bailout-box{background:#EFF6FF;border:1px solid #93C5FD;border-left:4px solid #2563EB;border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:#1E3A8A;line-height:1.7}
 .bailout-box ul{margin:6px 0 0 17px;padding:0}
@@ -795,6 +924,8 @@ tr.wk-wet{background:#FEF2F2}
 .bo-badge{font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px}
 .bo-a{background:#DCFCE7;color:#166534}.bo-ab{background:#FEF3C7;color:#92400E}.bo-b{background:#FEE2E2;color:#991B1B}
 .bo-sub{font-size:12.5px;font-weight:700;margin:12px 0 6px;opacity:.85}
+.bo-premise-b{background:var(--warning-bg)!important;border-color:var(--warning-border)!important;color:var(--warning-text)}
+.bo-premise{background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.35);border-radius:7px;padding:8px 12px;font-size:12.5px;line-height:1.7;margin-bottom:4px}
 .bo-line{border-radius:8px;padding:9px 12px;margin-bottom:8px;background:rgba(255,255,255,.65)}
 .bo-line.bo-cycle{border-left:4px solid #16A34A}
 .bo-line.bo-rinko{border-left:4px solid #64748B}
@@ -834,6 +965,7 @@ def main():
     songs = load('data/songs.json')
     tpl = io.open(os.path.join(ROOT, 'templates/index_template.html'), encoding='utf-8').read()
     out = (tpl
+           .replace('<!--{{EMERGENCY_CARD}}-->', render_emergency_card(trip))
            .replace('<!--{{STATS_GRID}}-->', render_stats_grid(trip))
            .replace('<!--{{BUFFER_DAYS}}-->', render_buffer_days(trip))
            .replace('<!--{{WEATHER_WAR_ROOM}}-->', render_war_room(trip))
@@ -841,7 +973,7 @@ def main():
            .replace('<!--{{DAY_CARDS}}-->', render_day_cards(trip, songs))
            .replace('<!--{{WEATHER_JS}}-->', render_weather_js(trip))
            .replace('/*{{EXTRA_CSS}}*/', render_extra_css()))
-    leftover = [p for p in ('{{STATS_GRID}}', '{{BUFFER_DAYS}}', '{{WEATHER_WAR_ROOM}}',
+    leftover = [p for p in ('{{EMERGENCY_CARD}}', '{{STATS_GRID}}', '{{BUFFER_DAYS}}', '{{WEATHER_WAR_ROOM}}',
                             '{{SUMMARY_TABLE}}', '{{DAY_CARDS}}', '{{WEATHER_JS}}',
                             '{{EXTRA_CSS}}') if p in out]
     if leftover:
