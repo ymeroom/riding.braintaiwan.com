@@ -1465,7 +1465,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
 
     <div class="content">
         <!-- 核心指標 -->
-                <div class="stats-grid"><div class="stat-card"><div class="val">19 天</div><div class="label">總騎行天數</div></div><div class="stat-card"><div class="val">683.7 km</div><div class="label">NAVITIME 實測總里程</div></div><div class="stat-card"><div class="val">+4,923 m</div><div class="label">NAVITIME 實測總爬升</div></div><div class="stat-card"><div class="val">Day 1</div><div class="label">最長單日 73.7 km</div></div><div class="stat-card"><div class="val">Day 3</div><div class="label">最硬單日 +892 m</div></div><div class="stat-card"><div class="val">9 / 19</div><div class="label">已完成訂房</div></div></div>
+                <div class="stats-grid"><div class="stat-card"><div class="val">19 天</div><div class="label">總騎行天數</div></div><div class="stat-card"><div class="val">702.0 km</div><div class="label">實走總里程（本計畫路線）</div></div><div class="stat-card"><div class="val">683.7 km</div><div class="label">NAVITIME 最短路徑</div></div><div class="stat-card"><div class="val">+4,923 m</div><div class="label">NAVITIME 實測總爬升</div></div><div class="stat-card"><div class="val">Day 1</div><div class="label">最長單日 81.5 km</div></div><div class="stat-card"><div class="val">Day 3</div><div class="label">最硬單日 +892 m</div></div><div class="stat-card"><div class="val">9 / 19</div><div class="label">已完成訂房</div></div></div>
 
         <!-- 氣象與緩衝分析 -->
         <div class="tip-box">
@@ -1651,7 +1651,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
 
         <!-- 19天實測數據總表（由 data/trip.json 生成） -->
                 <h2 class="section-title">📊 19日每日里程、爬升、去年實測天氣與紅葉見頃總覽 ｜ 💡 點擊任一日程即可直達下方詳細規劃</h2>
-        <div class="data-source-note">📐 里程與爬升：<strong>NAVITIME 自転車ルート実測</strong>（路線偏好「坡少」）；標高取自 NAVITIME 路線幾何三維座標，以 3 公尺遲滯門檻累加，與 Garmin／Strava 計法一致。全程合計 <strong>683.7 km ／ +4,923 m</strong>。</div>
+        <div class="data-source-note">📐 里程與爬升：<strong>NAVITIME 自転車ルート実測</strong>（路線偏好「坡少」）；標高取自 NAVITIME 路線幾何三維座標，以 3 公尺遲滯門檻累加，與 Garmin／Strava 計法一致。全程合計 <strong>NAVITIME 最短路徑 683.7 km ／ 本計畫實走約 702.0 km ／ +4,923 m</strong>。<br>兩個里程都是真的：NAVITIME 只取得每日 4–8 個路線節點，節點之間由它自選最短路；本計畫刻意繞走自行車專用道與避坑舊道，因此實走較長。爬升以 NAVITIME 為準。</div>
         <div class="table-wrapper">
             <table>
                 <thead>
@@ -1669,7 +1669,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                     <tr class="summary-row-clickable" onclick="scrollToDay(1)" title="點擊直達 Day 1 詳細騎行日程">
                         <td><strong>11/13（五）<br><span style="color:#B91C1C;">Day 1</span></strong><br><a href="#day-1" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(1); return false;">👇 詳細日程 ➔</a><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
                         <td>秋葉原 ➔ 銀座/品川 ➔ 國道15號(第一京濱) ➔ 六鄉橋 ➔ 多摩川自行車道 ➔ 府中 (50.4km) ➔ 高尾山口 (Mt. Takao Base Camp 190m)</td>
-                        <td><strong>73.7 km</strong></td>
+                        <td><strong>73.7 km</strong><br><small style="color:#B45309;">實走 81.5 km</small></td>
                         <td>+238m / -50m<br><small style="color:#64748B;">海拔 1~192m</small></td>
                         <td><strong>Mt. Takao Base Camp</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%85%AB%E7%8E%8B%E5%AD%90%E5%B8%82%E9%AB%98%E5%B0%BE%E7%94%BA1799-3+Mt.Takao+Base+Camp" target="_blank" rel="noopener" class="map-link">📍 東京都八王子市高尾町1799-3 ↗</a></td>
                         <td>☀️ 晴 ｜ 11.8°C ~ 19.6°C<br>降水 0.0mm ｜ 日照 9.4h</td>
@@ -1678,7 +1678,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                     <tr class="summary-row-clickable" onclick="scrollToDay(2)" title="點擊直達 Day 2 詳細騎行日程">
                         <td><strong>11/14（六）<br><span style="color:#B91C1C;">Day 2</span></strong><br><a href="#day-2" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(2); return false;">👇 詳細日程 ➔</a><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
                         <td>高尾山口 ➔ 甲州街道(國道20) ➔ 大垂水峠(392m) ➔ 千木良 ➔ 相模湖 ➔ 日本三奇橋(猿橋) ➔ 大月 ➔ 國道139 ➔ 都留市 (475m)</td>
-                        <td><strong>53.7 km</strong></td>
+                        <td><strong>53.7 km</strong><br><small style="color:#B45309;">實走 60.4 km</small></td>
                         <td>+769m / -482m<br><small style="color:#64748B;">海拔 169~479m</small></td>
                         <td><strong>ビジネス旅館 由加利 (Yukari Ryokan)</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B1%B1%E6%A2%A8%E7%9C%8C%E9%83%BD%E7%95%99%E5%B8%82%E4%B8%8A%E8%B0%B71%E4%B8%81%E7%9B%AE3-4+%E7%94%B1%E5%8A%A0%E5%88%A9%E6%97%85%E9%A4%A8" target="_blank" rel="noopener" class="map-link">📍 山梨縣都留市上谷1丁目3-4 ↗</a></td>
                         <td>☀️ 快晴 ｜ 7.8°C ~ 17.2°C<br>降水 0.0mm ｜ 日照 8.9h</td>
@@ -1687,7 +1687,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                     <tr class="summary-row-clickable" onclick="scrollToDay(3)" title="點擊直達 Day 3 詳細騎行日程">
                         <td><strong>11/15（日）<br><span style="color:#B91C1C;">Day 3</span></strong><br><a href="#day-3" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(3); return false;">👇 詳細日程 ➔</a><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
                         <td>由加利旅館 ➔【晴天版】山中湖完整環湖一圈+忍野八海 / 【陰雨天版】新倉山五重塔 ➔ 河口湖 (宿 Orange Cabin Inn)</td>
-                        <td><strong>57.8 km</strong></td>
+                        <td><strong>57.8 km</strong><br><small style="color:#B45309;">實走 53.2 km</small></td>
                         <td>+892m / -518m<br><small style="color:#64748B;">海拔 483~1026m</small></td>
                         <td><strong>Orange Cabin Inn far from station</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B1%B1%E6%A2%A8%E7%9C%8C%E5%8D%97%E9%83%BD%E7%95%99%E9%83%A1%E5%84%82%E5%A3%AB%E6%B2%B3%E5%8F%A3%E6%B9%96%E7%94%BA%E6%B2%B3%E5%8F%A31916-3+Orange+Cabin+Inn" target="_blank" rel="noopener" class="map-link">📍 山梨縣南都留郡富士河口湖町河口1916-3 ↗</a></td>
                         <td>☀️ 快晴 ｜ 4.5°C ~ 15.1°C<br>降水 0.0mm ｜ 日照 9.6h</td>
@@ -1705,7 +1705,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                     <tr class="summary-row-clickable" onclick="scrollToDay(5)" title="點擊直達 Day 5 詳細騎行日程">
                         <td><strong>11/17（二）<br><span style="color:#B91C1C;">Day 5</span></strong><br><a href="#day-5" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(5); return false;">👇 詳細日程 ➔</a><br><span class="badge-pending">🔍 待訂房</span></td>
                         <td>【富士五湖核心天候緩衝日】應變高原多變氣候 ➔ 補完五湖 ➔ 樹海步道 ➔ 溫泉休整</td>
-                        <td><strong>40.2 km</strong></td>
+                        <td><strong>40.2 km</strong><br><small style="color:#B45309;">實走 38.1 km</small></td>
                         <td>+267m / -276m<br><small style="color:#64748B;">海拔 897~1020m</small></td>
                         <td><strong>本棲湖浩庵 / 河口湖 / 富士吉田</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9C%AC%E6%A3%B2%E6%B9%96%E6%B5%A9%E5%BA%B5" target="_blank" rel="noopener" class="map-link">📍 山梨縣富士五湖周邊 ↗</a></td>
                         <td>☀️ 晴朗 ｜ 5.8°C ~ 16.4°C<br>降水 0.0mm ｜ 日照 8.8h</td>
@@ -1723,7 +1723,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                     <tr class="summary-row-clickable" onclick="scrollToDay(7)" title="點擊直達 Day 7 詳細騎行日程">
                         <td><strong>11/19（四）<br><span style="color:#B91C1C;">Day 7</span></strong><br><a href="#day-7" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(7); return false;">👇 詳細日程 ➔</a><br><span class="badge-pending">🔍 待訂房</span></td>
                         <td>富士宮 ➔ 潤井川CR ➔ 田子の浦港 ➔ 駿河灣千本松原海堤 ➔ 三島</td>
-                        <td><strong>44.4 km</strong></td>
+                        <td><strong>44.4 km</strong><br><small style="color:#B45309;">實走 41.3 km</small></td>
                         <td>+67m / -161m<br><small style="color:#64748B;">海拔 1~119m</small></td>
                         <td><strong>三島市區飯店</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%89%E5%B6%8B%E5%A4%A7%E7%A4%BE" target="_blank" rel="noopener" class="map-link">📍 靜岡縣三島市（三嶋大社旁） ↗</a></td>
                         <td>☀️ 快晴 ｜ 2.2°C ~ 13.9°C<br>降水 0.0mm ｜ 日照 8.3h</td>
@@ -1768,7 +1768,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                     <tr class="summary-row-clickable" onclick="scrollToDay(12)" title="點擊直達 Day 12 詳細騎行日程">
                         <td><strong>11/24（二）<br><span style="color:#B91C1C;">Day 12</span></strong><br><a href="#day-12" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(12); return false;">👇 詳細日程 ➔</a><br><span class="badge-pending">🔍 待訂房</span></td>
                         <td>熱海銀座 MARUYA ➔ 縣道740號柑橘道 ➔ 小田原城 ➔ 湘南海岸防風林 ➔ 江之島</td>
-                        <td><strong>65.6 km</strong></td>
+                        <td><strong>65.6 km</strong><br><small style="color:#B45309;">實走 61.5 km</small></td>
                         <td>+468m / -468m<br><small style="color:#64748B;">海拔 1~146m</small></td>
                         <td><strong>江之島 / 藤澤市區飯店</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B1%9F%E4%B9%8B%E5%B3%B6" target="_blank" rel="noopener" class="map-link">📍 神奈川縣藤澤市江之島周邊 ↗</a></td>
                         <td>☀️ 快晴 ｜ 8.9°C ~ 18.0°C<br>降水 0.0mm ｜ 日照 9.4h</td>
@@ -1804,7 +1804,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                     <tr class="summary-row-clickable" onclick="scrollToDay(16)" title="點擊直達 Day 16 詳細騎行日程">
                         <td><strong>11/28（六）<br><span style="color:#B91C1C;">Day 16</span></strong><br><a href="#day-16" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(16); return false;">👇 詳細日程 ➔</a><br><span class="badge-booked">✅ 🏨 已訂房</span></td>
                         <td>金町出發 ➔【輕裝免行李】江戶川CR / 荒川 ➔ 葛飾老街 ➔ 金町</td>
-                        <td><strong>29.8 km</strong></td>
+                        <td><strong>29.8 km</strong><br><small style="color:#B45309;">實走 45.0 km</small></td>
                         <td>+19m / -17m<br><small style="color:#64748B;">海拔 0~7m</small></td>
                         <td><strong>花庵旅舍 (Hostel Hana An)</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E8%91%9B%E9%A3%BE%E5%8D%80%E9%87%91%E7%94%BA4-23-11+%E8%8A%B1%E5%BA%B5%E6%97%85%E8%88%8D" target="_blank" rel="noopener" class="map-link">📍 東京都葛飾區金町4-23-11 ↗</a></td>
                         <td>☀️ 快晴 ｜ 8.4°C ~ 19.8°C<br>降水 0.0mm ｜ 日照 9.1h</td>
@@ -1813,7 +1813,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                     <tr class="summary-row-clickable" onclick="scrollToDay(17)" title="點擊直達 Day 17 詳細騎行日程">
                         <td><strong>11/29（日）<br><span style="color:#B91C1C;">Day 17</span></strong><br><a href="#day-17" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay(17); return false;">👇 詳細日程 ➔</a><br><span class="badge-pending">🔍 待訂房</span></td>
                         <td>金町退房 ➔ 水元公園（萬棵水杉黃金森林見頃）➔ 柴又 ➔ 淺草</td>
-                        <td><strong>14.6 km</strong></td>
+                        <td><strong>14.6 km</strong><br><small style="color:#B45309;">實走 16.6 km</small></td>
                         <td>+17m / -14m<br><small style="color:#64748B;">海拔 0~6m</small></td>
                         <td><strong>淺草 / 上野 / 東京市區飯店</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B7%BA%E8%8D%89%E9%9B%B7%E9%96%80" target="_blank" rel="noopener" class="map-link">📍 東京都台東區淺草/上野 ↗</a></td>
                         <td>☀️ 晴/多雲 ｜ 9.0°C ~ 15.3°C<br>降水 0.0mm ｜ 日照 5.2h</td>
@@ -2992,7 +2992,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <span class="koyo-pill">🍁 🎆 熱海海上花火大會 ｜ 熱海梅園日本最晚紅葉祭</span>
                         <span class="nav-src">NAVITIME 實測</span>
                     </div>
-<div class="km-gap">📐 NAVITIME 最短路徑 <strong>12.7 km</strong>，本計畫實走 <strong>10.8 km</strong>（較 NAVITIME 短 1.9 km，以實走為準）。下方時間×地點矩陣的抵達時刻以<strong>實走里程</strong>推算。</div>
+
                     <div class="theme-weather-widget" data-day="11">載入天氣中…</div>
                 <div class="theme-music-player" data-track="4b4d938c-3588-43c9-9156-a212bad75d66">
                     <button class="player-btn" onclick="toggleThemePlayer(this)" aria-label="播放 Day 11 主題曲">

@@ -2,7 +2,7 @@
 
 > **Official Portal**: [https://riding.braintaiwan.com](https://riding.braintaiwan.com)
 > **騎行期間**: 2026 年 11 月 13 日（五）～ 12 月 1 日（二），共 19 日
-> **總里程與爬升**: **683.7 km ｜ +4,923 m**
+> **總里程與爬升**: 實走 **702.0 km** ／ NAVITIME 最短路徑 **683.7 km** ｜ **+4,923 m**
 
 ## 📐 數據來源
 
@@ -28,7 +28,7 @@
 | **Day 08** | 11/20（五） | 三島 ➔ 狩野川自行車道 ➔ 修善寺溫泉水口 (提早避開三連休) | 21.9 km | +116m / -37m | ✅ Onsen Yado Mizuguchi (温泉宿  | [GPX](day8_track.gpx) |
 | **Day 09** | 11/21（六） | 修善寺 ➔ 避開天城峠 (走冷川峠) ➔ 一碧湖 ➔ 城崎海岸 ➔ 伊東川奈 | 47.5 km | +862m / -916m | ✅ kawana seaview standard (K | [GPX](day9_track.gpx) |
 | **Day 10** | 11/22（日） | 伊東川奈 ➔ 宇佐美 ➔ 避開危險長隧道 (走網代舊街) ➔ Apt南熱海 | 16.8 km | +164m / -203m | ✅ Apt南熱海-網代 | [GPX](day10_track.gpx) |
-| **Day 11** | 11/23（一） | Apt南熱海 ➔ 熱海梅園最晚紅葉 ➔ 熱海銀座商店街 ➔ 晚上 20:20 熱海海上花火大會 (宿 g | 12.7 km<br><sub>實走 10.8 km</sub> | +235m / -234m | ✅ guest house MARUYA | [GPX](day11_track.gpx) |
+| **Day 11** | 11/23（一） | Apt南熱海 ➔ 熱海梅園最晚紅葉 ➔ 熱海銀座商店街 ➔ 晚上 20:20 熱海海上花火大會 (宿 g | 12.7 km | +235m / -234m | ✅ guest house MARUYA | [GPX](day11_track.gpx) |
 | **Day 12** | 11/24（二） | 熱海銀座 MARUYA ➔ 縣道740號柑橘道 ➔ 小田原城 ➔ 湘南海岸防風林 ➔ 江之島 | 65.6 km<br><sub>實走 61.5 km</sub> | +468m / -468m | 🔍 江之島 / 藤澤市區飯店 | [GPX](day12_track.gpx) |
 | **Day 13** | 11/25（三） | 江之島 ➔ 鎌倉高校前平交道 ➔ 長谷寺 ➔ 柏尾川水岸 ➔ 橫濱港未來 | 32.6 km | +111m / -113m | 🔍 橫濱港未來飯店 | [GPX](day13_track.gpx) |
 | **Day 14** | 11/26（四） | 橫濱 ➔ 第一京濱/羽田 ➔ 豐洲大橋 ➔ 台場海濱公園 | 37.6 km | +45m / -45m | 🔍 台場 / 有明飯店 | [GPX](day14_track.gpx) |

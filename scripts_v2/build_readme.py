@@ -10,7 +10,7 @@ for d in trip['days']:
     n = d['nav']
     planned = d['timeline'][-1].get('km') if d['timeline'] else None
     km = f"{n['km']} km"
-    if planned and abs(planned - n['km']) / max(n['km'], 1) > 0.05:
+    if planned and abs(planned - n['km']) >= 2.0 and abs(planned - n['km']) / max(n['km'], 1) > 0.05:
         km += f"<br><sub>實走 {planned} km</sub>"
     booked = '✅' if d['hotel']['booked'] else '🔍'
     rows.append(f"| **Day {d['day']:02d}** | {d['date']} | {d['route_line'][:52]} | {km} "
@@ -21,7 +21,7 @@ readme = f"""# 🚴 2026 東京・富士五湖・伊豆・東京灣 19日秋季�
 
 > **Official Portal**: [https://riding.braintaiwan.com](https://riding.braintaiwan.com)
 > **騎行期間**: 2026 年 11 月 13 日（五）～ 12 月 1 日（二），共 {m['days']} 日
-> **總里程與爬升**: **{m['total_km']} km ｜ +{m['total_gain']:,} m**
+> **總里程與爬升**: 實走 **{m.get('total_planned_km', m['total_km'])} km** ／ NAVITIME 最短路徑 **{m['total_km']} km** ｜ **+{m['total_gain']:,} m**
 
 ## 📐 數據來源
 

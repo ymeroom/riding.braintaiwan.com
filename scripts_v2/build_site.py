@@ -36,12 +36,16 @@ def render_summary_table(trip):
                            f'class="map-link">📍 {esc(h["addr"])} ↗</a>')
         elif h['addr']:
             hotel_cell += f'<br><small style="color:#64748B;">{esc(h["addr"])}</small>'
+        pk, nk = d.get('planned_km'), n.get('km')
+        km_cell = f"<strong>{nk if nk is not None else '—'} km</strong>"
+        if pk and nk and abs(pk - nk) >= 2.0 and abs(pk - nk) / max(nk, 1) > 0.05:
+            km_cell += f"<br><small style=\"color:#B45309;\">實走 {pk} km</small>"
         wx = (f"{esc(w['icon'])} {esc(w['text'])} ｜ {w['lo']}°C ~ {w['hi']}°C<br>"
               f"降水 {w['rain']}mm ｜ 日照 {w['sun']}h") if w['lo'] is not None else esc(w['raw'])
         rows.append(f"""                    <tr class="summary-row-clickable" onclick="scrollToDay({d['day']})" title="點擊直達 Day {d['day']} 詳細騎行日程">
                         <td><strong>{esc(d['date'])}<br><span style="color:#B91C1C;">Day {d['day']}</span></strong><br><a href="#day-{d['day']}" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay({d['day']}); return false;">👇 詳細日程 ➔</a><br>{badge}</td>
                         <td>{esc(d['route_line'])}</td>
-                        <td><strong>{n.get('km','—')} km</strong></td>
+                        <td>{km_cell}</td>
                         <td>+{n.get('gain','—')}m / -{n.get('loss','—')}m<br><small style="color:#64748B;">海拔 {n.get('min_e','—')}~{n.get('max_e','—')}m</small></td>
                         <td>{hotel_cell}</td>
                         <td>{wx}</td>
@@ -49,7 +53,7 @@ def render_summary_table(trip):
                     </tr>""")
     m = trip['meta']
     return f"""        <h2 class="section-title">📊 19日每日里程、爬升、去年實測天氣與紅葉見頃總覽 ｜ 💡 點擊任一日程即可直達下方詳細規劃</h2>
-        <div class="data-source-note">📐 里程與爬升：<strong>NAVITIME 自転車ルート実測</strong>（路線偏好「{m['source'].split('（')[1].split('）')[0] if '（' in m['source'] else '坡少'}」）；標高取自 NAVITIME 路線幾何三維座標，以 3 公尺遲滯門檻累加，與 Garmin／Strava 計法一致。全程合計 <strong>{m['total_km']} km ／ +{m['total_gain']:,} m</strong>。</div>
+        <div class="data-source-note">📐 里程與爬升：<strong>NAVITIME 自転車ルート実測</strong>（路線偏好「{m['source'].split('（')[1].split('）')[0] if '（' in m['source'] else '坡少'}」）；標高取自 NAVITIME 路線幾何三維座標，以 3 公尺遲滯門檻累加，與 Garmin／Strava 計法一致。全程合計 <strong>NAVITIME 最短路徑 {m['total_km']} km ／ 本計畫實走約 {m.get('total_planned_km', m['total_km'])} km ／ +{m['total_gain']:,} m</strong>。<br>兩個里程都是真的：NAVITIME 只取得每日 4–8 個路線節點，節點之間由它自選最短路；本計畫刻意繞走自行車專用道與避坑舊道，因此實走較長。爬升以 NAVITIME 為準。</div>
         <div class="table-wrapper">
             <table>
                 <thead>
@@ -305,7 +309,7 @@ def render_day_cards(trip, songs):
         planned = d['timeline'][-1].get('km') if d['timeline'] else None
         navkm = n.get('km')
         gapnote = ''
-        if planned and navkm and abs(planned - navkm) / max(navkm, 1) > 0.05:
+        if planned and navkm and abs(planned - navkm) >= 2.0 and abs(planned - navkm) / max(navkm, 1) > 0.05:
             longer = planned > navkm
             gapnote = (f'<div class="km-gap">📐 NAVITIME 最短路徑 <strong>{navkm} km</strong>，'
                        f'本計畫實走 <strong>{planned} km</strong>'
@@ -441,13 +445,14 @@ def render_support(d, trip):
 
 def render_stats_grid(trip):
     m = trip['meta']
-    longest = max(trip['days'], key=lambda d: d['nav'].get('km', 0))
+    longest = max(trip['days'], key=lambda d: d.get('planned_km') or d['nav'].get('km', 0))
     hardest = max(trip['days'], key=lambda d: d['nav'].get('gain', 0))
     cards = [
         (f"{m['days']} 天", '總騎行天數'),
-        (f"{m['total_km']} km", 'NAVITIME 實測總里程'),
+        (f"{m.get('total_planned_km', m['total_km'])} km", '實走總里程（本計畫路線）'),
+        (f"{m['total_km']} km", 'NAVITIME 最短路徑'),
         (f"+{m['total_gain']:,} m", 'NAVITIME 實測總爬升'),
-        (f"Day {longest['day']}", f"最長單日 {longest['nav']['km']} km"),
+        (f"Day {longest['day']}", f"最長單日 {longest.get('planned_km') or longest['nav']['km']} km"),
         (f"Day {hardest['day']}", f"最硬單日 +{hardest['nav']['gain']} m"),
         (f"{m['booked']} / {m['days']}", '已完成訂房'),
     ]

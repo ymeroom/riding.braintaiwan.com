@@ -117,6 +117,10 @@ def main():
             'route_line': headline or e.get('title'),
             'nav': {'pref': PREF, **pref, 'variants': n},
             'timeline': [t for t in e.get('timeline', []) if t.get('coord')],
+            # 實走里程＝路線節點最末的公里數（本計畫刻意繞走專用道，故常與
+            # NAVITIME 最短路徑不同）。標記 mode=train 的節點屬搭車段，不計入。
+            'planned_km': next((t['km'] for t in reversed(e.get('timeline', []))
+                                if t.get('coord') and t.get('mode') != 'train'), None),
             'hotel': {
                 'name': e.get('hotel'), 'addr': e.get('hotel_addr'),
                 'url': e.get('hotel_url'), 'booked': str(e.get('booked')) == 'True',
@@ -138,11 +142,13 @@ def main():
 
     total_km = round(sum(x['nav'].get('km', 0) for x in days), 1)
     total_gain = sum(x['nav'].get('gain', 0) for x in days)
+    total_planned = round(sum(x.get('planned_km') or 0 for x in days), 1)
     trip = {
         'meta': {
             'title': '東京・富士五湖・富士宮・伊豆・東京灣 19日秋季單車騎行計畫',
             'start': '2026-11-13', 'end': '2026-12-01', 'days': len(days),
             'total_km': total_km, 'total_gain': total_gain,
+            'total_planned_km': total_planned,
             'source': f'NAVITIME 自転車ルート（{PREF}）實測；標高取自 NAVITIME shape API 三維座標',
             'booked': sum(1 for x in days if x['hotel']['booked']),
         },
@@ -153,7 +159,8 @@ def main():
     out = os.path.join(ROOT, 'data/trip.json')
     io.open(out, 'w', encoding='utf-8').write(json.dumps(trip, ensure_ascii=False, indent=1))
     print(f'寫出 {out}')
-    print(f"  {len(days)} 天 ｜ {total_km} km ｜ +{total_gain} m ｜ 已訂房 {trip['meta']['booked']} 晚")
+    print(f"  {len(days)} 天 ｜ NAVITIME {total_km} km ／ 實走 {total_planned} km "
+          f"｜ +{total_gain} m ｜ 已訂房 {trip['meta']['booked']} 晚")
     return trip
 
 
