@@ -1,8 +1,27 @@
-# 🚴 2026 東京・富士五湖・伊豆・東京灣 19日秋季單車騎旅
+"""由 data/trip.json 生成 README.md，確保與網站數字同源。"""
+import json, io, os
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+trip = json.load(io.open(os.path.join(ROOT, 'data/trip.json'), encoding='utf-8'))
+m = trip['meta']
+
+rows = []
+for d in trip['days']:
+    n = d['nav']
+    planned = d['timeline'][-1].get('km') if d['timeline'] else None
+    km = f"{n['km']} km"
+    if planned and abs(planned - n['km']) >= 2.0 and abs(planned - n['km']) / max(n['km'], 1) > 0.05:
+        km += f"<br><sub>實走 {planned} km</sub>"
+    booked = '✅' if d['hotel']['booked'] else '🔍'
+    rows.append(f"| **Day {d['day']:02d}** | {d['date']} | {d['route_line'][:52]} | {km} "
+                f"| +{n['gain']}m / -{n['loss']}m | {booked} {d['hotel']['name'][:26]} "
+                f"| [GPX]({d['gpx']}) |")
+
+readme = f"""# 🚴 2026 東京・富士五湖・伊豆・東京灣 19日秋季單車騎旅
 
 > **Official Portal**: [https://riding.braintaiwan.com](https://riding.braintaiwan.com)
-> **騎行期間**: 2026 年 11 月 13 日（五）～ 12 月 1 日（二），共 19 日
-> **總里程與爬升**: 實走 **702.0 km** ／ NAVITIME 最短路徑 **683.7 km** ｜ **+4,923 m**
+> **騎行期間**: 2026 年 11 月 13 日（五）～ 12 月 1 日（二），共 {m['days']} 日
+> **總里程與爬升**: 實走 **{m.get('total_planned_km', m['total_km'])} km** ／ NAVITIME 最短路徑 **{m['total_km']} km** ｜ **+{m['total_gain']:,} m**
 
 ## 📐 數據來源
 
@@ -18,27 +37,9 @@
 
 | 天數 | 日期 | 騎行區間 | 里程 | 爬升/下降 | 住宿 | 軌跡 |
 | :---: | :---: | :--- | :---: | :---: | :--- | :---: |
-| **Day 01** | 11/13（五） | 秋葉原 ➔ 銀座/品川 ➔ 國道15號(第一京濱) ➔ 六鄉橋 ➔ 多摩川自行車道 ➔ 府中 (50.4 | 73.7 km<br><sub>實走 81.5 km</sub> | +238m / -50m | ✅ Mt. Takao Base Camp | [GPX](day1_track.gpx) |
-| **Day 02** | 11/14（六） | 高尾山口 ➔ 甲州街道(國道20) ➔ 大垂水峠(392m) ➔ 千木良 ➔ 相模湖 ➔ 日本三奇橋(猿 | 53.7 km<br><sub>實走 60.4 km</sub> | +769m / -482m | ✅ ビジネス旅館 由加利 (Yukari Ryokan) | [GPX](day2_track.gpx) |
-| **Day 03** | 11/15（日） | 由加利旅館 ➔【晴天版】山中湖完整環湖一圈+忍野八海 / 【陰雨天版】新倉山五重塔 ➔ 河口湖 (宿 O | 57.8 km<br><sub>實走 53.2 km</sub> | +892m / -518m | ✅ Orange Cabin Inn far from  | [GPX](day3_track.gpx) |
-| **Day 04** | 11/16（一） | 清晨紅葉迴廊 ➔【情境A】五重塔+往西騎本棲湖浩庵 / 【情境B】補騎山中湖 / 【情境C】河口湖西湖漫 | 41.1 km | +383m / -342m | 🔍 本棲湖 民宿 浩庵 / 河口湖機動 (kagelow | [GPX](day4_track.gpx) |
-| **Day 05** | 11/17（二） | 【富士五湖核心天候緩衝日】應變高原多變氣候 ➔ 補完五湖 ➔ 樹海步道 ➔ 溫泉休整 | 40.2 km<br><sub>實走 38.1 km</sub> | +267m / -276m | 🔍 本棲湖浩庵 / 河口湖 / 富士吉田 | [GPX](day5_track.gpx) |
-| **Day 06** | 11/18（三） | 本棲湖浩庵 ➔ 朝霧高原 ➔ 白糸之瀑 ➔ 富士宮 (千米長下坡) | 39.1 km | +162m / -949m | 🔍 富士宮市區商務溫泉飯店 | [GPX](day6_track.gpx) |
-| **Day 07** | 11/19（四） | 富士宮 ➔ 潤井川CR ➔ 田子の浦港 ➔ 駿河灣千本松原海堤 ➔ 三島 | 44.4 km<br><sub>實走 41.3 km</sub> | +67m / -161m | 🔍 三島市區飯店 | [GPX](day7_track.gpx) |
-| **Day 08** | 11/20（五） | 三島 ➔ 狩野川自行車道 ➔ 修善寺溫泉水口 (提早避開三連休) | 21.9 km | +116m / -37m | ✅ Onsen Yado Mizuguchi (温泉宿  | [GPX](day8_track.gpx) |
-| **Day 09** | 11/21（六） | 修善寺 ➔ 避開天城峠 (走冷川峠) ➔ 一碧湖 ➔ 城崎海岸 ➔ 伊東川奈 | 47.5 km | +862m / -916m | ✅ kawana seaview standard (K | [GPX](day9_track.gpx) |
-| **Day 10** | 11/22（日） | 伊東川奈 ➔ 宇佐美 ➔ 避開危險長隧道 (走網代舊街) ➔ Apt南熱海 | 16.8 km | +164m / -203m | ✅ Apt南熱海-網代 | [GPX](day10_track.gpx) |
-| **Day 11** | 11/23（一） | Apt南熱海 ➔ 熱海梅園最晚紅葉 ➔ 熱海銀座商店街 ➔ 晚上 20:20 熱海海上花火大會 (宿 g | 12.7 km | +235m / -234m | ✅ guest house MARUYA | [GPX](day11_track.gpx) |
-| **Day 12** | 11/24（二） | 熱海銀座 MARUYA ➔ 縣道740號柑橘道 ➔ 小田原城 ➔ 湘南海岸防風林 ➔ 江之島 | 65.6 km<br><sub>實走 61.5 km</sub> | +468m / -468m | 🔍 江之島 / 藤澤市區飯店 | [GPX](day12_track.gpx) |
-| **Day 13** | 11/25（三） | 江之島 ➔ 鎌倉高校前平交道 ➔ 長谷寺 ➔ 柏尾川水岸 ➔ 橫濱港未來 | 32.6 km | +111m / -113m | 🔍 橫濱港未來飯店 | [GPX](day13_track.gpx) |
-| **Day 14** | 11/26（四） | 橫濱 ➔ 第一京濱/羽田 ➔ 豐洲大橋 ➔ 台場海濱公園 | 37.6 km | +45m / -45m | 🔍 台場 / 有明飯店 | [GPX](day14_track.gpx) |
-| **Day 15** | 11/27（五） | 台場 ➔ 葛西臨海公園 ➔ 中川水岸綠道 ➔ 柴又 ➔ 葛飾金町花庵 | 27.5 km | +37m / -41m | ✅ 花庵旅舍 (Hostel Hana An) | [GPX](day15_track.gpx) |
-| **Day 16** | 11/28（六） | 金町出發 ➔【輕裝免行李】江戶川CR / 荒川 ➔ 葛飾老街 ➔ 金町 | 29.8 km<br><sub>實走 45.0 km</sub> | +19m / -17m | ✅ 花庵旅舍 (Hostel Hana An) | [GPX](day16_track.gpx) |
-| **Day 17** | 11/29（日） | 金町退房 ➔ 水元公園（萬棵水杉黃金森林見頃）➔ 柴又 ➔ 淺草 | 14.6 km<br><sub>實走 16.6 km</sub> | +17m / -14m | 🔍 淺草 / 上野 / 東京市區飯店 | [GPX](day17_track.gpx) |
-| **Day 18** | 11/30（一） | 淺草 ➔ 東大本鄉銀杏 ➔ 皇居 ➔ 明治神宮外苑銀杏大道 ➔ 秋葉原 | 24.8 km | +48m / -48m | 🔍 秋葉原 / 上野飯店 | [GPX](day18_track.gpx) |
-| **Day 19** | 12/01（二） | 秋葉原市區 ➔ 神田明神 ➔ CycleTrip Base 還車 ➔ 日暮里 ➔ 機場 | 2.3 km<br><sub>實走 7.9 km</sub> | +23m / -23m | 🔍 返台溫暖的家 | [GPX](day19_track.gpx) |
+{chr(10).join(rows)}
 
-已完成訂房 **9 / 19** 晚。
+已完成訂房 **{m['booked']} / {m['days']}** 晚。
 
 ## 🌟 核心互動系統
 
@@ -102,3 +103,6 @@ python scripts_v2/build_readme.py                        # 產生 README.md
 - **天氣**: Open-Meteo（免金鑰）逐時多點預報 + 日本氣象廳去年同期實測
 - **地圖**: Leaflet.js ✕ 國土地理院 DEM ｜ **圖表**: Chart.js
 - **部署**: GitHub Pages / Cloudflare Pages（`riding.braintaiwan.com`）
+"""
+io.open(os.path.join(ROOT, 'README.md'), 'w', encoding='utf-8').write(readme)
+print('生成 README.md')
