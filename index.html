@@ -1106,6 +1106,22 @@
 
     
 
+/* ── JMA 季節預報（３か月予報）── */
+.seasonal-note{background:#F5F3FF;border:1px solid #DDD6FE;color:#4C1D95;border-radius:12px;padding:14px 17px;font-size:12.5px;line-height:1.85;margin-bottom:14px}
+.seasonal-note .sn-head{font-size:14px;font-weight:800;margin-bottom:6px}
+.seasonal-note ul{margin:4px 0 8px 20px;padding:0}
+.seasonal-note li{margin:3px 0}
+.seasonal-note .sn-enso{border-top:1px dashed #C4B5FD;padding-top:8px;margin-top:4px}
+.seasonal-note .sn-warn{background:#FFF7ED;border:1px solid #FED7AA;color:#9A3412;border-radius:8px;padding:8px 11px;margin-top:8px}
+.seasonal-note .sn-next{margin-top:8px;color:#6D28D9;font-weight:700}
+.seasonal-note code{background:#EDE9FE;border-radius:4px;padding:1px 6px;font-size:11.5px}
+.seasonal-note a{color:#6D28D9}
+/* 表格欄內：色彩交給主題（深色列會反轉），只用虛線與 🔭 跟上面的去年實測分開 */
+.wx-outlook{margin-top:7px;padding-top:6px;border-top:1px dashed rgba(139,92,246,.5);color:inherit;opacity:.88;font-size:11px;line-height:1.6}
+.wx-outlook.wx-none{border-top-color:rgba(148,163,184,.5);opacity:.6}
+.seasonal-box{background:#F5F3FF;border:1px solid #DDD6FE;color:#4C1D95;border-radius:8px;padding:10px 13px;font-size:12.5px;line-height:1.8;margin-top:10px}
+.seasonal-box.seasonal-none{background:#F8FAFC;border-color:#E2E8F0;color:#64748B}
+
 /* ── 天氣作戰室 ── */
 .war-room{background:#FFF;border:1px solid var(--card-border);border-radius:14px;padding:18px;margin-bottom:28px;box-shadow:0 4px 14px rgba(0,0,0,.04)}
 .wr-banner{border-radius:8px;padding:10px 14px;font-size:13.5px;margin-bottom:14px}
@@ -1650,7 +1666,18 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
         </div>
 
         <!-- 19天實測數據總表（由 data/trip.json 生成） -->
-                <h2 class="section-title">📊 19日每日里程、爬升、去年實測天氣與紅葉見頃總覽 ｜ 💡 點擊任一日程即可直達下方詳細規劃</h2>
+                <div class="seasonal-note">
+            <div class="sn-head">🔭 氣象庁 ３か月予報 ｜ 2026-08-25 14:00 JST 發表，對象 9月〜11月</div>
+            <ul><li><strong>11月・關東甲信・東海</strong> ｜ 天候「平年に比べ晴れの日が少ないでしょう。」（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</li><li><strong>向こう３か月平均・關東甲信</strong> ｜ 氣溫 偏高 60%（偏低10 / 平年並30 / 偏高60）</li></ul>
+            <div class="sn-enso">🌊 背景：エルニーニョ監視速報 No.407（令和8年8月10日）—
+                2026年春からエルニーニョ現象が続いているとみられる。　今後、冬にかけてエルニーニョ現象が続く見込み（100％）。（聖嬰現象持續中、聖嬰現象將持續）
+                <a href="https://www.data.jma.go.jp/cpd/elnino/kanshi_joho/kanshi_joho1.html" target="_blank" rel="noopener">原文 ↗</a></div>
+            <div class="sn-warn">⚠️ 這是<strong>月・區域平均的三分位機率</strong>，不是逐日天氣，也不能拿來決定哪天騎哪一段——
+                逐日決策請用上方「天氣作戰室」的 Open-Meteo 時序預報。　Day 19 落在預報期間之外。</div>
+            <div class="sn-next">🗓️ 下次更新：３か月予報：９月１８日（金）　１４時 （１か月予報：毎週木曜日　１４時３０分　次回は８月２７日；寒候期予報：９月１８日（金）　１４時）
+                ｜ 重新抓取：<code>python scripts_v2/fetch_seasonal_outlook.py</code></div>
+        </div>
+        <h2 class="section-title">📊 19日每日里程、爬升、去年實測天氣＋JMA 季節預報與紅葉見頃總覽 ｜ 💡 點擊任一日程即可直達下方詳細規劃</h2>
         <div class="data-source-note">📐 里程與爬升：<strong>NAVITIME 自転車ルート実測</strong>（路線偏好「坡少」）；標高取自 NAVITIME 路線幾何三維座標，以 3 公尺遲滯門檻累加，與 Garmin／Strava 計法一致。全程合計 <strong>NAVITIME 最短路徑 683.7 km ／ 本計畫實走約 702.0 km ／ +4,923 m</strong>。<br>兩個里程都是真的：NAVITIME 只取得每日 4–8 個路線節點，節點之間由它自選最短路；本計畫刻意繞走自行車專用道與避坑舊道，因此實走較長。爬升以 NAVITIME 為準。</div>
         <div class="table-wrapper">
             <table>
@@ -1661,8 +1688,8 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <th style="width: 8%;">📏 里程</th>
                         <th style="width: 11%;">⛰️ 爬升/下降</th>
                         <th style="width: 16%;">🏨 住宿飯店與地圖導航</th>
-                        <th style="width: 15%;">☀️ 去年實測天氣</th>
-                        <th style="width: 16%;">🍁 紅葉見頃實績</th>
+                        <th style="width: 18%;">☀️ 去年實測 ＋ 🔭 JMA 季節預報</th>
+                        <th style="width: 13%;">🍁 紅葉見頃實績</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1672,7 +1699,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>73.7 km</strong><br><small style="color:#B45309;">實走 81.5 km</small></td>
                         <td>+238m / -50m<br><small style="color:#64748B;">海拔 1~192m</small></td>
                         <td><strong>Mt. Takao Base Camp</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%85%AB%E7%8E%8B%E5%AD%90%E5%B8%82%E9%AB%98%E5%B0%BE%E7%94%BA1799-3+Mt.Takao+Base+Camp" target="_blank" rel="noopener" class="map-link">📍 東京都八王子市高尾町1799-3 ↗</a></td>
-                        <td>☀️ 晴 ｜ 11.8°C ~ 19.6°C<br>降水 0.0mm ｜ 日照 9.4h</td>
+                        <td>☀️ 晴 ｜ 11.8°C ~ 19.6°C<br>降水 0.0mm ｜ 日照 9.4h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（關東甲信）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>多摩川水岸秋芒 ｜ 淺川水岸林木初染紅</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(2)" title="點擊直達 Day 2 詳細騎行日程">
@@ -1681,7 +1708,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>53.7 km</strong><br><small style="color:#B45309;">實走 60.4 km</small></td>
                         <td>+769m / -482m<br><small style="color:#64748B;">海拔 169~479m</small></td>
                         <td><strong>ビジネス旅館 由加利 (Yukari Ryokan)</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B1%B1%E6%A2%A8%E7%9C%8C%E9%83%BD%E7%95%99%E5%B8%82%E4%B8%8A%E8%B0%B71%E4%B8%81%E7%9B%AE3-4+%E7%94%B1%E5%8A%A0%E5%88%A9%E6%97%85%E9%A4%A8" target="_blank" rel="noopener" class="map-link">📍 山梨縣都留市上谷1丁目3-4 ↗</a></td>
-                        <td>☀️ 快晴 ｜ 7.8°C ~ 17.2°C<br>降水 0.0mm ｜ 日照 8.9h</td>
+                        <td>☀️ 快晴 ｜ 7.8°C ~ 17.2°C<br>降水 0.0mm ｜ 日照 8.9h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（關東甲信）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>🍁 秋山溪谷見頃 ｜ 兩側山壁層林盡染</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(3)" title="點擊直達 Day 3 詳細騎行日程">
@@ -1690,7 +1717,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>57.8 km</strong><br><small style="color:#B45309;">實走 53.2 km</small></td>
                         <td>+892m / -518m<br><small style="color:#64748B;">海拔 483~1026m</small></td>
                         <td><strong>Orange Cabin Inn far from station</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B1%B1%E6%A2%A8%E7%9C%8C%E5%8D%97%E9%83%BD%E7%95%99%E9%83%A1%E5%84%82%E5%A3%AB%E6%B2%B3%E5%8F%A3%E6%B9%96%E7%94%BA%E6%B2%B3%E5%8F%A31916-3+Orange+Cabin+Inn" target="_blank" rel="noopener" class="map-link">📍 山梨縣南都留郡富士河口湖町河口1916-3 ↗</a></td>
-                        <td>☀️ 快晴 ｜ 4.5°C ~ 15.1°C<br>降水 0.0mm ｜ 日照 9.6h</td>
+                        <td>☀️ 快晴 ｜ 4.5°C ~ 15.1°C<br>降水 0.0mm ｜ 日照 9.6h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（關東甲信）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>🔥 雙湖見頃最盛期 ｜ 晴天環山中湖、陰天直取五重塔</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(4)" title="點擊直達 Day 4 詳細騎行日程">
@@ -1699,7 +1726,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>41.1 km</strong></td>
                         <td>+383m / -342m<br><small style="color:#64748B;">海拔 770~967m</small></td>
                         <td><strong>本棲湖 民宿 浩庵 / 河口湖機動 (kagelow / 富士見205)</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9C%AC%E6%A3%B2%E6%B9%96%E6%B5%A9%E5%BA%B5" target="_blank" rel="noopener" class="map-link">📍 山梨縣南巨摩郡身延町中之倉2926 ↗</a></td>
-                        <td>☀️ 快晴 ｜ 3.2°C ~ 14.6°C<br>降水 0.0mm ｜ 日照 9.1h</td>
+                        <td>☀️ 快晴 ｜ 3.2°C ~ 14.6°C<br>降水 0.0mm ｜ 日照 9.1h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（關東甲信）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>🔥 紅葉迴廊最高峰 ｜ 依前日天候靈活啟動分支</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(5)" title="點擊直達 Day 5 詳細騎行日程">
@@ -1708,7 +1735,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>40.2 km</strong><br><small style="color:#B45309;">實走 38.1 km</small></td>
                         <td>+267m / -276m<br><small style="color:#64748B;">海拔 897~1020m</small></td>
                         <td><strong>本棲湖浩庵 / 河口湖 / 富士吉田</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9C%AC%E6%A3%B2%E6%B9%96%E6%B5%A9%E5%BA%B5" target="_blank" rel="noopener" class="map-link">📍 山梨縣富士五湖周邊 ↗</a></td>
-                        <td>☀️ 晴朗 ｜ 5.8°C ~ 16.4°C<br>降水 0.0mm ｜ 日照 8.8h</td>
+                        <td>☀️ 晴朗 ｜ 5.8°C ~ 16.4°C<br>降水 0.0mm ｜ 日照 8.8h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（關東甲信）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>🔥 西湖/本棲湖深秋紅葉 ｜ 熔岩樹海蒼茫</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(6)" title="點擊直達 Day 6 詳細騎行日程">
@@ -1717,7 +1744,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>39.1 km</strong></td>
                         <td>+162m / -949m<br><small style="color:#64748B;">海拔 119~986m</small></td>
                         <td><strong>富士宮市區商務溫泉飯店</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AF%8C%E5%A3%AB%E5%B1%B1%E6%9C%AC%E5%AE%AE%E6%B7%BA%E9%96%93%E5%A4%A7%E7%A4%BE" target="_blank" rel="noopener" class="map-link">📍 靜岡縣富士宮市（淺間大社總本社旁） ↗</a></td>
-                        <td>☀️ 萬里晴空 ｜ 4.2°C ~ 15.8°C<br>降水 0.0mm ｜ 日照 9.0h</td>
+                        <td>☀️ 萬里晴空 ｜ 4.2°C ~ 15.8°C<br>降水 0.0mm ｜ 日照 9.0h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（關東甲信・東海）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>朝霧高原金黃芒草 ｜ 白糸之瀑水氣楓紅</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(7)" title="點擊直達 Day 7 詳細騎行日程">
@@ -1726,7 +1753,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>44.4 km</strong><br><small style="color:#B45309;">實走 41.3 km</small></td>
                         <td>+67m / -161m<br><small style="color:#64748B;">海拔 1~119m</small></td>
                         <td><strong>三島市區飯店</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%89%E5%B6%8B%E5%A4%A7%E7%A4%BE" target="_blank" rel="noopener" class="map-link">📍 靜岡縣三島市（三嶋大社旁） ↗</a></td>
-                        <td>☀️ 快晴 ｜ 2.2°C ~ 13.9°C<br>降水 0.0mm ｜ 日照 8.3h</td>
+                        <td>☀️ 快晴 ｜ 2.2°C ~ 13.9°C<br>降水 0.0mm ｜ 日照 8.3h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（東海）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>田子之浦富士海景 ｜ 千本松原蒼翠黑松</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(8)" title="點擊直達 Day 8 詳細騎行日程">
@@ -1735,7 +1762,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>21.9 km</strong></td>
                         <td>+116m / -37m<br><small style="color:#64748B;">海拔 7~103m</small></td>
                         <td><strong>Onsen Yado Mizuguchi (温泉宿 水口)</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9D%99%E5%B2%A1%E7%9C%8C%E4%BC%8A%E8%B1%86%E5%B8%82%E4%BF%AE%E5%96%84%E5%AF%BA3463-17+%E6%B8%A9%E6%B3%89%E5%AE%BF%E6%B0%B4%E5%8F%A3" target="_blank" rel="noopener" class="map-link">📍 靜岡縣伊豆市修善寺3463-17 ↗</a></td>
-                        <td>☀️ 快晴 ｜ 6.9°C ~ 18.6°C<br>降水 0.0mm ｜ 日照 9.6h</td>
+                        <td>☀️ 快晴 ｜ 6.9°C ~ 18.6°C<br>降水 0.0mm ｜ 日照 9.6h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（東海）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>🔥 修善寺・虹之鄉見頃 ｜ 古湯楓紅</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(9)" title="點擊直達 Day 9 詳細騎行日程">
@@ -1744,7 +1771,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>47.5 km</strong></td>
                         <td>+862m / -916m<br><small style="color:#64748B;">海拔 44~321m</small></td>
                         <td><strong>kawana seaview standard (KAWANA)</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9D%99%E5%B2%A1%E7%9C%8C%E4%BC%8A%E6%9D%B1%E5%B8%82%E6%96%B0%E4%BA%95484-30+KAWANA" target="_blank" rel="noopener" class="map-link">📍 靜岡縣伊東市新井484-30 KAWANA ↗</a></td>
-                        <td>☀️ 快晴 ｜ 5.9°C ~ 19.3°C<br>降水 0.0mm ｜ 日照 9.3h</td>
+                        <td>☀️ 快晴 ｜ 5.9°C ~ 19.3°C<br>降水 0.0mm ｜ 日照 9.3h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（東海）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>🔥 一碧湖伊豆之瞳見頃 ｜ 熔岩海岸海藍</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(10)" title="點擊直達 Day 10 詳細騎行日程">
@@ -1753,7 +1780,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>16.8 km</strong></td>
                         <td>+164m / -203m<br><small style="color:#64748B;">海拔 0~85m</small></td>
                         <td><strong>Apt南熱海-網代</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9D%99%E5%B2%A1%E7%9C%8C%E7%86%B1%E6%B5%B7%E5%B8%82%E4%B8%8B%E5%A4%9A%E8%B2%BA440+Apt%E5%8D%97%E7%86%B1%E6%B5%B7" target="_blank" rel="noopener" class="map-link">📍 靜岡縣熱海市下多賀440 ↗</a></td>
-                        <td>☀️ 快晴 ｜ 7.6°C ~ 19.2°C<br>降水 0.0mm ｜ 日照 9.3h</td>
+                        <td>☀️ 快晴 ｜ 7.6°C ~ 19.2°C<br>降水 0.0mm ｜ 日照 9.3h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（東海）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>網代灣蔚藍海水 ｜ 沿岸柑橘金黃</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(11)" title="點擊直達 Day 11 詳細騎行日程">
@@ -1762,7 +1789,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>12.7 km</strong></td>
                         <td>+235m / -234m<br><small style="color:#64748B;">海拔 1~156m</small></td>
                         <td><strong>guest house MARUYA</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9D%99%E5%B2%A1%E7%9C%8C%E7%86%B1%E6%B5%B7%E5%B8%82%E9%8A%80%E5%BA%A7%E7%94%BA7-8+guest+house+MARUYA" target="_blank" rel="noopener" class="map-link">📍 靜岡縣熱海市銀座町7-8 ↗</a></td>
-                        <td>☀️ 快晴 ｜ 10.4°C ~ 19.7°C<br>降水 0.0mm ｜ 日照 9.7h</td>
+                        <td>☀️ 快晴 ｜ 10.4°C ~ 19.7°C<br>降水 0.0mm ｜ 日照 9.7h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（東海）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>🎆 熱海海上花火大會 ｜ 熱海梅園日本最晚紅葉祭</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(12)" title="點擊直達 Day 12 詳細騎行日程">
@@ -1771,7 +1798,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>65.6 km</strong><br><small style="color:#B45309;">實走 61.5 km</small></td>
                         <td>+468m / -468m<br><small style="color:#64748B;">海拔 1~146m</small></td>
                         <td><strong>江之島 / 藤澤市區飯店</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B1%9F%E4%B9%8B%E5%B3%B6" target="_blank" rel="noopener" class="map-link">📍 神奈川縣藤澤市江之島周邊 ↗</a></td>
-                        <td>☀️ 快晴 ｜ 8.9°C ~ 18.0°C<br>降水 0.0mm ｜ 日照 9.4h</td>
+                        <td>☀️ 快晴 ｜ 8.9°C ~ 18.0°C<br>降水 0.0mm ｜ 日照 9.4h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（東海・關東甲信）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>小田原城護城河楓紅 ｜ 灌籃高手湘南海岸</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(13)" title="點擊直達 Day 13 詳細騎行日程">
@@ -1780,7 +1807,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>32.6 km</strong></td>
                         <td>+111m / -113m<br><small style="color:#64748B;">海拔 1~57m</small></td>
                         <td><strong>橫濱港未來飯店</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%A9%AB%E6%BF%B1%E6%B8%AF%E6%9C%AA%E4%BE%86" target="_blank" rel="noopener" class="map-link">📍 神奈川縣橫濱市中區/西區 ↗</a></td>
-                        <td>⛅ 陰/晴 ｜ 9.3°C ~ 12.4°C<br>降水 0.0mm ｜ 日照 0.0h</td>
+                        <td>⛅ 陰/晴 ｜ 9.3°C ~ 12.4°C<br>降水 0.0mm ｜ 日照 0.0h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（關東甲信）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>🔥 鎌倉長谷寺古寺紅葉 ｜ 橫濱港灣夜景</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(14)" title="點擊直達 Day 14 詳細騎行日程">
@@ -1789,7 +1816,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>37.6 km</strong></td>
                         <td>+45m / -45m<br><small style="color:#64748B;">海拔 0~15m</small></td>
                         <td><strong>台場 / 有明飯店</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%A0%B4%E6%B5%B7%E6%BF%B1%E5%85%AC%E5%9C%92" target="_blank" rel="noopener" class="map-link">📍 東京都港區台場 / 江東區有明 ↗</a></td>
-                        <td>☀️ 快晴 ｜ 6.2°C ~ 18.6°C<br>降水 0.0mm ｜ 日照 9.0h</td>
+                        <td>☀️ 快晴 ｜ 6.2°C ~ 18.6°C<br>降水 0.0mm ｜ 日照 9.0h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（關東甲信）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>橫濱山下公園黃金銀杏 ｜ 東京灣彩虹大橋</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(15)" title="點擊直達 Day 15 詳細騎行日程">
@@ -1798,7 +1825,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>27.5 km</strong></td>
                         <td>+37m / -41m<br><small style="color:#64748B;">海拔 0~29m</small></td>
                         <td><strong>花庵旅舍 (Hostel Hana An)</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E8%91%9B%E9%A3%BE%E5%8D%80%E9%87%91%E7%94%BA4-23-11+%E8%8A%B1%E5%BA%B5%E6%97%85%E8%88%8D" target="_blank" rel="noopener" class="map-link">📍 東京都葛飾區金町4-23-11 ↗</a></td>
-                        <td>☀️ 晴/多雲 ｜ 7.3°C ~ 16.2°C<br>降水 0.0mm ｜ 日照 3.7h</td>
+                        <td>☀️ 晴/多雲 ｜ 7.3°C ~ 16.2°C<br>降水 0.0mm ｜ 日照 3.7h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（關東甲信）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>葛西海濱秋芒 ｜ 葛飾純樸下町風情</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(16)" title="點擊直達 Day 16 詳細騎行日程">
@@ -1807,7 +1834,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>29.8 km</strong><br><small style="color:#B45309;">實走 45.0 km</small></td>
                         <td>+19m / -17m<br><small style="color:#64748B;">海拔 0~7m</small></td>
                         <td><strong>花庵旅舍 (Hostel Hana An)</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E8%91%9B%E9%A3%BE%E5%8D%80%E9%87%91%E7%94%BA4-23-11+%E8%8A%B1%E5%BA%B5%E6%97%85%E8%88%8D" target="_blank" rel="noopener" class="map-link">📍 東京都葛飾區金町4-23-11 ↗</a></td>
-                        <td>☀️ 快晴 ｜ 8.4°C ~ 19.8°C<br>降水 0.0mm ｜ 日照 9.1h</td>
+                        <td>☀️ 快晴 ｜ 8.4°C ~ 19.8°C<br>降水 0.0mm ｜ 日照 9.1h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（關東甲信）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>🔥 江戶老街與水岸金秋 ｜ 週末輕裝巡航</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(17)" title="點擊直達 Day 17 詳細騎行日程">
@@ -1816,7 +1843,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>14.6 km</strong><br><small style="color:#B45309;">實走 16.6 km</small></td>
                         <td>+17m / -14m<br><small style="color:#64748B;">海拔 0~6m</small></td>
                         <td><strong>淺草 / 上野 / 東京市區飯店</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B7%BA%E8%8D%89%E9%9B%B7%E9%96%80" target="_blank" rel="noopener" class="map-link">📍 東京都台東區淺草/上野 ↗</a></td>
-                        <td>☀️ 晴/多雲 ｜ 9.0°C ~ 15.3°C<br>降水 0.0mm ｜ 日照 5.2h</td>
+                        <td>☀️ 晴/多雲 ｜ 9.0°C ~ 15.3°C<br>降水 0.0mm ｜ 日照 5.2h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（關東甲信）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>🔥 水元公園水杉見頃最高峰 ｜ 歐美童話巨木林</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(18)" title="點擊直達 Day 18 詳細騎行日程">
@@ -1825,7 +1852,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>24.8 km</strong></td>
                         <td>+48m / -48m<br><small style="color:#64748B;">海拔 1~35m</small></td>
                         <td><strong>秋葉原 / 上野飯店</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%A7%8B%E8%91%89%E5%8E%9F" target="_blank" rel="noopener" class="map-link">📍 東京都千代田區秋葉原/神田 ↗</a></td>
-                        <td>☀️ 快晴 ｜ 7.1°C ~ 16.3°C<br>降水 0.0mm ｜ 日照 8.9h</td>
+                        <td>☀️ 快晴 ｜ 7.1°C ~ 16.3°C<br>降水 0.0mm ｜ 日照 8.9h<div class="wx-outlook" title="平年に比べ晴れの日が少ないでしょう。 ／ 気温は、高い確率５０％です。 ／ 降水量は、平年並または多い確率ともに４０％です。">🔭 <strong>JMA 11月展望</strong>（關東甲信）<br>晴天日較常年少<br>氣溫 偏高 50% ｜ 降水 平年並‧偏多 40%</div></td>
                         <td>🔥 神宮外苑與東大銀杏見頃最高峰 ｜ 黃金大道</td>
                     </tr>
                     <tr class="summary-row-clickable" onclick="scrollToDay(19)" title="點擊直達 Day 19 詳細騎行日程">
@@ -1834,7 +1861,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                         <td><strong>2.3 km</strong></td>
                         <td>+23m / -23m<br><small style="color:#64748B;">海拔 0~20m</small></td>
                         <td><strong>返台溫暖的家</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%88%90%E7%94%B0%E5%9C%8B%E9%9A%9B%E6%A9%9F%E5%A0%B4" target="_blank" rel="noopener" class="map-link">📍 成田國際機場 ↗</a></td>
-                        <td>☀️ 快晴 ｜ 6.4°C ~ 20.0°C<br>降水 0.0mm ｜ 日照 7.1h</td>
+                        <td>☀️ 快晴 ｜ 6.4°C ~ 20.0°C<br>降水 0.0mm ｜ 日照 7.1h<div class="wx-outlook wx-none">🔭 不在本期３か月予報（9月〜11月）範圍</div></td>
                         <td>神田明神古松 ｜ 683.7km 世界線圓滿閉環</td>
                     </tr>
                 </tbody>
@@ -2032,6 +2059,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：晴 ｜ 氣溫 11.8°C ~ 19.6°C ｜ 降水 0.0mm ｜ 日照 9.4h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・關東甲信</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：多摩川水岸秋芒 ｜ 淺川水岸林木初染紅</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 徹底避開世田谷區暗渠綠道（密集路擋與牽車限制），走第一京濱＋多摩川/淺川/南淺川三段 100% 堤防自行車專用道，享受整整 58 公里完全封閉、零紅綠燈直達高尾山腳！<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《命運石之門 Steins;Gate》（秋葉原電器街、廣播會館）、《飆速宅男》（多摩川水岸特訓） ｜ 《正宗哥吉拉 Shin Godzilla》（多摩川防衛線、丸子橋作戰名場面）</div></div>
             <div class="culture-box">
@@ -2150,6 +2178,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 7.8°C ~ 17.2°C ｜ 降水 0.0mm ｜ 日照 8.9h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・關東甲信</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🍁 秋山溪谷見頃 ｜ 兩側山壁層林盡染</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 徹底放棄爬升破千米的秋山深山隧道，改走經典【國道20號河谷直達線 ➔ 相模湖公園水岸 ➔ 日本三奇橋猿橋 ➔ 大月 ➔ 國道139 ➔ 都留】！除了出發後 4 公里爬大垂水峠（+200m）外，後續 50 公里沿著桂川河谷緩緩平騎（坡度 < 1%），輕鬆暢遊猿橋紅葉絕景！<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《頭文字D》（甲州街道大垂水峠飆車傳說）；《歌川廣重》（浮世繪名勝・甲陽猿橋之圖）；俳聖松尾芭蕉隱居名所（都留市芭蕉館）</div></div>
             <div class="culture-box">
@@ -2263,6 +2292,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 4.5°C ~ 15.1°C ｜ 降水 0.0mm ｜ 日照 9.6h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・關東甲信</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 雙湖見頃最盛期 ｜ 晴天環山中湖、陰天直取五重塔</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 11月中旬山中湖若遇陰雨天，氣溫會暴跌至 2-3°C 且無景觀；若遇晴天則是 100 分絕景！因此晴天環山中湖、陰雨天直取五重塔是最高明策略。<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《名偵探柯南：第11位前鋒》、《你的名字》（富士五湖神域意象）；《搖曳露營△》（山中湖露營、岬角溫泉） ｜ 《富士山下》；新倉山淺間公園五重塔（國家地理與全球攝影雜誌封面日本代表）</div></div>
             <div class="culture-box">
@@ -2367,6 +2397,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 3.2°C ~ 14.6°C ｜ 降水 0.0mm ｜ 日照 9.1h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・關東甲信</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 紅葉迴廊最高峰 ｜ 依前日天候靈活啟動分支</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 住在 Orange Cabin 的最大紅利就是「06:30 晨光空景」！在 08:30 觀光大巴湧入前拍完，隨後一路向西探索靜謐三湖。<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《搖曳露營△ Yuru Camp》（撫子與凜初次邂逅封神聖地：本棲湖浩庵露營場、千圓紙幣逆富士！） ｜ 黑澤明電影外景地；《怪獸大戰爭》（西湖與富士樹海背景）</div></div>
             <div class="culture-box">
@@ -2466,6 +2497,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：晴朗 ｜ 氣溫 5.8°C ~ 16.4°C ｜ 降水 0.0mm ｜ 日照 8.8h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・關東甲信</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 西湖/本棲湖深秋紅葉 ｜ 熔岩樹海蒼茫</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 高原天候變幻莫測，Day 5 緩衝讓您在遇到低溫或陣雨時有完整空間補完景點，立於不敗之地！<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《幽靈公主 Princess Mononoke》（青木原原始苔蘚溶岩巨木林，如山獸神森林）；《搖曳露營△》（鳴澤冰穴探秘） ｜ 《日本沉沒》；日本地質科教片代表地</div></div>
             <div class="culture-box">
@@ -2570,6 +2602,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：萬里晴空 ｜ 氣溫 4.2°C ~ 15.8°C ｜ 降水 0.0mm ｜ 日照 9.0h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・關東甲信・東海</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：朝霧高原金黃芒草 ｜ 白糸之瀑水氣楓紅</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 自 905m 滑降至 115m，時速 40km/h 體感逼近 0°C！務必佩戴防風長指手套與風衣，煞車平穩點放防熱衰竭。<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《搖曳露營△》（朝霧高原牧場露營篇）；《神劍闖江湖》（源賴朝富士卷狩歷史背景） ｜ 《鎌倉殿的13人》（NHK大河劇：源賴朝在朝霧高原舉辦壯觀「富士之卷狩」狩獵演習與曾我兄弟復仇）</div></div>
             <div class="culture-box">
@@ -2673,6 +2706,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 2.2°C ~ 13.9°C ｜ 降水 0.0mm ｜ 日照 8.3h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・東海</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：田子之浦富士海景 ｜ 千本松原蒼翠黑松</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 千本松原海堤專用道左側黑松林、右側駿河灣，回頭是富士山，全平路零紅綠燈，是全日本頂級海景路段！<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《Love Live! Sunshine!!》（沼津港、千本松原海岸聖地巡禮）；《櫻桃小丸子》（靜岡駿河灣風情） ｜ 《情書 Love Letter》（中山美穗遙望雪山海灣意境）</div></div>
             <div class="culture-box">
@@ -2771,6 +2805,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 6.9°C ~ 18.6°C ｜ 降水 0.0mm ｜ 日照 9.6h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・東海</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 修善寺・虹之鄉見頃 ｜ 古湯楓紅</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 11/20（五）提早進駐修善寺是老手神操作，完全避開 11/21 三連休湧入的恐怖觀光車潮！<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《伊豆的舞孃》（川端康成諾貝爾文學獎名作漫畫改編） ｜ 《月薪嬌妻逃避雖可恥但有用》（新垣結衣與星野源修善寺溫泉旅行）；《鎌倉殿的13人》（源賴家幽禁修禪寺）</div></div>
             <div class="culture-box">
@@ -2874,6 +2909,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 5.9°C ~ 19.3°C ｜ 降水 0.0mm ｜ 日照 9.3h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・東海</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 一碧湖伊豆之瞳見頃 ｜ 熔岩海岸海藍</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 三連休首日天城峠塞滿大巴廢氣漫天，冷川峠車流少、林道幽美，安全直達相模灣海岸！<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《藍海少女！Amanchu!》（伊東海岸、城崎海岸潛水與單車日常）；《名偵探柯南》（懸崖斷崖推理名場面） ｜ 《火曜懸疑劇場》（全日本最著名刑偵懸疑劇結尾懸崖對決聖地）；《海街日記》（相模灣蔚藍海風）</div></div>
             <div class="culture-box">
@@ -2972,6 +3008,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 7.6°C ~ 19.2°C ｜ 降水 0.0mm ｜ 日照 9.3h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・東海</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：網代灣蔚藍海水 ｜ 沿岸柑橘金黃</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 17.4km 輕鬆短程，避開三連休中日熱海市區大塞車，早早進房享受私人海景陽台。<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《夏色奇蹟》（靜岡伊豆海濱青春物語）；《Grand Blue 碧藍之海》 ｜ 《家族之苦》（山田洋次執導之熱海海濱家族喜劇）；松本清張推理名作《點與線》（熱海溫泉旅情）</div></div>
             <div class="culture-box">
@@ -3080,6 +3117,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 10.4°C ~ 19.7°C ｜ 降水 0.0mm ｜ 日照 9.7h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・東海</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🎆 熱海海上花火大會 ｜ 熱海梅園日本最晚紅葉祭</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 住在熱海銀座町 MARUYA 是觀賞熱海花火的「神仙級地理位置」！距離海灘僅 250m，散場步行 3 分鐘直接進房休息，徹底免去所有交通煩惱！<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《煙花，應該和誰看？Fireworks》（岩井俊二原作、米津玄師主題曲之極致煙火名場面）；《櫻花莊的寵物女孩》（熱海煙火夜） ｜ 《東京家族》（小津安二郎《東京物語》致敬作中熱海溫泉名景）；尾崎紅葉《金色夜叉》（貫一與阿宮在熱海海灘的恩怨傳奇「熱海之月」）</div></div>
             <div class="culture-box">
@@ -3188,6 +3226,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 8.9°C ~ 18.0°C ｜ 降水 0.0mm ｜ 日照 9.4h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・東海・關東甲信</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：小田原城護城河楓紅 ｜ 灌籃高手湘南海岸</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 從熱海市區直接出發省去了南熱海 7km 路程，縣道 740 柑橘景觀道零大車，小田原之後更是全程平坦的湘南海岸巡航！<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《灌籃高手 SLAM DUNK》（湘南海岸、流川楓騎單車吹海風經典公路）；《飆速宅男》（箱根小田原直線大戰） ｜ 《海街日記》（是枝裕和導演代表作：綾瀨遙、長澤雅美四姐妹在湘南海岸的生活詩篇）；《太陽之歌》</div></div>
             <div class="culture-box">
@@ -3282,6 +3321,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">⛅</span> 去年同日實測（氣象廳）：陰/晴 ｜ 氣溫 9.3°C ~ 12.4°C ｜ 降水 0.0mm ｜ 日照 0.0h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・關東甲信</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 鎌倉長谷寺古寺紅葉 ｜ 橫濱港灣夜景</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 告別山道，正式進入「水岸綠道悠閒巡航期」，柏尾川綠道讓進橫濱市區變得輕鬆優雅。<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《灌籃高手》（鎌倉高校前平交道，櫻木花道與赤木晴子揮手世紀名場面！）；《青春豬頭少年不會夢到兔女郎學姊》（江之島水族館與七里濱）；《TARI TARI》 ｜ 《倒數第二次戀愛》（小泉今日子與中井貴一的鎌倉慢活熟齡神劇）；《海街日記》（極樂寺車站與長谷寺）</div></div>
             <div class="culture-box">
@@ -3376,6 +3416,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 6.2°C ~ 18.6°C ｜ 降水 0.0mm ｜ 日照 9.0h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・關東甲信</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：橫濱山下公園黃金銀杏 ｜ 東京灣彩虹大橋</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 38.8km 全平路，沿著東京灣吹著海風巡航，視覺開闊無比。<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《機動戰士鋼彈 UC》（台場 DiverCity 1:1 等身大獨角獸鋼彈 RX-0 變形立像！）；《Love Live! 虹咲學園學園偶像同好會》（台場海濱公園、彩虹大橋巡禮）；《數碼寶貝》（台場富士電視台） ｜ 《大搜查線 Bayside Shakedown》（織田裕二經典名句：「封鎖不了彩虹大橋！」台場灣岸署傳奇）；《戀愛世代 Love Generation》（木村拓哉與松隆子彩虹大橋定情水晶蘋果）</div></div>
             <div class="culture-box">
@@ -3475,6 +3516,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：晴/多雲 ｜ 氣溫 7.3°C ~ 16.2°C ｜ 降水 0.0mm ｜ 日照 3.7h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・關東甲信</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：葛西海濱秋芒 ｜ 葛飾純樸下町風情</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 避開市中心吵雜飯店，入住水元公園旁清幽下町旅舍，連住 2 晚徹底放鬆！<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《烏龍派出所 Kochikame》（葛飾區龜有、柴又、中川水岸，兩津勘吉的故鄉！）；《秒速5公分》（新海誠導演刻畫之東京下町微雨鐵道黃昏） ｜ 《男人真命苦 Otoko wa Tsurai yo》（日本電影史上最長壽國民級喜劇電影，渥美清飾演「車寅次郎」在柴又帝釋天老街的人情物語）</div></div>
             <div class="culture-box">
@@ -3577,6 +3619,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 8.4°C ~ 19.8°C ｜ 降水 0.0mm ｜ 日照 9.1h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・關東甲信</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 江戶老街與水岸金秋 ｜ 週末輕裝巡航</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 週末免背行李，以最輕盈的狀態在江戶川水岸慢騎，享受下町慢活節奏。<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《烏龍派出所》（中川圭一、秋本麗子與兩津勘吉的江戶川堤防單車巡邏線）；《四月是你的謊言》（水岸堤防夕陽騎行名場面） ｜ 《男人的真命苦》柴又外景系列</div></div>
             <div class="culture-box">
@@ -3666,6 +3709,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：晴/多雲 ｜ 氣溫 9.0°C ~ 15.3°C ｜ 降水 0.0mm ｜ 日照 5.2h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・關東甲信</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 水元公園水杉見頃最高峰 ｜ 歐美童話巨木林</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 水元公園是全東京規模最大的水杉巨木林，11 月底見頃時宛如置身歐美童話世界！<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《烏龍派出所》（水元公園水杉林、龜有香取神社）；《鬼滅之刃》（大正時代淺草繁華街夜景，炭治郎初遇鬼舞辻無慘之地！） ｜ 《淺草小子 Asakusa Kid》（北野武自傳電影，大泉洋與柳樂優彌重現昭和淺草法蘭西座脫口秀熱血）；《半澤直樹》</div></div>
             <div class="culture-box">
@@ -3765,6 +3809,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 7.1°C ~ 16.3°C ｜ 降水 0.0mm ｜ 日照 8.9h</div>
+            <div class="seasonal-box"><span class="weather-icon">🔭</span> <strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：<strong>11月・關東甲信</strong> ｜ 平年に比べ晴れの日が少ないでしょう。（晴天日較常年少） ｜ 氣溫 偏高 50%（偏低20 / 平年並30 / 偏高50） ｜ 降水量 平年並或偏多 各 40%（偏少20 / 平年並40 / 偏多40）</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：🔥 神宮外苑與東大銀杏見頃最高峰 ｜ 黃金大道</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 東京金秋的最強句點！一天集齊東大百年銀杏、皇居與神宮外苑黃金雨。<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《東京喰種》、《東大特訓班 Dragon Zakura》（阿部寬熱血考進東大赤門）；《天氣之子》（神宮外苑與新宿天際線） ｜ 《東京愛情故事 Tokyo Love Story》（鈴木保奈美飾演的莉香與織田裕二飾演的完治在「明治神宮外苑銀杏大道」的世紀分別名場面！）；《HERO》（木村拓哉檢察官外苑片頭漫步）</div></div>
             <div class="culture-box">
@@ -3859,6 +3904,7 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 <div class="sp-src">單車店與醫院位置取自 OpenStreetMap，僅供定位參考；營業時間請以現場或電話為準。</div>
             </div>
             <div class="weather-box"><span class="weather-icon">☀️</span> 去年同日實測（氣象廳）：快晴 ｜ 氣溫 6.4°C ~ 20.0°C ｜ 降水 0.0mm ｜ 日照 7.1h</div>
+            <div class="seasonal-box seasonal-none"><span class="weather-icon">🔭</span> 本日不在氣象庁３か月予報（9月〜11月，2026-08-25 14:00 JST 發表）的範圍內；３か月予報：９月１８日（金）　１４時 的新一期會往後延伸涵蓋。</div>
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：神田明神古松 ｜ 683.7km 世界線圓滿閉環</div>
             <div class="highlight-badge">💡 <strong>在地車友實戰解析：</strong> 683.7km 世界線圓滿閉環！<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《Love Live!》（神田明神神社階梯特訓聖地、東條希巫女打工名所）；《命運石之門》（秋葉原柳森神社與電器街完結篇） ｜ 《秋葉原@DEEP》</div></div>
             <div class="culture-box">
