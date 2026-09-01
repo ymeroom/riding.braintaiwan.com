@@ -7,6 +7,10 @@
   {{WEATHER_WAR_ROOM}} 天氣作戰室（今日／明日 時間×地點矩陣、一週地點預報）
   {{WEATHER_JS}}       作戰室與每日卡片的天氣邏輯
   {{EXTRA_CSS}}        上述新區塊的樣式
+
+天氣有兩層，不要混用：逐日的「去年同日實測」與 Open-Meteo 即時預報留在原本位置；
+data/seasonal_outlook.json 是氣象庁３か月予報，屬於「月・區域平均的三分位機率」，
+只並列在同一格／同一張卡片旁做長期趨勢對照，不參與任何逐日判斷。
 """
 import json, io, os, html
 
@@ -21,9 +25,149 @@ def esc(s):
     return html.escape(str(s or ''), quote=True)
 
 
+# ─────────────────── JMA 季節預報（３か月予報） ───────────────────
+
+_CLS = {'気温': ('偏低', '平年並', '偏高'), '降水量': ('偏少', '平年並', '偏多')}
+
+
+def _short_prob(p, kind):
+    """三分位機率壓成表格塞得下的一句：最大階級 + 機率。並列最大值照氣象庁寫法並陳。"""
+    labels = _CLS[kind]
+    vals = [p['below'], p['normal'], p['above']]
+    mx = max(vals)
+    return '‧'.join(labels[i] for i, v in enumerate(vals) if v == mx) + f' {mx}%'
+
+
+def _long_prob(p, kind):
+    return p.get('zh') or _short_prob(p, kind)
+
+
+def _merge_regions(month, seas, codes):
+    """同一個月、多個預報區：文字與機率完全一致就併成一列掛兩個區名，不同才分列。"""
+    groups = []
+    for code in codes:
+        reg = seas['regions'].get(code)
+        m = reg['monthly'].get(month) if reg else None
+        if not m:
+            continue
+        for g in groups:
+            if g[1] == m:
+                g[0].append(reg['zh_name'])
+                break
+        else:
+            groups.append(([reg['zh_name']], m))
+    return [('・'.join(names), m) for names, m in groups]
+
+
+def day_outlook(day, seas):
+    """該日的（區域名, 當月展望）清單；該日落在預報期間外就回 []。"""
+    if not seas:
+        return []
+    info = seas['days'].get(str(day))
+    if not info or not info['covered']:
+        return []
+    return _merge_regions(info['month'], seas, info['regions'])
+
+
+def outlook_cell(day, seas):
+    """總覽表天氣欄裡，接在去年實測底下的那一小塊。"""
+    if not seas:
+        return ''
+    gs = day_outlook(day, seas)
+    if not gs:
+        return ('<div class="wx-outlook wx-none">🔭 不在本期３か月予報'
+                f'（{esc(seas["meta"]["target_label"])}）範圍</div>')
+    out = []
+    for names, m in gs:
+        tip = ' ／ '.join(x.strip() for x in (m.get('weather'), m.get('気温_text'),
+                                             m.get('降水量_text')) if x)
+        bits = [('氣溫 ' if k == '気温' else '降水 ') + _short_prob(m[k], k)
+                for k in ('気温', '降水量') if m.get(k)]
+        zh = m.get('weather_zh')
+        out.append(f'<div class="wx-outlook" title="{esc(tip)}">'
+                   f'🔭 <strong>JMA {esc(m["label"])}展望</strong>（{esc(names)}）'
+                   + (f'<br>{esc(zh)}' if zh else '')
+                   + (f'<br>{" ｜ ".join(bits)}' if bits else '') + '</div>')
+    return ''.join(out)
+
+
+def render_seasonal_day(day, seas):
+    """每日卡片裡，接在「去年同日實測」底下的季節預報列。"""
+    if not seas:
+        return ''
+    gs = day_outlook(day, seas)
+    if not gs:
+        return ('            <div class="seasonal-box seasonal-none"><span class="weather-icon">🔭</span> '
+                f'本日不在氣象庁３か月予報（{esc(seas["meta"]["target_label"])}，'
+                f'{esc(seas["meta"]["issued_label"])} 發表）的範圍內；'
+                f'{esc(seas["meta"]["next_release_text"])} 的新一期會往後延伸涵蓋。</div>')
+    rows = []
+    for names, m in gs:
+        seg = [f'<strong>{esc(m["label"])}・{esc(names)}</strong>']
+        if m.get('weather'):
+            zh = m.get('weather_zh')
+            seg.append(esc(m['weather'].strip()) + (f'（{esc(zh)}）' if zh else ''))
+        for k in ('気温', '降水量'):
+            if m.get(k):
+                seg.append(('氣溫 ' if k == '気温' else '降水量 ') + esc(_long_prob(m[k], k)))
+        rows.append(' ｜ '.join(seg))
+    return ('            <div class="seasonal-box"><span class="weather-icon">🔭</span> '
+            '<strong>氣象庁季節預報</strong>（月・區域平均的機率，不是本日天氣）：'
+            + '<br>'.join(rows) + '</div>')
+
+
+def render_seasonal_note(trip, seas):
+    """總覽表上方的一段說明：本期預報講了什麼、背景是什麼、下次什麼時候更新。"""
+    if not seas:
+        return ''
+    meta, enso = seas['meta'], seas['enso']
+    months, uncovered = [], []
+    for d in trip['days']:
+        info = seas['days'].get(str(d['day']))
+        if not info:
+            continue
+        if info['covered']:
+            if info['month'] not in months:
+                months.append(info['month'])
+        else:
+            uncovered.append(d['day'])
+    items = []
+    for mo in months:
+        for names, m in _merge_regions(mo, seas, ('010300', '010400')):
+            seg = [f'<strong>{esc(m["label"])}・{esc(names)}</strong>']
+            if m.get('weather'):
+                zh = m.get('weather_zh')
+                seg.append('天候「' + esc(m['weather'].strip()) + '」'
+                           + (f'（{esc(zh)}）' if zh else ''))
+            for k in ('気温', '降水量'):
+                if m.get(k):
+                    seg.append(('氣溫 ' if k == '気温' else '降水量 ') + esc(_long_prob(m[k], k)))
+            items.append('<li>' + ' ｜ '.join(seg) + '</li>')
+    season = seas['regions']['010300'].get('season') or {}
+    if season.get('気温'):
+        items.append(f'<li><strong>{esc(season.get("label", "向こう３か月"))}平均・關東甲信</strong> ｜ '
+                     f'氣溫 {esc(_long_prob(season["気温"], "気温"))}</li>')
+    enso_zh = '、'.join(enso.get('headline_zh') or [])
+    miss = ('　Day ' + '／'.join(str(x) for x in uncovered) + ' 落在預報期間之外。') if uncovered else ''
+    others = meta.get('other_releases') or {}
+    other_txt = ('（' + esc('；'.join(v['text'] for v in others.values())) + '）') if others else ''
+    return f"""        <div class="seasonal-note">
+            <div class="sn-head">🔭 氣象庁 {esc(meta['product'])} ｜ {esc(meta['issued_label'])} 發表，對象 {esc(meta['target_label'])}</div>
+            <ul>{''.join(items)}</ul>
+            <div class="sn-enso">🌊 背景：エルニーニョ監視速報 {esc(enso['no'])}（{esc(enso['issued_ja'])}）—
+                {esc('　'.join(enso['headline']))}{f'（{esc(enso_zh)}）' if enso_zh else ''}
+                <a href="{esc(enso['url'])}" target="_blank" rel="noopener">原文 ↗</a></div>
+            <div class="sn-warn">⚠️ 這是<strong>月・區域平均的三分位機率</strong>，不是逐日天氣，也不能拿來決定哪天騎哪一段——
+                逐日決策請用上方「天氣作戰室」的 Open-Meteo 時序預報。{miss}</div>
+            <div class="sn-next">🗓️ 下次更新：{esc(meta['next_release_text'])} {other_txt}
+                ｜ 重新抓取：<code>python scripts_v2/fetch_seasonal_outlook.py</code></div>
+        </div>
+"""
+
+
 # ─────────────────────────── 總覽表 ───────────────────────────
 
-def render_summary_table(trip):
+def render_summary_table(trip, seas=None):
     rows = []
     for d in trip['days']:
         n, h = d['nav'], d['hotel']
@@ -42,6 +186,7 @@ def render_summary_table(trip):
             km_cell += f"<br><small style=\"color:#B45309;\">實走 {pk} km</small>"
         wx = (f"{esc(w['icon'])} {esc(w['text'])} ｜ {w['lo']}°C ~ {w['hi']}°C<br>"
               f"降水 {w['rain']}mm ｜ 日照 {w['sun']}h") if w['lo'] is not None else esc(w['raw'])
+        wx += outlook_cell(d['day'], seas)
         rows.append(f"""                    <tr class="summary-row-clickable" onclick="scrollToDay({d['day']})" title="點擊直達 Day {d['day']} 詳細騎行日程">
                         <td><strong>{esc(d['date'])}<br><span style="color:#B91C1C;">Day {d['day']}</span></strong><br><a href="#day-{d['day']}" class="day-jump-badge" onclick="event.stopPropagation(); scrollToDay({d['day']}); return false;">👇 詳細日程 ➔</a><br>{badge}</td>
                         <td>{esc(d['route_line'])}</td>
@@ -52,7 +197,7 @@ def render_summary_table(trip):
                         <td>{esc(d['foliage'])}</td>
                     </tr>""")
     m = trip['meta']
-    return f"""        <h2 class="section-title">📊 19日每日里程、爬升、去年實測天氣與紅葉見頃總覽 ｜ 💡 點擊任一日程即可直達下方詳細規劃</h2>
+    return render_seasonal_note(trip, seas) + f"""        <h2 class="section-title">📊 19日每日里程、爬升、去年實測天氣＋JMA 季節預報與紅葉見頃總覽 ｜ 💡 點擊任一日程即可直達下方詳細規劃</h2>
         <div class="data-source-note">📐 里程與爬升：<strong>NAVITIME 自転車ルート実測</strong>（路線偏好「{m['source'].split('（')[1].split('）')[0] if '（' in m['source'] else '坡少'}」）；標高取自 NAVITIME 路線幾何三維座標，以 3 公尺遲滯門檻累加，與 Garmin／Strava 計法一致。全程合計 <strong>NAVITIME 最短路徑 {m['total_km']} km ／ 本計畫實走約 {m.get('total_planned_km', m['total_km'])} km ／ +{m['total_gain']:,} m</strong>。<br>兩個里程都是真的：NAVITIME 只取得每日 4–8 個路線節點，節點之間由它自選最短路；本計畫刻意繞走自行車專用道與避坑舊道，因此實走較長。爬升以 NAVITIME 為準。</div>
         <div class="table-wrapper">
             <table>
@@ -63,8 +208,8 @@ def render_summary_table(trip):
                         <th style="width: 8%;">📏 里程</th>
                         <th style="width: 11%;">⛰️ 爬升/下降</th>
                         <th style="width: 16%;">🏨 住宿飯店與地圖導航</th>
-                        <th style="width: 15%;">☀️ 去年實測天氣</th>
-                        <th style="width: 16%;">🍁 紅葉見頃實績</th>
+                        <th style="width: 18%;">☀️ 去年實測 ＋ 🔭 JMA 季節預報</th>
+                        <th style="width: 13%;">🍁 紅葉見頃實績</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -294,7 +439,7 @@ def render_bailout(d):
             </div>"""
 
 
-def render_day_cards(trip, songs):
+def render_day_cards(trip, songs, seas=None):
     out = []
     for d in trip['days']:
         n, w, st = d['nav'], d['weather_hist'], d['stage']
@@ -351,6 +496,7 @@ def render_day_cards(trip, songs):
 {render_bailout(d)}
 {render_support(d, trip)}
             <div class="weather-box"><span class="weather-icon">{esc(w['icon'])}</span> 去年同日實測（氣象廳）：{esc(w['text'])} ｜ 氣溫 {w['lo']}°C ~ {w['hi']}°C ｜ 降水 {w['rain']}mm ｜ 日照 {w['sun']}h</div>
+{render_seasonal_day(d['day'], seas)}
             <div class="foliage-box"><span class="foliage-icon">🍁</span> 紅葉預測：{esc(d['foliage'])}</div>
             <div class="highlight-badge">{d['expert_tip'] or ''}</div>
 {cul}
@@ -799,6 +945,22 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 def render_extra_css():
     return r"""
+/* ── JMA 季節預報（３か月予報）── */
+.seasonal-note{background:#F5F3FF;border:1px solid #DDD6FE;color:#4C1D95;border-radius:12px;padding:14px 17px;font-size:12.5px;line-height:1.85;margin-bottom:14px}
+.seasonal-note .sn-head{font-size:14px;font-weight:800;margin-bottom:6px}
+.seasonal-note ul{margin:4px 0 8px 20px;padding:0}
+.seasonal-note li{margin:3px 0}
+.seasonal-note .sn-enso{border-top:1px dashed #C4B5FD;padding-top:8px;margin-top:4px}
+.seasonal-note .sn-warn{background:#FFF7ED;border:1px solid #FED7AA;color:#9A3412;border-radius:8px;padding:8px 11px;margin-top:8px}
+.seasonal-note .sn-next{margin-top:8px;color:#6D28D9;font-weight:700}
+.seasonal-note code{background:#EDE9FE;border-radius:4px;padding:1px 6px;font-size:11.5px}
+.seasonal-note a{color:#6D28D9}
+/* 表格欄內：色彩交給主題（深色列會反轉），只用虛線與 🔭 跟上面的去年實測分開 */
+.wx-outlook{margin-top:7px;padding-top:6px;border-top:1px dashed rgba(139,92,246,.5);color:inherit;opacity:.88;font-size:11px;line-height:1.6}
+.wx-outlook.wx-none{border-top-color:rgba(148,163,184,.5);opacity:.6}
+.seasonal-box{background:#F5F3FF;border:1px solid #DDD6FE;color:#4C1D95;border-radius:8px;padding:10px 13px;font-size:12.5px;line-height:1.8;margin-top:10px}
+.seasonal-box.seasonal-none{background:#F8FAFC;border-color:#E2E8F0;color:#64748B}
+
 /* ── 天氣作戰室 ── */
 .war-room{background:#FFF;border:1px solid var(--card-border);border-radius:14px;padding:18px;margin-bottom:28px;box-shadow:0 4px 14px rgba(0,0,0,.04)}
 .wr-banner{border-radius:8px;padding:10px 14px;font-size:13.5px;margin-bottom:14px}
@@ -968,14 +1130,15 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
 def main():
     trip = load('data/trip.json')
     songs = load('data/songs.json')
+    seas = load('data/seasonal_outlook.json')
     tpl = io.open(os.path.join(ROOT, 'templates/index_template.html'), encoding='utf-8').read()
     out = (tpl
            .replace('<!--{{EMERGENCY_CARD}}-->', render_emergency_card(trip))
            .replace('<!--{{STATS_GRID}}-->', render_stats_grid(trip))
            .replace('<!--{{BUFFER_DAYS}}-->', render_buffer_days(trip))
            .replace('<!--{{WEATHER_WAR_ROOM}}-->', render_war_room(trip))
-           .replace('<!--{{SUMMARY_TABLE}}-->', render_summary_table(trip))
-           .replace('<!--{{DAY_CARDS}}-->', render_day_cards(trip, songs))
+           .replace('<!--{{SUMMARY_TABLE}}-->', render_summary_table(trip, seas))
+           .replace('<!--{{DAY_CARDS}}-->', render_day_cards(trip, songs, seas))
            .replace('<!--{{WEATHER_JS}}-->', render_weather_js(trip))
            .replace('/*{{EXTRA_CSS}}*/', render_extra_css()))
     leftover = [p for p in ('{{EMERGENCY_CARD}}', '{{STATS_GRID}}', '{{BUFFER_DAYS}}', '{{WEATHER_WAR_ROOM}}',
