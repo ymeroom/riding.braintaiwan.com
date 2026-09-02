@@ -11,6 +11,11 @@
 天氣有兩層，不要混用：逐日的「去年同日實測」與 Open-Meteo 即時預報留在原本位置；
 data/seasonal_outlook.json 是氣象庁３か月予報，屬於「月・區域平均的三分位機率」，
 只並列在同一格／同一張卡片旁做長期趨勢對照，不參與任何逐日判斷。
+
+紅葉也是同樣兩層：每日卡片的「🍁 見頃實績」是去年同日的地點性格；
+data/foliage_forecast.json 是 JMC 紅葉見頃予想（市級標本木、每月更新），
+與季節預報同一層，只在總覽表上方並列做趨勢對照，不參與逐日判斷。手動維護，
+每年 9 月上旬起 JMC 逐月發表新一期（來源見 JSON 內 _source）。
 """
 import json, io, os, html, re
 
@@ -182,9 +187,41 @@ def render_seasonal_note(trip, seas):
 """
 
 
+def render_foliage_note(fol):
+    """總覽表上方：JMC 紅葉見頃予想。與季節預報同一層 —— 月・區域平均，不參與逐日判斷。
+
+    每日卡片的「🍁 紅葉見頃實績」是去年同日的地點性格；這一塊是今年的預報趨勢，兩者並列對照。
+    """
+    if not fol:
+        return ''
+    reg = fol['regional']
+    crows = ''.join(
+        f'<tr><td><strong>{esc(c["name"])}</strong><br><small>{esc(c["role"])}</small></td>'
+        f'<td>{esc(c["red"])}<br><small>平年 {esc(c["red_delta"])} 天</small></td>'
+        f'<td>{esc(c["yellow"])}<br><small>平年 {esc(c["yellow_delta"])} 天</small></td>'
+        f'<td>{esc(c.get("caveat", "—"))}</td></tr>'
+        for c in fol['cities'])
+    reads = ''.join(f'<li>{esc(x)}</li>' for x in fol.get('trip_readout', []))
+    return f"""        <div class="seasonal-note foliage-note">
+            <div class="sn-head">🍁 {esc(fol['_product'])} ｜ {esc(fol['_issued_label'])}</div>
+            <div class="fn-region">🗾 <strong>{esc(reg['_area'])}</strong>（{esc(reg['_updated'])}）
+                ｜ {esc(reg['temp'])} {esc(reg['koyo'])} {esc(reg['kouyou'])}</div>
+            <div class="table-wrapper"><table class="fn-table"><thead><tr>
+                <th>觀測點（行程對應）</th><th>楓葉見頃</th><th>銀杏見頃</th><th>注意</th>
+            </tr></thead><tbody>{crows}</tbody></table></div>
+            <ul>{reads}</ul>
+            <div class="sn-warn">⚠️ 這是<strong>市級標本木的區域平均預報</strong>，不是景點見頃日，也不能拿來排哪天騎哪段——
+                景點海拔／樹種會讓實際見頃前後偏移一週以上。每日卡片的「🍁 見頃實績」是去年同日的地點性格，兩者對照著看。</div>
+            <div class="sn-next">🗓️ 下次更新：{esc(fol['_next_release'])}
+                ｜ 來源：<a href="{esc(fol['_source'])}" target="_blank" rel="noopener">JMC 紅葉予想 ↗</a>
+                ｜ {esc(fol['_verified'])}</div>
+        </div>
+"""
+
+
 # ─────────────────────────── 總覽表 ───────────────────────────
 
-def render_summary_table(trip, seas=None):
+def render_summary_table(trip, seas=None, fol=None):
     rows = []
     for d in trip['days']:
         n, h = d['nav'], d['hotel']
@@ -214,7 +251,7 @@ def render_summary_table(trip, seas=None):
                         <td>{esc(d['foliage'])}</td>
                     </tr>""")
     m = trip['meta']
-    return render_seasonal_note(trip, seas) + f"""        <h2 class="section-title">📊 19日每日里程、爬升、去年實測天氣＋JMA 季節預報與紅葉見頃總覽 ｜ 💡 點擊任一日程即可直達下方詳細規劃</h2>
+    return render_seasonal_note(trip, seas) + render_foliage_note(fol) + f"""        <h2 class="section-title">📊 19日每日里程、爬升、去年實測天氣＋JMA 季節預報與紅葉見頃總覽 ｜ 💡 點擊任一日程即可直達下方詳細規劃</h2>
         <div class="data-source-note">📐 里程與爬升：<strong>NAVITIME 自転車ルート実測</strong>（路線偏好「{m['source'].split('（')[1].split('）')[0] if '（' in m['source'] else '坡少'}」）；標高取自 NAVITIME 路線幾何三維座標，以 3 公尺遲滯門檻累加，與 Garmin／Strava 計法一致。全程合計 <strong>NAVITIME 最短路徑 {m['total_km']} km ／ 本計畫實走約 {m.get('total_planned_km', m['total_km'])} km ／ +{m['total_gain']:,} m</strong>。<br>兩個里程都是真的：NAVITIME 只取得每日 4–8 個路線節點，節點之間由它自選最短路；本計畫刻意繞走自行車專用道與避坑舊道，因此實走較長。爬升以 NAVITIME 為準。</div>
         <div class="table-wrapper">
             <table>
@@ -972,6 +1009,16 @@ def render_extra_css():
 .seasonal-note .sn-next{margin-top:8px;color:#6D28D9;font-weight:700}
 .seasonal-note code{background:#EDE9FE;border-radius:4px;padding:1px 6px;font-size:11.5px}
 .seasonal-note a{color:#6D28D9}
+/* 紅葉見頃予想：與季節預報同一層，改用楓紅色系區隔 */
+.foliage-note{background:#FEF2F2;border-color:#FECACA;color:#7F1D1D}
+.foliage-note .sn-head{color:#991B1B}
+.foliage-note .sn-next{color:#B91C1C}
+.foliage-note .sn-next a,.foliage-note a{color:#B91C1C}
+.foliage-note .fn-region{border-top:1px dashed #FCA5A5;padding-top:8px;margin-top:4px}
+.foliage-note .fn-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:11.5px}
+.foliage-note .fn-table th,.foliage-note .fn-table td{border:1px solid #FECACA;padding:5px 7px;text-align:left;vertical-align:top}
+.foliage-note .fn-table th{background:#FEE2E2;font-weight:800}
+.foliage-note .fn-table small{opacity:.75}
 /* 表格欄內：色彩交給主題（深色列會反轉），只用虛線與 🔭 跟上面的去年實測分開 */
 .wx-outlook{margin-top:7px;padding-top:6px;border-top:1px dashed rgba(139,92,246,.5);color:inherit;opacity:.88;font-size:11px;line-height:1.6}
 .wx-outlook.wx-none{border-top-color:rgba(148,163,184,.5);opacity:.6}
@@ -1148,13 +1195,14 @@ def main():
     trip = load('data/trip.json')
     songs = load('data/songs.json')
     seas = load('data/seasonal_outlook.json')
+    fol = load('data/foliage_forecast.json')
     tpl = io.open(os.path.join(ROOT, 'templates/index_template.html'), encoding='utf-8').read()
     out = (tpl
            .replace('<!--{{EMERGENCY_CARD}}-->', render_emergency_card(trip))
            .replace('<!--{{STATS_GRID}}-->', render_stats_grid(trip))
            .replace('<!--{{BUFFER_DAYS}}-->', render_buffer_days(trip))
            .replace('<!--{{WEATHER_WAR_ROOM}}-->', render_war_room(trip))
-           .replace('<!--{{SUMMARY_TABLE}}-->', render_summary_table(trip, seas))
+           .replace('<!--{{SUMMARY_TABLE}}-->', render_summary_table(trip, seas, fol))
            .replace('<!--{{DAY_CARDS}}-->', render_day_cards(trip, songs, seas))
            .replace('<!--{{WEATHER_JS}}-->', render_weather_js(trip))
            .replace('/*{{EXTRA_CSS}}*/', render_extra_css()))
