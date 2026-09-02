@@ -2,8 +2,8 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>東京・富士五湖・伊豆・東京灣 19日單車騎旅 ｜ 19首 Suno AI 官方雙主唱雙風格音樂詞庫 (熱血搖滾 ✕ 放鬆民謠爵士・雙一鍵複製)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>東京・富士五湖・伊豆・東京灣 19日單車騎旅 ｜ 19首 Suno AI 官方雙主唱旗艦音樂詞庫 (45歲台男 ✕ 25歲日女・雙一鍵複製)</title>
     <style>
         :root {
             --bg-dark: #0B0F19;
@@ -15,7 +15,7 @@
             --primary: #2563EB;
             --accent: #F59E0B;
             --purple: #A855F7;
-            --emerald: #10B981;
+            --success: #10B981;
         }
 
         * {
@@ -42,7 +42,7 @@
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 24px 28px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -94,13 +94,12 @@
             border-color: #3B82F6;
         }
 
-        /* 雙主唱音色配置橫幅 */
         .vocal-banner {
             background: linear-gradient(90deg, rgba(37, 99, 235, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%);
             border: 1px solid #3B82F6;
             border-radius: 12px;
             padding: 14px 18px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -111,7 +110,7 @@
 
         .vocal-tag-box {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -119,7 +118,7 @@
             padding: 4px 10px;
             border-radius: 6px;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 12.5px;
             display: inline-flex;
             align-items: center;
             gap: 4px;
@@ -135,69 +134,6 @@
             background: rgba(236, 72, 153, 0.25);
             border: 1px solid #F472B6;
             color: #FBCFE8;
-        }
-
-        /* 全局風格切換大按鈕 */
-        .style-master-bar {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 14px 18px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .style-master-title {
-            font-size: 14.5px;
-            font-weight: 800;
-            color: #F8FAFC;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .style-switcher-btns {
-            display: flex;
-            gap: 10px;
-        }
-
-        .style-switch-btn {
-            background: #1E293B;
-            border: 2px solid #334155;
-            color: #94A3B8;
-            padding: 9px 18px;
-            border-radius: 10px;
-            font-size: 13.5px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            user-select: none;
-        }
-
-        .style-switch-btn:hover {
-            border-color: #64748B;
-            color: #FFFFFF;
-        }
-
-        .style-switch-btn.active.rock {
-            background: linear-gradient(135deg, #1E1B4B 0%, #B91C1C 100%);
-            border-color: #EF4444;
-            color: #FFFFFF;
-            box-shadow: 0 0 16px rgba(239, 68, 68, 0.4);
-        }
-
-        .style-switch-btn.active.folk {
-            background: linear-gradient(135deg, #064E3B 0%, #D97706 100%);
-            border-color: #10B981;
-            color: #FFFFFF;
-            box-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
         }
 
         .quick-nav-bar {
@@ -291,56 +227,24 @@
             margin-bottom: 14px;
         }
 
-        /* 提示詞卡片區塊 */
         .prompt-box {
             background: #0F172A;
             border: 1px solid #334155;
             border-left: 4px solid var(--accent);
             border-radius: 8px;
-            padding: 14px;
+            padding: 12px 14px;
             margin-bottom: 16px;
             position: relative;
-            transition: all 0.2s ease;
-        }
-
-        .prompt-box.folk-mode {
-            border-left-color: #10B981;
-            background: #06201B;
         }
 
         .prompt-header {
-            font-size: 12.5px;
+            font-size: 12px;
             font-weight: 700;
             color: var(--accent);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .prompt-header.folk-mode {
-            color: #34D399;
-        }
-
-        .prompt-mode-indicator {
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 800;
-        }
-
-        .mode-rock {
-            background: #7F1D1D;
-            color: #FECACA;
-            border: 1px solid #EF4444;
-        }
-
-        .mode-folk {
-            background: #064E3B;
-            color: #A7F3D0;
-            border: 1px solid #10B981;
         }
 
         .prompt-text {
@@ -348,7 +252,6 @@
             font-size: 12px;
             color: #E2E8F0;
             word-break: break-all;
-            line-height: 1.6;
         }
 
         .copy-btn {
@@ -429,341 +332,15 @@
             display: none;
             z-index: 9999;
         }
-    
-        /* === Samsung S23 Ultra Mobile Optimizations for Soundtrack === */
-        @media (max-width: 768px) {
-            body {
-                padding-bottom: 80px;
-                font-size: 14px;
-            }
-            .header-banner {
-                padding: 24px 16px;
-                border-radius: 0;
-            }
-            .header-banner h1 {
-                font-size: 20px;
-                line-height: 1.35;
-            }
-            .header-banner p {
-                font-size: 12.5px;
-            }
-            .style-toggle-container {
-                padding: 12px 14px;
-                border-radius: 12px;
-                margin-bottom: 16px;
-            }
-            .style-btn-group {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-            .style-btn {
-                padding: 12px 10px;
-                font-size: 13px;
-                min-height: 48px;
-                justify-content: center;
-            }
-            .song-card {
-                padding: 16px 14px;
-                border-radius: 12px;
-                margin-bottom: 16px;
-            }
-            .song-title {
-                font-size: 16px;
-            }
-            .copy-btn {
-                width: 100%;
-                min-height: 48px;
-                font-size: 13.5px;
-                justify-content: center;
-                margin-top: 8px;
-            }
-            .mobile-bottom-bar {
-                display: flex !important;
-            }
-        }
-
-        .mobile-bottom-bar {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(15, 23, 42, 0.96);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
-            z-index: 9999;
-            justify-content: space-around;
-            gap: 6px;
-        }
-        .mobile-bar-btn {
-            flex: 1;
-            background: #1E293B;
-            border: 1px solid #334155;
-            color: #F8FAFC;
-            padding: 9px 4px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            min-height: 44px;
-        }
-        .mobile-bar-btn.primary {
-            background: #2563EB;
-            border-color: #3B82F6;
-            color: #FFFFFF;
-        }
-        .mobile-bar-btn.accent {
-            background: #D97724;
-            border-color: #F59E0B;
-            color: #FFFFFF;
-        }
-    
-    
-        /* ==========================================================================
-           🎨 5 大主題風格系統 (5 Visual Themes Engine)
-           ========================================================================== */
-        :root, [data-theme="cycling"] {
-            --bg-dark: #12141A;
-            --card-bg: #1E232E;
-            --border: #333B4D;
-            --text-light: #F3F4F6;
-            --text-muted: #9CA3AF;
-            --primary: #FB7185;
-            --accent: #FBBF24;
-            --header-grad: linear-gradient(135deg, #181B22 0%, #2A1728 50%, #0F172A 100%);
-            --theme-tag: "🚴 單車專業風";
-        }
-        [data-theme="indie"] {
-            --bg-dark: #F4EFEA;
-            --card-bg: #FFFFFF;
-            --border: #E5DDD3;
-            --text-light: #3E3832;
-            --text-muted: #786C60;
-            --primary: #8C6239;
-            --accent: #607274;
-            --header-grad: linear-gradient(135deg, #5C4B40 0%, #8C6239 50%, #4A3E37 100%);
-            --theme-tag: "🌿 文藝青年風";
-        }
-        [data-theme="sport"] {
-            --bg-dark: #080B11;
-            --card-bg: #111827;
-            --border: #1F2937;
-            --text-light: #F8FAFC;
-            --text-muted: #94A3B8;
-            --primary: #FC4C02;
-            --accent: #10B981;
-            --header-grad: linear-gradient(135deg, #0F172A 0%, #7C2D12 50%, #1E1B4B 100%);
-            --theme-tag: "⚡ 運動極限風";
-        }
-        [data-theme="japan"] {
-            --bg-dark: #FDF8F5;
-            --card-bg: #FFFFFF;
-            --border: #FBCFE8;
-            --text-light: #1F2937;
-            --text-muted: #4B5563;
-            --primary: #DC2626;
-            --accent: #DB2777;
-            --header-grad: linear-gradient(135deg, #881337 0%, #BE123C 50%, #991B1B 100%);
-            --theme-tag: "🎌 哈日和風";
-        }
-        [data-theme="outdoor"] {
-            --bg-dark: #F0FDF4;
-            --card-bg: #FFFFFF;
-            --border: #BBF7D0;
-            --text-light: #14532D;
-            --text-muted: #374151;
-            --primary: #059669;
-            --accent: #D97706;
-            --header-grad: linear-gradient(135deg, #064E3B 0%, #047857 50%, #78350F 100%);
-            --theme-tag: "⛺ 休閒野營風";
-        }
-
-        body {
-            background-color: var(--bg-dark) !important;
-            color: var(--text-light) !important;
-            transition: background-color 0.25s ease, color 0.25s ease;
-        }
-        header {
-            background: var(--header-grad) !important;
-        }
-
-        .theme-switcher-compact {
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            padding: 8px 12px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .theme-btn-group-compact {
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-        }
-        .theme-btn-mini {
-            background: #1E293B;
-            border: 1px solid #334155;
-            color: #CBD5E1;
-            padding: 5px 9px;
-            border-radius: 6px;
-            font-size: 11.5px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.15s ease;
-        }
-        .theme-btn-mini:hover {
-            color: #FFFFFF;
-            border-color: #64748B;
-        }
-        .theme-btn-mini.active {
-            background: #2563EB;
-            color: #FFFFFF;
-            border-color: #60A5FA;
-        }
-
-    
-        /* ==========================================================================
-           🎨 5 大主題風格置頂切換列 (Sticky Top 5-Themes Switcher Bar)
-           ========================================================================== */
-        .top-theme-sticky-nav {
-            position: sticky;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            z-index: 99999;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 2px solid rgba(59, 130, 246, 0.4);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            padding: 8px 12px;
-            margin-bottom: 12px;
-        }
-
-        .theme-nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .theme-nav-title {
-            color: #FFFFFF;
-            font-size: 13.5px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-
-        .theme-btn-group {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .theme-pill-btn {
-            background: #1E293B;
-            border: 1px solid #475569;
-            color: #E2E8F0;
-            padding: 7px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            user-select: none;
-        }
-
-        .theme-pill-btn:hover {
-            transform: translateY(-1px);
-            color: #FFFFFF;
-            border-color: #94A3B8;
-            background: #334155;
-        }
-
-        .theme-pill-btn.active {
-            background: #2563EB !important;
-            color: #FFFFFF !important;
-            border-color: #60A5FA !important;
-            box-shadow: 0 0 12px rgba(37, 99, 235, 0.6) !important;
-        }
-
-        @media (max-width: 768px) {
-            .top-theme-sticky-nav {
-                padding: 6px 8px;
-            }
-            .theme-nav-inner {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-            }
-            .theme-btn-group {
-                width: 100%;
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 5px;
-            }
-            .theme-pill-btn {
-                justify-content: center;
-                padding: 8px 4px;
-                font-size: 11px;
-                border-radius: 6px;
-            }
-            .theme-pill-btn:nth-child(4), .theme-pill-btn:nth-child(5) {
-                grid-column: span 1.5;
-            }
-        }
-
     </style>
 </head>
 <body>
-
-<!-- 🎨 5 大主題風格置頂即時切換列 (Sticky Top) -->
-<div class="top-theme-sticky-nav">
-    <div class="theme-nav-inner">
-        <div class="theme-nav-title">
-            <span>🎨 5 大風格切換：</span>
-            <span id="current-theme-name" style="color: #38BDF8; font-weight: 800;">🚴 4. 單車風格</span>
-        </div>
-        <div class="theme-btn-group">
-            <button type="button" class="theme-pill-btn" onclick="setTheme('indie')">🌿 1. 文藝青年</button>
-            <button type="button" class="theme-pill-btn" onclick="setTheme('sport')">⚡ 2. 運動風格</button>
-            <button type="button" class="theme-pill-btn" onclick="setTheme('japan')">🎌 3. 哈日風格</button>
-            <button type="button" class="theme-pill-btn active" onclick="setTheme('cycling')">🚴 4. 單車風格</button>
-            <button type="button" class="theme-pill-btn" onclick="setTheme('outdoor')">⛺ 5. 休閒風格</button>
-        </div>
-    </div>
-</div>
-
 
 <div class="container">
     <header>
         <div class="header-title">
             <h1>東京・富士五湖・伊豆・東京灣 19日秋季單車騎旅</h1>
-            <p>🎵 19首 Suno AI 官方雙主唱雙風格音樂詞庫 ｜ 45歲台男 (中文) ✕ 25歲日女 (日語) ✕ 搖滾/放鬆雙風格切換 ✕ 雙一鍵複製</p>
+            <p>🎵 19首 Suno AI 官方雙主唱旗艦音樂詞庫 ｜ 45歲台灣男性 (漢語) ✕ 25歲日本女性 (日本語) ✕ 雙一鍵複製 ✕ Anisong & J-Rock</p>
         </div>
         <div class="nav-links">
             <a href="tokyo_fuji_cycling_itinerary_19days_v2.html" class="nav-btn primary">📋 返回 19日總行程表 ➔</a>
@@ -771,30 +348,15 @@
         </div>
     </header>
 
-    <!-- 雙主唱音色配置橫幅 -->
+    <!-- 雙主唱設定說明橫幅 -->
     <div class="vocal-banner">
         <div>
-            <strong>🎤 雙主唱音色配置架構（Dual Lead Vocals Architecture）：</strong>
+            <strong>🎤 雙主唱音色配置模式（Dual Lead Vocals Architecture）：</strong>
         </div>
         <div class="vocal-tag-box">
-            <span class="vocal-tag vocal-male">👨 45歲台灣男性：溫暖磁性/歷練男聲（主唱中文段落）</span>
+            <span class="vocal-tag vocal-male">👨 45歲台灣男性：溫暖磁性/搖滾男聲（主唱中文段落）</span>
             <span class="vocal-tag vocal-female">👩 25歲日本女性：清亮甜美/Anisong高音（主唱日語段落）</span>
-            <span class="vocal-tag" style="background: rgba(168, 85, 247, 0.25); border: 1px solid #C084FC; color: #E9D5FF;">✨ 副歌/過門：雙語男女聲部高亢和聲合唱</span>
-        </div>
-    </div>
-
-    <!-- 全局曲風即時切換列 -->
-    <div class="style-master-bar">
-        <div class="style-master-title">
-            <span>🎛️ 即時切換全曲風格模式 (Choose Music Style)：</span>
-        </div>
-        <div class="style-switcher-btns">
-            <button id="btnStyleRock" class="style-switch-btn active rock" onclick="switchGlobalStyle('rock')">
-                🎸 熱血動漫搖滾版 (Anime Rock / J-POP)
-            </button>
-            <button id="btnStyleFolk" class="style-switch-btn folk" onclick="switchGlobalStyle('folk')">
-                ☕ 放鬆民謠爵士版 (Folk / Bossa Nova / Chill Jazz)
-            </button>
+            <span class="vocal-tag" style="background: rgba(168, 85, 247, 0.25); border: 1px solid #C084FC; color: #E9D5FF;">✨ 副歌/過門：雙語男女聲部高亢合唱</span>
         </div>
     </div>
 
@@ -821,7 +383,7 @@
         <a href="#track-19" class="track-nav-btn">T19: Day 19</a>
     </div>
 
-    <!-- 19 首曲目詳細卡片 (含風格即時切換與雙一鍵複製) -->
+    <!-- 19 首曲目詳細卡片 (含風格提示詞與歌詞一鍵複製) -->
     <div class="track-card" id="track-1">
         <div class="track-header">
             <div class="track-title-box">
@@ -834,16 +396,12 @@
             🎬 <strong>影視動漫與歷史意象：</strong> 《命運石之門》✕《飆速宅男》✕《正宗哥吉拉》✕ 秋葉原出城至高尾山口
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-1">
-            <div class="prompt-header" id="prompt-header-1">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-1">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(1, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-1', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-1">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, warm raspy rock tenor) and young Japanese female vocal (25yo, bright clear Anisong soprano), powerful male-female harmonies, Upbeat J-Rock, energetic anime opening, fast driving drums, bright electric guitar riffs, synthesizer arpeggio, Steins;Gate vibe, 175 BPM</div>
+            <div class="prompt-text" id="prompt-1">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, warm raspy rock tenor) and young Japanese female vocal (25yo, bright clear Anisong soprano), powerful male-female harmonies, Upbeat J-Rock, energetic anime opening, fast driving drums, bright electric guitar riffs, synthesizer arpeggio, Steins;Gate vibe, 175 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -923,16 +481,12 @@ Fly into the twilight sky!
             🎬 <strong>影視動漫與歷史意象：</strong> 《頭文字D》✕《信長協奏曲》✕ 縣道35秋山隱世溪谷 ➔ 都留
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-2">
-            <div class="prompt-header" id="prompt-header-2">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-2">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(2, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-2', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-2">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, gritty rock baritone) and young Japanese female vocal (25yo, high-energy Eurobeat Anisong soprano), High-energy Anime Rock, Eurobeat-inspired driving beat, screaming electric guitar solo, punchy bassline, Initial D style, 168 BPM</div>
+            <div class="prompt-text" id="prompt-2">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, gritty rock baritone) and young Japanese female vocal (25yo, high-energy Eurobeat Anisong soprano), High-energy Anime Rock, Eurobeat-inspired driving beat, screaming electric guitar solo, punchy bassline, Initial D style, 168 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -1011,16 +565,12 @@ Ride through the canyon wind!
             🎬 <strong>影視動漫與歷史意象：</strong> 《你的名字》✕《名偵探柯南》✕ 忍野八海 ✕ 雙湖見頃 ➔ 河口湖
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-3">
-            <div class="prompt-header" id="prompt-header-3">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-3">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(3, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-3', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-3">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, emotional warm balladeer) and young Japanese female vocal (25yo, ethereal emotional RADWIMPS-style soprano), Emotional Anime Pop Rock, sweeping cinematic strings, piano intro, soaring harmonies, 142 BPM</div>
+            <div class="prompt-text" id="prompt-3">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, emotional warm balladeer) and young Japanese female vocal (25yo, ethereal emotional RADWIMPS-style soprano), Emotional Anime Pop Rock, sweeping cinematic strings, piano intro, soaring harmonies, 142 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -1042,7 +592,7 @@ Ride through the canyon wind!
 [Verse 2 - 25yo Japanese Female Solo]
 山中湖の波間に 逆さ富士が揺れる
 旭日丘の紅葉、湖畔を真っ赤に染めて
-新倉山的五重塔、絵画のような絶景
+新倉山の五重塔、絵画のような絶景
 風と光が 聖なる山を包み込む
 息をのむほどの 美しさに抱かれて
 
@@ -1097,16 +647,12 @@ Touch the reflection of Mt. Fuji!
             🎬 <strong>影視動漫與歷史意象：</strong> 《搖曳露營△ Yuru Camp》封神第一話聖地 ✕ 本棲湖浩庵逆富士
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-4">
-            <div class="prompt-header" id="prompt-header-4">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-4">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(4, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-4', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-4">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, relaxed warm acoustic folk) and young Japanese female vocal (25yo, cheerful cute Yuru Camp Anisong vocal), Acoustic Anime Pop, cheerful folk rock, acoustic guitar strumming, whistling, warm mandolin, cozy bass groove, 128 BPM</div>
+            <div class="prompt-text" id="prompt-4">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, relaxed warm acoustic folk) and young Japanese female vocal (25yo, cheerful cute Yuru Camp Anisong vocal), Acoustic Anime Pop, cheerful folk rock, acoustic guitar strumming, whistling, warm mandolin, cozy bass groove, 128 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -1183,16 +729,12 @@ Shiny days, ride with the breeze!
             🎬 <strong>影視動漫與歷史意象：</strong> 《幽靈公主》✕ 青木原原始樹海 ✕ 鳴澤冰穴 ✕ 甲州餺飥
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-5">
-            <div class="prompt-header" id="prompt-header-5">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-5">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(5, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-5', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-5">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, deep storytelling baritone) and young Japanese female vocal (25yo, pure mystical Mononoke-style soprano), Mystical Anime Ballad, ambient orchestral, cinematic Japanese flute (shinobue), taiko drum beat, warm electric piano, 95 BPM</div>
+            <div class="prompt-text" id="prompt-5">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, deep storytelling baritone) and young Japanese female vocal (25yo, pure mystical Mononoke-style soprano), Mystical Anime Ballad, ambient orchestral, cinematic Japanese flute (shinobue), taiko drum beat, warm electric piano, 95 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -1269,16 +811,12 @@ Breathe in the ancient mountain air!
             🎬 <strong>影視動漫與歷史意象：</strong> 《鎌倉殿的13人》✕ 朝霧高原 ✕ 白糸之瀑 ➔ 富士宮千米長下坡
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-6">
-            <div class="prompt-header" id="prompt-header-6">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-6">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(6, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-6', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-6">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, powerful aggressive rock lead) and young Japanese female vocal (25yo, piercing high-octane symphonic rock Anisong soprano), Fast-paced Symphonic J-Rock, blazing guitar riffs, dramatic string sections, thunderous drums, 172 BPM</div>
+            <div class="prompt-text" id="prompt-6">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, powerful aggressive rock lead) and young Japanese female vocal (25yo, piercing high-octane symphonic rock Anisong soprano), Fast-paced Symphonic J-Rock, blazing guitar riffs, dramatic string sections, thunderous drums, 172 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -1355,16 +893,12 @@ Descending from the mountain throne!
             🎬 <strong>影視動漫與歷史意象：</strong> 《Love Live! Sunshine!!》✕《萬葉集》田子浦 ➔ 千本松原海堤 ➔ 沼津 ➔ 三島
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-7">
-            <div class="prompt-header" id="prompt-header-7">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-7">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(7, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-7', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-7">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, energetic warm pop-rock voice) and young Japanese female vocal (25yo, sparkling bright Love Live idol soprano), Sparkling Anime Idol Pop Rock, energetic brass section, driving synth-pop beat, catchy chorus, ocean breeze melody, 160 BPM</div>
+            <div class="prompt-text" id="prompt-7">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, energetic warm pop-rock voice) and young Japanese female vocal (25yo, sparkling bright Love Live idol soprano), Sparkling Anime Idol Pop Rock, energetic brass section, driving synth-pop beat, catchy chorus, ocean breeze melody, 160 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -1441,16 +975,12 @@ Shine bright like the ocean waves!
             🎬 <strong>影視動漫與歷史意象：</strong> 《伊豆的舞孃》✕《月薪嬌妻》修善寺溫泉 ➔ 温泉宿 水口
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-8">
-            <div class="prompt-header" id="prompt-header-8">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-8">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(8, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-8', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-8">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, mellow gentle acoustic ballad voice) and young Japanese female vocal (25yo, sweet elegant romantic J-Pop vocal), Traditional-Modern J-Pop, shamisen fusion, gentle acoustic guitar, soft piano, nostalgic romantic melody, Hoshino Gen vibe, 118 BPM</div>
+            <div class="prompt-text" id="prompt-8">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, mellow gentle acoustic ballad voice) and young Japanese female vocal (25yo, sweet elegant romantic J-Pop vocal), Traditional-Modern J-Pop, shamisen fusion, gentle acoustic guitar, soft piano, nostalgic romantic melody, Hoshino Gen vibe, 118 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -1527,16 +1057,12 @@ Dream in the autumn mist of Shuzenji.
             🎬 <strong>影視動漫與歷史意象：</strong> 《藍海少女！》✕《火曜懸疑劇場》斷崖 ➔ 一碧湖 ➔ 城崎海岸 ➔ KAWANA
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-9">
-            <div class="prompt-header" id="prompt-header-9">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-9">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(9, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-9', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-9">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, dramatic raspy rock vocal) and young Japanese female vocal (25yo, powerful soaring anime rock soprano), Epic Progressive Anime Rock, dynamic shifts, soaring guitar solos, dramatic ocean strings, energetic drum groove, 155 BPM</div>
+            <div class="prompt-text" id="prompt-9">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, dramatic raspy rock vocal) and young Japanese female vocal (25yo, powerful soaring anime rock soprano), Epic Progressive Anime Rock, dynamic shifts, soaring guitar solos, dramatic ocean strings, energetic drum groove, 155 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -1613,16 +1139,12 @@ Ride the edge of the Pacific Ocean!
             🎬 <strong>影視動漫與歷史意象：</strong> 《夏色奇蹟》✕ 網代風待ち港 ✕ 避開暗黑隧道 ➔ Apt南熱海
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-10">
-            <div class="prompt-header" id="prompt-header-10">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-10">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(10, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-10', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-10">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, smooth groovy City Pop vocal) and young Japanese female vocal (25yo, sweet breezy retro City Pop female vocal), Relaxing City Pop, breezy guitar chords, retro 80s synth bass, smooth saxophone accent, warm sunset groove, Tatsuro Yamashita vibe, 110 BPM</div>
+            <div class="prompt-text" id="prompt-10">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, smooth groovy City Pop vocal) and young Japanese female vocal (25yo, sweet breezy retro City Pop female vocal), Relaxing City Pop, breezy guitar chords, retro 80s synth bass, smooth saxophone accent, warm sunset groove, Tatsuro Yamashita vibe, 110 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -1699,16 +1221,12 @@ Golden sunset over Ajiro Bay.
             🎬 <strong>影視動漫與歷史意象：</strong> 《煙花，應該和誰看？》✕ 米津玄師 ✕ 來宮神木 ✕ guest house MARUYA
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-11">
-            <div class="prompt-header" id="prompt-header-11">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-11">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(11, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-11', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-11">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, passionate emotional rock balladeer) and young Japanese female vocal (25yo, soaring emotive DAOKO-style Anisong soprano), Grand Cinematic J-Pop Ballad, emotional piano intro, massive orchestral explosion, soaring choral harmonies, Kenshi Yonezu 'Uchiage Hanabi' style, fireworks boom effects, 130 BPM</div>
+            <div class="prompt-text" id="prompt-11">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, passionate emotional rock balladeer) and young Japanese female vocal (25yo, soaring emotive DAOKO-style Anisong soprano), Grand Cinematic J-Pop Ballad, emotional piano intro, massive orchestral explosion, soaring choral harmonies, Kenshi Yonezu 'Uchiage Hanabi' style, fireworks boom effects, 130 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -1785,16 +1303,12 @@ Uchiage Hanabi lighting up the sea!
             🎬 <strong>影視動漫與歷史意象：</strong> 《灌籃高手》流川楓公路 ✕《海街日記》✕ 縣道740柑橘道 ➔ 江之島
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-12">
-            <div class="prompt-header" id="prompt-header-12">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-12">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(12, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-12', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-12">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, classic 90s hard rock male lead) and young Japanese female vocal (25yo, punchy energetic Anisong rock soprano), 90s Classic Anime Hard Rock, crunchy overdrive electric guitars, driving baseline, anthemic WANDS/BAAD style, Slam Dunk OST vibe, 165 BPM</div>
+            <div class="prompt-text" id="prompt-12">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, classic 90s hard rock male lead) and young Japanese female vocal (25yo, punchy energetic Anisong rock soprano), 90s Classic Anime Hard Rock, crunchy overdrive electric guitars, driving baseline, anthemic WANDS/BAAD style, Slam Dunk OST vibe, 165 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -1871,16 +1385,12 @@ Ride on the Shonan coastal highway!
             🎬 <strong>影視動漫與歷史意象：</strong> 《灌籃高手》世紀平交道 ✕《倒數第二次戀愛》✕ 柏尾川綠道 ➔ 橫濱
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-13">
-            <div class="prompt-header" id="prompt-header-13">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-13">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(13, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-13', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-13">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, nostalgic J-Rock male lead) and young Japanese female vocal (25yo, melodic emotional ASIAN KUNG-FU GENERATION style soprano), Nostalgic J-Rock, melodic pop punk, ringing acoustic-electric guitar, emotional singalong chorus, 158 BPM</div>
+            <div class="prompt-text" id="prompt-13">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, nostalgic J-Rock male lead) and young Japanese female vocal (25yo, melodic emotional ASIAN KUNG-FU GENERATION style soprano), Nostalgic J-Rock, melodic pop punk, ringing acoustic-electric guitar, emotional singalong chorus, 158 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -1957,16 +1467,12 @@ Cross the line into Yokohama's skyline!
             🎬 <strong>影視動漫與歷史意象：</strong> 《機動戰士鋼彈 UC》獨角獸 ✕《大搜查線》彩虹大橋 ✕ 台場水岸巡航
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-14">
-            <div class="prompt-header" id="prompt-header-14">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-14">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(14, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-14', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-14">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, dramatic cinematic vocal) and young Japanese female vocal (25yo, epic Sawano-style electronic orchestral soprano), Epic Sawano-style Electronic Orchestral Rock, dramatic drop, powerful synth brass, intense heavy drums, Hiroyuki Sawano Gundam UC style, 148 BPM</div>
+            <div class="prompt-text" id="prompt-14">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, dramatic cinematic vocal) and young Japanese female vocal (25yo, epic Sawano-style electronic orchestral soprano), Epic Sawano-style Electronic Orchestral Rock, dramatic drop, powerful synth brass, intense heavy drums, Hiroyuki Sawano Gundam UC style, 148 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -2043,16 +1549,12 @@ Unicorn awaken on Tokyo Bay!
             🎬 <strong>影視動漫與歷史意象：</strong> 《烏龍派出所》兩津勘吉 ✕《男人真命苦》車寅次郎 ➔ 柴又 ➔ 花庵旅舍
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-15">
-            <div class="prompt-header" id="prompt-header-15">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-15">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(15, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-15', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-15">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, comedic energetic pop baritone) and young Japanese female vocal (25yo, cheerful cute Shitamachi retro pop vocal), Nostalgic Upbeat Shitamachi Pop, bouncy brass and accordion, energetic ska-punk rhythm, cheerful retro J-Pop, Kochikame opening vibe, 150 BPM</div>
+            <div class="prompt-text" id="prompt-15">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, comedic energetic pop baritone) and young Japanese female vocal (25yo, cheerful cute Shitamachi retro pop vocal), Nostalgic Upbeat Shitamachi Pop, bouncy brass and accordion, energetic ska-punk rhythm, cheerful retro J-Pop, Kochikame opening vibe, 150 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -2129,16 +1631,12 @@ Shitamachi memories flowing with love!
             🎬 <strong>影視動漫與歷史意象：</strong> 《四月是你的謊言》水岸 ✕《烏龍派出所》江戶川巡邏 ➔ 週末輕裝巡航
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-16">
-            <div class="prompt-header" id="prompt-header-16">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-16">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(16, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-16', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-16">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, gentle breezy acoustic pop voice) and young Japanese female vocal (25yo, sweet airy indie folk soprano), Breezy Acoustic J-Pop, fingerstyle acoustic guitar, uplifting flute, light percussion, relaxing indie pop, 122 BPM</div>
+            <div class="prompt-text" id="prompt-16">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, gentle breezy acoustic pop voice) and young Japanese female vocal (25yo, sweet airy indie folk soprano), Breezy Acoustic J-Pop, fingerstyle acoustic guitar, uplifting flute, light percussion, relaxing indie pop, 122 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -2215,16 +1713,12 @@ Floating on the river breeze.
             🎬 <strong>影視動漫與歷史意象：</strong> 《鬼滅之刃》大正淺草 ✕ 水元公園 1,800 棵水杉黃金森林見頃 ➔ 淺草
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-17">
-            <div class="prompt-header" id="prompt-header-17">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-17">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(17, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-17', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-17">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, rich narrative cinematic vocal) and young Japanese female vocal (25yo, pure ethereal Ghibli-style soprano), Ethereal Cinematic Folk Pop, acoustic guitar picking, lush cello and violin, warm choral hums, 116 BPM</div>
+            <div class="prompt-text" id="prompt-17">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, rich narrative cinematic vocal) and young Japanese female vocal (25yo, pure ethereal Ghibli-style soprano), Ethereal Cinematic Folk Pop, acoustic guitar picking, lush cello and violin, warm choral hums, 116 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -2301,16 +1795,12 @@ Golden forest whispering in the morning mist!
             🎬 <strong>影視動漫與歷史意象：</strong> 《東京愛情故事》莉香名場面 ✕《東大特訓班》赤門 ✕ 神宮外苑銀杏大道
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-18">
-            <div class="prompt-header" id="prompt-header-18">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-18">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(18, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-18', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-18">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, romantic passionate 90s J-Pop tenor) and young Japanese female vocal (25yo, sweet expressive 90s City Pop soprano), Iconic 90s J-Pop Anthem, shimmering chorus guitar, expressive saxophone solo, passionate emotional melody, Kazumasa Oda / Love Story wa Totsuzen ni vibe, 124 BPM</div>
+            <div class="prompt-text" id="prompt-18">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, romantic passionate 90s J-Pop tenor) and young Japanese female vocal (25yo, sweet expressive 90s City Pop soprano), Iconic 90s J-Pop Anthem, shimmering chorus guitar, expressive saxophone solo, passionate emotional melody, Kazumasa Oda / Love Story wa Totsuzen ni vibe, 124 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -2387,16 +1877,12 @@ Dancing in the golden ginkgo rain!
             🎬 <strong>影視動漫與歷史意象：</strong> 《Love Live!》神田明神 ✕《命運石之門》閉環 ✕ 776km 完騎圓滿返台
         </div>
 
-        <!-- Style of Music Box (Supports Dynamic Toggle) -->
-        <div class="prompt-box" id="prompt-box-19">
-            <div class="prompt-header" id="prompt-header-19">
-                <div>
-                    <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
-                    <span class="prompt-mode-indicator mode-rock" id="mode-badge-19">🎸 熱血動漫搖滾模式</span>
-                </div>
-                <button class="copy-btn" onclick="copyActivePrompt(19, this)">📋 複製風格提示詞</button>
+        <div class="prompt-box">
+            <div class="prompt-header">
+                <span>🎛️ Suno AI Style of Music (雙主唱風格提示詞)</span>
+                <button class="copy-btn" onclick="copyText('prompt-19', this)">📋 複製風格提示詞</button>
             </div>
-            <div class="prompt-text" id="prompt-text-19">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, triumphant emotional rock hero voice) and young Japanese female vocal (25yo, celebratory stadium Anisong idol soprano), Triumphant Anisong Finale, celebratory stadium rock, full brass section, soaring vocal harmonies, fast double-time chorus, 178 BPM</div>
+            <div class="prompt-text" id="prompt-19">Duet, dual lead vocals, mature Taiwanese male vocal (45yo, triumphant emotional rock hero voice) and young Japanese female vocal (25yo, celebratory stadium Anisong idol soprano), Triumphant Anisong Finale, celebratory stadium rock, full brass section, soaring vocal harmonies, fast double-time chorus, 178 BPM</div>
         </div>
 
         <div class="lyrics-section">
@@ -2468,62 +1954,6 @@ Ride forever into the golden sky!
 <div id="toast" class="toast"></div>
 
 <script>
-// Master Styles Database for 19 Tracks
-const stylesDB = {"1": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, warm raspy rock tenor) and young Japanese female vocal (25yo, bright clear Anisong soprano), powerful male-female harmonies, Upbeat J-Rock, energetic anime opening, fast driving drums, bright electric guitar riffs, synthesizer arpeggio, Steins;Gate vibe, 175 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, warm mellow acoustic baritone) and young Japanese female vocal (25yo, gentle sweet whispering Bossa Nova vocal), Acoustic Folk Bossa Nova, nylon acoustic guitar picking, light shaker percussion, upright acoustic bass, melodica, relaxing riverside cycling vibe, 105 BPM"}, "2": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, gritty rock baritone) and young Japanese female vocal (25yo, high-energy Eurobeat Anisong soprano), High-energy Anime Rock, Eurobeat-inspired driving beat, screaming electric guitar solo, punchy bassline, Initial D style, 168 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, soft raspy folk tenor) and young Japanese female vocal (25yo, airy gentle Japanese folk soprano), Cozy Autumn Acoustic Folk, fingerstyle acoustic guitar, warm cello, soft brushes on snare, peaceful canyon breeze, 98 BPM"}, "3": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, emotional warm balladeer) and young Japanese female vocal (25yo, ethereal emotional RADWIMPS-style soprano), Emotional Anime Pop Rock, sweeping cinematic strings, piano intro, soaring harmonies, 142 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, smooth jazz baritone) and young Japanese female vocal (25yo, delicate clear Bossa Nova soprano), Smooth Lake Jazz Ballad, Rhodes electric piano, gentle nylon guitar, muted trumpet solo, upright bass, lakeside sunset breeze, 92 BPM"}, "4": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, relaxed warm acoustic folk) and young Japanese female vocal (25yo, cheerful cute Yuru Camp Anisong vocal), Acoustic Anime Pop, cheerful folk rock, acoustic guitar strumming, whistling, warm mandolin, cozy bass groove, 128 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, cozy campfire folk vocal) and young Japanese female vocal (25yo, sweet acoustic folk vocal), Campfire Acoustic Folk, acoustic guitar strumming, ukulele, melodica, warm morning whistling, soft shakers, cozy coffee by the lake, 100 BPM"}, "5": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, deep storytelling baritone) and young Japanese female vocal (25yo, pure mystical Mononoke-style soprano), Mystical Anime Ballad, ambient orchestral, cinematic Japanese flute (shinobue), taiko drum beat, warm electric piano, 95 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, deep soothing voice) and young Japanese female vocal (25yo, whispery ambient folk vocal), Ambient Forest Chillout Jazz, gentle acoustic piano, soft bamboo flute (shakuhachi), warm fretless bass, rain chimes, hot spring relaxation, 85 BPM"}, "6": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, powerful aggressive rock lead) and young Japanese female vocal (25yo, piercing high-octane symphonic rock Anisong soprano), Fast-paced Symphonic J-Rock, blazing guitar riffs, dramatic string sections, thunderous drums, 172 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, breezy acoustic baritone) and young Japanese female vocal (25yo, bright playful Bossa Nova vocal), Sunny Bossa Nova Groove, gentle nylon guitar rhythm, flute melody, light conga percussion, breezy plateau descent, 112 BPM"}, "7": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, energetic warm pop-rock voice) and young Japanese female vocal (25yo, sparkling bright Love Live idol soprano), Sparkling Anime Idol Pop Rock, energetic brass section, driving synth-pop beat, catchy chorus, ocean breeze melody, 160 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, cheerful acoustic pop voice) and young Japanese female vocal (25yo, sweet ocean breeze Bossa Nova soprano), Seaside Bossa Nova Pop, acoustic guitar, soft accordion, sunny ocean ukulele, relaxing coastal seawall ride, 108 BPM"}, "8": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, mellow gentle acoustic ballad voice) and young Japanese female vocal (25yo, sweet elegant romantic J-Pop vocal), Traditional-Modern J-Pop, shamisen fusion, gentle acoustic guitar, soft piano, nostalgic romantic melody, Hoshino Gen vibe, 118 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, mellow romantic jazz balladeer) and young Japanese female vocal (25yo, soft traditional Japanese jazz vocal), Japanese Traditional Fusion Jazz, gentle shamisen, nylon guitar, muted trumpet, soft upright bass, autumn bamboo path mist, 88 BPM"}, "9": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, dramatic raspy rock vocal) and young Japanese female vocal (25yo, powerful soaring anime rock soprano), Epic Progressive Anime Rock, dynamic shifts, soaring guitar solos, dramatic ocean strings, energetic drum groove, 155 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, expressive acoustic folk baritone) and young Japanese female vocal (25yo, airy coastal folk soprano), Pacific Coastal Folk Ballad, 12-string acoustic guitar, cello, gentle ocean waves soundscape, cliffside breeze, 96 BPM"}, "10": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, smooth groovy City Pop vocal) and young Japanese female vocal (25yo, sweet breezy retro City Pop female vocal), Relaxing City Pop, breezy guitar chords, retro 80s synth bass, smooth saxophone accent, warm sunset groove, Tatsuro Yamashita vibe, 110 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, smooth late-night jazz voice) and young Japanese female vocal (25yo, silky sweet Bossa Nova vocal), Sunset Bossa Nova Lounge, warm Fender Rhodes, mellow nylon guitar chords, brushed drums, smooth saxophone, seaside wine tasting, 90 BPM"}, "11": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, passionate emotional rock balladeer) and young Japanese female vocal (25yo, soaring emotive DAOKO-style Anisong soprano), Grand Cinematic J-Pop Ballad, emotional piano intro, massive orchestral explosion, soaring choral harmonies, Kenshi Yonezu 'Uchiage Hanabi' style, fireworks boom effects, 130 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, rich emotional acoustic tenor) and young Japanese female vocal (25yo, delicate emotive ballad soprano), Romantic Acoustic Fireworks Ballad, gentle piano, acoustic nylon guitar, lush string quartet, distant fireworks rumble, intimate seaside night, 86 BPM"}, "12": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, classic 90s hard rock male lead) and young Japanese female vocal (25yo, punchy energetic Anisong rock soprano), 90s Classic Anime Hard Rock, crunchy overdrive electric guitars, driving baseline, anthemic WANDS/BAAD style, Slam Dunk OST vibe, 165 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, breezy acoustic folk voice) and young Japanese female vocal (25yo, bright sunny Bossa Nova vocal), Shonan Coastline Bossa Nova, acoustic guitar strumming, soprano saxophone, light tambourine, sweet ocean breeze, 110 BPM"}, "13": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, nostalgic J-Rock male lead) and young Japanese female vocal (25yo, melodic emotional ASIAN KUNG-FU GENERATION style soprano), Nostalgic J-Rock, melodic pop punk, ringing acoustic-electric guitar, emotional singalong chorus, 158 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, nostalgic acoustic balladeer) and young Japanese female vocal (25yo, sweet nostalgic folk soprano), Nostalgic Kamakura Acoustic Pop, fingerpicking acoustic guitar, melodica, soft shaker, upright bass, gentle railroad crossing memories, 102 BPM"}, "14": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, dramatic cinematic vocal) and young Japanese female vocal (25yo, epic Sawano-style electronic orchestral soprano), Epic Sawano-style Electronic Orchestral Rock, dramatic drop, powerful synth brass, intense heavy drums, Hiroyuki Sawano Gundam UC style, 148 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, smooth modern urban jazz baritone) and young Japanese female vocal (25yo, silky smooth City Pop jazz soprano), Smooth Tokyo Bay Urban Jazz, Rhodes electric piano, clean jazz guitar chords, mellow flute, chillout lounge bass, waterfront night ride, 95 BPM"}, "15": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, comedic energetic pop baritone) and young Japanese female vocal (25yo, cheerful cute Shitamachi retro pop vocal), Nostalgic Upbeat Shitamachi Pop, bouncy brass and accordion, energetic ska-punk rhythm, cheerful retro J-Pop, Kochikame opening vibe, 150 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, warm playful folk baritone) and young Japanese female vocal (25yo, cute nostalgic Shitamachi folk voice), Retro Shitamachi Acoustic Folk, acoustic guitar, warm accordion, clarinet, light woodblock percussion, nostalgic old-town street, 104 BPM"}, "16": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, gentle breezy acoustic pop voice) and young Japanese female vocal (25yo, sweet airy indie folk soprano), Breezy Acoustic J-Pop, fingerstyle acoustic guitar, uplifting flute, light percussion, relaxing indie pop, 122 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, whisper-soft acoustic folk voice) and young Japanese female vocal (25yo, airy gentle folk soprano), Weekend River Breeze Folk, delicate fingerstyle guitar, tin whistle, light glockenspiel, relaxing zero-gravity ride, 96 BPM"}, "17": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, rich narrative cinematic vocal) and young Japanese female vocal (25yo, pure ethereal Ghibli-style soprano), Ethereal Cinematic Folk Pop, acoustic guitar picking, lush cello and violin, warm choral hums, 116 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, deep warm narrative baritone) and young Japanese female vocal (25yo, ethereal Celtic/Ghibli folk soprano), Fairy Tale Forest Folk Ballad, acoustic guitar, cello, wooden flute, ambient morning bird song, golden autumn wonderland, 90 BPM"}, "18": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, romantic passionate 90s J-Pop tenor) and young Japanese female vocal (25yo, sweet expressive 90s City Pop soprano), Iconic 90s J-Pop Anthem, shimmering chorus guitar, expressive saxophone solo, passionate emotional melody, Kazumasa Oda / Love Story wa Totsuzen ni vibe, 124 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, elegant romantic jazz baritone) and young Japanese female vocal (25yo, sweet sophisticated Bossa Nova vocal), Golden Autumn Ginkgo Jazz Bossa, nylon guitar, muted trumpet, warm grand piano, double bass, falling golden leaves romance, 94 BPM"}, "19": {"rock": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, triumphant emotional rock hero voice) and young Japanese female vocal (25yo, celebratory stadium Anisong idol soprano), Triumphant Anisong Finale, celebratory stadium rock, full brass section, soaring vocal harmonies, fast double-time chorus, 178 BPM", "folk": "Duet, dual lead vocals, mature Taiwanese male vocal (45yo, warm thankful acoustic balladeer) and young Japanese female vocal (25yo, pure emotional graduation folk soprano), Heartwarming Acoustic Farewell Ballad, grand acoustic guitar, piano, harmonica, cello, grateful tears and smiles, 90 BPM"}};
-
-let currentStyleMode = 'rock';
-
-function switchGlobalStyle(mode) {
-    currentStyleMode = mode;
-    
-    // Update Master Buttons
-    document.getElementById('btnStyleRock').classList.toggle('active', mode === 'rock');
-    document.getElementById('btnStyleFolk').classList.toggle('active', mode === 'folk');
-    
-    // Update each Track Prompt Card
-    for (let trackNo = 1; trackNo <= 19; trackNo++) {
-        const box = document.getElementById(`prompt-box-${trackNo}`);
-        const header = document.getElementById(`prompt-header-${trackNo}`);
-        const badge = document.getElementById(`mode-badge-${trackNo}`);
-        const textEl = document.getElementById(`prompt-text-${trackNo}`);
-        
-        if (mode === 'rock') {
-            box.classList.remove('folk-mode');
-            header.classList.remove('folk-mode');
-            badge.className = 'prompt-mode-indicator mode-rock';
-            badge.innerText = '🎸 熱血動漫搖滾模式';
-            textEl.innerText = stylesDB[trackNo].rock;
-        } else {
-            box.classList.add('folk-mode');
-            header.classList.add('folk-mode');
-            badge.className = 'prompt-mode-indicator mode-folk';
-            badge.innerText = '☕ 放鬆民謠爵士模式';
-            textEl.innerText = stylesDB[trackNo].folk;
-        }
-    }
-
-    showToast(mode === 'rock' ? "🎸 已切換為【熱血動漫搖滾模式 (Anime Rock / J-POP)】！" : "☕ 已切換為【放鬆民謠爵士模式 (Folk / Bossa Nova / Jazz)】！");
-}
-
-function copyActivePrompt(trackNo, btnElement) {
-    const text = document.getElementById(`prompt-text-${trackNo}`).innerText;
-    navigator.clipboard.writeText(text).then(() => {
-        const originalText = btnElement.innerText;
-        btnElement.innerText = "✅ 已複製！";
-        btnElement.style.background = "#10B981";
-        btnElement.style.borderColor = "#34D399";
-        
-        const styleName = currentStyleMode === 'rock' ? '熱血動漫搖滾' : '放鬆民謠爵士';
-        showToast(`🎵 已成功複製 Track ${trackNo < 10 ? '0'+trackNo : trackNo}【${styleName}】風格提示詞！`);
-
-        setTimeout(() => {
-            btnElement.innerText = originalText;
-            btnElement.style.background = "";
-            btnElement.style.borderColor = "";
-        }, 2000);
-    });
-}
-
 function copyText(elementId, btnElement) {
     const text = document.getElementById(elementId).innerText;
     navigator.clipboard.writeText(text).then(() => {
@@ -2532,7 +1962,7 @@ function copyText(elementId, btnElement) {
         btnElement.style.background = "#10B981";
         btnElement.style.borderColor = "#34D399";
         
-        showToast("📜 已成功複製雙主唱全曲歌詞 (Lyrics)！可直接貼上至 Suno 創作。");
+        showToast(elementId.startsWith('prompt') ? "🎵 已成功複製雙主唱風格提示詞 (Style Prompt)！" : "📜 已成功複製雙主唱全曲歌詞 (Lyrics)！");
 
         setTimeout(() => {
             btnElement.innerText = originalText;
@@ -2550,41 +1980,6 @@ function showToast(msg) {
         toast.style.display = 'none';
     }, 2500);
 }
-</script>
-
-
-<script>
-const THEMES = {
-    'indie': { name: '🌿 文藝青年風', color: '#8C6239' },
-    'sport': { name: '⚡ 運動極限風', color: '#FC4C02' },
-    'japan': { name: '🎌 哈日和風', color: '#DC2626' },
-    'cycling': { name: '🚴 單車專業風', color: '#FB7185' },
-    'outdoor': { name: '⛺ 休閒野營風', color: '#059669' }
-};
-
-function setTheme(themeKey) {
-    if (!THEMES[themeKey]) themeKey = 'cycling';
-    document.documentElement.setAttribute('data-theme', themeKey);
-    localStorage.setItem('riding_preferred_theme', themeKey);
-
-    document.querySelectorAll('.theme-btn-mini, .theme-pill-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(themeKey)) {
-            btn.classList.add('active');
-        }
-    });
-
-    const label = document.getElementById('current-theme-name');
-    if (label) {
-        label.textContent = THEMES[themeKey].name;
-        label.style.color = THEMES[themeKey].color;
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('riding_preferred_theme') || 'cycling';
-    setTheme(savedTheme);
-});
 </script>
 
 </body>
