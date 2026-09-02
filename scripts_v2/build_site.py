@@ -12,7 +12,7 @@
 data/seasonal_outlook.json 是氣象庁３か月予報，屬於「月・區域平均的三分位機率」，
 只並列在同一格／同一張卡片旁做長期趨勢對照，不參與任何逐日判斷。
 """
-import json, io, os, html
+import json, io, os, html, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -23,6 +23,23 @@ def load(p):
 
 def esc(s):
     return html.escape(str(s or ''), quote=True)
+
+
+_FW = str.maketrans('０１２３４５６７８９＋－', '0123456789+-')
+
+
+def tel_href(s):
+    """把顯示用的電話字串壓成純撥號碼：全形轉半形、+81→0、只留數字。
+
+    資料裡的 tel 欄常夾雜標籤（「23區 03-3212-2323」）或全形數字
+    （「０４７－７０２－７３８６」），直接塞進 href 會變成撥不出去的死連結。
+    """
+    t = str(s or '').translate(_FW).strip()
+    if t.startswith('+81'):
+        t = '0' + t[3:]
+    nums = re.findall(r'\d[\d\-\s]{6,}\d', t)
+    digits = re.sub(r'\D', '', nums[-1]) if nums else re.sub(r'\D', '', t)
+    return digits
 
 
 # ─────────────────── JMA 季節預報（３か月予報） ───────────────────
@@ -276,7 +293,7 @@ def render_meals(d):
         for o in opts:
             link = (f' （<a href="{esc(o["map"])}" target="_blank" rel="noopener">📍 Google Maps 導航 ↗</a>）'
                     if o.get('map') else '')
-            tel = (f'<a href="tel:{esc(o["tel"]).replace("-", "")}" class="meal-tel">📞 {esc(o["tel"])}</a>'
+            tel = (f'<a href="tel:{tel_href(o["tel"])}" class="meal-tel">📞 {esc(o["tel"])}</a>'
                    if o.get('tel') else '')
             meta = []
             if o.get('hours'):
@@ -302,7 +319,7 @@ def render_hotel(d):
         return ''
     status = ('<div class="booking-status status-booked">✅ 已完成訂房</div>' if h['booked']
               else '<div class="booking-status status-pending">🔍 尚未訂房 — 需儘早確認</div>')
-    tel = (f'<a href="tel:{esc(h["tel"]).replace("-","")}" class="hotel-tel">📞 {esc(h["tel"])}</a>'
+    tel = (f'<a href="tel:{tel_href(h["tel"])}" class="hotel-tel">📞 {esc(h["tel"])}</a>'
            if h.get('tel') else '')
     link = (f'<a href="{esc(h["url"])}" target="_blank" rel="noopener" class="hotel-link">📍 在 Google Maps 查看旅館位置 ↗</a>'
             if h.get('url') else '')
@@ -355,7 +372,7 @@ def render_bailout(d):
         if ln.get('fee'):
             extra.append(esc(ln['fee']))
         if ln.get('tel'):
-            extra.append(f'☎ <a href="tel:{esc(ln["tel"]).split("（")[0].replace("-", "")}">{esc(ln["tel"])}</a>')
+            extra.append(f'☎ <a href="tel:{tel_href(ln["tel"].split("（")[0])}">{esc(ln["tel"])}</a>')
         warn = (f'<div class="bo-warn">{esc(ln["warning"])}</div>' if ln.get('warning') else '')
         note = (f'<div class="bo-note">{esc(ln["note"])}</div>' if ln.get('note') else '')
         lines_html.append(
@@ -513,7 +530,7 @@ def render_emergency_card(trip):
     if not em:
         return ''
     core = ''.join(
-        f'<a class="em-card" href="tel:{esc(c["tel"]).replace("-", "")}">'
+        f'<a class="em-card" href="tel:{tel_href(c["tel"])}">'
         f'<div class="em-num">{esc(c["tel"])}</div>'
         f'<div class="em-label">{esc(c["label"])}</div>'
         f'<div class="em-when">{esc(c["when"])}</div>'
@@ -523,7 +540,7 @@ def render_emergency_card(trip):
     rows = ''.join(
         f'<tr><td><strong>{esc(k)}</strong></td><td>{esc(v["name"])}</td>'
         f'<td>{esc(v["short"]) or "—"}</td>'
-        f'<td>{"".join(f"<a href=tel:{n.strip().replace('-', '')}>{esc(n.strip())}</a> " for n in v["tel"].split("／"))}</td>'
+        f'<td>{"".join(f"<a href=tel:{tel_href(n)}>{esc(n.strip())}</a> " for n in v["tel"].split("／"))}</td>'
         f'<td>{esc(v["hours"])}</td></tr>'
         for k, v in pa.items() if not k.startswith('_'))
     acc = em.get('accident_checklist') or {}
@@ -553,7 +570,7 @@ def render_support(d, trip):
             return f'<div class="sp-empty">{empty}</div>'
         out = []
         for x in items:
-            tel = (f'<a href="tel:{esc(x["tel"]).replace("-", "").replace("+81", "0").replace(" ", "")}">📞</a>'
+            tel = (f'<a href="tel:{tel_href(x["tel"])}">📞</a>'
                    if x.get('tel') else '')
             hrs = f'<i>{esc(x["hours"])}</i>' if x.get('hours') else ''
             off = f'<u>+{x["off_km"]}km</u>' if x['off_km'] >= 0.5 else ''
@@ -567,7 +584,7 @@ def render_support(d, trip):
         if not v:
             continue
         nums = ' ／ '.join(
-            f'<a href="tel:{n.strip().replace("-", "")}">{esc(n.strip())}</a>' for n in v['tel'].split('／'))
+            f'<a href="tel:{tel_href(n)}">{esc(n.strip())}</a>' for n in v['tel'].split('／'))
         pref_rows.append(f'<li><strong>{esc(p)}</strong> {esc(v["name"])}：'
                          f'{esc(v["short"]) + " ／ " if v["short"] else ""}{nums}（{esc(v["hours"])}）</li>')
     pref_html = (f'<div class="sp-label">🚨 本日所在都縣・該叫救護車嗎</div><ul class="sp-pref">{"".join(pref_rows)}</ul>'
