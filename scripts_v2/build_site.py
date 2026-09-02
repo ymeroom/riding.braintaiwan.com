@@ -1015,7 +1015,7 @@ def render_extra_css():
 .foliage-note .sn-next{color:#B91C1C}
 .foliage-note .sn-next a,.foliage-note a{color:#B91C1C}
 .foliage-note .fn-region{border-top:1px dashed #FCA5A5;padding-top:8px;margin-top:4px}
-.foliage-note .fn-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:11.5px}
+.foliage-note .fn-table{width:100%;min-width:520px;border-collapse:collapse;margin:8px 0;font-size:11.5px}
 .foliage-note .fn-table th,.foliage-note .fn-table td{border:1px solid #FECACA;padding:5px 7px;text-align:left;vertical-align:top}
 .foliage-note .fn-table th{background:#FEE2E2;font-weight:800}
 .foliage-note .fn-table small{opacity:.75}
