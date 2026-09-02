@@ -1126,6 +1126,16 @@
 .seasonal-note .sn-next{margin-top:8px;color:#6D28D9;font-weight:700}
 .seasonal-note code{background:#EDE9FE;border-radius:4px;padding:1px 6px;font-size:11.5px}
 .seasonal-note a{color:#6D28D9}
+/* 紅葉見頃予想：與季節預報同一層，改用楓紅色系區隔 */
+.foliage-note{background:#FEF2F2;border-color:#FECACA;color:#7F1D1D}
+.foliage-note .sn-head{color:#991B1B}
+.foliage-note .sn-next{color:#B91C1C}
+.foliage-note .sn-next a,.foliage-note a{color:#B91C1C}
+.foliage-note .fn-region{border-top:1px dashed #FCA5A5;padding-top:8px;margin-top:4px}
+.foliage-note .fn-table{width:100%;min-width:520px;border-collapse:collapse;margin:8px 0;font-size:11.5px}
+.foliage-note .fn-table th,.foliage-note .fn-table td{border:1px solid #FECACA;padding:5px 7px;text-align:left;vertical-align:top}
+.foliage-note .fn-table th{background:#FEE2E2;font-weight:800}
+.foliage-note .fn-table small{opacity:.75}
 /* 表格欄內：色彩交給主題（深色列會反轉），只用虛線與 🔭 跟上面的去年實測分開 */
 .wx-outlook{margin-top:7px;padding-top:6px;border-top:1px dashed rgba(139,92,246,.5);color:inherit;opacity:.88;font-size:11px;line-height:1.6}
 .wx-outlook.wx-none{border-top-color:rgba(148,163,184,.5);opacity:.6}
@@ -1688,6 +1698,20 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
                 逐日決策請用上方「天氣作戰室」的 Open-Meteo 時序預報。　Day 19 落在預報期間之外。</div>
             <div class="sn-next">🗓️ 下次更新：３か月予報：９月１８日（金）　１４時 （１か月予報：毎週木曜日　１４時３０分　次回は８月２７日；寒候期予報：９月１８日（金）　１４時）
                 ｜ 重新抓取：<code>python scripts_v2/fetch_seasonal_outlook.py</code></div>
+        </div>
+        <div class="seasonal-note foliage-note">
+            <div class="sn-head">🍁 日本気象（JMC）紅葉・黄葉見頃予想 第1回 ｜ 2026-09-02 發表（第1回予報）</div>
+            <div class="fn-region">🗾 <strong>東日本（含關東・甲信・伊豆）</strong>（気象予報士コメント 9/2 更新）
+                ｜ 9〜11 月氣溫預估較平年偏高。 紅葉（楓）時期平年並或偏晚：山區 10 月下旬〜12 月上旬、平地 11 月下旬〜12 月中旬 見頃。 黃葉（銀杏）時期平年並或偏晚：平地 11 月上旬〜12 月上旬 見頃。</div>
+            <div class="table-wrapper"><table class="fn-table"><thead><tr>
+                <th>觀測點（行程對應）</th><th>楓葉見頃</th><th>銀杏見頃</th><th>注意</th>
+            </tr></thead><tbody><tr><td><strong>東京</strong><br><small>都心銀杏・下町水岸（Day 14–19）</small></td><td>11/29<br><small>平年 +1 天</small></td><td>11/26<br><small>平年 +3 天</small></td><td>—</td></tr><tr><td><strong>甲府</strong><br><small>富士五湖周邊參考（山梨・盆地 ~270m）</small></td><td>12/3<br><small>平年 +4 天</small></td><td>11/26<br><small>平年 +9 天</small></td><td>—</td></tr><tr><td><strong>長野</strong><br><small>山間・高海拔參考（~1000m 級）</small></td><td>11/21<br><small>平年 +9 天</small></td><td>11/14<br><small>平年 +4 天</small></td><td>—</td></tr><tr><td><strong>靜岡</strong><br><small>伊豆半島・富士宮參考（Day 6–9）</small></td><td>12/6<br><small>平年 +1 天</small></td><td>11/25<br><small>平年 0 天</small></td><td>—</td></tr><tr><td><strong>橫濱</strong><br><small>湘南・鎌倉參考（Day 12–14）</small></td><td>12/19<br><small>平年 +5 天</small></td><td>12/5<br><small>平年 +5 天</small></td><td>橫濱標本木每年偏晚，勿直接套用到鎌倉長谷寺（古寺植栽通常早得多；區域平地紅葉見頃 11 月下旬〜12 月中旬）。</td></tr></tbody></table></div>
+            <ul><li>整體：2026 關東・甲信入秋偏暖，紅葉、黃葉普遍比平年晚 3〜9 天，本行程多數紅葉點會落在「見頃前〜見頃入り」而非落葉最盛期，時機其實不差。</li><li>富士五湖（Day 3–5, 11/15–17）：湖畔海拔 ~830m，見頃比甲府市早，山間見頃期 10 月下旬起；今年偏晚，11/15–17 應為見頃前段到見頃，仍是全程紅葉最集中的三天。</li><li>伊豆・修善寺（Day 8–9, 11/20–21）：內陸谷地樹種偏晚，平地見頃 11 月下旬起 —— 11/20 前後多為轉色中，楓紅未滿。</li><li>鎌倉長谷寺（Day 13, 11/25）：東日本平地紅葉見頃 11 月下旬〜12 月中旬，古寺植栽通常早於橫濱標本木（12/19）；11/25 多為見頃入り前後，銀杏更晚。</li><li>都心銀杏（Day 18, 11/30 神宮外苑・東大）：東京銀杏見頃 11/26（+3），11/30 正落在見頃期，金黃並木這一段預期最穩。</li></ul>
+            <div class="sn-warn">⚠️ 這是<strong>市級標本木的區域平均預報</strong>，不是景點見頃日，也不能拿來排哪天騎哪段——
+                景點海拔／樹種會讓實際見頃前後偏移一週以上。每日卡片的「🍁 見頃實績」是去年同日的地點性格，兩者對照著看。</div>
+            <div class="sn-next">🗓️ 下次更新：2026年10月上旬（第2回）
+                ｜ 來源：<a href="https://n-kishou.com/corp/news-contents/autumn/" target="_blank" rel="noopener">JMC 紅葉予想 ↗</a>
+                ｜ 2026-09-02 查證。JMC 每月更新一次，出發前請對照第2回（10月上旬）與現地見頃報告。</div>
         </div>
         <h2 class="section-title">📊 19日每日里程、爬升、去年實測天氣＋JMA 季節預報與紅葉見頃總覽 ｜ 💡 點擊任一日程即可直達下方詳細規劃</h2>
         <div class="data-source-note">📐 里程與爬升：<strong>NAVITIME 自転車ルート実測</strong>（路線偏好「坡少」）；標高取自 NAVITIME 路線幾何三維座標，以 3 公尺遲滯門檻累加，與 Garmin／Strava 計法一致。全程合計 <strong>NAVITIME 最短路徑 683.7 km ／ 本計畫實走約 702.0 km ／ +4,923 m</strong>。<br>兩個里程都是真的：NAVITIME 只取得每日 4–8 個路線節點，節點之間由它自選最短路；本計畫刻意繞走自行車專用道與避坑舊道，因此實走較長。爬升以 NAVITIME 為準。</div>
