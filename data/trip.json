@@ -5002,7 +5002,7 @@
     "山梨県"
    ],
    "gpx": "day3_track.gpx",
-   "map_demo": null,
+   "map_demo": "day3_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -5862,7 +5862,7 @@
     "山梨県"
    ],
    "gpx": "day4_track.gpx",
-   "map_demo": null,
+   "map_demo": "day4_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -6648,7 +6648,7 @@
     "山梨県"
    ],
    "gpx": "day5_track.gpx",
-   "map_demo": null,
+   "map_demo": "day5_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -7507,7 +7507,7 @@
     "静岡県"
    ],
    "gpx": "day6_track.gpx",
-   "map_demo": null,
+   "map_demo": "day6_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -8387,7 +8387,7 @@
     "静岡県"
    ],
    "gpx": "day7_track.gpx",
-   "map_demo": null,
+   "map_demo": "day7_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -9185,7 +9185,7 @@
     "静岡県"
    ],
    "gpx": "day8_track.gpx",
-   "map_demo": null,
+   "map_demo": "day8_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -10118,7 +10118,7 @@
     "静岡県"
    ],
    "gpx": "day9_track.gpx",
-   "map_demo": null,
+   "map_demo": "day9_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -10800,7 +10800,7 @@
     "静岡県"
    ],
    "gpx": "day10_track.gpx",
-   "map_demo": null,
+   "map_demo": "day10_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -11433,7 +11433,7 @@
     "静岡県"
    ],
    "gpx": "day11_track.gpx",
-   "map_demo": null,
+   "map_demo": "day11_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -12483,7 +12483,7 @@
     "神奈川県"
    ],
    "gpx": "day12_track.gpx",
-   "map_demo": null,
+   "map_demo": "day12_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -13755,7 +13755,7 @@
     "神奈川県"
    ],
    "gpx": "day13_track.gpx",
-   "map_demo": null,
+   "map_demo": "day13_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -16090,7 +16090,7 @@
     "東京都"
    ],
    "gpx": "day14_track.gpx",
-   "map_demo": null,
+   "map_demo": "day14_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -17258,7 +17258,7 @@
     "東京都"
    ],
    "gpx": "day15_track.gpx",
-   "map_demo": null,
+   "map_demo": "day15_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -18214,7 +18214,7 @@
     "埼玉県"
    ],
    "gpx": "day16_track.gpx",
-   "map_demo": null,
+   "map_demo": "day16_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -19452,7 +19452,7 @@
     "東京都"
    ],
    "gpx": "day17_track.gpx",
-   "map_demo": null,
+   "map_demo": "day17_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -21544,7 +21544,7 @@
     "東京都"
    ],
    "gpx": "day18_track.gpx",
-   "map_demo": null,
+   "map_demo": "day18_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,
@@ -22749,7 +22749,7 @@
     "東京都"
    ],
    "gpx": "day19_track.gpx",
-   "map_demo": null,
+   "map_demo": "day19_route_map_demo.html",
    "elev_profile": [
     {
      "km": 0,

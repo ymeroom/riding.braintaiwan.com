@@ -70,6 +70,8 @@ scripts_v2/               生成腳本
 ```bash
 python scripts_v2/compute_navitime.py <shape 快取目錄>   # 重算 NAVITIME 數據
 python scripts_v2/build_trip_json.py                     # 合併成正本
+python scripts_v2/build_day_map_demos.py                 # 產生 Day 3–19 逐日地圖 Demo
+python scripts_v2/build_trip_json.py                     # 再跑一次讓 map_demo 連結生效
 python scripts_v2/build_site.py                          # 產生 index.html
 python scripts_v2/build_readme.py                        # 產生 README.md
 ```

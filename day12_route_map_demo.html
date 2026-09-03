@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Day 12 行程地圖 Demo ｜ 熱海銀座 MARUYA ➔ 縣道740號柑橘道 ➔ 小田原城 ➔ 湘南海岸防風林 ➔ 江之島</title>
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Chart.js for elevation profile -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #8C2D19;
+            --secondary: #2B4C59;
+            --accent: #D97724;
+            --bg-dark: #0F172A;
+            --card-bg: #1E293B;
+            --border: #334155;
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.5;
+            padding: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1E1B4B 0%, #31102E 50%, #451A03 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .header-title h1 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: #FFFFFF;
+        }
+
+        .header-title p {
+            font-size: 13.5px;
+            color: #CBD5E1;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background: #2563EB;
+            color: #FFFFFF;
+            padding: 9px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            background: #1D4ED8;
+            transform: translateY(-1px);
+        }
+
+        .action-btn.gsi {
+            background: #059669;
+        }
+        .action-btn.gsi:hover {
+            background: #047857;
+        }
+
+        .action-btn.gpx {
+            background: #D97724;
+        }
+        .action-btn.gpx:hover {
+            background: #B45309;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 18px;
+            text-align: center;
+        }
+
+        .stat-box .val {
+            font-size: 20px;
+            font-weight: 800;
+            color: #F59E0B;
+        }
+
+        .stat-box .lbl {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 950px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        #map {
+            height: 520px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            z-index: 1;
+        }
+
+        .sidebar {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            max-height: 520px;
+        }
+
+        .sidebar h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #F8FAFC;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #waypoint-list {
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-right: 6px;
+        }
+
+        .waypoint-card {
+            background: #0F172A;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .waypoint-card:hover {
+            border-color: #38BDF8;
+            background: #1E293B;
+            transform: translateX(2px);
+        }
+
+        .waypoint-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .waypoint-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #38BDF8;
+        }
+
+        .waypoint-km {
+            font-size: 11.5px;
+            color: #F59E0B;
+            font-weight: 700;
+        }
+
+        .waypoint-desc {
+            font-size: 12px;
+            color: #CBD5E1;
+            line-height: 1.4;
+        }
+
+        .chart-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .chart-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #F8FAFC;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 240px;
+            width: 100%;
+        }
+
+        .tip-callout {
+            background: rgba(37, 99, 235, 0.12);
+            border: 1px solid #3B82F6;
+            border-left: 5px solid #2563EB;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #E2E8F0;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            padding: 16px 0;
+            border-top: 1px solid var(--border);
+        }
+    
+        /* === Samsung S23 Ultra & Mobile OLED Visual Optimizations === */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 10px 80px 10px; /* Safe padding for bottom action bar */
+                font-size: 14px;
+            }
+            header {
+                padding: 16px 14px;
+                border-radius: 12px;
+                margin-bottom: 12px;
+            }
+            .header-title h1 {
+                font-size: 17px;
+                line-height: 1.35;
+            }
+            .header-title p {
+                font-size: 12px;
+            }
+            .btn-group {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .action-btn {
+                justify-content: center;
+                padding: 11px 12px;
+                font-size: 12px;
+                border-radius: 8px;
+                min-height: 44px;
+            }
+            .action-btn.gpx {
+                grid-column: 1 / -1;
+            }
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+            .stat-box {
+                padding: 12px 10px;
+                border-radius: 10px;
+            }
+            .stat-box .val {
+                font-size: 17px;
+            }
+            .stat-box .lbl {
+                font-size: 11px;
+            }
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-bottom: 12px;
+            }
+            #map {
+                height: 380px;
+                border-radius: 10px;
+            }
+            .sidebar {
+                max-height: 320px;
+                padding: 14px;
+                border-radius: 10px;
+            }
+            .waypoint-card {
+                padding: 10px 12px;
+                min-height: 48px;
+            }
+            .chart-card {
+                padding: 14px;
+                border-radius: 10px;
+                margin-bottom: 12px;
+            }
+            .chart-container {
+                height: 190px;
+            }
+            .tip-callout {
+                padding: 14px;
+                font-size: 12.5px;
+                border-radius: 10px;
+            }
+            /* Floating Bottom Bar for S23 Ultra one-hand riding use */
+            .mobile-bottom-bar {
+                display: flex !important;
+            }
+        }
+
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+            z-index: 9999;
+            justify-content: space-around;
+            gap: 8px;
+        }
+
+        .mobile-bar-btn {
+            flex: 1;
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: #F8FAFC;
+            padding: 10px 8px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            min-height: 44px;
+        }
+        .mobile-bar-btn.primary {
+            background: #2563EB;
+            border-color: #3B82F6;
+            color: #FFFFFF;
+        }
+        .mobile-bar-btn.accent {
+            background: #D97724;
+            border-color: #F59E0B;
+            color: #FFFFFF;
+        }
+    
+    
+        /* === Samsung S23 Ultra & Mobile OLED Visual Optimizations === */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 10px 80px 10px; /* Safe padding for bottom action bar */
+                font-size: 14px;
+            }
+            header {
+                padding: 16px 14px;
+                border-radius: 12px;
+                margin-bottom: 12px;
+            }
+            .header-title h1 {
+                font-size: 17px;
+                line-height: 1.35;
+            }
+            .header-title p {
+                font-size: 12px;
+            }
+            .btn-group {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .action-btn {
+                justify-content: center;
+                padding: 11px 12px;
+                font-size: 12px;
+                border-radius: 8px;
+                min-height: 44px;
+            }
+            .action-btn.gpx {
+                grid-column: 1 / -1;
+            }
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+            .stat-box {
+                padding: 12px 10px;
+                border-radius: 10px;
+            }
+            .stat-box .val {
+                font-size: 17px;
+            }
+            .stat-box .lbl {
+                font-size: 11px;
+            }
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-bottom: 12px;
+            }
+            #map {
+                height: 380px;
+                border-radius: 10px;
+            }
+            .sidebar {
+                max-height: 320px;
+                padding: 14px;
+                border-radius: 10px;
+            }
+            .waypoint-card {
+                padding: 10px 12px;
+                min-height: 48px;
+            }
+            .chart-card {
+                padding: 14px;
+                border-radius: 10px;
+                margin-bottom: 12px;
+            }
+            .chart-container {
+                height: 190px;
+            }
+            .tip-callout {
+                padding: 14px;
+                font-size: 12.5px;
+                border-radius: 10px;
+            }
+            /* Floating Bottom Bar for S23 Ultra one-hand riding use */
+            .mobile-bottom-bar {
+                display: flex !important;
+            }
+        }
+
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+            z-index: 9999;
+            justify-content: space-around;
+            gap: 8px;
+        }
+
+        .mobile-bar-btn {
+            flex: 1;
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: #F8FAFC;
+            padding: 10px 8px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            min-height: 44px;
+        }
+        .mobile-bar-btn.primary {
+            background: #2563EB;
+            border-color: #3B82F6;
+            color: #FFFFFF;
+        }
+        .mobile-bar-btn.accent {
+            background: #D97724;
+            border-color: #F59E0B;
+            color: #FFFFFF;
+        }
+    
+    
+        /* ==========================================================================
+           🎨 5 大主題風格系統 (5 Visual Themes Engine)
+           ========================================================================== */
+        :root, [data-theme="cycling"] {
+            --bg-dark: #12141A;
+            --card-bg: #1E232E;
+            --border: #333B4D;
+            --text-light: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --primary: #FB7185;
+            --accent: #FBBF24;
+            --header-grad: linear-gradient(135deg, #181B22 0%, #2A1728 50%, #0F172A 100%);
+            --theme-tag: "🚴 單車專業風";
+        }
+        [data-theme="indie"] {
+            --bg-dark: #F4EFEA;
+            --card-bg: #FFFFFF;
+            --border: #E5DDD3;
+            --text-light: #3E3832;
+            --text-muted: #786C60;
+            --primary: #8C6239;
+            --accent: #607274;
+            --header-grad: linear-gradient(135deg, #5C4B40 0%, #8C6239 50%, #4A3E37 100%);
+            --theme-tag: "🌿 文藝青年風";
+        }
+        [data-theme="sport"] {
+            --bg-dark: #080B11;
+            --card-bg: #111827;
+            --border: #1F2937;
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
+            --primary: #FC4C02;
+            --accent: #10B981;
+            --header-grad: linear-gradient(135deg, #0F172A 0%, #7C2D12 50%, #1E1B4B 100%);
+            --theme-tag: "⚡ 運動極限風";
+        }
+        [data-theme="japan"] {
+            --bg-dark: #FDF8F5;
+            --card-bg: #FFFFFF;
+            --border: #FBCFE8;
+            --text-light: #1F2937;
+            --text-muted: #4B5563;
+            --primary: #DC2626;
+            --accent: #DB2777;
+            --header-grad: linear-gradient(135deg, #881337 0%, #BE123C 50%, #991B1B 100%);
+            --theme-tag: "🎌 哈日和風";
+        }
+        [data-theme="outdoor"] {
+            --bg-dark: #F0FDF4;
+            --card-bg: #FFFFFF;
+            --border: #BBF7D0;
+            --text-light: #14532D;
+            --text-muted: #374151;
+            --primary: #059669;
+            --accent: #D97706;
+            --header-grad: linear-gradient(135deg, #064E3B 0%, #047857 50%, #78350F 100%);
+            --theme-tag: "⛺ 休閒野營風";
+        }
+
+        body {
+            background-color: var(--bg-dark) !important;
+            color: var(--text-light) !important;
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+        header {
+            background: var(--header-grad) !important;
+        }
+
+        .theme-switcher-compact {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 8px 12px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .theme-btn-group-compact {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .theme-btn-mini {
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: #CBD5E1;
+            padding: 5px 9px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .theme-btn-mini:hover {
+            color: #FFFFFF;
+            border-color: #64748B;
+        }
+        .theme-btn-mini.active {
+            background: #2563EB;
+            color: #FFFFFF;
+            border-color: #60A5FA;
+        }
+
+    
+        /* ==========================================================================
+           🎨 5 大主題風格置頂切換列 (Sticky Top 5-Themes Switcher Bar)
+           ========================================================================== */
+        .top-theme-sticky-nav {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 99999;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 2px solid rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            margin-bottom: 12px;
+        }
+
+        .theme-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .theme-nav-title {
+            color: #FFFFFF;
+            font-size: 13.5px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .theme-btn-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .theme-pill-btn {
+            background: #1E293B;
+            border: 1px solid #475569;
+            color: #E2E8F0;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            user-select: none;
+        }
+
+        .theme-pill-btn:hover {
+            transform: translateY(-1px);
+            color: #FFFFFF;
+            border-color: #94A3B8;
+            background: #334155;
+        }
+
+        .theme-pill-btn.active {
+            background: #2563EB !important;
+            color: #FFFFFF !important;
+            border-color: #60A5FA !important;
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.6) !important;
+        }
+
+        @media (max-width: 768px) {
+            .top-theme-sticky-nav {
+                padding: 6px 8px;
+            }
+            .theme-nav-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .theme-btn-group {
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 5px;
+            }
+            .theme-pill-btn {
+                justify-content: center;
+                padding: 8px 4px;
+                font-size: 11px;
+                border-radius: 6px;
+            }
+            .theme-pill-btn:nth-child(4), .theme-pill-btn:nth-child(5) {
+                grid-column: span 1.5;
+            }
+        }
+
+    
+        /* === Samsung S23 Ultra & Mobile OLED Visual Optimizations === */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 10px 80px 10px; /* Safe padding for bottom action bar */
+                font-size: 14px;
+            }
+            header {
+                padding: 16px 14px;
+                border-radius: 12px;
+                margin-bottom: 12px;
+            }
+            .header-title h1 {
+                font-size: 17px;
+                line-height: 1.35;
+            }
+            .header-title p {
+                font-size: 12px;
+            }
+            .btn-group {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .action-btn {
+                justify-content: center;
+                padding: 11px 12px;
+                font-size: 12px;
+                border-radius: 8px;
+                min-height: 44px;
+            }
+            .action-btn.gpx {
+                grid-column: 1 / -1;
+            }
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+            .stat-box {
+                padding: 12px 10px;
+                border-radius: 10px;
+            }
+            .stat-box .val {
+                font-size: 17px;
+            }
+            .stat-box .lbl {
+                font-size: 11px;
+            }
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-bottom: 12px;
+            }
+            #map {
+                height: 380px;
+                border-radius: 10px;
+            }
+            .sidebar {
+                max-height: 320px;
+                padding: 14px;
+                border-radius: 10px;
+            }
+            .waypoint-card {
+                padding: 10px 12px;
+                min-height: 48px;
+            }
+            .chart-card {
+                padding: 14px;
+                border-radius: 10px;
+                margin-bottom: 12px;
+            }
+            .chart-container {
+                height: 190px;
+            }
+            .tip-callout {
+                padding: 14px;
+                font-size: 12.5px;
+                border-radius: 10px;
+            }
+            /* Floating Bottom Bar for S23 Ultra one-hand riding use */
+            .mobile-bottom-bar {
+                display: flex !important;
+            }
+        }
+
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+            z-index: 9999;
+            justify-content: space-around;
+            gap: 8px;
+        }
+
+        .mobile-bar-btn {
+            flex: 1;
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: #F8FAFC;
+            padding: 10px 8px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            min-height: 44px;
+        }
+        .mobile-bar-btn.primary {
+            background: #2563EB;
+            border-color: #3B82F6;
+            color: #FFFFFF;
+        }
+        .mobile-bar-btn.accent {
+            background: #D97724;
+            border-color: #F59E0B;
+            color: #FFFFFF;
+        }
+    
+    </style>
+</head>
+<body>
+
+<!-- 🎨 5 大主題風格置頂即時切換列 (Sticky Top) -->
+<div class="top-theme-sticky-nav">
+    <div class="theme-nav-inner">
+        <div class="theme-nav-title">
+            <span>🎨 5 大風格切換：</span>
+            <span id="current-theme-name" style="color: #38BDF8; font-weight: 800;">🚴 4. 單車風格</span>
+        </div>
+        <div class="theme-btn-group">
+            <button type="button" class="theme-pill-btn" onclick="setTheme('indie')">🌿 1. 文藝青年</button>
+            <button type="button" class="theme-pill-btn" onclick="setTheme('sport')">⚡ 2. 運動風格</button>
+            <button type="button" class="theme-pill-btn" onclick="setTheme('japan')">🎌 3. 哈日風格</button>
+            <button type="button" class="theme-pill-btn active" onclick="setTheme('cycling')">🚴 4. 單車風格</button>
+            <button type="button" class="theme-pill-btn" onclick="setTheme('outdoor')">⛺ 5. 休閒風格</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <header>
+        <div class="header-title">
+            <h1>Day 12: 熱海銀座 MARUYA ➔ 縣道740號柑橘道 ➔ 小田原城 ➔ 湘南海岸防風林 ➔ 江之島</h1>
+            <p>🚴 2026/11/24（二）　湘南篇　｜ 第三階段：湘南海岸巡航 ➔ 鎌倉古都 ➔ 橫濱／東京灣岸 ｜ NAVITIME 三維座標標高實測</p>
+        </div>
+        <div class="btn-group">
+            <a href="index.html" class="action-btn">📋 返回 19日總行程表 ➔</a>
+            <a href="tokyo_cycling_19days_map_demo.html" class="action-btn gsi">🗺️ 19日總地圖 Demo ↗</a>
+            <a href="day12_track.gpx" download="day12_track.gpx" class="action-btn gpx">💾 下載 Day 12 GPX 軌跡</a>
+        </div>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stat-box">
+            <div class="val">65.6 km</div>
+            <div class="lbl">NAVITIME 實測里程</div>
+        </div>
+        <div class="stat-box">
+            <div class="val">+468 m / -468 m</div>
+            <div class="lbl">累積爬升 / 下降</div>
+        </div>
+        <div class="stat-box">
+            <div class="val">1m ➔ 146m</div>
+            <div class="lbl">海拔區間 (最低 ➔ 最高)</div>
+        </div>
+        <div class="stat-box">
+            <div class="val">6</div>
+            <div class="lbl">關鍵節點</div>
+        </div>
+        <div class="stat-box">
+            <div class="val">~3.6 – 4.4 hr</div>
+            <div class="lbl">純騎乘時間 (15–18 km/h)</div>
+        </div>
+    </div>
+
+    <div class="main-layout">
+        <div id="map"></div>
+        <div class="sidebar">
+            <h3>
+                <span>📍 關鍵節點與轉折導引</span>
+                <span style="font-size: 11.5px; color: #38BDF8; font-weight: normal;">點擊可地圖定位</span>
+            </h3>
+            <div id="waypoint-list"></div>
+        </div>
+    </div>
+
+    <div class="chart-card">
+        <h3>
+            <span>📈 NAVITIME 三維座標海拔高程剖面圖</span>
+            <span style="font-size: 12px; color: #10B981;">起點 1m ／ 最高 146m ／ 總爬升 +468m</span>
+        </h3>
+        <div class="chart-container">
+            <canvas id="elevationChart"></canvas>
+        </div>
+    </div>
+
+    <div class="tip-callout">
+        💡 <strong>在地車友實戰解析：</strong> 從熱海市區直接出發省去了南熱海 7km 路程，縣道 740 柑橘景觀道零大車，小田原之後更是全程平坦的湘南海岸巡航！<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《灌籃高手 SLAM DUNK》（湘南海岸、流川楓騎單車吹海風經典公路）；《飆速宅男》（箱根小田原直線大戰） ｜ 《海街日記》（是枝裕和導演代表作：綾瀨遙、長澤雅美四姐妹在湘南海岸的生活詩篇）；《太陽之歌》</div>
+    </div>
+
+    <footer>
+        <p>東京・富士五湖・富士宮・伊豆・東京灣 19日秋季單車騎行計畫 ｜ Day 12 行程地圖 Demo</p>
+    </footer>
+</div>
+
+<script>
+// 1. Initialize Leaflet Map
+const map = L.map('map').setView([35.63, 139.52], 11);
+
+const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+const gsiTile = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '© Geospatial Information Authority of Japan (国土地理院)'
+});
+
+const baseMaps = {
+    "OpenStreetMap (標準)": osm,
+    "日本國土地理院 (標準地圖)": gsiTile
+};
+L.control.layers(baseMaps).addTo(map);
+
+// 2. Plot Polyline
+const routeGeojson = {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[139.07246, 35.09433], [139.07254, 35.0943], [139.07296, 35.09408], [139.07336, 35.09387], [139.07339, 35.09387], [139.07349, 35.09384], [139.0735, 35.0939], [139.07359, 35.09426], [139.07361, 35.09429], [139.07376, 35.09462], [139.07381, 35.09475], [139.07392, 35.09498], [139.0741, 35.0954], [139.07411, 35.09542], [139.07413, 35.09546], [139.07416, 35.09553], [139.07417, 35.09557], [139.07432, 35.09577], [139.07433, 35.09578], [139.07447, 35.096], [139.07464, 35.09627], [139.07477, 35.09652], [139.07482, 35.09661], [139.07488, 35.09673], [139.07503, 35.09699], [139.07504, 35.097], [139.07508, 35.09702], [139.07515, 35.09715], [139.07529, 35.09739], [139.07569, 35.09806], [139.07585, 35.09832], [139.07603, 35.09857], [139.07616, 35.09871], [139.07645, 35.09895], [139.07669, 35.09918], [139.07748, 35.09984], [139.07771, 35.09999], [139.07802, 35.10014], [139.0781, 35.10007], [139.07825, 35.10001], [139.07833, 35.09999], [139.07838, 35.09998], [139.07842, 35.09998], [139.07849, 35.09999], [139.07855, 35.1], [139.07868, 35.10004], [139.07879, 35.10006], [139.0789, 35.10008], [139.07898, 35.10009], [139.07912, 35.1001], [139.07922, 35.1001], [139.07932, 35.1001], [139.07956, 35.10009], [139.07989, 35.10008], [139.07999, 35.10008], [139.08011, 35.10009], [139.08022, 35.1001], [139.08032, 35.10012], [139.08043, 35.10014], [139.08054, 35.10017], [139.08063, 35.1002], [139.08074, 35.10023], [139.08084, 35.10027], [139.08104, 35.10034], [139.08115, 35.10037], [139.08125, 35.10041], [139.08143, 35.1005], [139.08152, 35.10054], [139.08162, 35.1006], [139.08171, 35.10065], [139.08179, 35.10072], [139.08186, 35.10078], [139.08194, 35.10085], [139.08203, 35.10097], [139.0822, 35.10118], [139.08286, 35.10214], [139.08321, 35.10269], [139.08343, 35.10302], [139.08391, 35.1036], [139.08469, 35.10446], [139.08537, 35.10526], [139.0861, 35.10621], [139.08677, 35.10705], [139.08692, 35.1073], [139.08696, 35.10742], [139.08698, 35.10763], [139.08696, 35.10862], [139.08694, 35.10894], [139.08691, 35.10921], [139.08682, 35.1095], [139.08673, 35.10972], [139.08663, 35.10999], [139.08653, 35.11029], [139.0865, 35.11042], [139.0865, 35.11054], [139.0865, 35.11063], [139.08651, 35.11077], [139.08655, 35.11097], [139.08663, 35.11121], [139.08671, 35.11135], [139.08693, 35.11164], [139.08715, 35.11193], [139.08727, 35.11207], [139.08743, 35.11226], [139.08828, 35.1133], [139.08856, 35.11358], [139.08898, 35.11402], [139.08918, 35.1142], [139.08945, 35.11437], [139.0897, 35.11448], [139.09013, 35.11462], [139.09042, 35.11471], [139.09083, 35.11487], [139.09091, 35.11491], [139.0912, 35.11504], [139.09205, 35.11554], [139.09239, 35.11573], [139.09267, 35.11586], [139.09377, 35.11629], [139.09414, 35.1164], [139.09435, 35.11644], [139.09511, 35.11651], [139.0955, 35.11658], [139.09573, 35.11667], [139.09593, 35.11676], [139.09608, 35.11684], [139.09624, 35.11696], [139.09649, 35.11716], [139.09715, 35.1177], [139.09769, 35.11815], [139.09792, 35.11837], [139.09814, 35.11862], [139.09832, 35.1189], [139.0986, 35.1194], [139.09886, 35.11985], [139.09922, 35.1206], [139.09955, 35.12137], [139.09961, 35.12153], [139.09975, 35.1218], [139.09985, 35.12199], [139.09996, 35.12214], [139.10074, 35.12301], [139.10182, 35.12418], [139.10206, 35.12441], [139.10234, 35.12463], [139.1029, 35.12502], [139.10345, 35.1254], [139.10363, 35.12552], [139.10386, 35.12572], [139.10404, 35.1259], [139.10424, 35.1262], [139.10434, 35.12646], [139.10452, 35.1272], [139.10461, 35.12744], [139.10473, 35.12765], [139.10489, 35.12785], [139.10504, 35.12801], [139.10548, 35.12844], [139.10578, 35.12871], [139.10602, 35.12888], [139.10623, 35.12899], [139.10645, 35.12908], [139.1069, 35.12924], [139.1072, 35.12935], [139.10809, 35.12979], [139.10832, 35.12991], [139.10856, 35.13006], [139.10873, 35.1302], [139.10886, 35.13037], [139.10896, 35.13054], [139.10901, 35.13077], [139.10902, 35.13094], [139.10898, 35.1311], [139.10886, 35.13144], [139.10869, 35.13194], [139.1086, 35.1322], [139.10856, 35.13241], [139.10864, 35.13283], [139.10882, 35.13318], [139.10901, 35.13343], [139.10956, 35.13414], [139.10973, 35.13451], [139.10977, 35.13466], [139.10978, 35.13473], [139.10979, 35.13481], [139.10979, 35.13495], [139.10979, 35.13502], [139.10978, 35.13509], [139.10976, 35.13526], [139.1097, 35.13564], [139.10964, 35.13599], [139.10961, 35.13617], [139.1096, 35.13626], [139.10958, 35.13644], [139.10957, 35.13653], [139.10955, 35.1368], [139.10952, 35.13716], [139.10951, 35.13725], [139.1095, 35.13743], [139.10947, 35.13761], [139.10946, 35.1377], [139.10945, 35.13779], [139.10941, 35.13803], [139.10938, 35.13825], [139.10937, 35.13835], [139.10937, 35.13849], [139.10938, 35.13857], [139.10939, 35.13864], [139.10942, 35.13876], [139.10946, 35.13889], [139.1095, 35.139], [139.10955, 35.13911], [139.10963, 35.13928], [139.10972, 35.13946], [139.10984, 35.13968], [139.10996, 35.13989], [139.11, 35.14002], [139.11015, 35.1403], [139.11018, 35.14037], [139.11021, 35.14044], [139.11024, 35.14052], [139.11026, 35.14059], [139.11028, 35.14066], [139.11029, 35.14075], [139.11029, 35.1408], [139.11029, 35.14085], [139.11029, 35.1409], [139.11025, 35.14096], [139.11019, 35.14103], [139.11029, 35.14132], [139.11042, 35.14157], [139.11044, 35.14161], [139.11047, 35.14167], [139.11062, 35.14192], [139.11072, 35.14205], [139.11109, 35.14232], [139.11122, 35.14245], [139.11134, 35.1426], [139.11159, 35.14292], [139.11171, 35.14307], [139.11197, 35.14337], [139.11219, 35.14359], [139.11261, 35.14399], [139.11293, 35.14428], [139.11314, 35.14447], [139.11325, 35.14457], [139.11333, 35.14463], [139.11371, 35.14498], [139.11389, 35.14516], [139.11454, 35.14567], [139.11461, 35.14573], [139.1147, 35.14581], [139.1149, 35.14599], [139.11526, 35.1463], [139.11546, 35.14651], [139.1158, 35.14677], [139.11613, 35.14693], [139.11662, 35.14717], [139.11674, 35.14724], [139.11689, 35.14734], [139.11727, 35.14764], [139.11848, 35.14859], [139.11967, 35.1494], [139.11995, 35.14961], [139.12033, 35.14989], [139.12043, 35.14996], [139.12059, 35.15008], [139.12071, 35.15015], [139.12089, 35.1502], [139.12119, 35.15031], [139.12251, 35.15073], [139.12271, 35.15076], [139.12298, 35.15077], [139.12312, 35.15077], [139.1232, 35.15076], [139.12327, 35.15075], [139.12334, 35.15074], [139.1234, 35.15073], [139.12352, 35.15069], [139.12363, 35.15064], [139.1237, 35.15061], [139.12376, 35.15058], [139.12393, 35.15047], [139.12411, 35.15036], [139.12421, 35.15032], [139.12431, 35.15027], [139.12446, 35.1502], [139.12452, 35.15018], [139.12458, 35.15016], [139.12464, 35.15015], [139.12471, 35.15014], [139.12478, 35.15013], [139.12485, 35.15012], [139.12493, 35.15012], [139.12501, 35.15012], [139.12511, 35.15012], [139.12521, 35.15013], [139.12528, 35.15015], [139.12534, 35.15016], [139.12541, 35.15017], [139.12547, 35.15019], [139.12562, 35.15024], [139.12578, 35.1503], [139.12586, 35.15033], [139.12593, 35.15037], [139.12603, 35.1504], [139.12617, 35.15045], [139.12622, 35.15046], [139.12649, 35.15055], [139.12711, 35.15074], [139.12732, 35.1508], [139.12752, 35.15086], [139.12759, 35.15088], [139.12774, 35.15093], [139.12781, 35.15096], [139.12789, 35.15098], [139.12815, 35.15106], [139.12836, 35.15113], [139.12844, 35.15115], [139.12848, 35.15117], [139.12851, 35.15118], [139.12854, 35.1512], [139.12857, 35.15121], [139.12862, 35.15125], [139.12869, 35.15129], [139.12875, 35.15134], [139.12886, 35.15144], [139.12893, 35.15149], [139.12899, 35.15154], [139.12911, 35.15164], [139.12917, 35.15169], [139.12922, 35.15174], [139.12927, 35.15178], [139.12931, 35.15183], [139.12935, 35.15189], [139.12939, 35.15195], [139.12942, 35.15201], [139.12945, 35.15207], [139.12946, 35.15213], [139.12947, 35.15219], [139.12948, 35.15226], [139.12948, 35.15234], [139.12947, 35.15239], [139.12946, 35.15244], [139.12945, 35.1525], [139.12943, 35.15255], [139.12941, 35.1526], [139.12938, 35.15266], [139.12936, 35.15271], [139.12933, 35.15277], [139.12922, 35.15298], [139.12917, 35.15307], [139.12913, 35.15314], [139.12909, 35.15321], [139.12906, 35.15324], [139.12904, 35.15328], [139.12899, 35.15334], [139.12893, 35.1534], [139.12888, 35.15346], [139.12877, 35.15358], [139.12859, 35.15379], [139.1285, 35.15389], [139.12845, 35.15394], [139.12841, 35.15399], [139.12838, 35.15404], [139.12835, 35.15409], [139.12831, 35.15417], [139.12828, 35.15423], [139.12827, 35.1543], [139.12826, 35.15436], [139.12825, 35.15441], [139.12825, 35.15447], [139.12826, 35.15452], [139.12826, 35.15455], [139.12827, 35.15458], [139.12828, 35.15461], [139.12829, 35.15463], [139.1283, 35.15468], [139.12832, 35.15472], [139.12835, 35.15479], [139.12837, 35.15482], [139.12839, 35.15485], [139.12842, 35.1549], [139.12848, 35.15497], [139.12857, 35.15504], [139.12862, 35.15507], [139.12867, 35.1551], [139.12871, 35.15512], [139.12877, 35.15515], [139.12883, 35.15517], [139.12893, 35.1552], [139.12902, 35.15522], [139.12921, 35.15527], [139.1294, 35.15532], [139.1296, 35.15537], [139.12967, 35.15539], [139.13039, 35.15559], [139.13075, 35.15569], [139.1311, 35.1558], [139.13132, 35.15586], [139.13154, 35.15592], [139.13165, 35.15595], [139.13176, 35.15598], [139.13186, 35.15601], [139.13192, 35.15603], [139.13196, 35.15605], [139.13211, 35.15612], [139.13219, 35.15616], [139.13226, 35.15619], [139.13235, 35.15624], [139.13244, 35.15629], [139.13255, 35.15636], [139.13266, 35.15643], [139.13269, 35.15645], [139.13279, 35.15651], [139.13365, 35.15613], [139.13416, 35.15592], [139.13426, 35.15587], [139.13435, 35.15584], [139.1344, 35.15582], [139.13444, 35.15581], [139.13462, 35.15578], [139.1347, 35.15577], [139.13486, 35.1558], [139.13496, 35.15583], [139.13529, 35.15598], [139.13564, 35.15614], [139.13573, 35.15618], [139.13581, 35.1562], [139.1359, 35.15622], [139.13601, 35.15623], [139.1363, 35.15623], [139.13757, 35.15624], [139.13818, 35.15625], [139.13836, 35.15619], [139.13849, 35.15612], [139.13859, 35.15606], [139.13884, 35.15587], [139.13946, 35.15518], [139.13954, 35.15507], [139.13964, 35.15503], [139.1397, 35.15502], [139.13976, 35.15501], [139.14044, 35.15498], [139.1406, 35.15502], [139.14066, 35.15507], [139.14073, 35.15515], [139.14082, 35.15531], [139.1409, 35.15537], [139.14096, 35.15542], [139.14103, 35.15545], [139.14111, 35.15547], [139.14116, 35.15547], [139.14124, 35.15546], [139.14131, 35.15541], [139.14136, 35.15543], [139.14142, 35.15547], [139.14145, 35.15551], [139.14136, 35.1558], [139.14137, 35.15589], [139.14147, 35.15589], [139.14158, 35.15586], [139.14167, 35.15583], [139.14179, 35.15569], [139.14196, 35.15554], [139.1421, 35.15537], [139.14226, 35.15528], [139.14231, 35.15519], [139.14244, 35.15505], [139.14258, 35.15501], [139.14257, 35.15477], [139.14268, 35.1548], [139.14284, 35.15487], [139.1429, 35.15488], [139.143, 35.15487], [139.14309, 35.1549], [139.14317, 35.15492], [139.14326, 35.15491], [139.14342, 35.15485], [139.14357, 35.15482], [139.14375, 35.15477], [139.14379, 35.15475], [139.14382, 35.15467], [139.14385, 35.1546], [139.14385, 35.15446], [139.14385, 35.1546], [139.14379, 35.15475], [139.14375, 35.15477], [139.14357, 35.15482], [139.14342, 35.15485], [139.14326, 35.15491], [139.14317, 35.15492], [139.14309, 35.1549], [139.143, 35.15487], [139.1429, 35.15488], [139.14284, 35.15487], [139.14268, 35.1548], [139.14257, 35.15477], [139.14258, 35.15501], [139.14259, 35.15508], [139.14256, 35.15518], [139.14255, 35.15524], [139.14257, 35.15531], [139.14259, 35.15539], [139.14256, 35.15545], [139.14248, 35.15553], [139.14232, 35.15565], [139.14219, 35.15578], [139.14192, 35.15606], [139.14183, 35.15617], [139.14163, 35.15635], [139.14152, 35.15644], [139.14142, 35.15648], [139.14134, 35.15651], [139.14142, 35.15655], [139.1415, 35.15656], [139.14158, 35.15654], [139.14165, 35.1566], [139.14171, 35.15663], [139.14177, 35.15665], [139.14183, 35.15665], [139.14189, 35.15665], [139.14207, 35.15664], [139.14212, 35.15666], [139.14227, 35.15673], [139.14232, 35.15673], [139.14236, 35.15673], [139.1425, 35.15667], [139.14257, 35.15665], [139.14279, 35.15662], [139.14294, 35.15662], [139.14299, 35.15664], [139.14304, 35.15666], [139.14308, 35.1567], [139.14309, 35.15673], [139.1431, 35.15677], [139.1431, 35.15682], [139.14298, 35.15705], [139.1429, 35.15718], [139.14287, 35.15724], [139.14284, 35.15733], [139.14286, 35.15738], [139.14289, 35.15742], [139.14294, 35.15744], [139.143, 35.15745], [139.14321, 35.15738], [139.14326, 35.15739], [139.14331, 35.15742], [139.14334, 35.15748], [139.14333, 35.15786], [139.14342, 35.15788], [139.14346, 35.1579], [139.14349, 35.15791], [139.14351, 35.15794], [139.14352, 35.15796], [139.14353, 35.15799], [139.14356, 35.15815], [139.14359, 35.15827], [139.14363, 35.15843], [139.14371, 35.15864], [139.14378, 35.15885], [139.14381, 35.15897], [139.14382, 35.15906], [139.14384, 35.15922], [139.14384, 35.15937], [139.14382, 35.15953], [139.14379, 35.15964], [139.14376, 35.15975], [139.14373, 35.15986], [139.14371, 35.16005], [139.1437, 35.16007], [139.14345, 35.16069], [139.14314, 35.16141], [139.14285, 35.16211], [139.14197, 35.16423], [139.14189, 35.16444], [139.14184, 35.16458], [139.1418, 35.1647], [139.14176, 35.16481], [139.14172, 35.16496], [139.1417, 35.16506], [139.14167, 35.16524], [139.14166, 35.16543], [139.14167, 35.16563], [139.14171, 35.16583], [139.14176, 35.16602], [139.14183, 35.16619], [139.14191, 35.16637], [139.14199, 35.16651], [139.14254, 35.16736], [139.14272, 35.16764], [139.14281, 35.16782], [139.14289, 35.16802], [139.14294, 35.16822], [139.14303, 35.16866], [139.14306, 35.16896], [139.14306, 35.16927], [139.14304, 35.16975], [139.14302, 35.16995], [139.14297, 35.17034], [139.14296, 35.17042], [139.14293, 35.17058], [139.14292, 35.17081], [139.14295, 35.17107], [139.14297, 35.17125], [139.14298, 35.17139], [139.14298, 35.17153], [139.14298, 35.17168], [139.14296, 35.17183], [139.14295, 35.17205], [139.14293, 35.17244], [139.14291, 35.17253], [139.14291, 35.17258], [139.1429, 35.17263], [139.14288, 35.17268], [139.14287, 35.17272], [139.14284, 35.17278], [139.14282, 35.17283], [139.1428, 35.17287], [139.14278, 35.17291], [139.14275, 35.17294], [139.14273, 35.17298], [139.14267, 35.17304], [139.14261, 35.1731], [139.14249, 35.17323], [139.14225, 35.17348], [139.14177, 35.17393], [139.14172, 35.17397], [139.14166, 35.17402], [139.14161, 35.17406], [139.14156, 35.1741], [139.14151, 35.17413], [139.14145, 35.17417], [139.14137, 35.17422], [139.14129, 35.17427], [139.14111, 35.17437], [139.14096, 35.17445], [139.14081, 35.17453], [139.14051, 35.1747], [139.1403, 35.17482], [139.14008, 35.17493], [139.13995, 35.17501], [139.13983, 35.17508], [139.13957, 35.17521], [139.13931, 35.17536], [139.13906, 35.17549], [139.1389, 35.17559], [139.13886, 35.17562], [139.13883, 35.17564], [139.1388, 35.17567], [139.13877, 35.1757], [139.13874, 35.17573], [139.13872, 35.17576], [139.13869, 35.17579], [139.13867, 35.17582], [139.13863, 35.17587], [139.13861, 35.17591], [139.13858, 35.17596], [139.13856, 35.17602], [139.13852, 35.17612], [139.13847, 35.17629], [139.13842, 35.17645], [139.13832, 35.17678], [139.1383, 35.17685], [139.13827, 35.1769], [139.13825, 35.17696], [139.13821, 35.17704], [139.13817, 35.17712], [139.13813, 35.17721], [139.13808, 35.17728], [139.13782, 35.17764], [139.13773, 35.17778], [139.13763, 35.17792], [139.13754, 35.17804], [139.13746, 35.17816], [139.13737, 35.17829], [139.13728, 35.17841], [139.13711, 35.17865], [139.137, 35.17882], [139.13689, 35.17899], [139.13681, 35.17911], [139.13677, 35.17917], [139.13674, 35.17923], [139.13667, 35.17935], [139.1366, 35.17948], [139.13654, 35.1796], [139.13647, 35.17973], [139.13641, 35.17984], [139.13638, 35.17991], [139.13634, 35.17997], [139.13631, 35.18002], [139.13628, 35.18008], [139.13617, 35.18029], [139.1361, 35.18042], [139.13603, 35.18055], [139.1359, 35.18081], [139.13586, 35.1809], [139.13582, 35.18098], [139.1358, 35.18104], [139.13578, 35.18109], [139.13576, 35.18115], [139.13574, 35.18121], [139.13573, 35.18131], [139.13571, 35.1814], [139.13568, 35.18163], [139.13565, 35.18187], [139.1356, 35.18234], [139.13558, 35.18246], [139.13557, 35.18256], [139.13556, 35.18266], [139.13556, 35.18272], [139.13556, 35.18278], [139.13557, 35.18283], [139.13557, 35.18289], [139.13558, 35.18294], [139.13559, 35.18298], [139.13561, 35.18303], [139.13562, 35.18307], [139.13568, 35.18322], [139.13573, 35.18336], [139.1358, 35.18353], [139.13586, 35.18367], [139.13592, 35.18382], [139.13601, 35.18405], [139.13606, 35.18416], [139.13611, 35.18428], [139.13616, 35.18439], [139.1362, 35.1845], [139.13629, 35.18472], [139.13632, 35.18477], [139.13635, 35.18482], [139.13638, 35.18487], [139.13642, 35.18492], [139.13646, 35.18497], [139.1365, 35.18501], [139.13654, 35.18505], [139.13659, 35.1851], [139.13663, 35.18513], [139.13668, 35.18517], [139.13678, 35.18523], [139.13698, 35.18536], [139.13717, 35.18548], [139.13735, 35.18561], [139.13749, 35.18572], [139.13762, 35.18583], [139.13788, 35.18606], [139.13814, 35.18629], [139.1384, 35.18653], [139.13846, 35.18659], [139.13854, 35.18667], [139.13862, 35.18675], [139.13877, 35.18693], [139.13893, 35.18711], [139.13908, 35.18729], [139.13914, 35.18737], [139.1392, 35.18745], [139.13925, 35.18753], [139.1393, 35.18762], [139.13935, 35.18772], [139.1394, 35.18781], [139.1395, 35.18801], [139.13959, 35.18819], [139.13963, 35.18828], [139.13967, 35.18838], [139.13969, 35.18843], [139.13971, 35.18849], [139.13974, 35.1886], [139.13976, 35.18868], [139.13977, 35.18875], [139.13978, 35.18891], [139.1398, 35.18906], [139.1398, 35.18914], [139.13981, 35.18922], [139.13981, 35.18927], [139.1398, 35.18932], [139.1398, 35.18937], [139.13978, 35.18942], [139.13977, 35.18946], [139.13976, 35.1895], [139.13974, 35.18955], [139.13972, 35.18959], [139.1397, 35.18962], [139.13968, 35.18965], [139.13963, 35.18972], [139.13958, 35.18978], [139.13952, 35.18984], [139.13945, 35.18992], [139.13937, 35.19], [139.13929, 35.19007], [139.13924, 35.19011], [139.13919, 35.19015], [139.13912, 35.1902], [139.13906, 35.19024], [139.13899, 35.19029], [139.13891, 35.19034], [139.13878, 35.19041], [139.13862, 35.19049], [139.13803, 35.1908], [139.13785, 35.19089], [139.13777, 35.19093], [139.13769, 35.19097], [139.13761, 35.19101], [139.13757, 35.19104], [139.13754, 35.19106], [139.1375, 35.19109], [139.13746, 35.19112], [139.1374, 35.19117], [139.13737, 35.1912], [139.13735, 35.19122], [139.13732, 35.19126], [139.13729, 35.19129], [139.13727, 35.19133], [139.13725, 35.19136], [139.13722, 35.19141], [139.1372, 35.19146], [139.13715, 35.19155], [139.13711, 35.19165], [139.13705, 35.19181], [139.13702, 35.1919], [139.13699, 35.19197], [139.13697, 35.19203], [139.13697, 35.19209], [139.13696, 35.19214], [139.13696, 35.1922], [139.13697, 35.19225], [139.13697, 35.1923], [139.13698, 35.19235], [139.13699, 35.1924], [139.13701, 35.19248], [139.13704, 35.19257], [139.13709, 35.19273], [139.13714, 35.1929], [139.1372, 35.19308], [139.13726, 35.19325], [139.13728, 35.19333], [139.1373, 35.19342], [139.13733, 35.19351], [139.13735, 35.1936], [139.13739, 35.19377], [139.13743, 35.19395], [139.13754, 35.19441], [139.13764, 35.19488], [139.13778, 35.19549], [139.13786, 35.19586], [139.13794, 35.19621], [139.13797, 35.19636], [139.13799, 35.19643], [139.138, 35.1965], [139.138, 35.19653], [139.13801, 35.19657], [139.13801, 35.19664], [139.13801, 35.1968], [139.138, 35.19686], [139.13799, 35.19693], [139.13798, 35.19707], [139.13794, 35.19736], [139.1379, 35.19763], [139.13786, 35.19792], [139.13781, 35.1983], [139.13776, 35.19868], [139.13771, 35.19905], [139.13771, 35.19911], [139.13771, 35.19916], [139.13771, 35.19922], [139.13771, 35.19927], [139.13771, 35.19936], [139.13775, 35.1995], [139.13777, 35.19958], [139.13781, 35.19967], [139.13787, 35.19981], [139.138, 35.20008], [139.13804, 35.20018], [139.13815, 35.20042], [139.13821, 35.20055], [139.13833, 35.20078], [139.13843, 35.20095], [139.13848, 35.20103], [139.13859, 35.20118], [139.13868, 35.2013], [139.13877, 35.20142], [139.13895, 35.20165], [139.13943, 35.20227], [139.13963, 35.20252], [139.13978, 35.20271], [139.13984, 35.2028], [139.13992, 35.20292], [139.13997, 35.203], [139.14, 35.20305], [139.14003, 35.20311], [139.14006, 35.20318], [139.14009, 35.20324], [139.14012, 35.20331], [139.14016, 35.20349], [139.14036, 35.20412], [139.14043, 35.20437], [139.14046, 35.20446], [139.14049, 35.20456], [139.14055, 35.20475], [139.14059, 35.20487], [139.14063, 35.20499], [139.14071, 35.20526], [139.14082, 35.20548], [139.14094, 35.20573], [139.14101, 35.20586], [139.14104, 35.20592], [139.14107, 35.20599], [139.14109, 35.20603], [139.14111, 35.20607], [139.14112, 35.20612], [139.14114, 35.20617], [139.14116, 35.20626], [139.14117, 35.20635], [139.14119, 35.20646], [139.14119, 35.20657], [139.14119, 35.20683], [139.1412, 35.20715], [139.14122, 35.2075], [139.14123, 35.2076], [139.14125, 35.20769], [139.14131, 35.20797], [139.14138, 35.20834], [139.14139, 35.20842], [139.14139, 35.2085], [139.14139, 35.2086], [139.14139, 35.20866], [139.14142, 35.20875], [139.14144, 35.20893], [139.14145, 35.20902], [139.14146, 35.20911], [139.14151, 35.20929], [139.14155, 35.20948], [139.1416, 35.20969], [139.14164, 35.2099], [139.14166, 35.21001], [139.14167, 35.21007], [139.14168, 35.21013], [139.14168, 35.2102], [139.14167, 35.21024], [139.14167, 35.21028], [139.14166, 35.21031], [139.14166, 35.21035], [139.14165, 35.21038], [139.14163, 35.21042], [139.14159, 35.21055], [139.14155, 35.2107], [139.1415, 35.21085], [139.14146, 35.21101], [139.14141, 35.21117], [139.14136, 35.21133], [139.14134, 35.2114], [139.14133, 35.21147], [139.14132, 35.21151], [139.14132, 35.21155], [139.14131, 35.21159], [139.14132, 35.21162], [139.14132, 35.2117], [139.14133, 35.21177], [139.14136, 35.21199], [139.14136, 35.21208], [139.14137, 35.21217], [139.14137, 35.21229], [139.14136, 35.2124], [139.14135, 35.21251], [139.14134, 35.21261], [139.14134, 35.21269], [139.14134, 35.21277], [139.14135, 35.21281], [139.14136, 35.21285], [139.14137, 35.21289], [139.14138, 35.21293], [139.1414, 35.21301], [139.14142, 35.2131], [139.14149, 35.21331], [139.14156, 35.21352], [139.14162, 35.21372], [139.14169, 35.21392], [139.1417, 35.21397], [139.14172, 35.21402], [139.14172, 35.21406], [139.14173, 35.21409], [139.14173, 35.21416], [139.14173, 35.21424], [139.14173, 35.21427], [139.14173, 35.21431], [139.14172, 35.21435], [139.14171, 35.21438], [139.14168, 35.21445], [139.14166, 35.21449], [139.14163, 35.21453], [139.14153, 35.21469], [139.14143, 35.21484], [139.14138, 35.21491], [139.14135, 35.21495], [139.14133, 35.21499], [139.1413, 35.21505], [139.14129, 35.21508], [139.14128, 35.21512], [139.14125, 35.2152], [139.14124, 35.21526], [139.14123, 35.2153], [139.14123, 35.21537], [139.14123, 35.21541], [139.14123, 35.21545], [139.14123, 35.21553], [139.14124, 35.21557], [139.14125, 35.21564], [139.14127, 35.21569], [139.14129, 35.21576], [139.14131, 35.21581], [139.14134, 35.21587], [139.14138, 35.21592], [139.14145, 35.21603], [139.14152, 35.21612], [139.14165, 35.21626], [139.1418, 35.21642], [139.14188, 35.21651], [139.14191, 35.21656], [139.14194, 35.21661], [139.14196, 35.21664], [139.14198, 35.21667], [139.14199, 35.21671], [139.14201, 35.21675], [139.14203, 35.21683], [139.14205, 35.21692], [139.14207, 35.21706], [139.14213, 35.21734], [139.14216, 35.2175], [139.1422, 35.21766], [139.14224, 35.21789], [139.14228, 35.2181], [139.14234, 35.2184], [139.14237, 35.21855], [139.14238, 35.21862], [139.14239, 35.2187], [139.1424, 35.2188], [139.1424, 35.2189], [139.14239, 35.21903], [139.14237, 35.21916], [139.14231, 35.21945], [139.14227, 35.21968], [139.14222, 35.21992], [139.14218, 35.22019], [139.14215, 35.22031], [139.14212, 35.22043], [139.14211, 35.22049], [139.1421, 35.22055], [139.14209, 35.22062], [139.14209, 35.22068], [139.14209, 35.22077], [139.1421, 35.22086], [139.1421, 35.22095], [139.14212, 35.22104], [139.14216, 35.22137], [139.14217, 35.22154], [139.14218, 35.22171], [139.14218, 35.22183], [139.14216, 35.22197], [139.14214, 35.22215], [139.14211, 35.22234], [139.14209, 35.22252], [139.14206, 35.2227], [139.14204, 35.22281], [139.14201, 35.22293], [139.14198, 35.22305], [139.14194, 35.22317], [139.14189, 35.22331], [139.14183, 35.22347], [139.14177, 35.22366], [139.14169, 35.22396], [139.14166, 35.22408], [139.14164, 35.22421], [139.1416, 35.2244], [139.14158, 35.22452], [139.14156, 35.22464], [139.14155, 35.22477], [139.14154, 35.2249], [139.14154, 35.225], [139.14154, 35.22509], [139.14154, 35.22511], [139.14154, 35.22517], [139.14155, 35.22523], [139.14157, 35.22536], [139.14158, 35.22548], [139.1416, 35.22559], [139.14163, 35.2257], [139.14166, 35.22581], [139.14169, 35.2259], [139.14172, 35.226], [139.14175, 35.2261], [139.14179, 35.22618], [139.14184, 35.22629], [139.14187, 35.22639], [139.14194, 35.22652], [139.14198, 35.22659], [139.14202, 35.22665], [139.14217, 35.2269], [139.14222, 35.227], [139.14226, 35.22711], [139.14235, 35.2273], [139.1424, 35.22762], [139.14242, 35.22781], [139.14241, 35.22798], [139.14239, 35.22813], [139.14236, 35.22831], [139.14233, 35.22844], [139.14223, 35.22889], [139.1422, 35.22907], [139.14218, 35.22927], [139.14218, 35.22952], [139.14221, 35.22977], [139.14226, 35.23013], [139.14234, 35.23089], [139.14237, 35.23134], [139.14241, 35.23166], [139.14246, 35.23185], [139.14254, 35.23205], [139.14278, 35.23255], [139.14291, 35.23289], [139.14297, 35.23304], [139.14309, 35.23331], [139.14318, 35.2335], [139.14327, 35.23364], [139.14342, 35.23384], [139.14373, 35.23426], [139.144, 35.23461], [139.14406, 35.23468], [139.1444, 35.23513], [139.1445, 35.23528], [139.14484, 35.23571], [139.14504, 35.23597], [139.14515, 35.23613], [139.14522, 35.2362], [139.14529, 35.23627], [139.14546, 35.23644], [139.14613, 35.23707], [139.14636, 35.23731], [139.14654, 35.2375], [139.14661, 35.23761], [139.14664, 35.23772], [139.14663, 35.23795], [139.1466, 35.23806], [139.14652, 35.23824], [139.14639, 35.23843], [139.14624, 35.23866], [139.1461, 35.23889], [139.14599, 35.23908], [139.14593, 35.23924], [139.1459, 35.23935], [139.14587, 35.23948], [139.14585, 35.23962], [139.14584, 35.23983], [139.14586, 35.24004], [139.1459, 35.2402], [139.14594, 35.24035], [139.14601, 35.24049], [139.14614, 35.24079], [139.14625, 35.24103], [139.14636, 35.24128], [139.14638, 35.24132], [139.14668, 35.24183], [139.14684, 35.24208], [139.14752, 35.24317], [139.14755, 35.24323], [139.14762, 35.24335], [139.1478, 35.24364], [139.14792, 35.24382], [139.1481, 35.24412], [139.14851, 35.24478], [139.14864, 35.24502], [139.14898, 35.24564], [139.14944, 35.24642], [139.14952, 35.24655], [139.14976, 35.2466], [139.15057, 35.24673], [139.1517, 35.24688], [139.15183, 35.2469], [139.15287, 35.24705], [139.15411, 35.24722], [139.15411, 35.2473], [139.15411, 35.24765], [139.15411, 35.248], [139.15414, 35.24812], [139.15422, 35.24837], [139.15423, 35.2484], [139.15425, 35.24845], [139.15427, 35.24852], [139.15433, 35.24872], [139.15445, 35.24906], [139.1543, 35.24909], [139.15426, 35.24911], [139.15421, 35.24916], [139.15399, 35.24929], [139.15381, 35.24941], [139.15374, 35.24946], [139.15376, 35.24953], [139.15378, 35.24961], [139.15389, 35.24986], [139.15389, 35.24986], [139.15378, 35.24961], [139.15376, 35.24953], [139.15374, 35.24946], [139.15381, 35.24941], [139.15399, 35.24929], [139.15421, 35.24916], [139.15426, 35.24911], [139.1543, 35.24909], [139.15445, 35.24906], [139.15457, 35.24903], [139.15462, 35.24902], [139.15514, 35.24891], [139.15523, 35.24889], [139.15526, 35.24887], [139.15533, 35.24881], [139.15545, 35.24872], [139.15561, 35.24869], [139.15619, 35.24869], [139.15747, 35.24868], [139.15755, 35.24867], [139.15756, 35.24878], [139.15757, 35.24905], [139.15757, 35.24956], [139.15757, 35.24969], [139.15757, 35.25005], [139.15758, 35.25019], [139.15762, 35.25019], [139.15864, 35.25019], [139.15921, 35.2502], [139.15933, 35.2502], [139.15931, 35.25059], [139.15981, 35.25061], [139.16012, 35.25063], [139.16065, 35.25066], [139.16088, 35.25067], [139.16119, 35.25069], [139.16153, 35.25071], [139.16164, 35.25071], [139.16174, 35.25072], [139.16227, 35.25075], [139.16245, 35.25076], [139.16254, 35.25077], [139.16278, 35.25079], [139.16294, 35.25081], [139.16309, 35.25086], [139.16319, 35.25091], [139.16329, 35.25097], [139.16363, 35.25127], [139.16381, 35.25143], [139.16393, 35.25154], [139.16452, 35.25208], [139.16481, 35.25234], [139.16499, 35.25253], [139.16507, 35.25264], [139.16513, 35.25272], [139.16522, 35.25283], [139.16536, 35.25294], [139.16622, 35.25349], [139.16672, 35.25383], [139.16772, 35.2545], [139.16794, 35.25463], [139.16812, 35.25473], [139.16834, 35.25486], [139.16862, 35.25501], [139.16899, 35.25521], [139.16905, 35.25525], [139.16915, 35.2553], [139.16955, 35.25552], [139.17009, 35.25583], [139.17038, 35.25596], [139.17043, 35.25597], [139.17051, 35.25594], [139.17055, 35.2559], [139.17081, 35.25549], [139.17104, 35.25509], [139.17113, 35.25501], [139.17124, 35.25495], [139.17136, 35.25494], [139.17154, 35.25498], [139.17284, 35.25552], [139.17326, 35.25565], [139.18004, 35.25905], [139.18111, 35.2596], [139.18152, 35.25982], [139.18188, 35.26002], [139.18224, 35.26025], [139.18488, 35.26208], [139.18501, 35.26217], [139.18517, 35.26228], [139.18531, 35.26237], [139.18547, 35.26247], [139.18563, 35.26256], [139.18579, 35.26265], [139.18596, 35.26274], [139.18612, 35.26283], [139.18648, 35.26301], [139.18688, 35.26318], [139.18729, 35.26335], [139.18865, 35.26386], [139.18913, 35.26405], [139.18957, 35.26426], [139.18993, 35.26444], [139.19039, 35.26469], [139.19129, 35.26525], [139.19229, 35.26588], [139.19362, 35.26672], [139.19402, 35.26699], [139.19441, 35.26731], [139.19546, 35.26826], [139.19649, 35.26922], [139.19678, 35.26947], [139.19706, 35.26972], [139.19734, 35.26995], [139.19762, 35.27017], [139.19806, 35.2705], [139.19855, 35.27088], [139.20014, 35.27209], [139.20045, 35.27233], [139.20062, 35.27246], [139.20078, 35.27258], [139.20093, 35.2727], [139.20109, 35.27282], [139.20125, 35.27295], [139.2014, 35.27309], [139.20169, 35.27335], [139.20183, 35.27349], [139.2021, 35.27377], [139.20252, 35.27419], [139.2028, 35.27448], [139.2032, 35.27489], [139.20349, 35.2752], [139.20382, 35.27555], [139.20409, 35.27582], [139.20422, 35.27595], [139.20436, 35.27608], [139.2045, 35.2762], [139.20465, 35.27633], [139.20487, 35.27649], [139.20496, 35.27656], [139.20514, 35.27668], [139.20531, 35.27679], [139.20549, 35.27689], [139.20567, 35.27699], [139.20576, 35.27704], [139.20586, 35.27709], [139.20604, 35.27718], [139.20626, 35.27728], [139.20638, 35.27733], [139.2065, 35.27737], [139.20742, 35.27769], [139.20835, 35.27801], [139.21099, 35.27891], [139.21179, 35.27919], [139.21241, 35.2794], [139.21385, 35.2799], [139.21529, 35.28038], [139.2155, 35.28045], [139.21571, 35.28051], [139.21593, 35.28057], [139.21617, 35.28064], [139.2164, 35.28069], [139.21679, 35.28078], [139.21706, 35.28082], [139.21728, 35.28086], [139.21751, 35.2809], [139.21841, 35.28104], [139.21985, 35.28128], [139.22015, 35.28132], [139.22029, 35.28135], [139.22044, 35.28137], [139.22063, 35.2814], [139.22072, 35.28142], [139.22081, 35.28144], [139.2209, 35.28146], [139.22099, 35.28148], [139.22116, 35.28153], [139.22141, 35.28161], [139.22154, 35.28165], [139.22165, 35.2817], [139.22183, 35.28178], [139.22201, 35.28186], [139.22235, 35.28203], [139.2233, 35.28253], [139.22347, 35.28262], [139.22373, 35.28276], [139.22401, 35.28289], [139.22429, 35.28303], [139.22444, 35.28309], [139.22458, 35.28316], [139.22472, 35.28322], [139.22516, 35.28339], [139.22535, 35.28345], [139.22556, 35.28352], [139.22575, 35.28358], [139.22618, 35.28372], [139.22658, 35.28384], [139.22678, 35.28391], [139.22698, 35.28399], [139.22718, 35.28406], [139.22737, 35.28413], [139.22758, 35.28421], [139.22798, 35.28438], [139.22843, 35.28458], [139.22869, 35.28469], [139.22894, 35.2848], [139.22953, 35.28507], [139.23002, 35.28528], [139.23026, 35.28539], [139.2305, 35.28549], [139.23102, 35.28572], [139.23152, 35.28594], [139.23184, 35.28607], [139.23212, 35.28621], [139.23225, 35.28628], [139.23231, 35.28632], [139.23238, 35.28636], [139.23249, 35.28643], [139.23261, 35.2865], [139.23272, 35.28656], [139.23285, 35.28662], [139.2331, 35.28673], [139.23329, 35.28682], [139.23343, 35.28688], [139.23381, 35.28711], [139.23395, 35.28718], [139.23415, 35.28727], [139.2344, 35.28737], [139.23462, 35.28745], [139.2348, 35.28751], [139.23494, 35.28755], [139.23507, 35.28758], [139.23521, 35.2876], [139.23538, 35.28762], [139.23548, 35.28763], [139.23558, 35.28765], [139.23568, 35.28768], [139.23577, 35.2877], [139.23595, 35.28776], [139.23614, 35.28782], [139.23688, 35.28811], [139.23709, 35.28819], [139.23773, 35.28845], [139.23801, 35.28857], [139.23829, 35.28869], [139.2385, 35.28879], [139.23905, 35.28903], [139.23944, 35.28921], [139.23997, 35.28943], [139.24043, 35.28963], [139.24097, 35.28984], [139.24162, 35.29008], [139.24222, 35.2903], [139.24263, 35.29044], [139.24302, 35.29059], [139.24343, 35.29074], [139.24403, 35.29096], [139.24443, 35.29111], [139.24521, 35.29142], [139.2458, 35.29167], [139.24697, 35.29217], [139.24755, 35.29241], [139.24794, 35.29258], [139.24833, 35.29275], [139.24853, 35.29283], [139.24872, 35.29292], [139.24892, 35.293], [139.24911, 35.29307], [139.24935, 35.29316], [139.24971, 35.29328], [139.24994, 35.29336], [139.25013, 35.29341], [139.25034, 35.29347], [139.25055, 35.29352], [139.25075, 35.29358], [139.25097, 35.29363], [139.25159, 35.2938], [139.25285, 35.29412], [139.2541, 35.29444], [139.25514, 35.29472], [139.25597, 35.29493], [139.257, 35.2952], [139.25743, 35.29531], [139.25806, 35.29547], [139.25849, 35.29557], [139.25911, 35.29571], [139.25948, 35.29579], [139.26036, 35.29596], [139.26132, 35.29614], [139.26158, 35.29619], [139.26259, 35.29639], [139.26289, 35.29644], [139.26348, 35.29657], [139.265, 35.29684], [139.26668, 35.29718], [139.26776, 35.29743], [139.26871, 35.29767], [139.26989, 35.29798], [139.27206, 35.29854], [139.27324, 35.29883], [139.27428, 35.29904], [139.27534, 35.29921], [139.27708, 35.29949], [139.27816, 35.29966], [139.279, 35.2998], [139.27987, 35.29993], [139.28075, 35.30008], [139.28348, 35.30052], [139.28428, 35.30065], [139.28518, 35.30083], [139.2857, 35.30099], [139.2864, 35.30115], [139.28645, 35.30117], [139.28649, 35.30119], [139.28653, 35.30122], [139.28656, 35.30126], [139.2866, 35.3013], [139.28661, 35.30136], [139.28662, 35.30139], [139.28662, 35.30143], [139.28662, 35.30149], [139.2866, 35.30155], [139.28653, 35.3018], [139.28648, 35.30198], [139.28646, 35.3021], [139.28646, 35.30215], [139.28645, 35.30228], [139.28638, 35.30243], [139.28632, 35.30257], [139.28629, 35.30262], [139.28627, 35.3027], [139.28625, 35.30279], [139.28624, 35.30287], [139.28625, 35.30294], [139.28626, 35.30302], [139.28628, 35.3031], [139.28632, 35.30323], [139.2864, 35.30342], [139.28645, 35.30351], [139.28653, 35.30367], [139.28662, 35.30385], [139.28665, 35.30393], [139.28666, 35.30399], [139.28668, 35.30414], [139.28685, 35.30413], [139.2872, 35.3041], [139.28796, 35.30404], [139.28805, 35.30403], [139.28896, 35.30396], [139.29084, 35.30383], [139.29102, 35.30384], [139.29119, 35.30385], [139.29154, 35.3039], [139.29168, 35.30394], [139.29186, 35.30399], [139.29199, 35.30404], [139.29247, 35.30425], [139.29263, 35.30432], [139.29316, 35.30455], [139.29327, 35.3046], [139.29356, 35.30472], [139.29384, 35.30481], [139.29419, 35.30491], [139.29447, 35.30497], [139.29499, 35.3051], [139.29509, 35.30512], [139.29579, 35.3053], [139.29612, 35.30538], [139.29654, 35.30548], [139.29688, 35.30556], [139.29696, 35.30557], [139.29695, 35.30564], [139.29691, 35.30606], [139.29684, 35.30687], [139.29684, 35.3069], [139.29684, 35.30696], [139.29678, 35.30767], [139.29675, 35.30793], [139.29664, 35.30913], [139.29662, 35.30942], [139.29769, 35.30955], [139.29875, 35.30968], [139.29902, 35.30971], [139.29909, 35.30972], [139.29914, 35.30973], [139.29914, 35.30999], [139.29915, 35.31027], [139.29915, 35.31032], [139.29916, 35.31036], [139.29964, 35.31041], [139.30057, 35.31053], [139.30056, 35.31056], [139.30052, 35.31092], [139.30049, 35.311], [139.30022, 35.31152], [139.29977, 35.31236], [139.29932, 35.31321], [139.29921, 35.31341], [139.29901, 35.31378], [139.29889, 35.31401], [139.29872, 35.31432], [139.29856, 35.31461], [139.29839, 35.31493], [139.29829, 35.31512], [139.29822, 35.31538], [139.29821, 35.31571], [139.29823, 35.31587], [139.29826, 35.31601], [139.29844, 35.31639], [139.29852, 35.31657], [139.29861, 35.31674], [139.30029, 35.31928], [139.30067, 35.31984], [139.30071, 35.31995], [139.30076, 35.32008], [139.30096, 35.32071], [139.3011, 35.32113], [139.30154, 35.32242], [139.30164, 35.32265], [139.30181, 35.32292], [139.30234, 35.32382], [139.3024, 35.32392], [139.30249, 35.32407], [139.30255, 35.32417], [139.30258, 35.32423], [139.30263, 35.32427], [139.30272, 35.32431], [139.30295, 35.32434], [139.30356, 35.3244], [139.30369, 35.3244], [139.3038, 35.32438], [139.30399, 35.3243], [139.30409, 35.32426], [139.30449, 35.32407], [139.30473, 35.32398], [139.30485, 35.32396], [139.30498, 35.32395], [139.3051, 35.32397], [139.30517, 35.324], [139.30524, 35.32406], [139.30532, 35.32429], [139.30541, 35.32471], [139.30549, 35.32511], [139.30557, 35.32543], [139.30564, 35.32552], [139.30573, 35.32569], [139.30577, 35.3258], [139.30579, 35.3259], [139.30583, 35.32612], [139.30588, 35.32635], [139.30591, 35.32643], [139.30595, 35.32652], [139.30599, 35.32659], [139.30606, 35.32664], [139.30614, 35.32665], [139.30628, 35.32664], [139.30671, 35.32657], [139.30697, 35.32654], [139.30707, 35.32653], [139.3072, 35.32652], [139.30727, 35.32653], [139.30733, 35.32656], [139.3074, 35.32663], [139.30751, 35.32657], [139.30757, 35.32654], [139.30762, 35.32651], [139.30768, 35.3265], [139.30802, 35.32645], [139.30813, 35.32643], [139.30823, 35.32645], [139.30831, 35.32647], [139.30841, 35.32653], [139.30865, 35.32677], [139.3087, 35.32681], [139.30877, 35.32684], [139.30883, 35.32686], [139.30894, 35.32686], [139.30907, 35.32683], [139.30929, 35.32677], [139.30938, 35.32673], [139.30947, 35.32665], [139.3095, 35.32661], [139.30952, 35.32656], [139.30952, 35.32651], [139.3095, 35.32646], [139.30947, 35.32638], [139.30942, 35.32627], [139.30937, 35.32616], [139.30932, 35.32607], [139.30929, 35.32597], [139.30928, 35.32587], [139.3093, 35.32579], [139.30933, 35.32568], [139.3094, 35.32562], [139.30954, 35.32552], [139.30968, 35.32541], [139.30993, 35.32521], [139.31001, 35.32516], [139.31018, 35.32503], [139.3103, 35.32493], [139.31034, 35.32489], [139.31037, 35.32485], [139.31038, 35.32481], [139.31041, 35.32476], [139.31042, 35.32471], [139.31042, 35.32466], [139.31041, 35.32458], [139.31039, 35.32451], [139.31036, 35.32445], [139.31032, 35.32439], [139.31028, 35.32434], [139.30966, 35.32393], [139.30949, 35.32381], [139.30893, 35.32344], [139.3084, 35.32309], [139.30763, 35.32259], [139.30748, 35.32247], [139.30742, 35.32241], [139.3074, 35.32235], [139.30739, 35.32229], [139.3074, 35.32223], [139.30745, 35.32216], [139.30751, 35.32209], [139.30757, 35.32206], [139.30769, 35.32201], [139.30871, 35.32161], [139.3092, 35.32133], [139.30935, 35.32121], [139.30942, 35.32113], [139.30949, 35.32102], [139.30953, 35.32095], [139.30954, 35.32089], [139.30951, 35.32084], [139.30945, 35.3208], [139.30935, 35.32074], [139.30917, 35.32069], [139.30831, 35.32044], [139.30807, 35.3204], [139.30794, 35.32038], [139.30785, 35.32037], [139.30779, 35.32034], [139.30773, 35.32028], [139.30769, 35.32023], [139.30767, 35.32017], [139.30764, 35.3199], [139.30761, 35.31979], [139.30755, 35.3197], [139.30746, 35.31961], [139.30733, 35.31957], [139.30725, 35.31956], [139.30717, 35.31954], [139.3071, 35.3195], [139.30707, 35.31948], [139.30706, 35.31945], [139.30705, 35.31941], [139.30707, 35.31938], [139.30709, 35.31936], [139.30714, 35.31934], [139.3072, 35.31934], [139.30725, 35.31936], [139.3073, 35.31939], [139.30737, 35.31941], [139.30744, 35.31943], [139.30754, 35.31946], [139.30761, 35.31947], [139.30766, 35.3195], [139.30772, 35.31953], [139.30777, 35.31956], [139.30782, 35.31961], [139.30797, 35.31981], [139.30802, 35.31985], [139.30806, 35.31989], [139.30812, 35.31992], [139.3082, 35.31994], [139.30851, 35.32005], [139.30867, 35.32011], [139.30892, 35.32018], [139.30892, 35.32018], [139.30867, 35.32011], [139.30851, 35.32005], [139.3082, 35.31994], [139.30812, 35.31992], [139.30806, 35.31989], [139.30802, 35.31985], [139.30797, 35.31981], [139.30782, 35.31961], [139.30777, 35.31956], [139.30772, 35.31953], [139.30766, 35.3195], [139.30761, 35.31947], [139.30754, 35.31946], [139.30744, 35.31943], [139.30737, 35.31941], [139.3073, 35.31939], [139.30725, 35.31936], [139.3072, 35.31934], [139.30714, 35.31934], [139.30709, 35.31936], [139.30707, 35.31938], [139.30705, 35.31941], [139.30706, 35.31945], [139.30707, 35.31948], [139.3071, 35.3195], [139.30717, 35.31954], [139.30725, 35.31956], [139.30733, 35.31957], [139.30746, 35.31961], [139.30755, 35.3197], [139.30761, 35.31979], [139.30764, 35.3199], [139.30767, 35.32017], [139.30769, 35.32023], [139.30773, 35.32028], [139.30779, 35.32034], [139.30785, 35.32037], [139.30794, 35.32038], [139.30807, 35.3204], [139.30831, 35.32044], [139.30917, 35.32069], [139.30935, 35.32074], [139.30945, 35.3208], [139.30951, 35.32084], [139.30954, 35.32089], [139.30953, 35.32095], [139.30949, 35.32102], [139.30942, 35.32113], [139.30935, 35.32121], [139.3092, 35.32133], [139.30871, 35.32161], [139.30769, 35.32201], [139.30757, 35.32206], [139.30751, 35.32209], [139.30745, 35.32216], [139.3074, 35.32223], [139.30739, 35.32229], [139.3074, 35.32235], [139.30742, 35.32241], [139.30748, 35.32247], [139.30763, 35.32259], [139.3084, 35.32309], [139.30893, 35.32344], [139.30949, 35.32381], [139.30966, 35.32393], [139.31028, 35.32434], [139.31032, 35.32439], [139.31036, 35.32445], [139.31039, 35.32451], [139.31041, 35.32458], [139.31042, 35.32466], [139.31042, 35.32471], [139.31041, 35.32476], [139.31038, 35.32481], [139.31037, 35.32485], [139.31034, 35.32489], [139.3103, 35.32493], [139.31018, 35.32503], [139.31001, 35.32516], [139.30993, 35.32521], [139.30968, 35.32541], [139.30954, 35.32552], [139.3094, 35.32562], [139.30933, 35.32568], [139.3093, 35.32579], [139.30928, 35.32587], [139.30929, 35.32597], [139.30932, 35.32607], [139.30937, 35.32616], [139.30942, 35.32627], [139.30947, 35.32638], [139.3095, 35.32646], [139.30952, 35.32651], [139.30952, 35.32656], [139.3095, 35.32661], [139.30947, 35.32665], [139.30938, 35.32673], [139.30929, 35.32677], [139.30907, 35.32683], [139.30894, 35.32686], [139.30883, 35.32686], [139.30877, 35.32684], [139.3087, 35.32681], [139.30865, 35.32677], [139.30841, 35.32653], [139.30831, 35.32647], [139.30823, 35.32645], [139.30813, 35.32643], [139.30802, 35.32645], [139.30768, 35.3265], [139.30762, 35.32651], [139.30757, 35.32654], [139.30751, 35.32657], [139.3074, 35.32663], [139.3075, 35.32683], [139.30754, 35.32688], [139.30759, 35.32694], [139.3077, 35.32702], [139.30796, 35.32719], [139.30806, 35.3273], [139.30819, 35.32742], [139.30821, 35.32745], [139.3084, 35.32768], [139.30852, 35.32795], [139.30863, 35.32812], [139.30869, 35.32817], [139.30874, 35.32822], [139.30884, 35.32828], [139.30898, 35.32833], [139.30909, 35.32835], [139.30942, 35.32839], [139.31007, 35.3285], [139.31016, 35.32854], [139.31022, 35.32859], [139.31044, 35.3288], [139.31125, 35.32851], [139.3115, 35.32843], [139.3131, 35.32839], [139.31376, 35.32836], [139.31396, 35.32834], [139.31414, 35.32832], [139.31437, 35.32829], [139.31466, 35.32821], [139.31486, 35.32814], [139.31599, 35.32768], [139.31748, 35.32709], [139.31774, 35.32702], [139.31815, 35.32694], [139.31891, 35.32683], [139.31948, 35.32675], [139.32018, 35.32664], [139.32089, 35.32659], [139.32096, 35.32659], [139.32157, 35.32658], [139.32208, 35.32653], [139.32252, 35.32649], [139.32265, 35.32648], [139.32357, 35.32639], [139.32381, 35.32637], [139.32387, 35.32637], [139.324, 35.32638], [139.32405, 35.32638], [139.32429, 35.3264], [139.32463, 35.32649], [139.32496, 35.32661], [139.32611, 35.32715], [139.32615, 35.32717], [139.32622, 35.32719], [139.32629, 35.32711], [139.32661, 35.32676], [139.32681, 35.32656], [139.3273, 35.3261], [139.32736, 35.32606], [139.32785, 35.3256], [139.32839, 35.3251], [139.32844, 35.32505], [139.32869, 35.32482], [139.32914, 35.32431], [139.32937, 35.32401], [139.32948, 35.32379], [139.32951, 35.32371], [139.32958, 35.32359], [139.32964, 35.3235], [139.32992, 35.32309], [139.33034, 35.32242], [139.33046, 35.32215], [139.33072, 35.32145], [139.33094, 35.32097], [139.33099, 35.32068], [139.33101, 35.32048], [139.33101, 35.32032], [139.33098, 35.32004], [139.33094, 35.3198], [139.33081, 35.31938], [139.33073, 35.31911], [139.3307, 35.31896], [139.33058, 35.31857], [139.33041, 35.31798], [139.33039, 35.31789], [139.33036, 35.31779], [139.33035, 35.31767], [139.33035, 35.31764], [139.33035, 35.31751], [139.33037, 35.31737], [139.33041, 35.31725], [139.33047, 35.31711], [139.3306, 35.3169], [139.33066, 35.31682], [139.33067, 35.31682], [139.33077, 35.3167], [139.33091, 35.31661], [139.33107, 35.31652], [139.33152, 35.31632], [139.33157, 35.3163], [139.33176, 35.31622], [139.33204, 35.3161], [139.33223, 35.31602], [139.33324, 35.3156], [139.33345, 35.31551], [139.33369, 35.3154], [139.33391, 35.31528], [139.33407, 35.31516], [139.33417, 35.31506], [139.33424, 35.31496], [139.33425, 35.31494], [139.33429, 35.31484], [139.33443, 35.31489], [139.33458, 35.31492], [139.3347, 35.31495], [139.3349, 35.31498], [139.33511, 35.315], [139.33542, 35.315], [139.33559, 35.31499], [139.33584, 35.31498], [139.33741, 35.31486], [139.33796, 35.31482], [139.33836, 35.3148], [139.3388, 35.31479], [139.33927, 35.3148], [139.33967, 35.31483], [139.34009, 35.31486], [139.34143, 35.31504], [139.34485, 35.31547], [139.3462, 35.31559], [139.34802, 35.31575], [139.34925, 35.31586], [139.35163, 35.31601], [139.35407, 35.31616], [139.35533, 35.31622], [139.35694, 35.31628], [139.35732, 35.31629], [139.358, 35.3163], [139.35931, 35.31632], [139.35963, 35.31633], [139.36007, 35.31636], [139.36046, 35.31639], [139.36082, 35.31644], [139.36111, 35.3165], [139.3614, 35.31659], [139.36192, 35.31675], [139.36209, 35.31681], [139.36301, 35.31707], [139.36354, 35.31722], [139.364, 35.31729], [139.3651, 35.31741], [139.36561, 35.31748], [139.36606, 35.31755], [139.36636, 35.31762], [139.3688, 35.31831], [139.3736, 35.31966], [139.37499, 35.32005], [139.37518, 35.32011], [139.37541, 35.32017], [139.37575, 35.32026], [139.376, 35.3203], [139.3762, 35.32032], [139.3764, 35.32033], [139.37661, 35.32033], [139.37678, 35.32032], [139.3769, 35.3203], [139.37694, 35.3203], [139.37704, 35.32029], [139.37719, 35.32026], [139.37733, 35.32023], [139.37749, 35.32019], [139.37766, 35.32015], [139.37784, 35.32008], [139.37804, 35.31999], [139.37831, 35.31985], [139.37847, 35.31975], [139.37922, 35.31923], [139.38017, 35.31857], [139.38075, 35.31818], [139.3809, 35.31808], [139.38132, 35.31783], [139.38146, 35.31775], [139.38199, 35.3175], [139.38211, 35.31745], [139.38232, 35.31737], [139.38267, 35.31726], [139.38293, 35.31719], [139.38318, 35.31712], [139.38359, 35.31703], [139.3838, 35.317], [139.38403, 35.31697], [139.38414, 35.31696], [139.38448, 35.31693], [139.38484, 35.31692], [139.3853, 35.31692], [139.38565, 35.31695], [139.38683, 35.31706], [139.38694, 35.31707], [139.38707, 35.31709], [139.39033, 35.3174], [139.39043, 35.31741], [139.39055, 35.31743], [139.39265, 35.31767], [139.39443, 35.3179], [139.39611, 35.31813], [139.39627, 35.31816], [139.39651, 35.3182], [139.39766, 35.31842], [139.39779, 35.31844], [139.39791, 35.31846], [139.39839, 35.31853], [139.39861, 35.31856], [139.39927, 35.31861], [139.39938, 35.31862], [139.40015, 35.31865], [139.40142, 35.3187], [139.40156, 35.3187], [139.40168, 35.31871], [139.40245, 35.31873], [139.4034, 35.31875], [139.40633, 35.31878], [139.40673, 35.31877], [139.40713, 35.31876], [139.40816, 35.31868], [139.40829, 35.31867], [139.41108, 35.31848], [139.41262, 35.31837], [139.41528, 35.31814], [139.41605, 35.31809], [139.41683, 35.31806], [139.41732, 35.31808], [139.41781, 35.31812], [139.41834, 35.31819], [139.41849, 35.31822], [139.41862, 35.31824], [139.41875, 35.31827], [139.41937, 35.3184], [139.42057, 35.31868], [139.4218, 35.31896], [139.42307, 35.31923], [139.4239, 35.31936], [139.42532, 35.31955], [139.42769, 35.31987], [139.42805, 35.31991], [139.42853, 35.31994], [139.42969, 35.31999], [139.42988, 35.31999], [139.43215, 35.32013], [139.43223, 35.32013], [139.43234, 35.32014], [139.43301, 35.32018], [139.43323, 35.32019], [139.43364, 35.32022], [139.43604, 35.32037], [139.43643, 35.3204], [139.43677, 35.32045], [139.43763, 35.32059], [139.43845, 35.3207], [139.43912, 35.32077], [139.43964, 35.3208], [139.44018, 35.32081], [139.44071, 35.32082], [139.44116, 35.32082], [139.44164, 35.3208], [139.44247, 35.32076], [139.4433, 35.32071], [139.44369, 35.32067], [139.44419, 35.32063], [139.44502, 35.32053], [139.44541, 35.32048], [139.44589, 35.32041], [139.44663, 35.3203], [139.44726, 35.3202], [139.44807, 35.32004], [139.44895, 35.31986], [139.45002, 35.31959], [139.45021, 35.31955], [139.45041, 35.3195], [139.45082, 35.31942], [139.45099, 35.3194], [139.45222, 35.31921], [139.45336, 35.31904], [139.45445, 35.31887], [139.45549, 35.31872], [139.45639, 35.31858], [139.45731, 35.31844], [139.45803, 35.31832], [139.45971, 35.31804], [139.46112, 35.3178], [139.46224, 35.31759], [139.46315, 35.31743], [139.46402, 35.31728], [139.46412, 35.31726], [139.46423, 35.31724], [139.46557, 35.31703], [139.46582, 35.317], [139.46605, 35.317], [139.46624, 35.31701], [139.46644, 35.31702], [139.4667, 35.31707], [139.46686, 35.3171], [139.46697, 35.31713], [139.46754, 35.31725], [139.46765, 35.31728], [139.46798, 35.31735], [139.46814, 35.31738], [139.46826, 35.3174], [139.4684, 35.31741], [139.46856, 35.31742], [139.46872, 35.31741], [139.46903, 35.31738], [139.46935, 35.31734], [139.46952, 35.31731], [139.47008, 35.31724], [139.47031, 35.31721], [139.47056, 35.31716], [139.47071, 35.31712], [139.47084, 35.31707], [139.47102, 35.31699], [139.47116, 35.31692], [139.47117, 35.31691], [139.4715, 35.31671], [139.47173, 35.31658], [139.47186, 35.3165], [139.47225, 35.31625], [139.47275, 35.31596], [139.47306, 35.31576], [139.47386, 35.31527], [139.47434, 35.31498], [139.47484, 35.31467], [139.47537, 35.31435], [139.47569, 35.31415], [139.47604, 35.31394], [139.47613, 35.31388], [139.47622, 35.31383], [139.4764, 35.31371], [139.47668, 35.31351], [139.47677, 35.31343], [139.47685, 35.31337], [139.47722, 35.31297], [139.47863, 35.31151], [139.47932, 35.31084], [139.47955, 35.31062], [139.47962, 35.31054], [139.4797, 35.31047], [139.4804, 35.30976], [139.48103, 35.30914], [139.4815, 35.30866], [139.48162, 35.30855], [139.4818, 35.30842], [139.482, 35.3083], [139.48215, 35.30823], [139.4823, 35.30817], [139.48245, 35.30812], [139.48239, 35.30804], [139.48225, 35.30809], [139.4821, 35.30815], [139.4821, 35.30815]]}};
+
+const polyline = L.geoJSON(routeGeojson, {
+    style: {
+        color: '#2563EB',
+        weight: 5,
+        opacity: 0.85
+    }
+}).addTo(map);
+
+map.fitBounds(polyline.getBounds(), { padding: [30, 30] });
+
+// 3. Render Waypoints
+const timelineData = [{"name": "起點：guest house MARUYA (熱海銀座)", "km": 0.0, "type": "start", "coord": [139.07248, 35.09436], "desc": "08:30 由熱海銀座町出發，沿相模灣公路北上。"}, {"name": "熱海陽光海灘・伊豆山水岸", "km": 2.5, "type": "scenic", "coord": [139.075, 35.097], "desc": "晨光中的相模灣蔚藍海景。"}, {"name": "避坑密道：縣道740號柑橘景觀道", "km": 11.5, "type": "pivot", "coord": [139.145, 35.155], "desc": "🚨 避開江之浦暗黑長隧道，半山腰俯瞰相模灣海景（162m）。"}, {"name": "小田原城天守閣", "km": 22.0, "type": "scenic", "coord": [139.155, 35.25], "desc": "護城河楓紅與歷史古城，品嚐酥脆炸竹筴魚。"}, {"name": "湘南海岸自行車專用道", "km": 38.0, "type": "scenic", "coord": [139.31, 35.32], "desc": "小田原後一馬平川相模灣平路，沿防風林專用道直奔湘南。"}, {"name": "終點：江之島 / 藤澤市區飯店", "km": 61.5, "type": "end", "coord": [139.482, 35.308], "desc": "眺望江之島海燈塔與夕陽。"}];
+const wpList = document.getElementById('waypoint-list');
+
+timelineData.forEach((wp, idx) => {
+    const marker = L.circleMarker([wp.coord[1], wp.coord[0]], {
+        radius: wp.type === 'start' || wp.type === 'end' ? 9 : (wp.type === 'pivot' ? 7 : 6),
+        fillColor: wp.type === 'start' ? '#10B981' : (wp.type === 'end' ? '#EF4444' : (wp.type === 'pivot' ? '#F59E0B' : '#38BDF8')),
+        color: '#FFFFFF',
+        weight: 2,
+        fillOpacity: 0.95
+    }).addTo(map);
+
+    marker.bindPopup(`<strong>${wp.name} (${wp.km}km)</strong><br>${wp.desc}`);
+
+    const card = document.createElement('div');
+    card.className = 'waypoint-card';
+    card.innerHTML = `
+        <div class="waypoint-header">
+            <span class="waypoint-name">${wp.name}</span>
+            <span class="waypoint-km">${wp.km} km</span>
+        </div>
+        <div class="waypoint-desc">${wp.desc}</div>
+    `;
+    card.onclick = () => {
+        map.flyTo([wp.coord[1], wp.coord[0]], 14, { duration: 1.2 });
+        marker.openPopup();
+    };
+    wpList.appendChild(card);
+});
+
+// 4. Render Chart.js Elevation Profile
+const ctx = document.getElementById('elevationChart').getContext('2d');
+const chartLabels = ["0.0km", "0.9km", "2.3km", "4.5km", "5.9km", "6.8km", "8.0km", "8.5km", "8.8km", "9.8km", "10.1km", "10.4km", "11.4km", "12.3km", "13.0km", "13.6km", "14.2km", "14.6km", "15.7km", "16.5km", "17.0km", "17.4km", "18.2km", "19.4km", "20.9km", "21.5km", "22.8km", "26.2km", "28.2km", "29.5km", "31.2km", "34.6km", "35.6km", "37.7km", "38.3km", "38.8km", "39.1km", "39.2km", "39.8km", "40.2km", "42.0km", "43.0km", "46.7km", "49.0km", "52.8km", "55.3km", "56.7km"];
+const chartData = [5.5, 0.5, 8.1, 7.1, 7.2, 5.2, 20.1, 37.6, 49.0, 31.9, 23.4, 22.1, 76.8, 17.9, 8.1, 9.1, 10.2, 20.5, 14.2, 31.4, 13.0, 10.0, 11.3, 10.4, 11.3, 8.6, 5.6, 9.1, 3.1, 8.4, 9.9, 7.9, 18.8, 48.8, 34.4, 122.8, 167.4, 155.5, 53.9, 14.1, 1.5, 8.1, 4.2, 6.9, 6.1, 3.3, 4.9];
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: chartLabels,
+        datasets: [{
+            label: '海拔高度 (m)',
+            data: chartData,
+            borderColor: '#38BDF8',
+            backgroundColor: 'rgba(56, 189, 248, 0.15)',
+            borderWidth: 2.5,
+            fill: true,
+            tension: 0.2,
+            pointRadius: 0
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    title: (ctx) => `里程：${ctx[0].label}`,
+                    label: (ctx) => `NAVITIME 標高：${ctx.parsed.y} m`
+                }
+            }
+        },
+        scales: {
+            x: {
+                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                ticks: { color: '#94A3B8', maxTicksLimit: 12 }
+            },
+            y: {
+                grid: { color: 'rgba(255, 255, 255, 0.08)' },
+                ticks: { color: '#94A3B8', callback: (val) => `${val}m` }
+            }
+        }
+    }
+});
+</script>
+
+
+<script>
+const THEMES = {
+    'indie': { name: '🌿 文藝青年風', color: '#8C6239' },
+    'sport': { name: '⚡ 運動極限風', color: '#FC4C02' },
+    'japan': { name: '🎌 哈日和風', color: '#DC2626' },
+    'cycling': { name: '🚴 單車專業風', color: '#FB7185' },
+    'outdoor': { name: '⛺ 休閒野營風', color: '#059669' }
+};
+
+function setTheme(themeKey) {
+    if (!THEMES[themeKey]) themeKey = 'cycling';
+    document.documentElement.setAttribute('data-theme', themeKey);
+    localStorage.setItem('riding_preferred_theme', themeKey);
+
+    document.querySelectorAll('.theme-btn-mini, .theme-pill-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(themeKey)) {
+            btn.classList.add('active');
+        }
+    });
+
+    const label = document.getElementById('current-theme-name');
+    if (label) {
+        label.textContent = THEMES[themeKey].name;
+        label.style.color = THEMES[themeKey].color;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('riding_preferred_theme') || 'cycling';
+    setTheme(savedTheme);
+});
+</script>
+
+</body>
+</html>
