@@ -8,7 +8,7 @@
   "total_gain": 4923,
   "total_planned_km": 702.0,
   "source": "NAVITIME 自転車ルート（坡少）實測；標高取自 NAVITIME shape API 三維座標",
-  "booked": 9
+  "booked": 11
  },
  "emergency": {
   "_note": "緊急聯絡。全部號碼皆自官方來源查證（消防庁、各都県政府、JNTO）。都縣別的救急相談電話依當日實際經過的行政區對應，行政區由路線座標反向地理編碼求得。",
@@ -5408,12 +5408,12 @@
    ],
    "planned_km": 41.9,
    "hotel": {
-    "name": "本棲湖 民宿 浩庵 / 河口湖機動 (kagelow / 富士見205)",
-    "addr": "山梨縣南巨摩郡身延町中之倉2926",
-    "url": "https://www.google.com/maps/search/?api=1&query=%E6%9C%AC%E6%A3%B2%E6%B9%96%E6%B5%A9%E5%BA%B5",
-    "booked": false,
-    "bike": "🚲 湖畔民宿/青旅，提供單車友善停放",
-    "tel": null
+    "name": "富士の森ホテル（Fuji no Mori Hotel）",
+    "addr": "山梨県南都留郡富士河口湖町船津 6088",
+    "url": "https://www.google.com/maps/search/?api=1&query=%E5%B1%B1%E6%A2%A8%E7%9C%8C%E5%8D%97%E9%83%BD%E7%95%99%E9%83%A1%E5%AF%8C%E5%A3%AB%E6%B2%B3%E5%8F%A3%E6%B9%96%E7%94%BA%E8%88%B9%E6%B4%A56088%20Fuji%20no%20Mori%20Hotel",
+    "booked": true,
+    "bike": "🚲 河口湖南岸飯店，免費停車場，入住時與櫃檯確認單車停放",
+    "tel": "0555-28-5188"
    },
    "weather_hist": {
     "raw": "☀️ 快晴 ｜ 3.2°C ~ 14.6°C ｜ 0.0mm ｜ 9.1h",
@@ -5432,7 +5432,9 @@
     "history": "日幣千圓紙幣名畫《湖畔之春》（岡田紅陽所攝之逆富士原景）；西湖療癒之里根場（甲州兜造茅草屋傳統聚落）；精進湖「子抱富士」；青木原樹海（貞觀6年熔岩林）"
    },
    "meals": {},
-   "logistics": {},
+   "logistics": {
+    "hotel_tel": "0555-28-5188"
+   },
    "bailout": {
     "strategy": "A+B",
     "lines": [
@@ -6258,12 +6260,12 @@
    ],
    "planned_km": 38.1,
    "hotel": {
-    "name": "本棲湖浩庵 / 河口湖 / 富士吉田",
-    "addr": "山梨縣富士五湖周邊",
-    "url": "https://www.google.com/maps/search/?api=1&query=%E6%9C%AC%E6%A3%B2%E6%B9%96%E6%B5%A9%E5%BA%B5",
-    "booked": false,
-    "bike": "🚲 高原住宿基地，彈性停放",
-    "tel": null
+    "name": "本栖湖畔 民宿 浩庵（Kouan）",
+    "addr": "山梨県南巨摩郡身延町中ノ倉 2926",
+    "url": "https://www.google.com/maps/search/?api=1&query=%E5%B1%B1%E6%A2%A8%E7%9C%8C%E5%8D%97%E5%B7%A8%E6%91%A9%E9%83%A1%E8%BA%AB%E5%BB%B6%E7%94%BA%E4%B8%AD%E3%83%8E%E5%80%892926%20%E6%B5%A9%E5%BA%B5",
+    "booked": true,
+    "bike": "🚲 本栖湖湖畔民宿，單車友善停放",
+    "tel": "0556-38-0117"
    },
    "weather_hist": {
     "raw": "☀️ 晴朗 ｜ 5.8°C ~ 16.4°C ｜ 0.0mm ｜ 8.8h",
@@ -6282,7 +6284,9 @@
     "history": "富岳風穴與鳴澤冰穴（天然熔岩隧道，全年恆溫0度，江戶與明治天然蠶種冷藏庫）；甲州名物「餺飥麵（Hoto）」（戰國武田信玄陣中軍糧寶刀麵）"
    },
    "meals": {},
-   "logistics": {},
+   "logistics": {
+    "hotel_tel": "0556-38-0117"
+   },
    "bailout": {
     "strategy": "B",
     "lines": [

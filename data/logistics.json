@@ -1,0 +1,5 @@
+{
+  "_note": "每日撤退／機械／緊急／預算等另行維護的資料，依天數字串為 key。目前僅登錄已訂房飯店電話（hotel_tel），由 build_trip_json.py 併入 trip.json 的 hotel.tel。",
+  "4": { "hotel_tel": "0555-28-5188" },
+  "5": { "hotel_tel": "0556-38-0117" }
+}
