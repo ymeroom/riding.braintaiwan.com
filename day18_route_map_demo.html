@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Day 18 行程地圖 Demo ｜ 淺草 ➔ 東大本鄉銀杏 ➔ 皇居 ➔ 明治神宮外苑銀杏大道 ➔ 秋葉原</title>
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Chart.js for elevation profile -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #8C2D19;
+            --secondary: #2B4C59;
+            --accent: #D97724;
+            --bg-dark: #0F172A;
+            --card-bg: #1E293B;
+            --border: #334155;
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.5;
+            padding: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1E1B4B 0%, #31102E 50%, #451A03 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .header-title h1 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: #FFFFFF;
+        }
+
+        .header-title p {
+            font-size: 13.5px;
+            color: #CBD5E1;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background: #2563EB;
+            color: #FFFFFF;
+            padding: 9px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            background: #1D4ED8;
+            transform: translateY(-1px);
+        }
+
+        .action-btn.gsi {
+            background: #059669;
+        }
+        .action-btn.gsi:hover {
+            background: #047857;
+        }
+
+        .action-btn.gpx {
+            background: #D97724;
+        }
+        .action-btn.gpx:hover {
+            background: #B45309;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 18px;
+            text-align: center;
+        }
+
+        .stat-box .val {
+            font-size: 20px;
+            font-weight: 800;
+            color: #F59E0B;
+        }
+
+        .stat-box .lbl {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 950px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        #map {
+            height: 520px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            z-index: 1;
+        }
+
+        .sidebar {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            max-height: 520px;
+        }
+
+        .sidebar h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #F8FAFC;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #waypoint-list {
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-right: 6px;
+        }
+
+        .waypoint-card {
+            background: #0F172A;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .waypoint-card:hover {
+            border-color: #38BDF8;
+            background: #1E293B;
+            transform: translateX(2px);
+        }
+
+        .waypoint-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .waypoint-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #38BDF8;
+        }
+
+        .waypoint-km {
+            font-size: 11.5px;
+            color: #F59E0B;
+            font-weight: 700;
+        }
+
+        .waypoint-desc {
+            font-size: 12px;
+            color: #CBD5E1;
+            line-height: 1.4;
+        }
+
+        .chart-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .chart-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #F8FAFC;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 240px;
+            width: 100%;
+        }
+
+        .tip-callout {
+            background: rgba(37, 99, 235, 0.12);
+            border: 1px solid #3B82F6;
+            border-left: 5px solid #2563EB;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #E2E8F0;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            padding: 16px 0;
+            border-top: 1px solid var(--border);
+        }
+    
+        /* === Samsung S23 Ultra & Mobile OLED Visual Optimizations === */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 10px 80px 10px; /* Safe padding for bottom action bar */
+                font-size: 14px;
+            }
+            header {
+                padding: 16px 14px;
+                border-radius: 12px;
+                margin-bottom: 12px;
+            }
+            .header-title h1 {
+                font-size: 17px;
+                line-height: 1.35;
+            }
+            .header-title p {
+                font-size: 12px;
+            }
+            .btn-group {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .action-btn {
+                justify-content: center;
+                padding: 11px 12px;
+                font-size: 12px;
+                border-radius: 8px;
+                min-height: 44px;
+            }
+            .action-btn.gpx {
+                grid-column: 1 / -1;
+            }
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+            .stat-box {
+                padding: 12px 10px;
+                border-radius: 10px;
+            }
+            .stat-box .val {
+                font-size: 17px;
+            }
+            .stat-box .lbl {
+                font-size: 11px;
+            }
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-bottom: 12px;
+            }
+            #map {
+                height: 380px;
+                border-radius: 10px;
+            }
+            .sidebar {
+                max-height: 320px;
+                padding: 14px;
+                border-radius: 10px;
+            }
+            .waypoint-card {
+                padding: 10px 12px;
+                min-height: 48px;
+            }
+            .chart-card {
+                padding: 14px;
+                border-radius: 10px;
+                margin-bottom: 12px;
+            }
+            .chart-container {
+                height: 190px;
+            }
+            .tip-callout {
+                padding: 14px;
+                font-size: 12.5px;
+                border-radius: 10px;
+            }
+            /* Floating Bottom Bar for S23 Ultra one-hand riding use */
+            .mobile-bottom-bar {
+                display: flex !important;
+            }
+        }
+
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+            z-index: 9999;
+            justify-content: space-around;
+            gap: 8px;
+        }
+
+        .mobile-bar-btn {
+            flex: 1;
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: #F8FAFC;
+            padding: 10px 8px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            min-height: 44px;
+        }
+        .mobile-bar-btn.primary {
+            background: #2563EB;
+            border-color: #3B82F6;
+            color: #FFFFFF;
+        }
+        .mobile-bar-btn.accent {
+            background: #D97724;
+            border-color: #F59E0B;
+            color: #FFFFFF;
+        }
+    
+    
+        /* === Samsung S23 Ultra & Mobile OLED Visual Optimizations === */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 10px 80px 10px; /* Safe padding for bottom action bar */
+                font-size: 14px;
+            }
+            header {
+                padding: 16px 14px;
+                border-radius: 12px;
+                margin-bottom: 12px;
+            }
+            .header-title h1 {
+                font-size: 17px;
+                line-height: 1.35;
+            }
+            .header-title p {
+                font-size: 12px;
+            }
+            .btn-group {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .action-btn {
+                justify-content: center;
+                padding: 11px 12px;
+                font-size: 12px;
+                border-radius: 8px;
+                min-height: 44px;
+            }
+            .action-btn.gpx {
+                grid-column: 1 / -1;
+            }
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+            .stat-box {
+                padding: 12px 10px;
+                border-radius: 10px;
+            }
+            .stat-box .val {
+                font-size: 17px;
+            }
+            .stat-box .lbl {
+                font-size: 11px;
+            }
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-bottom: 12px;
+            }
+            #map {
+                height: 380px;
+                border-radius: 10px;
+            }
+            .sidebar {
+                max-height: 320px;
+                padding: 14px;
+                border-radius: 10px;
+            }
+            .waypoint-card {
+                padding: 10px 12px;
+                min-height: 48px;
+            }
+            .chart-card {
+                padding: 14px;
+                border-radius: 10px;
+                margin-bottom: 12px;
+            }
+            .chart-container {
+                height: 190px;
+            }
+            .tip-callout {
+                padding: 14px;
+                font-size: 12.5px;
+                border-radius: 10px;
+            }
+            /* Floating Bottom Bar for S23 Ultra one-hand riding use */
+            .mobile-bottom-bar {
+                display: flex !important;
+            }
+        }
+
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+            z-index: 9999;
+            justify-content: space-around;
+            gap: 8px;
+        }
+
+        .mobile-bar-btn {
+            flex: 1;
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: #F8FAFC;
+            padding: 10px 8px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            min-height: 44px;
+        }
+        .mobile-bar-btn.primary {
+            background: #2563EB;
+            border-color: #3B82F6;
+            color: #FFFFFF;
+        }
+        .mobile-bar-btn.accent {
+            background: #D97724;
+            border-color: #F59E0B;
+            color: #FFFFFF;
+        }
+    
+    
+        /* ==========================================================================
+           🎨 5 大主題風格系統 (5 Visual Themes Engine)
+           ========================================================================== */
+        :root, [data-theme="cycling"] {
+            --bg-dark: #12141A;
+            --card-bg: #1E232E;
+            --border: #333B4D;
+            --text-light: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --primary: #FB7185;
+            --accent: #FBBF24;
+            --header-grad: linear-gradient(135deg, #181B22 0%, #2A1728 50%, #0F172A 100%);
+            --theme-tag: "🚴 單車專業風";
+        }
+        [data-theme="indie"] {
+            --bg-dark: #F4EFEA;
+            --card-bg: #FFFFFF;
+            --border: #E5DDD3;
+            --text-light: #3E3832;
+            --text-muted: #786C60;
+            --primary: #8C6239;
+            --accent: #607274;
+            --header-grad: linear-gradient(135deg, #5C4B40 0%, #8C6239 50%, #4A3E37 100%);
+            --theme-tag: "🌿 文藝青年風";
+        }
+        [data-theme="sport"] {
+            --bg-dark: #080B11;
+            --card-bg: #111827;
+            --border: #1F2937;
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
+            --primary: #FC4C02;
+            --accent: #10B981;
+            --header-grad: linear-gradient(135deg, #0F172A 0%, #7C2D12 50%, #1E1B4B 100%);
+            --theme-tag: "⚡ 運動極限風";
+        }
+        [data-theme="japan"] {
+            --bg-dark: #FDF8F5;
+            --card-bg: #FFFFFF;
+            --border: #FBCFE8;
+            --text-light: #1F2937;
+            --text-muted: #4B5563;
+            --primary: #DC2626;
+            --accent: #DB2777;
+            --header-grad: linear-gradient(135deg, #881337 0%, #BE123C 50%, #991B1B 100%);
+            --theme-tag: "🎌 哈日和風";
+        }
+        [data-theme="outdoor"] {
+            --bg-dark: #F0FDF4;
+            --card-bg: #FFFFFF;
+            --border: #BBF7D0;
+            --text-light: #14532D;
+            --text-muted: #374151;
+            --primary: #059669;
+            --accent: #D97706;
+            --header-grad: linear-gradient(135deg, #064E3B 0%, #047857 50%, #78350F 100%);
+            --theme-tag: "⛺ 休閒野營風";
+        }
+
+        body {
+            background-color: var(--bg-dark) !important;
+            color: var(--text-light) !important;
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+        header {
+            background: var(--header-grad) !important;
+        }
+
+        .theme-switcher-compact {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 8px 12px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .theme-btn-group-compact {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .theme-btn-mini {
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: #CBD5E1;
+            padding: 5px 9px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .theme-btn-mini:hover {
+            color: #FFFFFF;
+            border-color: #64748B;
+        }
+        .theme-btn-mini.active {
+            background: #2563EB;
+            color: #FFFFFF;
+            border-color: #60A5FA;
+        }
+
+    
+        /* ==========================================================================
+           🎨 5 大主題風格置頂切換列 (Sticky Top 5-Themes Switcher Bar)
+           ========================================================================== */
+        .top-theme-sticky-nav {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 99999;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 2px solid rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            margin-bottom: 12px;
+        }
+
+        .theme-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .theme-nav-title {
+            color: #FFFFFF;
+            font-size: 13.5px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .theme-btn-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .theme-pill-btn {
+            background: #1E293B;
+            border: 1px solid #475569;
+            color: #E2E8F0;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            user-select: none;
+        }
+
+        .theme-pill-btn:hover {
+            transform: translateY(-1px);
+            color: #FFFFFF;
+            border-color: #94A3B8;
+            background: #334155;
+        }
+
+        .theme-pill-btn.active {
+            background: #2563EB !important;
+            color: #FFFFFF !important;
+            border-color: #60A5FA !important;
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.6) !important;
+        }
+
+        @media (max-width: 768px) {
+            .top-theme-sticky-nav {
+                padding: 6px 8px;
+            }
+            .theme-nav-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .theme-btn-group {
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 5px;
+            }
+            .theme-pill-btn {
+                justify-content: center;
+                padding: 8px 4px;
+                font-size: 11px;
+                border-radius: 6px;
+            }
+            .theme-pill-btn:nth-child(4), .theme-pill-btn:nth-child(5) {
+                grid-column: span 1.5;
+            }
+        }
+
+    
+        /* === Samsung S23 Ultra & Mobile OLED Visual Optimizations === */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 10px 80px 10px; /* Safe padding for bottom action bar */
+                font-size: 14px;
+            }
+            header {
+                padding: 16px 14px;
+                border-radius: 12px;
+                margin-bottom: 12px;
+            }
+            .header-title h1 {
+                font-size: 17px;
+                line-height: 1.35;
+            }
+            .header-title p {
+                font-size: 12px;
+            }
+            .btn-group {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .action-btn {
+                justify-content: center;
+                padding: 11px 12px;
+                font-size: 12px;
+                border-radius: 8px;
+                min-height: 44px;
+            }
+            .action-btn.gpx {
+                grid-column: 1 / -1;
+            }
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+            .stat-box {
+                padding: 12px 10px;
+                border-radius: 10px;
+            }
+            .stat-box .val {
+                font-size: 17px;
+            }
+            .stat-box .lbl {
+                font-size: 11px;
+            }
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-bottom: 12px;
+            }
+            #map {
+                height: 380px;
+                border-radius: 10px;
+            }
+            .sidebar {
+                max-height: 320px;
+                padding: 14px;
+                border-radius: 10px;
+            }
+            .waypoint-card {
+                padding: 10px 12px;
+                min-height: 48px;
+            }
+            .chart-card {
+                padding: 14px;
+                border-radius: 10px;
+                margin-bottom: 12px;
+            }
+            .chart-container {
+                height: 190px;
+            }
+            .tip-callout {
+                padding: 14px;
+                font-size: 12.5px;
+                border-radius: 10px;
+            }
+            /* Floating Bottom Bar for S23 Ultra one-hand riding use */
+            .mobile-bottom-bar {
+                display: flex !important;
+            }
+        }
+
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+            z-index: 9999;
+            justify-content: space-around;
+            gap: 8px;
+        }
+
+        .mobile-bar-btn {
+            flex: 1;
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: #F8FAFC;
+            padding: 10px 8px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            min-height: 44px;
+        }
+        .mobile-bar-btn.primary {
+            background: #2563EB;
+            border-color: #3B82F6;
+            color: #FFFFFF;
+        }
+        .mobile-bar-btn.accent {
+            background: #D97724;
+            border-color: #F59E0B;
+            color: #FFFFFF;
+        }
+    
+    </style>
+</head>
+<body>
+
+<!-- 🎨 5 大主題風格置頂即時切換列 (Sticky Top) -->
+<div class="top-theme-sticky-nav">
+    <div class="theme-nav-inner">
+        <div class="theme-nav-title">
+            <span>🎨 5 大風格切換：</span>
+            <span id="current-theme-name" style="color: #38BDF8; font-weight: 800;">🚴 4. 單車風格</span>
+        </div>
+        <div class="theme-btn-group">
+            <button type="button" class="theme-pill-btn" onclick="setTheme('indie')">🌿 1. 文藝青年</button>
+            <button type="button" class="theme-pill-btn" onclick="setTheme('sport')">⚡ 2. 運動風格</button>
+            <button type="button" class="theme-pill-btn" onclick="setTheme('japan')">🎌 3. 哈日風格</button>
+            <button type="button" class="theme-pill-btn active" onclick="setTheme('cycling')">🚴 4. 單車風格</button>
+            <button type="button" class="theme-pill-btn" onclick="setTheme('outdoor')">⛺ 5. 休閒風格</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <header>
+        <div class="header-title">
+            <h1>Day 18: 淺草 ➔ 東大本鄉銀杏 ➔ 皇居 ➔ 明治神宮外苑銀杏大道 ➔ 秋葉原</h1>
+            <p>🚴 2026/11/30（一）　金秋篇　｜ 第四階段：下町水岸漫遊 ➔ 都心金黃銀杏 ➔ 圓滿還車 ｜ NAVITIME 三維座標標高實測</p>
+        </div>
+        <div class="btn-group">
+            <a href="index.html" class="action-btn">📋 返回 19日總行程表 ➔</a>
+            <a href="tokyo_cycling_19days_map_demo.html" class="action-btn gsi">🗺️ 19日總地圖 Demo ↗</a>
+            <a href="day18_track.gpx" download="day18_track.gpx" class="action-btn gpx">💾 下載 Day 18 GPX 軌跡</a>
+        </div>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stat-box">
+            <div class="val">24.8 km</div>
+            <div class="lbl">NAVITIME 實測里程</div>
+        </div>
+        <div class="stat-box">
+            <div class="val">+48 m / -48 m</div>
+            <div class="lbl">累積爬升 / 下降</div>
+        </div>
+        <div class="stat-box">
+            <div class="val">1m ➔ 35m</div>
+            <div class="lbl">海拔區間 (最低 ➔ 最高)</div>
+        </div>
+        <div class="stat-box">
+            <div class="val">5</div>
+            <div class="lbl">關鍵節點</div>
+        </div>
+        <div class="stat-box">
+            <div class="val">~1.4 – 1.7 hr</div>
+            <div class="lbl">純騎乘時間 (15–18 km/h)</div>
+        </div>
+    </div>
+
+    <div class="main-layout">
+        <div id="map"></div>
+        <div class="sidebar">
+            <h3>
+                <span>📍 關鍵節點與轉折導引</span>
+                <span style="font-size: 11.5px; color: #38BDF8; font-weight: normal;">點擊可地圖定位</span>
+            </h3>
+            <div id="waypoint-list"></div>
+        </div>
+    </div>
+
+    <div class="chart-card">
+        <h3>
+            <span>📈 NAVITIME 三維座標海拔高程剖面圖</span>
+            <span style="font-size: 12px; color: #10B981;">起點 1m ／ 最高 35m ／ 總爬升 +48m</span>
+        </h3>
+        <div class="chart-container">
+            <canvas id="elevationChart"></canvas>
+        </div>
+    </div>
+
+    <div class="tip-callout">
+        💡 <strong>在地車友實戰解析：</strong> 東京金秋的最強句點！一天集齊東大百年銀杏、皇居與神宮外苑黃金雨。<div style='margin-top:8px; padding-top:8px; border-top:1px dashed rgba(59,130,246,0.3); font-size:11.5px; color:#DDD6FE;'><strong style='color:#C084FC;'>🎬 聖地巡禮：</strong> 《東京喰種》、《東大特訓班 Dragon Zakura》（阿部寬熱血考進東大赤門）；《天氣之子》（神宮外苑與新宿天際線） ｜ 《東京愛情故事 Tokyo Love Story》（鈴木保奈美飾演的莉香與織田裕二飾演的完治在「明治神宮外苑銀杏大道」的世紀分別名場面！）；《HERO》（木村拓哉檢察官外苑片頭漫步）</div>
+    </div>
+
+    <footer>
+        <p>東京・富士五湖・富士宮・伊豆・東京灣 19日秋季單車騎行計畫 ｜ Day 18 行程地圖 Demo</p>
+    </footer>
+</div>
+
+<script>
+// 1. Initialize Leaflet Map
+const map = L.map('map').setView([35.63, 139.52], 11);
+
+const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+const gsiTile = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '© Geospatial Information Authority of Japan (国土地理院)'
+});
+
+const baseMaps = {
+    "OpenStreetMap (標準)": osm,
+    "日本國土地理院 (標準地圖)": gsiTile
+};
+L.control.layers(baseMaps).addTo(map);
+
+// 2. Plot Polyline
+const routeGeojson = {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[139.79795, 35.71301], [139.7979, 35.71279], [139.79789, 35.71273], [139.79788, 35.71267], [139.79787, 35.7126], [139.79786, 35.71231], [139.79784, 35.71182], [139.79783, 35.71172], [139.79783, 35.71168], [139.79779, 35.71121], [139.79779, 35.71112], [139.79777, 35.71087], [139.79774, 35.7107], [139.79765, 35.71054], [139.7972, 35.7099], [139.7971, 35.70975], [139.79704, 35.70967], [139.797, 35.70962], [139.79695, 35.70956], [139.7968, 35.70938], [139.79644, 35.70901], [139.7964, 35.70896], [139.79625, 35.70883], [139.79622, 35.70879], [139.79621, 35.70877], [139.79613, 35.70878], [139.79608, 35.70879], [139.79598, 35.7088], [139.79587, 35.70881], [139.79582, 35.70881], [139.7952, 35.7089], [139.79489, 35.70895], [139.79447, 35.70901], [139.79441, 35.70902], [139.7943, 35.70904], [139.79416, 35.70906], [139.79348, 35.70917], [139.79313, 35.70924], [139.79289, 35.70929], [139.7928, 35.70931], [139.79238, 35.70941], [139.79224, 35.70944], [139.79158, 35.70958], [139.79147, 35.70961], [139.7914, 35.70963], [139.79133, 35.70964], [139.79119, 35.70967], [139.79046, 35.70982], [139.7898, 35.70995], [139.78971, 35.70997], [139.78962, 35.70999], [139.78904, 35.7101], [139.78841, 35.71023], [139.78822, 35.71026], [139.78809, 35.71029], [139.78776, 35.71035], [139.78718, 35.71046], [139.78697, 35.7105], [139.78687, 35.71052], [139.78672, 35.71054], [139.7863, 35.71062], [139.78522, 35.71081], [139.78507, 35.71083], [139.78484, 35.71087], [139.78392, 35.71103], [139.78317, 35.71117], [139.78306, 35.71119], [139.78296, 35.7112], [139.78283, 35.71123], [139.78204, 35.71138], [139.78159, 35.71146], [139.78148, 35.71148], [139.78136, 35.7115], [139.78076, 35.71162], [139.78065, 35.71164], [139.78055, 35.71166], [139.7801, 35.71174], [139.77925, 35.71189], [139.77917, 35.7119], [139.77884, 35.71196], [139.77846, 35.71202], [139.77832, 35.71205], [139.77824, 35.71206], [139.77817, 35.71207], [139.7781, 35.71207], [139.77804, 35.71205], [139.77796, 35.71201], [139.7774, 35.7116], [139.77722, 35.71147], [139.77702, 35.71131], [139.77693, 35.71123], [139.77685, 35.71114], [139.77681, 35.71107], [139.77677, 35.71094], [139.77675, 35.71081], [139.77672, 35.71067], [139.77665, 35.70993], [139.77664, 35.70979], [139.7766, 35.70934], [139.77659, 35.70925], [139.77656, 35.70891], [139.77654, 35.70869], [139.77654, 35.70866], [139.77651, 35.70837], [139.77646, 35.70777], [139.77644, 35.70764], [139.77616, 35.70767], [139.77604, 35.70768], [139.77572, 35.70771], [139.77536, 35.70775], [139.77519, 35.70777], [139.77511, 35.70778], [139.77505, 35.70778], [139.77464, 35.70782], [139.7746, 35.70782], [139.77449, 35.70784], [139.77418, 35.70787], [139.77412, 35.70787], [139.77383, 35.7079], [139.77375, 35.70791], [139.77327, 35.70797], [139.77315, 35.70798], [139.77303, 35.70799], [139.77287, 35.70801], [139.77243, 35.70806], [139.77213, 35.70809], [139.77166, 35.70813], [139.77156, 35.70814], [139.77129, 35.70816], [139.77116, 35.70817], [139.77085, 35.7082], [139.77079, 35.7082], [139.77072, 35.70821], [139.77043, 35.70823], [139.77037, 35.70823], [139.77012, 35.70825], [139.76991, 35.70826], [139.76971, 35.70825], [139.76945, 35.70826], [139.76938, 35.70826], [139.76923, 35.70828], [139.76916, 35.70828], [139.76904, 35.70828], [139.76854, 35.70827], [139.76848, 35.70827], [139.76835, 35.70825], [139.76826, 35.70823], [139.76817, 35.7082], [139.76807, 35.70816], [139.76796, 35.70811], [139.76737, 35.7078], [139.76729, 35.7078], [139.76727, 35.70779], [139.7671, 35.70771], [139.76706, 35.70768], [139.76702, 35.70767], [139.76697, 35.70764], [139.7669, 35.7076], [139.76685, 35.70758], [139.76681, 35.70756], [139.76675, 35.70753], [139.76664, 35.7075], [139.76598, 35.70734], [139.76591, 35.70733], [139.76584, 35.70733], [139.76575, 35.70733], [139.7655, 35.70736], [139.76514, 35.70739], [139.76504, 35.7074], [139.76495, 35.70741], [139.76488, 35.70742], [139.76476, 35.70743], [139.7641, 35.70749], [139.76391, 35.70751], [139.76375, 35.70751], [139.76375, 35.70763], [139.76373, 35.7082], [139.76373, 35.70831], [139.76372, 35.70875], [139.76372, 35.7088], [139.76372, 35.70884], [139.76373, 35.70886], [139.76373, 35.70888], [139.76374, 35.70891], [139.76385, 35.70924], [139.76386, 35.70927], [139.76388, 35.70941], [139.76389, 35.70952], [139.76389, 35.70958], [139.76394, 35.71037], [139.76394, 35.71052], [139.76383, 35.71052], [139.76378, 35.71052], [139.76374, 35.71049], [139.7637, 35.71049], [139.76333, 35.71047], [139.76321, 35.71044], [139.76305, 35.71043], [139.763, 35.71043], [139.76295, 35.71043], [139.76289, 35.71042], [139.76248, 35.71039], [139.76236, 35.71039], [139.76214, 35.71035], [139.76174, 35.71028], [139.76168, 35.71047], [139.7616, 35.7108], [139.76157, 35.71089], [139.76151, 35.71113], [139.76135, 35.7117], [139.76125, 35.71207], [139.7613, 35.71187], [139.76135, 35.7117], [139.76151, 35.71113], [139.76157, 35.71089], [139.7616, 35.7108], [139.76168, 35.71047], [139.76202, 35.71048], [139.7621, 35.71049], [139.76247, 35.7105], [139.76284, 35.71052], [139.76288, 35.71052], [139.76293, 35.71052], [139.76299, 35.71052], [139.76318, 35.71053], [139.76336, 35.71052], [139.76369, 35.71054], [139.76373, 35.71054], [139.76378, 35.71052], [139.76383, 35.71052], [139.76394, 35.71052], [139.76394, 35.71037], [139.76389, 35.70958], [139.76389, 35.70952], [139.76388, 35.70941], [139.76386, 35.70927], [139.76385, 35.70924], [139.76374, 35.70891], [139.76373, 35.70888], [139.76373, 35.70886], [139.76372, 35.70884], [139.76372, 35.7088], [139.76372, 35.70875], [139.76373, 35.70831], [139.76373, 35.7082], [139.76375, 35.70763], [139.76375, 35.70751], [139.76358, 35.70752], [139.76307, 35.70752], [139.76305, 35.70743], [139.76275, 35.70665], [139.76273, 35.7066], [139.76248, 35.70593], [139.76246, 35.70586], [139.76243, 35.70578], [139.7623, 35.70541], [139.76215, 35.705], [139.76213, 35.70495], [139.76211, 35.7049], [139.762, 35.70464], [139.76194, 35.70447], [139.76192, 35.70442], [139.76187, 35.70429], [139.76203, 35.70418], [139.76262, 35.70378], [139.76329, 35.70333], [139.76334, 35.70328], [139.76358, 35.70311], [139.76371, 35.70303], [139.76422, 35.70271], [139.76439, 35.70259], [139.76476, 35.70236], [139.76489, 35.70228], [139.76493, 35.70224], [139.76498, 35.70222], [139.76558, 35.70183], [139.76589, 35.70163], [139.76594, 35.7016], [139.7661, 35.70147], [139.76611, 35.70137], [139.76609, 35.70128], [139.76563, 35.70025], [139.76562, 35.70022], [139.76561, 35.70018], [139.76555, 35.6993], [139.76555, 35.69928], [139.76556, 35.69925], [139.76558, 35.69921], [139.76561, 35.69911], [139.76594, 35.69825], [139.76601, 35.69808], [139.76601, 35.69802], [139.76601, 35.69797], [139.766, 35.69794], [139.76598, 35.6979], [139.76577, 35.69748], [139.76574, 35.69742], [139.7654, 35.69676], [139.76537, 35.69669], [139.76534, 35.69663], [139.76514, 35.69622], [139.76513, 35.6962], [139.76508, 35.6961], [139.76508, 35.69602], [139.76508, 35.69598], [139.76509, 35.69597], [139.76515, 35.69564], [139.76525, 35.69506], [139.76529, 35.69484], [139.7653, 35.69477], [139.76533, 35.69464], [139.76536, 35.69454], [139.76538, 35.69443], [139.76538, 35.69436], [139.76533, 35.69412], [139.76532, 35.69404], [139.76528, 35.69383], [139.76524, 35.69368], [139.76522, 35.69357], [139.7652, 35.69347], [139.76516, 35.69329], [139.76511, 35.69302], [139.76502, 35.69258], [139.76499, 35.69245], [139.76496, 35.6923], [139.7648, 35.69164], [139.76479, 35.69159], [139.76468, 35.69099], [139.76466, 35.69091], [139.76464, 35.6908], [139.76453, 35.6902], [139.76451, 35.69007], [139.76448, 35.68991], [139.76442, 35.68967], [139.76438, 35.6895], [139.76429, 35.68917], [139.76425, 35.68902], [139.76419, 35.68878], [139.76409, 35.68838], [139.76407, 35.68831], [139.76404, 35.6882], [139.76402, 35.68813], [139.76388, 35.68756], [139.76376, 35.68707], [139.76375, 35.68703], [139.76373, 35.68694], [139.76371, 35.68688], [139.76368, 35.68679], [139.76356, 35.68638], [139.76352, 35.68626], [139.76329, 35.68553], [139.76328, 35.68549], [139.76323, 35.68534], [139.7632, 35.68523], [139.76317, 35.68511], [139.76277, 35.6837], [139.76275, 35.68366], [139.76271, 35.68353], [139.76267, 35.68339], [139.76242, 35.68262], [139.76241, 35.68256], [139.76235, 35.68239], [139.76222, 35.682], [139.76208, 35.68203], [139.7619, 35.68207], [139.75993, 35.68252], [139.75985, 35.68254], [139.75971, 35.68257], [139.75966, 35.68266], [139.75966, 35.68271], [139.75966, 35.68275], [139.75975, 35.68289], [139.75991, 35.68314], [139.75993, 35.68318], [139.75995, 35.68324], [139.76015, 35.68382], [139.76041, 35.68456], [139.76044, 35.68465], [139.76048, 35.68473], [139.76054, 35.68483], [139.76083, 35.68521], [139.76094, 35.68533], [139.76105, 35.68551], [139.76108, 35.68556], [139.76111, 35.68566], [139.76114, 35.68577], [139.76131, 35.68574], [139.76128, 35.68562], [139.76125, 35.68554], [139.76124, 35.68552], [139.76118, 35.68542], [139.76109, 35.6853], [139.76107, 35.68528], [139.76076, 35.68489], [139.76076, 35.68489], [139.76062, 35.68471], [139.76057, 35.68459], [139.76044, 35.68421], [139.76022, 35.68358], [139.76009, 35.6832], [139.76006, 35.68314], [139.76001, 35.68301], [139.75996, 35.68293], [139.75971, 35.68257], [139.75963, 35.68244], [139.7593, 35.68194], [139.75909, 35.68162], [139.7578, 35.67963], [139.75774, 35.67953], [139.75768, 35.67943], [139.75754, 35.67922], [139.75687, 35.67818], [139.75668, 35.67786], [139.75662, 35.67776], [139.75652, 35.67761], [139.75635, 35.67734], [139.75612, 35.67699], [139.75609, 35.67692], [139.75608, 35.67691], [139.75607, 35.67688], [139.75599, 35.67675], [139.75595, 35.67668], [139.75592, 35.67662], [139.75587, 35.67664], [139.7558, 35.67667], [139.7552, 35.67694], [139.75409, 35.67741], [139.75374, 35.67755], [139.75355, 35.67762], [139.75338, 35.67768], [139.75325, 35.6777], [139.75314, 35.6777], [139.75306, 35.67768], [139.75299, 35.67767], [139.75263, 35.67756], [139.75216, 35.67742], [139.75162, 35.67726], [139.75129, 35.67719], [139.75093, 35.67712], [139.75062, 35.67708], [139.75009, 35.67707], [139.74979, 35.67707], [139.74967, 35.67707], [139.74956, 35.67707], [139.74954, 35.67708], [139.7495, 35.67708], [139.74947, 35.67709], [139.74943, 35.67711], [139.7494, 35.67713], [139.74909, 35.67735], [139.74861, 35.67784], [139.74827, 35.67824], [139.74806, 35.67851], [139.74792, 35.67866], [139.74762, 35.67896], [139.74751, 35.67905], [139.74735, 35.67919], [139.74726, 35.67925], [139.74718, 35.6793], [139.7471, 35.67934], [139.74698, 35.67939], [139.74686, 35.67943], [139.74641, 35.67957], [139.74626, 35.67962], [139.7462, 35.67963], [139.74611, 35.67964], [139.74604, 35.67965], [139.74598, 35.67966], [139.74567, 35.67969], [139.7456, 35.6797], [139.74553, 35.6797], [139.74544, 35.67969], [139.74535, 35.67969], [139.74526, 35.67967], [139.74515, 35.67965], [139.74498, 35.67962], [139.74338, 35.67932], [139.7433, 35.6793], [139.74315, 35.67927], [139.74287, 35.67922], [139.74074, 35.67882], [139.74066, 35.67881], [139.74035, 35.67875], [139.74019, 35.67872], [139.74006, 35.6787], [139.73919, 35.67859], [139.7384, 35.67853], [139.73803, 35.67853], [139.73732, 35.67847], [139.7372, 35.67845], [139.7371, 35.67844], [139.737, 35.67841], [139.73693, 35.67838], [139.73686, 35.67835], [139.73678, 35.6783], [139.73669, 35.67824], [139.73623, 35.67786], [139.73606, 35.67773], [139.73591, 35.67764], [139.7352, 35.67725], [139.73478, 35.67696], [139.7341, 35.67656], [139.73283, 35.6758], [139.73274, 35.67575], [139.7327, 35.67572], [139.73241, 35.67553], [139.73231, 35.67547], [139.73149, 35.67498], [139.73134, 35.6749], [139.73112, 35.6748], [139.73099, 35.67476], [139.73088, 35.67473], [139.73066, 35.67467], [139.72989, 35.67453], [139.72968, 35.67449], [139.7295, 35.67445], [139.72934, 35.6744], [139.7292, 35.67436], [139.72898, 35.67428], [139.72772, 35.67382], [139.72696, 35.67359], [139.72578, 35.67322], [139.72569, 35.67319], [139.72564, 35.67318], [139.72431, 35.67278], [139.72412, 35.67273], [139.72401, 35.67269], [139.72381, 35.67262], [139.72339, 35.67247], [139.72326, 35.67243], [139.72246, 35.67215], [139.72167, 35.67188], [139.72126, 35.67174], [139.72108, 35.67168], [139.72102, 35.67181], [139.72098, 35.67189], [139.72075, 35.67236], [139.72031, 35.67327], [139.71967, 35.67459], [139.71947, 35.67499], [139.7194, 35.67514], [139.71921, 35.67509], [139.71905, 35.67506], [139.71886, 35.67506], [139.71868, 35.67507], [139.71849, 35.67511], [139.71848, 35.67512], [139.71833, 35.67516], [139.71816, 35.67523], [139.71799, 35.67533], [139.71785, 35.67546], [139.71772, 35.67561], [139.71747, 35.67607], [139.71739, 35.67622], [139.71719, 35.67634], [139.71708, 35.67641], [139.71693, 35.6765], [139.71679, 35.67656], [139.71664, 35.67661], [139.71651, 35.67664], [139.71636, 35.67668], [139.71619, 35.6767], [139.7161, 35.6767], [139.71595, 35.6767], [139.71585, 35.6767], [139.71577, 35.67668], [139.71567, 35.67665], [139.71552, 35.67657], [139.71541, 35.67652], [139.71523, 35.67565], [139.71521, 35.67552], [139.71526, 35.67542], [139.71547, 35.67501], [139.71618, 35.6736], [139.71628, 35.67341], [139.71677, 35.67249], [139.71679, 35.67244], [139.71688, 35.67218], [139.7169, 35.67199], [139.7169, 35.67181], [139.71688, 35.67155], [139.71685, 35.67113], [139.71684, 35.67102], [139.71681, 35.67081], [139.71681, 35.67054], [139.71683, 35.67035], [139.71693, 35.67019], [139.717, 35.67023], [139.7171, 35.67026], [139.71713, 35.67027], [139.71855, 35.67078], [139.71908, 35.67101], [139.71968, 35.67126], [139.71978, 35.67131], [139.72049, 35.67161], [139.72084, 35.67174], [139.72102, 35.67181], [139.7212, 35.67187], [139.72148, 35.67196], [139.72226, 35.67223], [139.72274, 35.6724], [139.72376, 35.67275], [139.72395, 35.67281], [139.72406, 35.67285], [139.72425, 35.67291], [139.72546, 35.67328], [139.72558, 35.67332], [139.72564, 35.67333], [139.72756, 35.67392], [139.7277, 35.67397], [139.72913, 35.67449], [139.72924, 35.67452], [139.7294, 35.67456], [139.73022, 35.67472], [139.73052, 35.67479], [139.73082, 35.67487], [139.73094, 35.67492], [139.73107, 35.67496], [139.73127, 35.67505], [139.73145, 35.67514], [139.73222, 35.67559], [139.73242, 35.67571], [139.73261, 35.67583], [139.73356, 35.6764], [139.73491, 35.67719], [139.73538, 35.67742], [139.73586, 35.67769], [139.736, 35.67778], [139.73618, 35.67791], [139.73663, 35.67829], [139.73674, 35.67837], [139.7368, 35.67842], [139.73687, 35.67845], [139.73695, 35.67849], [139.73704, 35.67851], [139.73715, 35.67853], [139.73725, 35.67855], [139.73789, 35.6786], [139.73824, 35.67866], [139.73855, 35.67869], [139.73907, 35.67874], [139.73959, 35.6788], [139.74004, 35.67887], [139.74012, 35.67889], [139.74061, 35.67899], [139.74267, 35.67936], [139.74279, 35.67938], [139.74304, 35.67943], [139.74326, 35.67947], [139.74493, 35.67976], [139.74545, 35.67984], [139.74552, 35.67985], [139.74559, 35.67986], [139.74567, 35.67987], [139.74574, 35.67986], [139.74582, 35.67986], [139.74593, 35.67984], [139.74609, 35.67981], [139.74624, 35.67976], [139.74692, 35.67955], [139.74702, 35.67952], [139.74713, 35.67948], [139.74723, 35.67943], [139.74732, 35.67938], [139.74741, 35.67933], [139.7475, 35.67926], [139.74766, 35.67913], [139.74781, 35.67899], [139.74807, 35.67874], [139.74823, 35.67856], [139.74844, 35.67829], [139.74875, 35.67792], [139.74892, 35.67775], [139.74896, 35.67771], [139.74904, 35.67764], [139.74919, 35.67755], [139.7493, 35.67748], [139.74942, 35.67744], [139.7495, 35.67741], [139.74959, 35.67739], [139.74969, 35.67737], [139.74984, 35.67735], [139.74992, 35.67734], [139.75019, 35.67732], [139.75057, 35.67726], [139.75072, 35.67726], [139.75085, 35.67726], [139.75111, 35.67728], [139.75134, 35.67732], [139.75163, 35.67738], [139.75213, 35.67752], [139.75256, 35.67767], [139.75295, 35.67778], [139.75302, 35.6778], [139.75305, 35.6778], [139.75308, 35.67781], [139.75312, 35.67782], [139.75315, 35.67782], [139.75319, 35.67782], [139.75323, 35.67782], [139.75331, 35.67782], [139.75335, 35.67782], [139.75338, 35.67782], [139.7534, 35.67782], [139.75343, 35.67781], [139.75355, 35.67778], [139.75369, 35.67773], [139.75526, 35.67706], [139.75564, 35.6769], [139.75588, 35.6768], [139.75594, 35.67678], [139.75599, 35.67675], [139.75612, 35.6767], [139.75856, 35.67572], [139.75893, 35.6756], [139.7591, 35.67554], [139.75949, 35.6754], [139.75956, 35.67538], [139.75963, 35.67537], [139.75967, 35.67536], [139.75969, 35.67536], [139.75972, 35.67538], [139.75975, 35.67539], [139.7598, 35.67544], [139.75983, 35.67547], [139.75988, 35.67559], [139.76002, 35.67598], [139.76029, 35.67675], [139.76083, 35.67828], [139.76085, 35.67834], [139.76089, 35.67848], [139.76092, 35.67861], [139.76095, 35.67871], [139.76171, 35.68093], [139.76202, 35.68185], [139.76203, 35.68189], [139.76208, 35.68203], [139.76221, 35.68242], [139.76227, 35.68259], [139.76252, 35.68339], [139.76253, 35.68342], [139.76257, 35.68356], [139.76261, 35.68369], [139.76278, 35.6843], [139.76285, 35.68454], [139.76288, 35.68464], [139.76301, 35.6851], [139.76302, 35.68514], [139.76305, 35.68526], [139.76308, 35.68537], [139.76323, 35.68534], [139.76337, 35.68531], [139.76446, 35.68509], [139.76453, 35.68508], [139.76463, 35.68506], [139.76551, 35.68487], [139.76558, 35.68486], [139.76574, 35.68483], [139.76591, 35.68479], [139.76628, 35.6847], [139.76734, 35.68447], [139.7674, 35.68445], [139.76768, 35.6844], [139.76818, 35.68429], [139.76829, 35.68427], [139.76833, 35.68435], [139.76895, 35.68608], [139.76899, 35.68618], [139.76902, 35.68628], [139.76916, 35.68664], [139.76948, 35.68702], [139.76974, 35.68734], [139.76982, 35.68742], [139.76987, 35.68748], [139.76996, 35.68757], [139.76999, 35.68759], [139.77012, 35.68767], [139.77017, 35.6877], [139.77048, 35.6878], [139.77078, 35.6879], [139.7713, 35.68807], [139.77151, 35.68814], [139.77156, 35.68816], [139.77166, 35.68819], [139.77173, 35.68821], [139.77177, 35.68823], [139.77233, 35.68841], [139.77273, 35.68854], [139.7728, 35.68857], [139.77298, 35.68862], [139.77317, 35.68868], [139.77325, 35.68871], [139.77362, 35.68882], [139.77432, 35.68903], [139.77442, 35.68906], [139.7745, 35.68909], [139.77466, 35.68914], [139.77536, 35.68936], [139.77544, 35.68938], [139.77555, 35.68943], [139.77548, 35.6896], [139.77536, 35.68991], [139.77522, 35.69023], [139.77506, 35.69063], [139.77495, 35.69089], [139.77487, 35.6911], [139.77476, 35.69136], [139.7747, 35.69154], [139.77467, 35.69168], [139.77466, 35.69186], [139.77469, 35.69217], [139.77472, 35.69244], [139.7748, 35.69293], [139.77487, 35.69344], [139.77491, 35.69374], [139.77495, 35.69403], [139.77498, 35.69418], [139.775, 35.69435], [139.77506, 35.69483], [139.77516, 35.69534], [139.77517, 35.69539], [139.7752, 35.69553], [139.77522, 35.69564], [139.77524, 35.69579], [139.77531, 35.69636], [139.77533, 35.69651], [139.77535, 35.69676], [139.77536, 35.69709], [139.77537, 35.69738], [139.77538, 35.69749], [139.77538, 35.69755], [139.77538, 35.6981], [139.77538, 35.69817], [139.77549, 35.6983], [139.7755, 35.69873], [139.77565, 35.69881], [139.77575, 35.69881], [139.7758, 35.69881], [139.77627, 35.69879], [139.77658, 35.69878], [139.7769, 35.69877], [139.77712, 35.69877], [139.77723, 35.69876], [139.77723, 35.6987], [139.77722, 35.69868], [139.77722, 35.69851], [139.77722, 35.69847], [139.7781, 35.69844], [139.7785, 35.69843]]}};
+
+const polyline = L.geoJSON(routeGeojson, {
+    style: {
+        color: '#2563EB',
+        weight: 5,
+        opacity: 0.85
+    }
+}).addTo(map);
+
+map.fitBounds(polyline.getBounds(), { padding: [30, 30] });
+
+// 3. Render Waypoints
+const timelineData = [{"name": "起點：淺草", "km": 0.0, "type": "start", "coord": [139.798, 35.713], "desc": "東京市區金秋銀杏最高潮巡禮。"}, {"name": "東京大學本鄉校區", "km": 4.5, "type": "scenic", "coord": [139.762, 35.712], "desc": "赤門漫步、安田講堂前百年大銀杏黃金地毯。"}, {"name": "皇居二重橋環騎", "km": 10.0, "type": "scenic", "coord": [139.755, 35.685], "desc": "經典護城河與開闊林蔭道。"}, {"name": "明治神宮外苑銀杏林蔭道", "km": 16.5, "type": "scenic", "coord": [139.718, 35.674], "desc": "300公尺黃金隧道見頃最盛期，莉香名場面巡禮。"}, {"name": "終點：秋葉原 / 上野飯店", "km": 23.7, "type": "end", "coord": [139.7785, 35.6985], "desc": "慶祝 683.7km 完美閉環。"}];
+const wpList = document.getElementById('waypoint-list');
+
+timelineData.forEach((wp, idx) => {
+    const marker = L.circleMarker([wp.coord[1], wp.coord[0]], {
+        radius: wp.type === 'start' || wp.type === 'end' ? 9 : (wp.type === 'pivot' ? 7 : 6),
+        fillColor: wp.type === 'start' ? '#10B981' : (wp.type === 'end' ? '#EF4444' : (wp.type === 'pivot' ? '#F59E0B' : '#38BDF8')),
+        color: '#FFFFFF',
+        weight: 2,
+        fillOpacity: 0.95
+    }).addTo(map);
+
+    marker.bindPopup(`<strong>${wp.name} (${wp.km}km)</strong><br>${wp.desc}`);
+
+    const card = document.createElement('div');
+    card.className = 'waypoint-card';
+    card.innerHTML = `
+        <div class="waypoint-header">
+            <span class="waypoint-name">${wp.name}</span>
+            <span class="waypoint-km">${wp.km} km</span>
+        </div>
+        <div class="waypoint-desc">${wp.desc}</div>
+    `;
+    card.onclick = () => {
+        map.flyTo([wp.coord[1], wp.coord[0]], 14, { duration: 1.2 });
+        marker.openPopup();
+    };
+    wpList.appendChild(card);
+});
+
+// 4. Render Chart.js Elevation Profile
+const ctx = document.getElementById('elevationChart').getContext('2d');
+const chartLabels = ["0.0km", "0.4km", "0.7km", "1.2km", "1.8km", "2.2km", "2.7km", "3.0km", "3.3km", "3.6km", "3.8km", "4.0km", "4.1km", "4.4km", "4.8km", "5.2km", "5.6km", "6.0km", "6.3km", "6.9km", "7.5km", "7.8km", "7.8km", "8.6km", "8.9km", "9.3km", "9.7km", "10.4km", "11.0km", "11.7km", "12.3km", "12.6km", "13.0km", "13.4km", "14.3km", "15.0km", "15.7km", "16.1km", "16.4km", "16.7km", "17.3km", "18.1km", "18.5km", "19.0km", "19.4km", "19.8km", "20.3km", "20.6km", "20.7km"];
+const chartData = [3.2, 3.8, 3.9, 2.0, 2.3, 3.1, 2.4, 4.7, 9.2, 20.8, 22.1, 22.6, 23.3, 21.0, 22.9, 19.8, 18.4, 7.9, 4.8, 3.6, 2.8, 3.0, 2.9, 4.7, 6.8, 11.3, 17.8, 23.5, 23.5, 30.9, 32.3, 32.1, 34.3, 34.5, 29.9, 12.0, 20.6, 12.2, 8.9, 6.7, 1.8, 2.8, 2.9, 4.7, 4.5, 3.6, 3.7, 2.7, 2.7];
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: chartLabels,
+        datasets: [{
+            label: '海拔高度 (m)',
+            data: chartData,
+            borderColor: '#38BDF8',
+            backgroundColor: 'rgba(56, 189, 248, 0.15)',
+            borderWidth: 2.5,
+            fill: true,
+            tension: 0.2,
+            pointRadius: 0
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    title: (ctx) => `里程：${ctx[0].label}`,
+                    label: (ctx) => `NAVITIME 標高：${ctx.parsed.y} m`
+                }
+            }
+        },
+        scales: {
+            x: {
+                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                ticks: { color: '#94A3B8', maxTicksLimit: 12 }
+            },
+            y: {
+                grid: { color: 'rgba(255, 255, 255, 0.08)' },
+                ticks: { color: '#94A3B8', callback: (val) => `${val}m` }
+            }
+        }
+    }
+});
+</script>
+
+
+<script>
+const THEMES = {
+    'indie': { name: '🌿 文藝青年風', color: '#8C6239' },
+    'sport': { name: '⚡ 運動極限風', color: '#FC4C02' },
+    'japan': { name: '🎌 哈日和風', color: '#DC2626' },
+    'cycling': { name: '🚴 單車專業風', color: '#FB7185' },
+    'outdoor': { name: '⛺ 休閒野營風', color: '#059669' }
+};
+
+function setTheme(themeKey) {
+    if (!THEMES[themeKey]) themeKey = 'cycling';
+    document.documentElement.setAttribute('data-theme', themeKey);
+    localStorage.setItem('riding_preferred_theme', themeKey);
+
+    document.querySelectorAll('.theme-btn-mini, .theme-pill-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(themeKey)) {
+            btn.classList.add('active');
+        }
+    });
+
+    const label = document.getElementById('current-theme-name');
+    if (label) {
+        label.textContent = THEMES[themeKey].name;
+        label.style.color = THEMES[themeKey].color;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('riding_preferred_theme') || 'cycling';
+    setTheme(savedTheme);
+});
+</script>
+
+</body>
+</html>

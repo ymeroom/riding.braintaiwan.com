@@ -136,7 +136,8 @@ def main():
             'support': support.get(str(d)) or {},
             'prefectures': prefs.get(str(d)) or [],
             'gpx': f'day{d}_track.gpx',
-            'map_demo': f'day{d}_route_map_demo.html' if d in (1, 2) else None,
+            'map_demo': (f'day{d}_route_map_demo.html'
+                         if os.path.exists(os.path.join(ROOT, f'day{d}_route_map_demo.html')) else None),
             'elev_profile': e.get('elev_profile') or [],
         })
 
