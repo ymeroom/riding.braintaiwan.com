@@ -8,7 +8,7 @@
   "total_gain": 4923,
   "total_planned_km": 702.0,
   "source": "NAVITIME 自転車ルート（坡少）實測；標高取自 NAVITIME shape API 三維座標",
-  "booked": 11
+  "booked": 13
  },
  "emergency": {
   "_note": "緊急聯絡。全部號碼皆自官方來源查證（消防庁、各都県政府、JNTO）。都縣別的救急相談電話依當日實際經過的行政區對應，行政區由路線座標反向地理編碼求得。",
@@ -18657,12 +18657,12 @@
    ],
    "planned_km": 16.6,
    "hotel": {
-    "name": "淺草 / 上野 / 東京市區飯店",
-    "addr": "東京都台東區淺草/上野",
-    "url": "https://www.google.com/maps/search/?api=1&query=%E6%B7%BA%E8%8D%89%E9%9B%B7%E9%96%80",
-    "booked": false,
-    "bike": "🚲 市區商旅，可向櫃檯確認停放",
-    "tel": null
+    "name": "Nui. HOSTEL & BAR LOUNGE",
+    "addr": "東京都台東區蔵前2-14-13",
+    "url": "https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8F%B0%E6%9D%B1%E5%8C%BA%E8%94%B5%E5%89%8D2-14-13%20Nui.%20HOSTEL%20%26%20BAR%20LOUNGE",
+    "booked": true,
+    "bike": "🚲 蔵前老倉庫改建青旅，隅田川水岸路線上；⚠️訂的是宿舍床位（多人房），非私人房——入住時務必當面跟櫃檯確認單車能否牽進館內／有無其他遮雨停放處，勿假設能帶進房",
+    "tel": "03-6240-9854"
    },
    "weather_hist": {
     "raw": "☀️ 晴/多雲 ｜ 9.0°C ~ 15.3°C ｜ 0.0mm ｜ 5.2h",
@@ -18681,7 +18681,9 @@
     "history": "水元公園（東京都內唯一水鄉公園，擁有 1,800 棵高聳水杉巨木林，11月底轉為璀璨金黃紅褐色，宛如歐洲童話森林）；淺草寺（西元628年創建之東京都最古老寺廟，雷門紅燈籠與仲見世通）"
    },
    "meals": {},
-   "logistics": {},
+   "logistics": {
+    "hotel_tel": "03-6240-9854"
+   },
    "bailout": {
     "strategy": "A",
     "lines": [
@@ -19921,12 +19923,12 @@
    ],
    "planned_km": 23.7,
    "hotel": {
-    "name": "秋葉原 / 上野飯店",
-    "addr": "東京都千代田區秋葉原/神田",
-    "url": "https://www.google.com/maps/search/?api=1&query=%E7%A7%8B%E8%91%89%E5%8E%9F",
-    "booked": false,
-    "bike": "🚲 市區商旅，可向櫃檯確認停放",
-    "tel": null
+    "name": "Nui. HOSTEL & BAR LOUNGE",
+    "addr": "東京都台東區蔵前2-14-13",
+    "url": "https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8F%B0%E6%9D%B1%E5%8C%BA%E8%94%B5%E5%89%8D2-14-13%20Nui.%20HOSTEL%20%26%20BAR%20LOUNGE",
+    "booked": true,
+    "bike": "🚲 連住第二晚免搬運；⚠️宿舍床位，單車停放方式同 Day 17 已與櫃檯確認的安排",
+    "tel": "03-6240-9854"
    },
    "weather_hist": {
     "raw": "☀️ 快晴 ｜ 7.1°C ~ 16.3°C ｜ 0.0mm ｜ 8.9h",
@@ -19945,7 +19947,9 @@
     "history": "東京大學本鄉校區（加賀藩前田家江戶上屋敷古蹟「赤門」、安田講堂前百年參天巨型銀杏樹黃金地毯）；皇居（江戶幕府德川將軍居城「江戶城」舊址，二重橋與伏見櫓）；明治神宮外苑（1923年種植之146棵銀杏大道，300m黃金隧道見頃最盛期）"
    },
    "meals": {},
-   "logistics": {},
+   "logistics": {
+    "hotel_tel": "03-6240-9854"
+   },
    "bailout": {
     "strategy": "A",
     "lines": [
