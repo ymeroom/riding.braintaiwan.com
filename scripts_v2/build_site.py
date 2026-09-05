@@ -219,6 +219,61 @@ def render_foliage_note(fol):
 """
 
 
+def render_outlook_page(trip, seas, fol):
+    """獨立分頁：月度趨勢對照（JMA 季節預報＋JMC紅葉見頃予想＋里程計算方式）。
+
+    這些是「月・區域平均」的固定說明，跟逐日行程無關、整月才更新一次，
+    移出 index.html 避免干擾逐日對照的閱讀動線；仍由同一份 build_site.py 產生，
+    資料來源與更新頻率跟 index 頁完全一致，只是換一頁放。
+    """
+    m = trip['meta']
+    data_source_note = (
+        '        <div class="data-source-note">📐 里程與爬升：<strong>NAVITIME 自転車ルート実測</strong>'
+        f'（路線偏好「{esc(m["source"].split("（")[1].split("）")[0] if "（" in m["source"] else "坡少")}」）；'
+        '標高取自 NAVITIME 路線幾何三維座標，以 3 公尺遲滯門檻累加，與 Garmin／Strava 計法一致。'
+        f'全程合計 <strong>NAVITIME 最短路徑 {m["total_km"]} km ／ '
+        f'本計畫實走約 {m.get("total_planned_km", m["total_km"])} km ／ +{m["total_gain"]:,} m</strong>。<br>'
+        '兩個里程都是真的：NAVITIME 只取得每日 4–8 個路線節點，節點之間由它自選最短路；'
+        '本計畫刻意繞走自行車專用道與避坑舊道，因此實走較長。爬升以 NAVITIME 為準。</div>')
+    return f"""<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>月度趨勢對照 ｜ 2026 東京單車騎旅</title>
+<style>
+body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;
+  background:#F8FAFC;color:#2D3748;max-width:900px;margin:0 auto;padding:20px 16px 60px;line-height:1.6}}
+h1{{font-size:19px;margin:0 0 6px}}
+.back-link{{display:inline-block;margin-bottom:18px;color:#1D4ED8;font-weight:700;text-decoration:none;font-size:13.5px}}
+.back-link:hover{{text-decoration:underline}}
+.intro{{font-size:12.5px;color:#64748B;margin-bottom:18px}}
+.table-wrapper{{overflow-x:auto;margin-top:10px;margin-bottom:20px}}
+table{{width:100%;border-collapse:collapse;font-size:12.5px;text-align:left}}
+{render_extra_css_fragment_for_outlook()}
+</style>
+</head>
+<body>
+<a class="back-link" href="index.html">← 回主頁（19日詳細行程）</a>
+<h1>🔭🍁📐 月度趨勢對照</h1>
+<div class="intro">這一頁放的是「月・區域平均」的固定資訊 —— 整月才更新一次，跟逐日騎行決策無關。
+逐日的天氣／紅葉判斷請回主頁看每張日程卡與「天氣作戰室」。</div>
+{render_seasonal_note(trip, seas)}
+{render_foliage_note(fol)}
+{data_source_note}
+</body>
+</html>
+"""
+
+
+def render_extra_css_fragment_for_outlook():
+    """從 render_extra_css() 擷取獨立頁只需要的幾個 class，避免重複維護兩份顏色定義。"""
+    full = render_extra_css()
+    keep = ('.seasonal-note', '.foliage-note', '.data-source-note')
+    return '\n'.join(line for line in full.splitlines()
+                      if any(line.strip().startswith(k) for k in keep))
+
+
 # ─────────────────────────── 總覽表 ───────────────────────────
 
 def render_summary_table(trip, seas=None, fol=None):
@@ -251,8 +306,10 @@ def render_summary_table(trip, seas=None, fol=None):
                         <td>{esc(d['foliage'])}</td>
                     </tr>""")
     m = trip['meta']
-    return render_seasonal_note(trip, seas) + render_foliage_note(fol) + f"""        <h2 class="section-title">📊 19日每日里程、爬升、去年實測天氣＋JMA 季節預報與紅葉見頃總覽 ｜ 💡 點擊任一日程即可直達下方詳細規劃</h2>
-        <div class="data-source-note">📐 里程與爬升：<strong>NAVITIME 自転車ルート実測</strong>（路線偏好「{m['source'].split('（')[1].split('）')[0] if '（' in m['source'] else '坡少'}」）；標高取自 NAVITIME 路線幾何三維座標，以 3 公尺遲滯門檻累加，與 Garmin／Strava 計法一致。全程合計 <strong>NAVITIME 最短路徑 {m['total_km']} km ／ 本計畫實走約 {m.get('total_planned_km', m['total_km'])} km ／ +{m['total_gain']:,} m</strong>。<br>兩個里程都是真的：NAVITIME 只取得每日 4–8 個路線節點，節點之間由它自選最短路；本計畫刻意繞走自行車專用道與避坑舊道，因此實走較長。爬升以 NAVITIME 為準。</div>
+    outlook_banner = ('        <div class="outlook-banner">🔭🍁📐 氣象庁季節預報／JMC紅葉見頃予想／里程計算方式說明，'
+                       '已移到 <a href="weather-outlook.html" target="_blank" rel="noopener">另一頁 ↗</a>'
+                       '（不影響逐日決策，想看月度趨勢對照時再開）</div>\n')
+    return outlook_banner + f"""        <h2 class="section-title">📊 19日每日里程、爬升、去年實測天氣＋JMA 季節預報與紅葉見頃總覽 ｜ 💡 點擊任一日程即可直達下方詳細規劃</h2>
         <div class="table-wrapper">
             <table>
                 <thead>
@@ -1235,6 +1292,8 @@ table.em-table a{color:#B91C1C;font-weight:700;text-decoration:none;white-space:
 .bo-det{font-size:10.5px;opacity:.7;margin-left:4px}
 .km-gap{background:#FFFBEB;border:1px solid #FCD34D;border-left:4px solid #D97706;border-radius:7px;padding:8px 12px;font-size:12px;color:#92400E;margin-top:8px;line-height:1.65}
 .data-source-note{background:#F8FAFC;border:1px solid var(--card-border);border-left:4px solid #1E293B;border-radius:8px;padding:10px 14px;font-size:12.5px;color:var(--text-muted);margin-bottom:14px;line-height:1.7}
+.outlook-banner{background:#F8FAFC;border:1px solid var(--card-border);border-radius:8px;padding:9px 14px;font-size:12.5px;color:var(--text-muted);margin-bottom:14px;line-height:1.7}
+.outlook-banner a{color:#1D4ED8;font-weight:700}
 @media (max-width:768px){
   .wr-controls{gap:8px}
   .wr-controls select{max-width:100%}
@@ -1266,6 +1325,9 @@ def main():
                             '{{EXTRA_CSS}}') if p in out]
     if leftover:
         raise SystemExit(f'佔位符未替換: {leftover}')
+    outlook_dest = os.path.join(ROOT, 'weather-outlook.html')
+    io.open(outlook_dest, 'w', encoding='utf-8').write(render_outlook_page(trip, seas, fol))
+    print(f'已寫入 {outlook_dest}')
     dest = os.path.join(ROOT, 'index.html')
     io.open(dest, 'w', encoding='utf-8').write(out)
     print(f'生成 {dest} — {len(out):,} 字元')
