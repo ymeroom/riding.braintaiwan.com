@@ -266,6 +266,178 @@ table{{width:100%;border-collapse:collapse;font-size:12.5px;text-align:left}}
 """
 
 
+def render_radar_page(trip):
+    """獨立分頁：即時／短期降水雷達回波地圖（RainViewer），仿 Tesla 車機導航的雨雲圖。
+
+    資料源 RainViewer 公開 API（免金鑰）：過去約 2 小時的歷史回波（10 分鐘一格）
+    + 該時刻他們有多少格 nowcast 就顯示多少格（通常 30–60 分鐘，實際格數由
+    API 回傳為準，UI 不寫死承諾格數，避免預報時間跟畫面對不上）。
+    這是全球通用資料，精度不如日本氣象庁官方雷達；氣象庁精度更高但沒有公開的
+    分頁 tile API，需另外逆向工程（在 day45-route-pending 之外另立待辦，先不做）。
+    """
+    days = _trip_days_with_pts(trip, with_hist=False)
+    payload = json.dumps(days, ensure_ascii=False, separators=(',', ':'))
+    return """<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>即時雷達回波地圖 ｜ 2026 東京單車騎旅</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;
+  background:#F8FAFC;color:#2D3748;margin:0;padding:0 0 40px}
+.rd-head{max-width:900px;margin:0 auto;padding:16px 16px 0}
+.back-link{display:inline-block;margin-bottom:10px;color:#1D4ED8;font-weight:700;text-decoration:none;font-size:13.5px}
+.back-link:hover{text-decoration:underline}
+h1{font-size:19px;margin:0 0 6px}
+.intro{font-size:12.5px;color:#64748B;margin-bottom:12px;line-height:1.7}
+.rd-controls{max-width:900px;margin:0 auto;padding:0 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+.rd-controls label{font-size:12.5px;color:#475569;display:flex;flex-direction:column;gap:3px}
+.rd-controls select,.rd-controls button{font-size:13px;padding:6px 9px;border-radius:7px;border:1px solid #CBD5E1;background:#fff}
+.rd-controls button{cursor:pointer;font-weight:700;color:#1D4ED8}
+.rd-controls button:disabled{opacity:.5;cursor:default}
+#map{max-width:900px;margin:0 auto;height:60vh;min-height:380px;border:1px solid #E2E8F0}
+.rd-timebar{max-width:900px;margin:10px auto 0;padding:0 16px;display:flex;align-items:center;gap:10px}
+.rd-timebar input[type=range]{flex:1}
+.rd-time-label{font-size:13px;font-weight:700;color:#1E293B;white-space:nowrap;min-width:120px;text-align:right}
+.rd-legend{max-width:900px;margin:14px auto 0;padding:0 16px;font-size:11.5px;color:#64748B;line-height:1.8}
+.rd-status{max-width:900px;margin:0 auto;padding:0 16px;font-size:12px;color:#B45309}
+</style>
+</head>
+<body>
+<div class="rd-head">
+<a class="back-link" href="index.html">← 回主頁（19日詳細行程）</a>
+<h1>🌧️ 即時／短期降水雷達回波地圖</h1>
+<div class="intro">資料源：<a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a>（全球通用、免金鑰）——
+過去約 2 小時歷史回波 + 目前 API 有提供的短期預測格數（實際涵蓋分鐘數以下方時間軸顯示為準，不同時刻可能不一樣）。
+這是全球資料，精度不如日本氣象庁官方雷達；實際騎乘遇到降雨仍以肉眼觀察＋「天氣作戰室」的逐時降雨機率為準，這張圖只是輔助判斷「雨帶還有多久到」。</div>
+</div>
+<div class="rd-controls">
+  <label>跳到路線
+    <select id="rd-day"></select>
+  </label>
+  <button type="button" id="rd-play">▶ 播放</button>
+  <button type="button" id="rd-refresh">↻ 重新取得</button>
+</div>
+<div id="map"></div>
+<div class="rd-timebar">
+  <input type="range" id="rd-slider" min="0" max="0" value="0" step="1">
+  <span class="rd-time-label" id="rd-time-label">載入中…</span>
+</div>
+<div class="rd-status" id="rd-status"></div>
+<div class="rd-legend">
+  🔵🟢🟡🔴 顏色越深＝降水強度越高（RainViewer 色階）｜ 時間軸左半是「過去」實測回波，右半（若有）是「nowcast」短期預測。
+</div>
+<script>
+const TRIP_DAYS = """ + payload + """;
+
+const map = L.map('map').setView([35.4, 138.9], 8);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18, attribution: '&copy; OpenStreetMap'
+}).addTo(map);
+
+const daySel = document.getElementById('rd-day');
+TRIP_DAYS.forEach(d => {
+  const o = document.createElement('option');
+  o.value = d.day;
+  o.textContent = 'Day ' + d.day + ' ' + d.date + ' ' + d.route;
+  daySel.appendChild(o);
+});
+function boundsForDay(day){
+  const d = TRIP_DAYS.find(x => x.day === day);
+  if(!d || !d.pts.length) return null;
+  return L.latLngBounds(d.pts.map(p => [p.lat, p.lon]));
+}
+daySel.addEventListener('change', () => {
+  const b = boundsForDay(Number(daySel.value));
+  if(b) map.fitBounds(b, {padding: [24, 24]});
+});
+// 預設先框出全程 19 天範圍
+(function(){
+  const all = TRIP_DAYS.flatMap(d => d.pts.map(p => [p.lat, p.lon]));
+  if(all.length) map.fitBounds(L.latLngBounds(all), {padding: [24, 24]});
+})();
+
+let radarLayer = null;
+let frames = [];   // [{time, path, isNowcast}]
+let idx = 0;
+let playing = false;
+let timer = null;
+const slider = document.getElementById('rd-slider');
+const timeLabel = document.getElementById('rd-time-label');
+const statusEl = document.getElementById('rd-status');
+const playBtn = document.getElementById('rd-play');
+
+function fmtTime(unixSec){
+  const dt = new Date(unixSec * 1000);
+  return dt.toLocaleString('zh-TW', {month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', hour12:false});
+}
+
+function showFrame(i){
+  if(!frames.length) return;
+  idx = Math.max(0, Math.min(frames.length - 1, i));
+  slider.value = idx;
+  const f = frames[idx];
+  const host = window.__rvHost;
+  const url = host + f.path + '/256/{z}/{x}/{y}/2/1_1.png';
+  if(radarLayer) map.removeLayer(radarLayer);
+  // RainViewer 的雷達拼圖原始解析度只到 zoom 7，超過就回傳「Zoom Level Not Supported」占位圖；
+  // 用 maxNativeZoom 讓 Leaflet 在放大時改用內插放大既有的 z7 圖磚，而不是去要更高 z 的圖磚。
+  radarLayer = L.tileLayer(url, {opacity: 0.65, zIndex: 500, maxNativeZoom: 7, maxZoom: 18}).addTo(map);
+  timeLabel.textContent = fmtTime(f.time) + (f.isNowcast ? '（預測）' : '（實測）');
+}
+
+async function loadRadar(){
+  statusEl.textContent = '正在向 RainViewer 取得雷達資料…';
+  playing = false;
+  playBtn.textContent = '▶ 播放';
+  clearInterval(timer);
+  try{
+    const res = await fetch('https://api.rainviewer.com/public/weather-maps.json');
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    window.__rvHost = data.host;
+    const past = (data.radar && data.radar.past || []).map(f => ({...f, isNowcast: false}));
+    const nowcast = (data.radar && data.radar.nowcast || []).map(f => ({...f, isNowcast: true}));
+    frames = past.concat(nowcast);
+    if(!frames.length) throw new Error('RainViewer 沒有回傳任何影格');
+    slider.max = frames.length - 1;
+    const lastPast = past.length ? past[past.length - 1].time : null;
+    idx = lastPast != null ? past.length - 1 : frames.length - 1;
+    showFrame(idx);
+    const coveredMin = nowcast.length ? Math.round((nowcast[nowcast.length-1].time - (lastPast || nowcast[0].time)) / 60) : 0;
+    statusEl.textContent = nowcast.length
+      ? ('✅ 已載入，短期預測目前涵蓋約 ' + coveredMin + ' 分鐘（RainViewer 依當下狀況調整，不是固定值）。')
+      : '✅ 已載入，此刻 RainViewer 暫無短期預測影格，只有歷史回波。';
+  }catch(err){
+    statusEl.textContent = '⚠️ 取得雷達資料失敗：' + err.message + '（可能是離線或 RainViewer 暫時無回應，稍後按「重新取得」再試）';
+  }
+}
+
+slider.addEventListener('input', () => { playing = false; playBtn.textContent = '▶ 播放'; clearInterval(timer); showFrame(Number(slider.value)); });
+document.getElementById('rd-refresh').addEventListener('click', loadRadar);
+playBtn.addEventListener('click', () => {
+  playing = !playing;
+  playBtn.textContent = playing ? '⏸ 暫停' : '▶ 播放';
+  clearInterval(timer);
+  if(playing){
+    timer = setInterval(() => {
+      let next = idx + 1;
+      if(next >= frames.length) next = 0;
+      showFrame(next);
+    }, 800);
+  }
+});
+
+loadRadar();
+</script>
+</body>
+</html>
+"""
+
+
 def render_extra_css_fragment_for_outlook():
     """從 render_extra_css() 擷取獨立頁只需要的幾個 class，避免重複維護兩份顏色定義。"""
     full = render_extra_css()
@@ -740,6 +912,8 @@ def render_war_room(trip):
     opts = ''.join(f'<option value="{d["day"]}">Day {d["day"]} {esc(d["date"])} {esc(d["route_line"])[:22]}</option>'
                    for d in trip['days'])
     return f"""        <h2 class="section-title">🌦️ 天氣作戰室 ｜ 按小時 × 按地點的騎行決策台</h2>
+        <div class="outlook-banner">🌧️ 想看即時雲雨動態（像 Tesla 導航的雷達回波圖）？
+            <a href="radar-map.html" target="_blank" rel="noopener">開啟雷達地圖 ↗</a></div>
         <div class="war-room" id="war-room">
             <div class="wr-banner" id="wr-banner">初始化中…</div>
 
@@ -781,13 +955,14 @@ def render_war_room(trip):
         </div>"""
 
 
-def render_weather_js(trip):
+def _trip_days_with_pts(trip, with_hist=True):
+    """每日路線節點（含經緯度）—— 天氣作戰室與雷達地圖共用，避免兩邊各維護一份。"""
     days = [{'day': d['day'], 'date': d['date'],
              'iso': None,
              'route': esc(d['route_line'])[:40],
-             'hist': {'lo': d['weather_hist']['lo'], 'hi': d['weather_hist']['hi'],
-                      'rain': d['weather_hist']['rain'], 'icon': d['weather_hist']['icon'],
-                      'text': d['weather_hist']['text']},
+             **({'hist': {'lo': d['weather_hist']['lo'], 'hi': d['weather_hist']['hi'],
+                          'rain': d['weather_hist']['rain'], 'icon': d['weather_hist']['icon'],
+                          'text': d['weather_hist']['text']}} if with_hist else {}),
              'pts': [{'n': t['name'], 'km': t.get('km', 0),
                       'lat': round(t['coord'][1], 4), 'lon': round(t['coord'][0], 4)}
                      for t in d['timeline']]}
@@ -798,6 +973,11 @@ def render_weather_js(trip):
     base = date(y, m, dd)
     for i, d in enumerate(days):
         d['iso'] = (base + timedelta(days=i)).isoformat()
+    return days
+
+
+def render_weather_js(trip):
+    days = _trip_days_with_pts(trip, with_hist=True)
     payload = json.dumps(days, ensure_ascii=False, separators=(',', ':'))
     return "<script>\nconst TRIP_DAYS = " + payload + ";\n" + WEATHER_JS_BODY + "\n</script>"
 
@@ -1328,6 +1508,9 @@ def main():
     outlook_dest = os.path.join(ROOT, 'weather-outlook.html')
     io.open(outlook_dest, 'w', encoding='utf-8').write(render_outlook_page(trip, seas, fol))
     print(f'已寫入 {outlook_dest}')
+    radar_dest = os.path.join(ROOT, 'radar-map.html')
+    io.open(radar_dest, 'w', encoding='utf-8').write(render_radar_page(trip))
+    print(f'已寫入 {radar_dest}')
     dest = os.path.join(ROOT, 'index.html')
     io.open(dest, 'w', encoding='utf-8').write(out)
     print(f'生成 {dest} — {len(out):,} 字元')

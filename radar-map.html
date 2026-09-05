@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>即時雷達回波地圖 ｜ 2026 東京單車騎旅</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;
+  background:#F8FAFC;color:#2D3748;margin:0;padding:0 0 40px}
+.rd-head{max-width:900px;margin:0 auto;padding:16px 16px 0}
+.back-link{display:inline-block;margin-bottom:10px;color:#1D4ED8;font-weight:700;text-decoration:none;font-size:13.5px}
+.back-link:hover{text-decoration:underline}
+h1{font-size:19px;margin:0 0 6px}
+.intro{font-size:12.5px;color:#64748B;margin-bottom:12px;line-height:1.7}
+.rd-controls{max-width:900px;margin:0 auto;padding:0 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+.rd-controls label{font-size:12.5px;color:#475569;display:flex;flex-direction:column;gap:3px}
+.rd-controls select,.rd-controls button{font-size:13px;padding:6px 9px;border-radius:7px;border:1px solid #CBD5E1;background:#fff}
+.rd-controls button{cursor:pointer;font-weight:700;color:#1D4ED8}
+.rd-controls button:disabled{opacity:.5;cursor:default}
+#map{max-width:900px;margin:0 auto;height:60vh;min-height:380px;border:1px solid #E2E8F0}
+.rd-timebar{max-width:900px;margin:10px auto 0;padding:0 16px;display:flex;align-items:center;gap:10px}
+.rd-timebar input[type=range]{flex:1}
+.rd-time-label{font-size:13px;font-weight:700;color:#1E293B;white-space:nowrap;min-width:120px;text-align:right}
+.rd-legend{max-width:900px;margin:14px auto 0;padding:0 16px;font-size:11.5px;color:#64748B;line-height:1.8}
+.rd-status{max-width:900px;margin:0 auto;padding:0 16px;font-size:12px;color:#B45309}
+</style>
+</head>
+<body>
+<div class="rd-head">
+<a class="back-link" href="index.html">← 回主頁（19日詳細行程）</a>
+<h1>🌧️ 即時／短期降水雷達回波地圖</h1>
+<div class="intro">資料源：<a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a>（全球通用、免金鑰）——
+過去約 2 小時歷史回波 + 目前 API 有提供的短期預測格數（實際涵蓋分鐘數以下方時間軸顯示為準，不同時刻可能不一樣）。
+這是全球資料，精度不如日本氣象庁官方雷達；實際騎乘遇到降雨仍以肉眼觀察＋「天氣作戰室」的逐時降雨機率為準，這張圖只是輔助判斷「雨帶還有多久到」。</div>
+</div>
+<div class="rd-controls">
+  <label>跳到路線
+    <select id="rd-day"></select>
+  </label>
+  <button type="button" id="rd-play">▶ 播放</button>
+  <button type="button" id="rd-refresh">↻ 重新取得</button>
+</div>
+<div id="map"></div>
+<div class="rd-timebar">
+  <input type="range" id="rd-slider" min="0" max="0" value="0" step="1">
+  <span class="rd-time-label" id="rd-time-label">載入中…</span>
+</div>
+<div class="rd-status" id="rd-status"></div>
+<div class="rd-legend">
+  🔵🟢🟡🔴 顏色越深＝降水強度越高（RainViewer 色階）｜ 時間軸左半是「過去」實測回波，右半（若有）是「nowcast」短期預測。
+</div>
+<script>
+const TRIP_DAYS = [{"day":1,"date":"11/13（五）","iso":"2026-11-13","route":"秋葉原 ➔ 銀座/品川 ➔ 國道15號(第一京濱) ➔ 六鄉橋 ➔ 多摩川自行車","pts":[{"n":"起點：秋葉原 CycleTrip Base","km":0.0,"lat":35.6985,"lon":139.7785},{"n":"市區順暢出城段：國道15號 (第一京濱)","km":5.2,"lat":35.6705,"lon":139.768},{"n":"關鍵轉折點：六鄉橋 ➔ 多摩川自行車專用道","km":22.0,"lat":35.5395,"lon":139.712},{"n":"水岸專用道：二子玉川・兵庫島公園","km":31.6,"lat":35.6115,"lon":139.6275},{"n":"專用道無縫切換：府中四谷橋 ➔ 淺川自行車道","km":54.5,"lat":35.669,"lon":139.444},{"n":"合流點轉折：鶴巻橋 ➔ 南淺川自行車道","km":71.0,"lat":35.656,"lon":139.325},{"n":"秋色水岸：陵南公園・南淺川橋","km":76.5,"lat":35.648,"lon":139.29},{"n":"終點：Mt. Takao Base Camp (高尾山腳)","km":81.5,"lat":35.6315,"lon":139.2708}]},{"day":2,"date":"11/14（六）","iso":"2026-11-14","route":"高尾山口 ➔ 甲州街道(國道20) ➔ 大垂水峠(392m) ➔ 千木良 ➔ 相","pts":[{"n":"起點：Mt. Takao Base Camp (高尾山口 190m)","km":0.0,"lat":35.6315,"lon":139.2708},{"n":"唯一主要峠道：大垂水峠 (標高 392m)","km":4.3,"lat":35.617,"lon":139.239},{"n":"甲州街道順降：千木良 (Chigira 240m)","km":10.8,"lat":35.612,"lon":139.213},{"n":"🌊 湖光山色絕景：神奈川縣立相模湖公園 (175m)","km":14.1,"lat":35.6135,"lon":139.188},{"n":"桂川河谷順騎：藤野 ➔ 上野原 (205m)","km":24.5,"lat":35.628,"lon":139.108},{"n":"🍁 國寶名勝／午餐：日本三奇橋「甲斐猿橋」大黑屋","km":42.0,"lat":35.615,"lon":138.98},{"n":"關鍵轉折：大月站前 ➔ 切入國道 139 號 (358m)","km":48.2,"lat":35.61,"lon":138.94},{"n":"終點：ビジネス旅館 由加利 (都留市 475m)","km":60.4,"lat":35.5525,"lon":138.9065}]},{"day":3,"date":"11/15（日）","iso":"2026-11-15","route":"由加利旅館 ➔【晴天版】山中湖完整環湖一圈+忍野八海 / 【陰雨天版】新倉山五重","pts":[{"n":"起點：由加利旅館","km":0.0,"lat":35.5506,"lon":138.9058},{"n":"富士急行線農路：縣道713號","km":6.5,"lat":35.52,"lon":138.86},{"n":"神之湧泉：忍野八海","km":18.2,"lat":35.46,"lon":138.832},{"n":"☀️【晴天版】山中湖長池親水公園","km":24.5,"lat":35.43,"lon":138.865},{"n":"☀️【晴天版】旭日丘湖畔紅葉祭","km":30.0,"lat":35.405,"lon":138.88},{"n":"☁️【陰雨版】新倉山淺間五重塔","km":42.0,"lat":35.501,"lon":138.802},{"n":"終點：河口湖 Orange Cabin Inn","km":53.2,"lat":35.528,"lon":138.761}]},{"day":4,"date":"11/16（一）","iso":"2026-11-16","route":"清晨紅葉迴廊 ➔【情境A】五重塔+往西騎本棲湖浩庵 / 【情境B】補騎山中湖 /","pts":[{"n":"晨間必做：河口湖紅葉迴廊","km":0.0,"lat":35.528,"lon":138.761},{"n":"🌲【分支A】新倉山淺間五重塔","km":6.5,"lat":35.501,"lon":138.802},{"n":"湖北 View Line & 大石公園","km":14.0,"lat":35.523,"lon":138.745},{"n":"西湖療癒之里根場","km":22.5,"lat":35.5,"lon":138.675},{"n":"精進湖「子抱富士」","km":32.0,"lat":35.485,"lon":138.608},{"n":"終點：本棲湖北岸浩庵","km":41.9,"lat":35.4731,"lon":138.5648}]},{"day":5,"date":"11/17（二）","iso":"2026-11-17","route":"【富士五湖核心天候緩衝日】應變高原多變氣候 ➔ 補完五湖 ➔ 樹海步道 ➔ 溫泉","pts":[{"n":"起點：本棲湖浩庵 / 河口湖","km":0.0,"lat":35.4731,"lon":138.5648},{"n":"青木原樹海林蔭道","km":8.0,"lat":35.485,"lon":138.608},{"n":"富岳風穴與鳴澤冰穴","km":16.5,"lat":35.48,"lon":138.69},{"n":"富士展望之湯 Yurari 溫泉","km":24.0,"lat":35.485,"lon":138.71},{"n":"終點：五湖基地休整","km":38.1,"lat":35.4731,"lon":138.5648}]},{"day":6,"date":"11/18（三）","iso":"2026-11-18","route":"本棲湖浩庵 ➔ 朝霧高原 ➔ 白糸之瀑 ➔ 富士宮 (千米長下坡)","pts":[{"n":"起點：本棲湖浩庵","km":0.0,"lat":35.4731,"lon":138.5648},{"n":"朝霧高原牧場","km":12.0,"lat":35.4,"lon":138.575},{"n":"朝霧 Food Park 暖身補給","km":18.5,"lat":35.37,"lon":138.58},{"n":"天下名瀑：白糸之瀑","km":27.0,"lat":35.312,"lon":138.588},{"n":"潤井川長下坡滑降","km":34.0,"lat":35.26,"lon":138.6},{"n":"終點：富士宮市區飯店","km":39.6,"lat":35.222,"lon":138.615}]},{"day":7,"date":"11/19（四）","iso":"2026-11-19","route":"富士宮 ➔ 潤井川CR ➔ 田子の浦港 ➔ 駿河灣千本松原海堤 ➔ 三島","pts":[{"n":"起點：富士宮市區","km":0.0,"lat":35.222,"lon":138.615},{"n":"田子の浦港・港公園","km":13.5,"lat":35.142,"lon":138.695},{"n":"千本松原海岸防潮堤專用道","km":18.0,"lat":35.105,"lon":138.8},{"n":"沼津港海鮮市場","km":33.0,"lat":35.083,"lon":138.858},{"n":"終點：三島市區飯店","km":41.3,"lat":35.122,"lon":138.915}]},{"day":8,"date":"11/20（五）","iso":"2026-11-20","route":"三島 ➔ 狩野川自行車道 ➔ 修善寺溫泉水口 (提早避開三連休)","pts":[{"n":"起點：三島市區","km":0.0,"lat":35.122,"lon":138.915},{"n":"狩野川自行車專用道","km":8.5,"lat":35.03,"lon":138.935},{"n":"修善寺溫泉街入口","km":19.0,"lat":34.972,"lon":138.93},{"n":"終點：温泉宿 水口","km":20.9,"lat":34.9702,"lon":138.926}]},{"day":9,"date":"11/21（六）","iso":"2026-11-21","route":"修善寺 ➔ 避開天城峠 (走冷川峠) ➔ 一碧湖 ➔ 城崎海岸 ➔ 伊東川奈","pts":[{"n":"起點：修善寺 温泉宿 水口","km":0.0,"lat":34.9702,"lon":138.926},{"n":"避坑密道：縣道12號冷川峠","km":11.5,"lat":34.96,"lon":139.02},{"n":"伊豆之瞳：一碧湖","km":26.0,"lat":34.92,"lon":139.1},{"n":"城崎海岸・門脇吊橋","km":36.5,"lat":34.89,"lon":139.13},{"n":"終點：kawana seaview standard","km":47.9,"lat":34.9699,"lon":139.1234}]},{"day":10,"date":"11/22（日）","iso":"2026-11-22","route":"伊東川奈 ➔ 宇佐美 ➔ 避開危險長隧道 (走網代舊街) ➔ Apt南熱海","pts":[{"n":"起點：kawana seaview standard","km":0.0,"lat":34.9699,"lon":139.1234},{"n":"宇佐美海岸","km":8.5,"lat":35.008,"lon":139.08},{"n":"避坑密道：網代漁港舊街","km":14.0,"lat":35.042,"lon":139.088},{"n":"終點：Apt南熱海-網代","km":17.4,"lat":35.0451,"lon":139.0821}]},{"day":11,"date":"11/23（一）","iso":"2026-11-23","route":"Apt南熱海 ➔ 熱海梅園最晚紅葉 ➔ 熱海銀座商店街 ➔ 晚上 20:20 熱","pts":[{"n":"起點：Apt南熱海 (下多賀440)","km":0.0,"lat":35.0451,"lon":139.0821},{"n":"熱海梅園紅葉祭","km":6.5,"lat":35.098,"lon":139.055},{"n":"來宮神社・兩千年大楠神木","km":8.0,"lat":35.1,"lon":139.066},{"n":"辦理入住：guest house MARUYA","km":10.2,"lat":35.0944,"lon":139.0725},{"n":"晚上 20:20 熱海海上花火大會","km":10.5,"lat":35.097,"lon":139.075},{"n":"終點：guest house MARUYA","km":10.8,"lat":35.0944,"lon":139.0725}]},{"day":12,"date":"11/24（二）","iso":"2026-11-24","route":"熱海銀座 MARUYA ➔ 縣道740號柑橘道 ➔ 小田原城 ➔ 湘南海岸防風林","pts":[{"n":"起點：guest house MARUYA (熱海銀座)","km":0.0,"lat":35.0944,"lon":139.0725},{"n":"熱海陽光海灘・伊豆山水岸","km":2.5,"lat":35.097,"lon":139.075},{"n":"避坑密道：縣道740號柑橘景觀道","km":11.5,"lat":35.155,"lon":139.145},{"n":"小田原城天守閣","km":22.0,"lat":35.25,"lon":139.155},{"n":"湘南海岸自行車專用道","km":38.0,"lat":35.32,"lon":139.31},{"n":"終點：江之島 / 藤澤市區飯店","km":61.5,"lat":35.308,"lon":139.482}]},{"day":13,"date":"11/25（三）","iso":"2026-11-25","route":"江之島 ➔ 鎌倉高校前平交道 ➔ 長谷寺 ➔ 柏尾川水岸 ➔ 橫濱港未來","pts":[{"n":"起點：江之島","km":0.0,"lat":35.308,"lon":139.482},{"n":"鎌倉長谷寺古寺紅葉","km":7.5,"lat":35.312,"lon":139.535},{"n":"專用道入口：柏尾川水岸綠道","km":16.0,"lat":35.38,"lon":139.53},{"n":"終點：橫濱港未來飯店","km":32.4,"lat":35.455,"lon":139.635}]},{"day":14,"date":"11/26（四）","iso":"2026-11-26","route":"橫濱 ➔ 第一京濱/羽田 ➔ 豐洲大橋 ➔ 台場海濱公園","pts":[{"n":"起點：橫濱港未來","km":0.0,"lat":35.455,"lon":139.635},{"n":"第一京濱 / 羽田水岸","km":18.5,"lat":35.545,"lon":139.735},{"n":"豐洲大橋專用自行車道","km":32.0,"lat":35.65,"lon":139.782},{"n":"終點：台場海濱公園 / 有明","km":38.8,"lat":35.63,"lon":139.775}]},{"day":15,"date":"11/27（五）","iso":"2026-11-27","route":"台場 ➔ 葛西臨海公園 ➔ 中川水岸綠道 ➔ 柴又 ➔ 葛飾金町花庵","pts":[{"n":"起點：台場海濱公園","km":0.0,"lat":35.63,"lon":139.775},{"n":"葛西臨海公園","km":11.0,"lat":35.645,"lon":139.86},{"n":"中川・江戶川水岸專用道","km":19.0,"lat":35.7,"lon":139.87},{"n":"柴又帝釋天老街","km":26.0,"lat":35.757,"lon":139.878},{"n":"終點：花庵旅舍 (Hostel Hana An)","km":28.5,"lat":35.7673,"lon":139.8659}]},{"day":16,"date":"11/28（六）","iso":"2026-11-28","route":"金町出發 ➔【輕裝免行李】江戶川CR / 荒川 ➔ 葛飾老街 ➔ 金町","pts":[{"n":"起點：花庵旅舍","km":0.0,"lat":35.7673,"lon":139.8659},{"n":"江戶川自行車道","km":15.0,"lat":35.84,"lon":139.88},{"n":"葛飾水岸老街小店","km":30.0,"lat":35.8,"lon":139.8},{"n":"終點：花庵旅舍連住","km":45.0,"lat":35.7673,"lon":139.8659}]},{"day":17,"date":"11/29（日）","iso":"2026-11-29","route":"金町退房 ➔ 水元公園（萬棵水杉黃金森林見頃）➔ 柴又 ➔ 淺草","pts":[{"n":"清晨必做：水元公園水杉林","km":2.0,"lat":35.787,"lon":139.87},{"n":"中川・隅田川水岸綠道","km":9.5,"lat":35.73,"lon":139.82},{"n":"終點：淺草雷門 / 上野飯店","km":16.6,"lat":35.713,"lon":139.798}]},{"day":18,"date":"11/30（一）","iso":"2026-11-30","route":"淺草 ➔ 東大本鄉銀杏 ➔ 皇居 ➔ 明治神宮外苑銀杏大道 ➔ 秋葉原","pts":[{"n":"起點：淺草","km":0.0,"lat":35.713,"lon":139.798},{"n":"東京大學本鄉校區","km":4.5,"lat":35.712,"lon":139.762},{"n":"皇居二重橋環騎","km":10.0,"lat":35.685,"lon":139.755},{"n":"明治神宮外苑銀杏林蔭道","km":16.5,"lat":35.674,"lon":139.718},{"n":"終點：秋葉原 / 上野飯店","km":23.7,"lat":35.6985,"lon":139.7785}]},{"day":19,"date":"12/01（二）","iso":"2026-12-01","route":"秋葉原市區 ➔ 神田明神 ➔ CycleTrip Base 還車 ➔ 日暮里 ➔","pts":[{"n":"起點：秋葉原","km":0.0,"lat":35.6985,"lon":139.7785},{"n":"還車：CycleTrip Base 秋葉原","km":2.5,"lat":35.6985,"lon":139.7785},{"n":"日暮里搭乘京成 Skyliner","km":5.0,"lat":35.728,"lon":139.771},{"n":"終點：成田國際機場","km":7.9,"lat":35.772,"lon":140.392}]}];
+
+const map = L.map('map').setView([35.4, 138.9], 8);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18, attribution: '&copy; OpenStreetMap'
+}).addTo(map);
+
+const daySel = document.getElementById('rd-day');
+TRIP_DAYS.forEach(d => {
+  const o = document.createElement('option');
+  o.value = d.day;
+  o.textContent = 'Day ' + d.day + ' ' + d.date + ' ' + d.route;
+  daySel.appendChild(o);
+});
+function boundsForDay(day){
+  const d = TRIP_DAYS.find(x => x.day === day);
+  if(!d || !d.pts.length) return null;
+  return L.latLngBounds(d.pts.map(p => [p.lat, p.lon]));
+}
+daySel.addEventListener('change', () => {
+  const b = boundsForDay(Number(daySel.value));
+  if(b) map.fitBounds(b, {padding: [24, 24]});
+});
+// 預設先框出全程 19 天範圍
+(function(){
+  const all = TRIP_DAYS.flatMap(d => d.pts.map(p => [p.lat, p.lon]));
+  if(all.length) map.fitBounds(L.latLngBounds(all), {padding: [24, 24]});
+})();
+
+let radarLayer = null;
+let frames = [];   // [{time, path, isNowcast}]
+let idx = 0;
+let playing = false;
+let timer = null;
+const slider = document.getElementById('rd-slider');
+const timeLabel = document.getElementById('rd-time-label');
+const statusEl = document.getElementById('rd-status');
+const playBtn = document.getElementById('rd-play');
+
+function fmtTime(unixSec){
+  const dt = new Date(unixSec * 1000);
+  return dt.toLocaleString('zh-TW', {month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', hour12:false});
+}
+
+function showFrame(i){
+  if(!frames.length) return;
+  idx = Math.max(0, Math.min(frames.length - 1, i));
+  slider.value = idx;
+  const f = frames[idx];
+  const host = window.__rvHost;
+  const url = host + f.path + '/256/{z}/{x}/{y}/2/1_1.png';
+  if(radarLayer) map.removeLayer(radarLayer);
+  // RainViewer 的雷達拼圖原始解析度只到 zoom 7，超過就回傳「Zoom Level Not Supported」占位圖；
+  // 用 maxNativeZoom 讓 Leaflet 在放大時改用內插放大既有的 z7 圖磚，而不是去要更高 z 的圖磚。
+  radarLayer = L.tileLayer(url, {opacity: 0.65, zIndex: 500, maxNativeZoom: 7, maxZoom: 18}).addTo(map);
+  timeLabel.textContent = fmtTime(f.time) + (f.isNowcast ? '（預測）' : '（實測）');
+}
+
+async function loadRadar(){
+  statusEl.textContent = '正在向 RainViewer 取得雷達資料…';
+  playing = false;
+  playBtn.textContent = '▶ 播放';
+  clearInterval(timer);
+  try{
+    const res = await fetch('https://api.rainviewer.com/public/weather-maps.json');
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    window.__rvHost = data.host;
+    const past = (data.radar && data.radar.past || []).map(f => ({...f, isNowcast: false}));
+    const nowcast = (data.radar && data.radar.nowcast || []).map(f => ({...f, isNowcast: true}));
+    frames = past.concat(nowcast);
+    if(!frames.length) throw new Error('RainViewer 沒有回傳任何影格');
+    slider.max = frames.length - 1;
+    const lastPast = past.length ? past[past.length - 1].time : null;
+    idx = lastPast != null ? past.length - 1 : frames.length - 1;
+    showFrame(idx);
+    const coveredMin = nowcast.length ? Math.round((nowcast[nowcast.length-1].time - (lastPast || nowcast[0].time)) / 60) : 0;
+    statusEl.textContent = nowcast.length
+      ? ('✅ 已載入，短期預測目前涵蓋約 ' + coveredMin + ' 分鐘（RainViewer 依當下狀況調整，不是固定值）。')
+      : '✅ 已載入，此刻 RainViewer 暫無短期預測影格，只有歷史回波。';
+  }catch(err){
+    statusEl.textContent = '⚠️ 取得雷達資料失敗：' + err.message + '（可能是離線或 RainViewer 暫時無回應，稍後按「重新取得」再試）';
+  }
+}
+
+slider.addEventListener('input', () => { playing = false; playBtn.textContent = '▶ 播放'; clearInterval(timer); showFrame(Number(slider.value)); });
+document.getElementById('rd-refresh').addEventListener('click', loadRadar);
+playBtn.addEventListener('click', () => {
+  playing = !playing;
+  playBtn.textContent = playing ? '⏸ 暫停' : '▶ 播放';
+  clearInterval(timer);
+  if(playing){
+    timer = setInterval(() => {
+      let next = idx + 1;
+      if(next >= frames.length) next = 0;
+      showFrame(next);
+    }, 800);
+  }
+});
+
+loadRadar();
+</script>
+</body>
+</html>
