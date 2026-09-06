@@ -25,6 +25,10 @@ h1{font-size:19px;margin:0 0 6px}
 .rd-time-label{font-size:13px;font-weight:700;color:#1E293B;white-space:nowrap;min-width:120px;text-align:right}
 .rd-legend{max-width:900px;margin:14px auto 0;padding:0 16px;font-size:11.5px;color:#64748B;line-height:1.8}
 .rd-status{max-width:900px;margin:0 auto;padding:0 16px;font-size:12px;color:#B45309}
+.rd-escalate{display:block;margin:2px 0 14px;padding:13px 16px;border-radius:10px;background:#DC2626;
+  color:#fff;font-weight:800;font-size:14px;text-decoration:none;text-align:center;line-height:1.5;
+  box-shadow:0 2px 8px rgba(220,38,38,.3)}
+.rd-escalate:active{background:#B91C1C}
 </style>
 </head>
 <body>
@@ -34,6 +38,7 @@ h1{font-size:19px;margin:0 0 6px}
 <div class="intro">資料源：<a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a>（全球通用、免金鑰）——
 過去約 2 小時歷史回波 + 目前 API 有提供的短期預測格數（實際涵蓋分鐘數以下方時間軸顯示為準，不同時刻可能不一樣）。
 這是全球資料，精度不如日本氣象庁官方雷達；實際騎乘遇到降雨仍以肉眼觀察＋「天氣作戰室」的逐時降雨機率為準，這張圖只是輔助判斷「雨帶還有多久到」。</div>
+<a class="rd-escalate" href="https://ymeroom.github.io/biking-gps-weather/" target="_blank" rel="noopener">☔ 已經在下、要硬騎穿過去？→ 開 GPS 精細版（JMA 官方雷達＋定位＋幽靈點）</a>
 </div>
 <div class="rd-controls">
   <label>跳到路線
