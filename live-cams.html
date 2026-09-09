@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沿線天氣直播鏡頭 ｜ 2026 東京單車騎旅</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;
+  background:#F8FAFC;color:#2D3748;margin:0;padding:0 0 48px;line-height:1.6}
+.lc-head{max-width:960px;margin:0 auto;padding:16px 16px 0}
+.back-link{display:inline-block;margin-bottom:10px;color:#1D4ED8;font-weight:700;text-decoration:none;font-size:13.5px}
+.back-link:hover{text-decoration:underline}
+h1{font-size:19px;margin:0 0 6px}
+.intro{font-size:12.5px;color:#64748B;margin-bottom:12px}
+.intro b{color:#B45309}
+.lc-verify{display:inline-block;font-size:11.5px;color:#475569;background:#EEF2FF;border:1px solid #C7D2FE;
+  border-radius:999px;padding:3px 10px;margin-bottom:12px}
+.lc-controls{max-width:960px;margin:0 auto;padding:0 16px 4px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.lc-controls label{font-size:12.5px;color:#475569;display:flex;flex-direction:column;gap:3px}
+.lc-controls select{font-size:13px;padding:6px 9px;border-radius:7px;border:1px solid #CBD5E1;background:#fff;max-width:82vw}
+.lc-chk{flex-direction:row!important;align-items:center;gap:6px!important;font-weight:700;color:#1D4ED8}
+.lc-day{max-width:960px;margin:14px auto 0;padding:0 16px}
+.lc-day-h{font-size:15px;font-weight:800;color:#1E293B;border-left:4px solid #1D4ED8;padding-left:9px;margin-bottom:4px}
+.lc-day-r{font-size:11.5px;color:#64748B;margin:0 0 10px 13px}
+.lc-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(258px,1fr))}
+.lc-card{background:#fff;border:1px solid #E2E8F0;border-radius:11px;padding:12px 13px;display:flex;flex-direction:column;gap:6px}
+.lc-area{display:inline-block;font-size:10.5px;font-weight:700;color:#1D4ED8;background:#DBEAFE;border-radius:6px;padding:2px 7px;align-self:flex-start}
+.lc-name{font-size:13.5px;font-weight:800;color:#1E293B}
+.lc-frame{position:relative;width:100%;aspect-ratio:16/9;background:#0F172A;border-radius:8px;overflow:hidden;display:none}
+.lc-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.lc-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.lc-btn{font-size:11.5px;font-weight:700;text-decoration:none;border-radius:7px;padding:5px 9px;border:1px solid #CBD5E1;
+  background:#fff;color:#1D4ED8;cursor:pointer;font-family:inherit}
+.lc-btn.primary{background:#1D4ED8;color:#fff;border-color:#1D4ED8}
+.lc-btn.ghost{color:#64748B}
+.lc-src{font-size:10px;color:#94A3B8}
+.lc-note{max-width:960px;margin:22px auto 0;padding:0 16px;font-size:11.5px;color:#64748B}
+.lc-note ul{margin:6px 0 0;padding-left:18px}
+.lc-more{max-width:960px;margin:14px auto 0;padding:12px 16px;font-size:12px}
+.lc-more a{color:#1D4ED8;font-weight:700}
+</style>
+</head>
+<body>
+<div class="lc-head">
+<a class="back-link" href="index.html">← 回主頁（19日詳細行程）</a>
+<h1>📹 沿線天氣直播鏡頭</h1>
+<div class="intro">選一天，看那天路線沿途的 YouTube 直播——<b>雲底高度、有沒有在下、能見度、富士山露不露臉、海邊風浪</b>。
+出發前一晚或當天早上看，拿來決定要不要延後出發或改行程。純粹是肉眼輔助，實際降雨機率以主頁「天氣作戰室」與雷達地圖為準。
+鄉間路段（甲州街道、狩野川、入間川等）YouTube 直播少，那幾天混入了地方道路、河川、鐵道站、轉播式的官方攝影機，來源都標在卡片下方。</div>
+<span class="lc-verify">🔗 直播網址驗證日：2026-09-09 · 某格顯示「無法播放」= 該台換了網址，點卡片下方「頻道其他直播」就能找到新的</span>
+</div>
+
+<div class="lc-controls">
+  <label>看哪一天
+    <select id="lc-day-sel"></select>
+  </label>
+  <label class="lc-chk"><input type="checkbox" id="lc-all"> 一次展開 19 天</label>
+</div>
+
+<div id="lc-days"></div>
+
+<div class="lc-more">
+  📡 官方彙整：<a href="https://www.jma.go.jp/bosai/map.html" target="_blank" rel="noopener">氣象庁防災情報 ↗</a>
+  ｜<a href="https://www.youtube.com/results?search_query=%E5%AF%8C%E5%A3%AB%E5%B1%B1+%E3%83%A9%E3%82%A4%E3%83%96%E3%82%AB%E3%83%A1%E3%83%A9&sp=EgJAAQ%253D%253D" target="_blank" rel="noopener">YouTube「富士山 ライブカメラ」直播搜尋 ↗</a>
+</div>
+
+<div class="lc-note">
+  使用說明：
+  <ul>
+    <li><b>▶ 開直播</b>：直接跳 YouTube（手機會開 App，畫質最穩）。</li>
+    <li><b>內嵌預覽</b>：不離開本頁，點一下才載入（省行動數據）；部分頻道禁止內嵌，只能用「開直播」。</li>
+    <li><b>頻道其他直播</b>：該單位所有正在播的直播——原網址失效時的救援入口。</li>
+    <li>直播畫面時間在日本時間（JST），台灣時間 −1 小時。</li>
+  </ul>
+</div>
+
+<script>
+const D = {"cams": {"LHHXZdYmN_Y": {"n": "東京スカイツリー・隅田川", "area": "東京都心", "src": "株式会社エッチ・エス・ストロング", "ch": "https://www.youtube.com/channel/UCSqjZfzC1g6fhMNx8F8rfng/streams", "embed": true}, "VNCwz0Hw7Bw": {"n": "品川区南大井", "area": "品川", "src": "東京都品川区南大井ライブカメラ", "ch": "https://www.youtube.com/channel/UCrc0GJu4Rf3npEIUVEqdHYQ/streams", "embed": true}, "GOpaylIwRps": {"n": "大田区 多摩川", "area": "六郷・多摩川河口", "src": "東京都大田区多摩川ライブカメラ", "ch": "https://www.youtube.com/channel/UCn-lfT1fWCh7kAyVCvyiBVA/streams", "embed": false}, "fndY3LREfdE": {"n": "二子玉川（iTSCOM）", "area": "二子玉川", "src": "iTSCOM", "ch": "https://www.youtube.com/channel/UCPPFGmTUyM4iDIgp2_zJi5g/streams", "embed": true}, "1TZ9cMxSEUA": {"n": "JR高尾駅周辺 4K", "area": "高尾", "src": "TTSC CH", "ch": "https://www.youtube.com/channel/UC3XaMdKWwInRZABct7gKwFA/streams", "embed": true}, "slOgQojt8w8": {"n": "上野原IC・中央道（UTY山梨）", "area": "上野原", "src": "UTYテレビ山梨公式チャンネル", "ch": "https://www.youtube.com/channel/UCk2oG--VyYST4SYyQkeadjA/streams", "embed": true}, "izSRLpoW1DU": {"n": "桂川付近", "area": "大月・都留", "src": "山梨県上野原市", "ch": "https://www.youtube.com/channel/UCQdFfFg6V2MHmab7NNXoAfQ/streams", "embed": false}, "5YJ0dI5xE0o": {"n": "国道20号線付近", "area": "大月・都留", "src": "山梨県上野原市", "ch": "https://www.youtube.com/channel/UCQdFfFg6V2MHmab7NNXoAfQ/streams", "embed": false}, "oALGeebog1o": {"n": "中央道方面", "area": "大月・都留", "src": "山梨県上野原市", "ch": "https://www.youtube.com/channel/UCQdFfFg6V2MHmab7NNXoAfQ/streams", "embed": false}, "0KMeH_vh0Bk": {"n": "富士山駅 屋上テラス", "area": "富士吉田", "src": "フジヤマNAVI", "ch": "https://www.youtube.com/channel/UCwzJctz6m-0wG_evkheecZA/streams", "embed": true}, "PxzwnWh1dKk": {"n": "忍野八海 4K", "area": "忍野", "src": "FujiyamaTV - FujigokoTV", "ch": "https://www.youtube.com/channel/UCcuadYD11H2Eti8AEOP7Buw/streams", "embed": true}, "F2NbYrc-gBU": {"n": "山中湖→富士山", "area": "山中湖", "src": "【KTV】ケーブルテレビ河口湖", "ch": "https://www.youtube.com/channel/UCK9eHUAiJeNA2i_1TcgZcfw/streams", "embed": true}, "JVfwzbczDfA": {"n": "新倉山浅間公園 忠霊塔", "area": "新倉山", "src": "【公式】ふじよしだ-観光・イベント広報", "ch": "https://www.youtube.com/channel/UCnqVpkMd8g9BvbePO-ZXTVA/streams", "embed": true}, "1cnReFAU04k": {"n": "河口湖→富士山", "area": "河口湖", "src": "【KTV】ケーブルテレビ河口湖", "ch": "https://www.youtube.com/channel/UCK9eHUAiJeNA2i_1TcgZcfw/streams", "embed": true}, "bdUbACCWmoY": {"n": "河口湖 大石公園→富士山", "area": "河口湖北岸", "src": "【KTV】ケーブルテレビ河口湖", "ch": "https://www.youtube.com/channel/UCK9eHUAiJeNA2i_1TcgZcfw/streams", "embed": true}, "so_3HK9HIdg": {"n": "精進湖→富士山", "area": "精進湖", "src": "【KTV】ケーブルテレビ河口湖", "ch": "https://www.youtube.com/channel/UCK9eHUAiJeNA2i_1TcgZcfw/streams", "embed": true}, "JGyGoXlKZmw": {"n": "富士本栖湖リゾート", "area": "本栖湖", "src": "フジヤマNAVI", "ch": "https://www.youtube.com/channel/UCwzJctz6m-0wG_evkheecZA/streams", "embed": true}, "hBaHx5WdnbQ": {"n": "ふもとっぱらキャンプ場→富士山", "area": "朝霧高原", "src": "ふもとっぱらチャンネル", "ch": "https://www.youtube.com/channel/UCYcexkyqYKH9oWzprRGsW0A/streams", "embed": true}, "ViHMZfmURiw": {"n": "富士市から富士山 4K", "area": "富士市", "src": "共同通信LiveCamera", "ch": "https://www.youtube.com/channel/UCRZMs9s1P6o0b1nGibmtkJA/streams", "embed": true}, "bJqFntWbi54": {"n": "富士宮5合目（イマフジ）", "area": "富士宮", "src": "イマフジ。チャンネル", "ch": "https://www.youtube.com/channel/UCGrqJXrlr7OTEP-Pcx1mtfQ/streams", "embed": true}, "52hB_eOFukI": {"n": "静岡県内 情報カメラ（多點輪替）", "area": "静岡県", "src": "静岡朝日テレビニュース", "ch": "https://www.youtube.com/channel/UCvF5vIejmf-H_XSluaBldfg/streams", "embed": true}, "DyYXe3LJOW8": {"n": "富士山と新東名高速", "area": "駿河・新東名", "src": "【KTV】ケーブルテレビ河口湖", "ch": "https://www.youtube.com/channel/UCK9eHUAiJeNA2i_1TcgZcfw/streams", "embed": true}, "6S4qvf97cbQ": {"n": "さった峠 交通の要衝", "area": "駿河湾岸", "src": "静岡市さった峠 ライブカメラ", "ch": "https://www.youtube.com/channel/UCkUdb6wh-TE9MK7Q2VTE5-A/streams", "embed": true}, "GZFUhzb8taU": {"n": "三島市梅名", "area": "三島", "src": "静岡県三島市梅名ライブカメラ", "ch": "https://www.youtube.com/channel/UCGuQRqfTXVgevDMzu2iCLRg/streams", "embed": false}, "4Hro9QIrsYA": {"n": "十国峠（富士山ビュー）", "area": "熱海峠・函南", "src": "フジヤマNAVI", "ch": "https://www.youtube.com/channel/UCwzJctz6m-0wG_evkheecZA/streams", "embed": true}, "Xn7YQxxC5R0": {"n": "河津町", "area": "南伊豆", "src": "KawazuLiveCam", "ch": "https://www.youtube.com/channel/UCgJR4NiTcsb4h95YrsheNYw/streams", "embed": true}, "6_8ehEmYBYc": {"n": "清水・由比（SBS）", "area": "由比", "src": "SBSnews6", "ch": "https://www.youtube.com/channel/UCOLVB0iYK8ahQ0mFn-lF-8g/streams", "embed": true}, "zVuPixUaugk": {"n": "東伊豆 熱川・片瀬海岸 4K", "area": "東伊豆", "src": "The East Coast Of The Izu Peninsula.", "ch": "https://www.youtube.com/channel/UCJmcX1-3OyZr7rGWSFc-1rg/streams", "embed": true}, "CQaQuVDtB0Q": {"n": "熱海シェル前", "area": "熱海海岸", "src": "熱海市道路状況公式チャンネル", "ch": "https://www.youtube.com/channel/UCmSLlWU4A_JEgGwXHF8qjNQ/streams", "embed": true}, "EGbjDf5nVGQ": {"n": "熱海駅前広場", "area": "熱海", "src": "熱海市道路状況公式チャンネル", "ch": "https://www.youtube.com/channel/UCmSLlWU4A_JEgGwXHF8qjNQ/streams", "embed": true}, "MTf4GaekUXU": {"n": "熱海 天空のホテル夢寿庵", "area": "熱海俯瞰", "src": "熱海 天空のホテル夢寿庵 Mujuan", "ch": "https://www.youtube.com/channel/UCqj51LGirw17ZyP0dc2HVuA/streams", "embed": false}, "p1z6vmyiReg": {"n": "熱海駅前交差点", "area": "熱海", "src": "熱海市道路状況公式チャンネル", "ch": "https://www.youtube.com/channel/UCmSLlWU4A_JEgGwXHF8qjNQ/streams", "embed": true}, "ETNrGod4HzA": {"n": "小田原駅（東海道新幹線）", "area": "小田原", "src": "こだまらいふ Kodama life / Shinkansen Japan bullet train", "ch": "https://www.youtube.com/channel/UC9yuSASu1r3dKOvEmZwnptQ/streams", "embed": true}, "KiMeFMZ-_ms": {"n": "小田原 新光電子 屋上お天気カメラ", "area": "小田原・富士山", "src": "新光電子株式会社Shinkoh-elecs.", "ch": "https://www.youtube.com/channel/UCvH1EV3qs86KgF-tbOVdmyQ/streams", "embed": true}, "X65qQBtnC6Y": {"n": "小田原城 お堀", "area": "小田原城", "src": "神奈川県小田原市城内ケルトお堀ライブカメラ", "ch": "https://www.youtube.com/channel/UCHBOhqAOhWr0iOMuZBK4miQ/streams", "embed": true}, "WV9DtVXgwqE": {"n": "大磯海岸", "area": "大磯", "src": "神奈川県海岸・港湾ライブカメラ", "ch": "https://www.youtube.com/channel/UCqjC7sdgf78PUaZ2RSHvG_g/streams", "embed": false}, "62_twW5uXd4": {"n": "平塚海岸", "area": "平塚", "src": "神奈川県海岸・港湾ライブカメラ", "ch": "https://www.youtube.com/channel/UCqjC7sdgf78PUaZ2RSHvG_g/streams", "embed": true}, "xPgeZzojY5o": {"n": "江の島 片瀬海岸東浜", "area": "江の島", "src": "FlyingSuika", "ch": "https://www.youtube.com/channel/UCfoiWJgMmg4p9olz1WE0-9A/streams", "embed": true}, "PFqSE8GNfnE": {"n": "七里ヶ浜（富士山＋江ノ島）The Noon", "area": "七里ヶ浜", "src": "湘南ライブカメラ", "ch": "https://www.youtube.com/channel/UC_9dgNP8GvfhUURELouR3Dg/streams", "embed": true}, "VOix1wTjheQ": {"n": "鎌倉 若宮大路 段葛（置石fm）", "area": "鎌倉", "src": "置石fm. 鎌倉ライブカメラ", "ch": "https://www.youtube.com/channel/UCb3sHyV4iH4bGP_YCVzq0xA/streams", "embed": true}, "lo-jjyNuSYg": {"n": "保土ヶ谷バイパス 新保土ヶ谷IC（YCV）", "area": "戸塚・保土ヶ谷", "src": "【公式】YCVチャンネル", "ch": "https://www.youtube.com/channel/UC70kwyzDZKpofJVyDZ0BaHQ/streams", "embed": false}, "Uu37SpkYaEw": {"n": "横浜みなとみらい 全景 4K", "area": "横浜", "src": "Japan Live Camera", "ch": "https://www.youtube.com/channel/UCnpVhaYEaUYwiQaFdqoPK0g/streams", "embed": true}, "RUUsBgQe1eI": {"n": "JR鶴見駅 お天気カメラ", "area": "鶴見", "src": "神奈川県タクシー協会オフィシャル", "ch": "https://www.youtube.com/channel/UC3QYqnL8AXEtAw_Jy-ooyWg/streams", "embed": true}, "jC_pJy1f8Bk": {"n": "川崎市 天気・空模様", "area": "川崎", "src": "川崎空模様 気まぐれライブカメラ", "ch": "https://www.youtube.com/channel/UCF_et9LddvFo7L0zVPlJgbA/streams", "embed": true}, "2PIdi3Xa7TY": {"n": "羽田空港 T2（日テレ）", "area": "羽田", "src": "日テレNEWS", "ch": "https://www.youtube.com/channel/UCuTAXTexrhetbOe3zgskJBQ/streams", "embed": true}, "bKVGdsMVuMA": {"n": "築地 湾岸・レインボーブリッジ", "area": "築地・勝どき", "src": "朝日新聞LIVE", "ch": "https://www.youtube.com/channel/UCaHr0a1x8zmQ1dxanCeuesA/streams", "embed": true}, "V1rDmWK4Dd8": {"n": "お台場海浜公園・レインボーブリッジ", "area": "台場", "src": "EN DAIBA", "ch": "https://www.youtube.com/channel/UCMaXtOvzgcCQt7MZwJmr7XA/streams", "embed": true}, "_ByNEL0Ton4": {"n": "有明（東京灣）", "area": "有明", "src": "EN DAIBA GLOBAL", "ch": "https://www.youtube.com/channel/UCaxxRyMskvvbpQMo-VJpNhw/streams", "embed": true}, "3KZ20aH_Oq4": {"n": "荒川 土手 4K", "area": "荒川", "src": "荒川 土手 河川敷グラウンド ライブカメラ", "ch": "https://www.youtube.com/channel/UCrpdkCQKI1mfwB7WdKFOgYQ/streams", "embed": true}, "izZ9boGPi8M": {"n": "江戸川ライブカメラ365", "area": "江戸川・柴又", "src": "江戸川ライブカメラ365 / Tokyo Edogawa Live Camera 365", "ch": "https://www.youtube.com/channel/UC4lQKRpFuYblqEBX8stJiGA/streams", "embed": true}, "weeruQ89Egw": {"n": "荒川・入間川（国交省 関東地整）", "area": "荒川・入間川", "src": "国土交通省 関東地方整備局 河川部 水災害予報センター", "ch": "https://www.youtube.com/channel/UCg01zTx4TYBA_4ifxep0TFw/streams", "embed": false}, "rS5Iu49mitQ": {"n": "川越 一番街・時の鐘", "area": "川越", "src": "川越TV", "ch": "https://www.youtube.com/channel/UCzzNauFBCq3l7C9TrmiIo-g/streams", "embed": true}, "fHUBA7fEdzU": {"n": "川越駅西口", "area": "川越", "src": "エコーステーション", "ch": "https://www.youtube.com/channel/UCdoPAAWTtb11C41yGXOodLA/streams", "embed": true}, "NsFHt76uwh8": {"n": "浅草寺 宝蔵門", "area": "浅草", "src": "浅草中屋チャンネル -ASAKUSA NAKAYA CHANNEL-", "ch": "https://www.youtube.com/channel/UCh1UcGFBIuFo5I-I1WMyclA/streams", "embed": true}, "MwcMURMzJ7A": {"n": "浅草・隅田川・スカイツリー 4K", "area": "隅田川", "src": "船宿あみ清", "ch": "https://www.youtube.com/channel/UCuS18SHV5Nhqi9OtreOBmnA/streams", "embed": true}, "ZN4gh5IOowM": {"n": "東京駅 丸の内口", "area": "皇居・丸の内", "src": "大丸有協議会", "ch": "https://www.youtube.com/channel/UCoS1S0V-QdSl_xe29G8mKcQ/streams", "embed": true}, "kQcdLNZNQmM": {"n": "千鳥ヶ淵", "area": "皇居", "src": "東京千鳥ヶ淵ライブカメラ", "ch": "https://www.youtube.com/channel/UCJrDvNbGDWn0NcxhOyG8TmA/streams", "embed": true}, "nu6NE55_X7A": {"n": "東京タワー", "area": "都心南", "src": "東京タワー公式チャンネル", "ch": "https://www.youtube.com/channel/UCKyXyJMijwyBebgI9wmzFcw/streams", "embed": true}, "OuCbntsMsWY": {"n": "成田空港 A滑走路（朝日新聞）", "area": "成田", "src": "朝日新聞LIVE", "ch": "https://www.youtube.com/channel/UCaHr0a1x8zmQ1dxanCeuesA/streams", "embed": true}, "1nNkpxB7Bak": {"n": "成田 さくらの山", "area": "成田", "src": "Charlie FURUSHO NRT Base", "ch": "https://www.youtube.com/channel/UCvJZPd6aw2lb54M4E-vtwjw/streams", "embed": true}}, "days": [{"day": 1, "date": "11/13（五）", "route": "秋葉原 ➔ 銀座/品川 ➔ 國道15號 ➔ 六鄉橋 ➔ 多摩川自行車道 ➔ 府中/調布", "cams": ["LHHXZdYmN_Y", "VNCwz0Hw7Bw", "GOpaylIwRps", "fndY3LREfdE", "1TZ9cMxSEUA"]}, {"day": 2, "date": "11/14（六）", "route": "府中 ➔ 淺川自行車道 ➔ 高尾 ➔ 津久井湖畔 (縣道515/517) ➔ 山梨縣道35號 (秋山街道) ➔ 都留", "cams": ["1TZ9cMxSEUA", "slOgQojt8w8", "izSRLpoW1DU", "5YJ0dI5xE0o", "oALGeebog1o"]}, {"day": 3, "date": "11/15（日）", "route": "都留 ➔ 富士急行沿線裏道 ➔ 縣道713號 ➔ 富士吉田 (金鳥居) ➔ 山中湖", "cams": ["0KMeH_vh0Bk", "PxzwnWh1dKk", "F2NbYrc-gBU", "JVfwzbczDfA", "1cnReFAU04k"]}, {"day": 4, "date": "11/16（一）", "route": "山中湖環湖 ➔ 忍野八海 ➔ 湖北View Line ➔ 河口湖 (紅葉迴廊/大石公園)", "cams": ["bdUbACCWmoY", "JVfwzbczDfA", "1cnReFAU04k", "so_3HK9HIdg", "JGyGoXlKZmw"]}, {"day": 5, "date": "11/17（二）", "route": "河口湖 ➔ 湖北View Line ➔ 西湖 ➔ 精進湖 ➔ 本棲湖 ➔ 折返河口湖", "cams": ["JGyGoXlKZmw", "so_3HK9HIdg", "1cnReFAU04k", "F2NbYrc-gBU", "0KMeH_vh0Bk"]}, {"day": 6, "date": "11/18（三）", "route": "河口湖／富士吉田 彈性休整與深度賞楓 (新倉山/本町通/南岸)", "cams": ["JGyGoXlKZmw", "hBaHx5WdnbQ", "ViHMZfmURiw", "bJqFntWbi54", "52hB_eOFukI"]}, {"day": 7, "date": "11/19（四）", "route": "河口湖 ➔ 朝霧高原 ➔ 富士宮 ➔ 田子の浦港 ➔ 駿河灣千本松原海堤 ➔ 沼津港 ➔ 三島", "cams": ["ViHMZfmURiw", "DyYXe3LJOW8", "6S4qvf97cbQ", "GZFUhzb8taU", "52hB_eOFukI"]}, {"day": 8, "date": "11/20（五）", "route": "三島 ➔ 狩野川自行車專用道 ➔ 伊豆Gateway函南 ➔ 修善寺溫泉", "cams": ["GZFUhzb8taU", "4Hro9QIrsYA", "52hB_eOFukI", "6_8ehEmYBYc", "Xn7YQxxC5R0"]}, {"day": 9, "date": "11/21（六）", "route": "修善寺 ➔ 縣道12號 ➔ 冷川峠 ➔ 伊豆高原 ➔ 城崎海岸", "cams": ["4Hro9QIrsYA", "zVuPixUaugk", "Xn7YQxxC5R0", "52hB_eOFukI", "6_8ehEmYBYc"]}, {"day": 10, "date": "11/22（日）", "route": "伊豆高原 ➔ 伊東溫泉 ➔ 宇佐美 ➔ 網代港舊道 ➔ 南熱海長濱 ➔ 熱海溫泉", "cams": ["zVuPixUaugk", "CQaQuVDtB0Q", "EGbjDf5nVGQ", "MTf4GaekUXU", "52hB_eOFukI"]}, {"day": 11, "date": "11/23（一）", "route": "熱海 ➔ 湯河原 ➔ 真鶴 ➔ 縣道740號柑橘山線 ➔ 早川漁港 ➔ 小田原城", "cams": ["EGbjDf5nVGQ", "p1z6vmyiReg", "CQaQuVDtB0Q", "MTf4GaekUXU", "4Hro9QIrsYA"]}, {"day": 12, "date": "11/24（二）", "route": "小田原 ➔ 國道1號 ➔ 湘南海岸防風林道/國道134共用道 ➔ 茅崎 ➔ 江之島", "cams": ["EGbjDf5nVGQ", "KiMeFMZ-_ms", "X65qQBtnC6Y", "WV9DtVXgwqE", "xPgeZzojY5o"]}, {"day": 13, "date": "11/25（三）", "route": "江之島 ➔ 鎌倉高校前 ➔ 鶴岡八幡宮 ➔ 北鎌倉 ➔ 大船 ➔ 柏尾川步道 ➔ 戶塚 ➔ 橫濱港未來", "cams": ["xPgeZzojY5o", "PFqSE8GNfnE", "VOix1wTjheQ", "lo-jjyNuSYg", "Uu37SpkYaEw"]}, {"day": 14, "date": "11/26（四）", "route": "橫濱 ➔ 鶴見 ➔ 羽田大鳥居 ➔ 築地/勝鬨 ➔ 豐洲大橋 ➔ 台場海濱公園", "cams": ["Uu37SpkYaEw", "RUUsBgQe1eI", "jC_pJy1f8Bk", "2PIdi3Xa7TY", "V1rDmWK4Dd8"]}, {"day": 15, "date": "11/27（五）", "route": "台場 ➔ 葛西臨海公園 ➔ 清砂大橋 ➔ 荒川右岸自行車專用道 ➔ 赤羽", "cams": ["V1rDmWK4Dd8", "_ByNEL0Ton4", "3KZ20aH_Oq4", "izZ9boGPi8M", "weeruQ89Egw"]}, {"day": 16, "date": "11/28（六）", "route": "赤羽 ➔ 荒川右岸 ➔ 入間川自行車道 ➔ 川越小江戶老街 ➔ 折返荒川中游", "cams": ["izZ9boGPi8M", "weeruQ89Egw", "rS5Iu49mitQ", "fHUBA7fEdzU", "3KZ20aH_Oq4"]}, {"day": 17, "date": "11/29（日）", "route": "荒川中游 ➔ 葛飾水元公園 (水杉金黃林) ➔ 柴又帝釋天 ➔ 隅田川 ➔ 上野/淺草", "cams": ["izZ9boGPi8M", "3KZ20aH_Oq4", "NsFHt76uwh8", "MwcMURMzJ7A", "LHHXZdYmN_Y"]}, {"day": 18, "date": "11/30（一）", "route": "上野 ➔ 東大銀杏 ➔ 明治神宮外苑銀杏大道 ➔ 皇居 ➔ 秋葉原", "cams": ["MwcMURMzJ7A", "ZN4gh5IOowM", "kQcdLNZNQmM", "nu6NE55_X7A", "LHHXZdYmN_Y"]}, {"day": 19, "date": "12/01（二）", "route": "秋葉原市區巡禮 ➔ 還車 ➔ 京成 Skyliner 至成田機場", "cams": ["LHHXZdYmN_Y", "NsFHt76uwh8", "ZN4gh5IOowM", "OuCbntsMsWY", "1nNkpxB7Bak"]}]};
+
+const sel = document.getElementById('lc-day-sel');
+D.days.forEach(d => {
+  const o = document.createElement('option');
+  o.value = d.day;
+  o.textContent = 'Day ' + d.day + '  ' + d.date + '  ' + d.route;
+  sel.appendChild(o);
+});
+
+const wrap = document.getElementById('lc-days');
+const allChk = document.getElementById('lc-all');
+
+function cardHTML(vid){
+  const c = D.cams[vid];
+  const watch = 'https://www.youtube.com/watch?v=' + vid;
+  const acts = ['<a class="lc-btn primary" href="' + watch + '" target="_blank" rel="noopener">▶ 開直播</a>'];
+  if (c.embed) acts.push('<button type="button" class="lc-btn" data-vid="' + vid + '">內嵌預覽</button>');
+  acts.push('<a class="lc-btn ghost" href="' + c.ch + '" target="_blank" rel="noopener">頻道其他直播 ↗</a>');
+  return '<div class="lc-card">' +
+    '<span class="lc-area">' + c.area + '</span>' +
+    '<div class="lc-name">' + c.n + '</div>' +
+    '<div class="lc-frame"></div>' +
+    '<div class="lc-actions">' + acts.join('') + '</div>' +
+    '<div class="lc-src">來源：' + c.src + (c.embed ? '' : '（此台禁止內嵌，只能開 YouTube）') + '</div>' +
+  '</div>';
+}
+
+function dayHTML(d){
+  return '<div class="lc-day" data-day="' + d.day + '">' +
+    '<div class="lc-day-h">Day ' + d.day + ' · ' + d.date + '</div>' +
+    '<div class="lc-day-r">' + d.route + '</div>' +
+    '<div class="lc-grid">' + d.cams.map(cardHTML).join('') + '</div>' +
+  '</div>';
+}
+
+function render(){
+  if (allChk.checked){
+    wrap.innerHTML = D.days.map(dayHTML).join('');
+    sel.disabled = true;
+  } else {
+    sel.disabled = false;
+    const d = D.days.find(x => x.day === Number(sel.value));
+    wrap.innerHTML = dayHTML(d);
+  }
+}
+
+sel.addEventListener('change', render);
+allChk.addEventListener('change', render);
+
+wrap.addEventListener('click', e => {
+  const btn = e.target.closest('button[data-vid]');
+  if (!btn) return;
+  const frame = btn.closest('.lc-card').querySelector('.lc-frame');
+  if (frame.dataset.loaded){
+    const open = frame.style.display === 'block';
+    frame.style.display = open ? 'none' : 'block';
+    btn.textContent = open ? '內嵌預覽' : '收合預覽';
+    return;
+  }
+  frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + btn.dataset.vid + '?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+  frame.dataset.loaded = '1';
+  frame.style.display = 'block';
+  btn.textContent = '收合預覽';
+});
+
+render();
+</script>
+</body>
+</html>
