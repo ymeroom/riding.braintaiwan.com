@@ -908,15 +908,15 @@
 
     <div class="stats-bar">
         <div class="stat-box">
-            <div class="val">44.4 km</div>
+            <div class="val">39.5 km</div>
             <div class="lbl">NAVITIME 實測里程</div>
         </div>
         <div class="stat-box">
-            <div class="val">+67 m / -161 m</div>
+            <div class="val">+26 m / -123 m</div>
             <div class="lbl">累積爬升 / 下降</div>
         </div>
         <div class="stat-box">
-            <div class="val">1m ➔ 119m</div>
+            <div class="val">119m ➔ 24m</div>
             <div class="lbl">海拔區間 (最低 ➔ 最高)</div>
         </div>
         <div class="stat-box">
@@ -924,7 +924,7 @@
             <div class="lbl">關鍵節點</div>
         </div>
         <div class="stat-box">
-            <div class="val">~2.5 – 3.0 hr</div>
+            <div class="val">~2.2 – 2.5 hr</div>
             <div class="lbl">純騎乘時間 (15–18 km/h)</div>
         </div>
     </div>
@@ -1025,8 +1025,8 @@ timelineData.forEach((wp, idx) => {
 
 // 4. Render Chart.js Elevation Profile
 const ctx = document.getElementById('elevationChart').getContext('2d');
-const chartLabels = ["0.0km", "1.1km", "1.8km", "2.7km", "3.6km", "5.0km", "5.8km", "6.8km", "7.5km", "7.9km", "9.1km", "10.9km", "11.8km", "12.1km", "12.2km", "12.6km", "13.7km", "14.7km", "16.2km", "18.2km", "20.2km", "20.7km", "21.4km", "22.5km", "22.9km", "23.3km", "23.4km", "23.5km", "24.6km", "25.8km", "26.5km", "27.2km", "27.9km", "28.6km", "29.3km", "29.8km", "29.9km", "30.5km", "31.4km", "32.2km", "33.5km", "34.1km", "34.6km", "35.6km", "36.5km", "37.1km", "37.4km"];
-const chartData = [119.1, 103.9, 96.6, 87.2, 73.1, 51.7, 45.6, 38.7, 31.1, 22.0, 8.5, 4.4, 4.5, 5.0, 4.4, 4.2, 4.1, 1.2, 5.3, 3.1, 5.2, 5.6, 4.5, 8.1, 9.8, 16.4, 13.3, 10.3, 9.5, 9.3, 8.2, 7.3, 4.8, 4.1, 1.6, 1.9, 1.9, 1.8, 8.0, 4.4, 9.3, 8.7, 16.0, 23.7, 27.5, 24.9, 23.8];
+const chartLabels = ["0.0km", "0.9km", "1.7km", "2.5km", "3.4km", "4.3km", "5.1km", "6.0km", "6.9km", "7.7km", "8.6km", "9.4km", "10.3km", "11.2km", "12.1km", "12.9km", "13.8km", "14.6km", "15.5km", "16.3km", "17.2km", "18.1km", "18.9km", "19.8km", "20.6km", "21.5km", "22.3km", "23.2km", "24.0km", "24.9km", "25.8km", "26.6km", "27.5km", "28.4km", "29.2km", "30.1km", "30.9km", "31.8km", "32.6km", "33.5km", "34.3km", "35.3km", "36.1km", "37.0km", "37.8km", "38.6km", "39.5km"];
+const chartData = [119.1, 111.7, 90.4, 72.2, 61.4, 57.9, 36.4, 28.4, 25.7, 21.7, 9.5, 7.6, 5.6, 3.8, 3.2, 4.5, 3.3, 2.6, 5.0, 3.5, 7.7, 9.5, 9.0, 11.6, 10.6, 10.8, 10.9, 16.4, 13.2, 13.3, 16.1, 14.5, 13.0, 11.4, 9.9, 8.4, 1.9, 1.5, 7.9, 8.2, 5.5, 11.7, 12.5, 19.6, 25.6, 30.3, 23.8];
 
 new Chart(ctx, {
     type: 'line',

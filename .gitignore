@@ -25,4 +25,10 @@ all_user_clips.json
 
 # 工具快取與離線副本
 .firecrawl/
+# Overpass 道路稽核的原始回應，重抓就有（19 天約數十 MB）
+.cache/
 2026東京單車騎旅_手機隨身包/
+
+# BRouter 重建路線的中繼產物：可由 scripts/rebuild_routes_brouter.py 重跑產生，
+# 內容與已套用的 dayN_track.gpx 重複
+routes_rebuilt/

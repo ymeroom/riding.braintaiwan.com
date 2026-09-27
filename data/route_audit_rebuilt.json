@@ -1,0 +1,8247 @@
+{
+ "1": {
+  "day": 1,
+  "gpx": "day1_track.gpx",
+  "total_km": 62.87,
+  "by_cat_km": {
+   "arterial": 13.8,
+   "calm": 17.4,
+   "dedicated": 30.6,
+   "footway_unclear": 1.2
+  },
+  "arterial_runs": [
+   {
+    "from_km": 0.6,
+    "to_km": 3.8,
+    "cat": "arterial",
+    "names": [
+     "靖国通り"
+    ],
+    "km_len": 3.4
+   },
+   {
+    "from_km": 5.6,
+    "to_km": 7.2,
+    "cat": "arterial",
+    "names": [
+     "六本木通り",
+     "国道246号",
+     "東京都道一七六号線"
+    ],
+    "km_len": 1.8
+   },
+   {
+    "from_km": 7.6,
+    "to_km": 9.2,
+    "cat": "arterial",
+    "names": [
+     "六本木通り",
+     "霞ヶ関渋谷線(霞町陸橋)"
+    ],
+    "km_len": 1.8
+   },
+   {
+    "from_km": 13.8,
+    "to_km": 17.4,
+    "cat": "arterial",
+    "names": [
+     "駒沢通り"
+    ],
+    "km_len": 3.8
+   },
+   {
+    "from_km": 60.2,
+    "to_km": 62.6,
+    "cat": "arterial",
+    "names": [
+     "甲州街道"
+    ],
+    "km_len": 2.6
+   }
+  ],
+  "samples": [
+   {
+    "km": 0.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 49.4
+   },
+   {
+    "km": 0.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 5.4
+   },
+   {
+    "km": 0.4,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 21.0
+   },
+   {
+    "km": 0.6,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 0.8,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.0,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.2,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.4,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.6,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.8,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.0,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.2,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.4,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.6,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.8,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.0,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.2,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.4,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 3.6,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.8,
+    "cat": "arterial",
+    "name": "靖国通り",
+    "highway": "primary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 4.0,
+    "cat": "calm",
+    "name": "大妻通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.2,
+    "cat": "calm",
+    "name": "大妻通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.4,
+    "cat": "calm",
+    "name": "大妻通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.6,
+    "cat": "calm",
+    "name": "大妻通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.8,
+    "cat": "calm",
+    "name": "永井坂",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.0,
+    "cat": "calm",
+    "name": "半蔵門駅通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.2,
+    "cat": "calm",
+    "name": "半蔵門駅通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.4,
+    "cat": "calm",
+    "name": "半蔵門駅通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.6,
+    "cat": "arterial",
+    "name": "東京都道一七六号線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.8,
+    "cat": "arterial",
+    "name": "国道246号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.0,
+    "cat": "arterial",
+    "name": "国道246号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.2,
+    "cat": "arterial",
+    "name": "国道246号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.4,
+    "cat": "arterial",
+    "name": "六本木通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.6,
+    "cat": "arterial",
+    "name": "六本木通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.8,
+    "cat": "arterial",
+    "name": "六本木通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.0,
+    "cat": "arterial",
+    "name": "六本木通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.2,
+    "cat": "arterial",
+    "name": "高輪麻布線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.4,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 20.5
+   },
+   {
+    "km": 7.6,
+    "cat": "arterial",
+    "name": "六本木通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.8,
+    "cat": "arterial",
+    "name": "六本木通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.0,
+    "cat": "arterial",
+    "name": "六本木通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.2,
+    "cat": "arterial",
+    "name": "六本木通り",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 8.4,
+    "cat": "arterial",
+    "name": "六本木通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.6,
+    "cat": "arterial",
+    "name": "六本木通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.8,
+    "cat": "arterial",
+    "name": "六本木通り",
+    "highway": "secondary",
+    "snap_m": 0.3
+   },
+   {
+    "km": 9.0,
+    "cat": "arterial",
+    "name": "霞ヶ関渋谷線(霞町陸橋)",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.2,
+    "cat": "arterial",
+    "name": "六本木通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.4,
+    "cat": "calm",
+    "name": "日赤通り(高樹町)",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.6,
+    "cat": "calm",
+    "name": "日赤通り",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.8,
+    "cat": "calm",
+    "name": "日赤通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.0,
+    "cat": "calm",
+    "name": "日赤通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.2,
+    "cat": "calm",
+    "name": "日赤通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.6,
+    "cat": "calm",
+    "name": "新橋通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.8,
+    "cat": "calm",
+    "name": "新橋通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.0,
+    "cat": "calm",
+    "name": "新橋通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 25.8
+   },
+   {
+    "km": 11.4,
+    "cat": "calm",
+    "name": "くすの木通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.6,
+    "cat": "calm",
+    "name": "新茶屋坂通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.8,
+    "cat": "calm",
+    "name": "新茶屋坂",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.0,
+    "cat": "calm",
+    "name": "新茶屋坂",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.2,
+    "cat": "calm",
+    "name": "新茶屋坂",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 42.2
+   },
+   {
+    "km": 12.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.8,
+    "cat": "calm",
+    "name": "なべころ坂",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 13.0,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "path",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.2,
+    "cat": "calm",
+    "name": "中町通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.8,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 14.0,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.2,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.4,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.6,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.3
+   },
+   {
+    "km": 14.8,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.0,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 15.2,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.4,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 15.6,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.8,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.0,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.2,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.4,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.6,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.8,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.0,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.2,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.4,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.6,
+    "cat": "calm",
+    "name": "駒沢公園通り",
+    "highway": "tertiary",
+    "snap_m": 8.7
+   },
+   {
+    "km": 17.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 31.2
+   },
+   {
+    "km": 19.6,
+    "cat": "arterial",
+    "name": "駒沢通り",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 19.8,
+    "cat": "calm",
+    "name": "駒沢通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.0,
+    "cat": "calm",
+    "name": "駒沢通り",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 20.2,
+    "cat": "calm",
+    "name": "駒沢通り",
+    "highway": "tertiary",
+    "snap_m": 14.4
+   },
+   {
+    "km": 20.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 22.1
+   },
+   {
+    "km": 20.6,
+    "cat": "calm",
+    "name": "二子玉川公園通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.8,
+    "cat": "calm",
+    "name": "二子玉川公園通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.0,
+    "cat": "calm",
+    "name": "二子玉川ふれあい通り",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.2,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.0,
+    "cat": "arterial",
+    "name": "多摩堤通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.8,
+    "cat": "dedicated",
+    "name": "青少年サイクリングコース",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 23.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 23.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.6,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.6,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 25.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.3
+   },
+   {
+    "km": 25.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.6,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 26.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 27.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 28.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.6,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.6,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 29.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 30.6,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 31.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 31.6,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 32.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 32.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 32.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 32.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 1.2
+   },
+   {
+    "km": 32.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 1.5
+   },
+   {
+    "km": 33.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 33.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 33.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 33.6,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 33.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 34.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 34.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 34.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 34.6,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 34.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 35.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 35.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 35.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 35.6,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 35.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 36.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 36.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 36.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 36.6,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 36.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 37.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 37.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 37.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 37.6,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 37.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 38.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 38.2,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 38.4,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 38.6,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 38.8,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 39.0,
+    "cat": "dedicated",
+    "name": "多摩川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 39.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 2.8
+   },
+   {
+    "km": 39.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 39.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 39.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 11.3
+   },
+   {
+    "km": 40.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 40.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 40.4,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 4.7
+   },
+   {
+    "km": 40.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.1
+   },
+   {
+    "km": 40.8,
+    "cat": "calm",
+    "name": "宮下通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 41.0,
+    "cat": "calm",
+    "name": "宮下通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 41.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.2
+   },
+   {
+    "km": 41.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 41.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 41.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 42.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 42.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "track",
+    "snap_m": 23.1
+   },
+   {
+    "km": 42.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 42.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 42.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 43.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 43.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 43.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 43.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 43.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.3
+   },
+   {
+    "km": 44.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 44.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 44.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 44.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 44.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 45.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 45.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 45.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 45.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 45.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 46.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 46.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 46.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 46.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 46.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 47.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.2
+   },
+   {
+    "km": 47.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 47.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 47.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.2
+   },
+   {
+    "km": 47.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.1
+   },
+   {
+    "km": 48.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 48.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 48.4,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 12.3
+   },
+   {
+    "km": 48.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 42.4
+   },
+   {
+    "km": 48.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 49.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 49.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 49.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 49.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 49.8,
+    "cat": "calm",
+    "name": "長沼橋",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 50.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 50.2,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 50.4,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 50.6,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 50.8,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 51.0,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 51.2,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 51.4,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 51.6,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 51.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 52.0,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 52.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 0.4
+   },
+   {
+    "km": 52.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 0.3
+   },
+   {
+    "km": 52.6,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 52.8,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 53.0,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 53.2,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 53.4,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 53.6,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 53.8,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 54.0,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 54.2,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 54.4,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 54.6,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 54.8,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 55.0,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 55.2,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 55.4,
+    "cat": "dedicated",
+    "name": "浅川ゆったっりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 55.6,
+    "cat": "dedicated",
+    "name": "浅川ゆったっりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 55.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 0.0
+   },
+   {
+    "km": 56.0,
+    "cat": "dedicated",
+    "name": "浅川ゆったっりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 56.2,
+    "cat": "dedicated",
+    "name": "浅川ゆったっりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 56.4,
+    "cat": "dedicated",
+    "name": "浅川ゆったっりロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 56.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 0.0
+   },
+   {
+    "km": 56.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 0.0
+   },
+   {
+    "km": 57.0,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 57.2,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 57.4,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 57.6,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 57.8,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 58.0,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 58.2,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 58.4,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 58.6,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 58.8,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 59.0,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 59.2,
+    "cat": "dedicated",
+    "name": "浅川ゆったりロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 59.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.2
+   },
+   {
+    "km": 59.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.3
+   },
+   {
+    "km": 59.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 22.2
+   },
+   {
+    "km": 60.0,
+    "cat": "calm",
+    "name": "旧甲州街道",
+    "highway": "unclassified",
+    "snap_m": 9.3
+   },
+   {
+    "km": 60.2,
+    "cat": "arterial",
+    "name": "甲州街道",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 60.4,
+    "cat": "arterial",
+    "name": "甲州街道",
+    "highway": "trunk",
+    "snap_m": 0.1
+   },
+   {
+    "km": 60.6,
+    "cat": "arterial",
+    "name": "甲州街道",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 60.8,
+    "cat": "arterial",
+    "name": "甲州街道",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 61.0,
+    "cat": "arterial",
+    "name": "甲州街道",
+    "highway": "trunk",
+    "snap_m": 0.1
+   },
+   {
+    "km": 61.2,
+    "cat": "arterial",
+    "name": "甲州街道",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 61.4,
+    "cat": "arterial",
+    "name": "甲州街道",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 61.6,
+    "cat": "arterial",
+    "name": "甲州街道",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 61.8,
+    "cat": "arterial",
+    "name": "甲州街道",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 62.0,
+    "cat": "arterial",
+    "name": "甲州街道",
+    "highway": "trunk",
+    "snap_m": 0.1
+   },
+   {
+    "km": 62.2,
+    "cat": "arterial",
+    "name": "甲州街道",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 62.4,
+    "cat": "arterial",
+    "name": "甲州街道",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 62.6,
+    "cat": "arterial",
+    "name": "甲州街道",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 62.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 3.5
+   }
+  ]
+ },
+ "7": {
+  "day": 7,
+  "gpx": "day7_track.gpx",
+  "total_km": 39.51,
+  "by_cat_km": {
+   "arterial": 15.4,
+   "arterial_maybe": 0.2,
+   "calm": 17.0,
+   "dedicated": 6.8,
+   "footway_unclear": 0.2
+  },
+  "arterial_runs": [
+   {
+    "from_km": 0.2,
+    "to_km": 1.0,
+    "cat": "arterial",
+    "names": [
+     "富士富士宮線"
+    ],
+    "km_len": 1.0
+   },
+   {
+    "from_km": 2.6,
+    "to_km": 5.2,
+    "cat": "arterial",
+    "names": [
+     "鷹岡柚木線",
+     "富士根停車場線",
+     "鷹岡本町通り"
+    ],
+    "km_len": 2.8
+   },
+   {
+    "from_km": 15.0,
+    "to_km": 22.8,
+    "cat": "arterial",
+    "names": [
+     "富士清水線",
+     "旧東海道",
+     "田子浦港大野線"
+    ],
+    "km_len": 8.0
+   },
+   {
+    "from_km": 31.6,
+    "to_km": 32.4,
+    "cat": "arterial",
+    "names": [
+     "さんさん通り"
+    ],
+    "km_len": 1.0
+   },
+   {
+    "from_km": 34.4,
+    "to_km": 36.6,
+    "cat": "arterial",
+    "names": [
+     "富士清水線"
+    ],
+    "km_len": 2.4
+   }
+  ],
+  "samples": [
+   {
+    "km": 0.0,
+    "cat": "arterial_maybe",
+    "name": "富士富士宮線",
+    "highway": "secondary",
+    "snap_m": 37.1
+   },
+   {
+    "km": 0.2,
+    "cat": "arterial",
+    "name": "富士富士宮線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 0.4,
+    "cat": "arterial",
+    "name": "富士富士宮線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 0.6,
+    "cat": "arterial",
+    "name": "富士富士宮線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 0.8,
+    "cat": "arterial",
+    "name": "富士富士宮線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.0,
+    "cat": "arterial",
+    "name": "富士富士宮線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.6,
+    "cat": "arterial",
+    "name": "富士根停車場線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 2.8,
+    "cat": "arterial",
+    "name": "富士根停車場線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.0,
+    "cat": "arterial",
+    "name": "鷹岡柚木線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.2,
+    "cat": "arterial",
+    "name": "鷹岡柚木線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.4,
+    "cat": "arterial",
+    "name": "鷹岡柚木線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 3.6,
+    "cat": "arterial",
+    "name": "鷹岡柚木線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.8,
+    "cat": "arterial",
+    "name": "鷹岡柚木線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 4.0,
+    "cat": "arterial",
+    "name": "鷹岡柚木線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.2,
+    "cat": "arterial",
+    "name": "鷹岡柚木線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.4,
+    "cat": "arterial",
+    "name": "鷹岡柚木線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.6,
+    "cat": "arterial",
+    "name": "鷹岡柚木線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.8,
+    "cat": "arterial",
+    "name": "鷹岡柚木線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.0,
+    "cat": "arterial",
+    "name": "鷹岡柚木線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.2,
+    "cat": "arterial",
+    "name": "鷹岡本町通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.4,
+    "cat": "calm",
+    "name": "鷹岡本町通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.1
+   },
+   {
+    "km": 6.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 17.9
+   },
+   {
+    "km": 8.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 11.2
+   },
+   {
+    "km": 9.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.4
+   },
+   {
+    "km": 9.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 35.1
+   },
+   {
+    "km": 9.6,
+    "cat": "calm",
+    "name": "青葉通り",
+    "highway": "tertiary",
+    "snap_m": 18.5
+   },
+   {
+    "km": 9.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 10.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 11.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 8.9
+   },
+   {
+    "km": 12.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 33.5
+   },
+   {
+    "km": 12.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.2,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 21.3
+   },
+   {
+    "km": 13.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 49.7
+   },
+   {
+    "km": 14.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 14.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 14.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.0,
+    "cat": "arterial",
+    "name": "田子浦港大野線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.2,
+    "cat": "arterial",
+    "name": "田子浦港大野線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.4,
+    "cat": "arterial",
+    "name": "田子浦港大野線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.6,
+    "cat": "arterial",
+    "name": "田子浦港大野線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.8,
+    "cat": "arterial",
+    "name": "田子浦港大野線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.0,
+    "cat": "arterial",
+    "name": "田子浦港大野線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.2,
+    "cat": "arterial",
+    "name": "田子浦港大野線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 16.4,
+    "cat": "arterial",
+    "name": "田子浦港大野線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.6,
+    "cat": "arterial",
+    "name": "田子浦港大野線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 16.8,
+    "cat": "arterial",
+    "name": "旧東海道",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.0,
+    "cat": "arterial",
+    "name": "旧東海道",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.2,
+    "cat": "arterial",
+    "name": "旧東海道",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.4,
+    "cat": "arterial",
+    "name": "旧東海道",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.6,
+    "cat": "arterial",
+    "name": "旧東海道",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.8,
+    "cat": "arterial",
+    "name": "旧東海道",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.0,
+    "cat": "arterial",
+    "name": "旧東海道",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.2,
+    "cat": "arterial",
+    "name": "旧東海道",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.4,
+    "cat": "arterial",
+    "name": "旧東海道",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.6,
+    "cat": "arterial",
+    "name": "旧東海道",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.8,
+    "cat": "arterial",
+    "name": "旧東海道",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.0,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.2,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.4,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 19.6,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 19.8,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.0,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.2,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.4,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.6,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.8,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 21.0,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 21.2,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 21.4,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 21.6,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.8,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.0,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.2,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.4,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 22.6,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.8,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 4.6
+   },
+   {
+    "km": 23.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "track",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "track",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "track",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "track",
+    "snap_m": 0.2
+   },
+   {
+    "km": 23.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "track",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "track",
+    "snap_m": 0.1
+   },
+   {
+    "km": 24.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "track",
+    "snap_m": 0.1
+   },
+   {
+    "km": 24.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "track",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "track",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "track",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "track",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 27.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 27.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 27.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 27.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 27.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 28.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 29.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 30.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.6,
+    "cat": "calm",
+    "name": "港大橋通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.8,
+    "cat": "arterial",
+    "name": "港大橋通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.6,
+    "cat": "arterial",
+    "name": "さんさん通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.8,
+    "cat": "arterial",
+    "name": "さんさん通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 32.0,
+    "cat": "arterial",
+    "name": "さんさん通り",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 32.2,
+    "cat": "arterial",
+    "name": "さんさん通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 32.4,
+    "cat": "arterial",
+    "name": "さんさん通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 32.6,
+    "cat": "calm",
+    "name": "永代橋通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 32.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 33.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 33.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 33.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 33.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 33.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 34.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 8.4
+   },
+   {
+    "km": 34.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 34.4,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.5
+   },
+   {
+    "km": 34.6,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 34.8,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 35.0,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 35.2,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 35.4,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 35.6,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 35.8,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 36.0,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 36.2,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 36.4,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 36.6,
+    "cat": "arterial",
+    "name": "富士清水線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 36.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 37.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 37.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 37.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 37.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 37.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 38.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 38.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 38.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 2.7
+   },
+   {
+    "km": 38.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 38.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 39.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 39.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 39.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.2
+   }
+  ]
+ },
+ "8": {
+  "day": 8,
+  "gpx": "day8_track.gpx",
+  "total_km": 24.24,
+  "by_cat_km": {
+   "arterial": 11.2,
+   "arterial_maybe": 0.2,
+   "calm": 8.4,
+   "dedicated": 3.8,
+   "footway_unclear": 0.8
+  },
+  "arterial_runs": [
+   {
+    "from_km": 4.4,
+    "to_km": 5.8,
+    "cat": "arterial",
+    "names": [
+     "三島静浦港線"
+    ],
+    "km_len": 1.6
+   },
+   {
+    "from_km": 6.2,
+    "to_km": 9.2,
+    "cat": "arterial",
+    "names": [
+     "原木沼津線",
+     "韮山伊豆長岡修善寺線",
+     "三島静浦港線"
+    ],
+    "km_len": 3.2
+   },
+   {
+    "from_km": 9.6,
+    "to_km": 13.0,
+    "cat": "arterial",
+    "names": [
+     "韮山伊豆長岡修善寺線",
+     "伊豆長岡三津線"
+    ],
+    "km_len": 3.6
+   },
+   {
+    "from_km": 13.4,
+    "to_km": 14.2,
+    "cat": "arterial",
+    "names": [
+     "韮山伊豆長岡修善寺線"
+    ],
+    "km_len": 1.0
+   },
+   {
+    "from_km": 14.6,
+    "to_km": 15.6,
+    "cat": "arterial",
+    "names": [
+     "国道414号"
+    ],
+    "km_len": 1.2
+   }
+  ],
+  "samples": [
+   {
+    "km": 0.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 32.5
+   },
+   {
+    "km": 0.2,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "path",
+    "snap_m": 3.5
+   },
+   {
+    "km": 0.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 3.0
+   },
+   {
+    "km": 0.6,
+    "cat": "calm",
+    "name": "問屋小路",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 0.8,
+    "cat": "calm",
+    "name": "問屋小路",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 2.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.4,
+    "cat": "arterial",
+    "name": "三島静浦港線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.1
+   },
+   {
+    "km": 3.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 17.8
+   },
+   {
+    "km": 3.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.4,
+    "cat": "arterial",
+    "name": "三島静浦港線",
+    "highway": "secondary",
+    "snap_m": 9.1
+   },
+   {
+    "km": 4.6,
+    "cat": "arterial",
+    "name": "三島静浦港線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.8,
+    "cat": "arterial",
+    "name": "三島静浦港線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 5.0,
+    "cat": "arterial",
+    "name": "三島静浦港線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.2,
+    "cat": "arterial",
+    "name": "三島静浦港線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.4,
+    "cat": "arterial",
+    "name": "三島静浦港線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.6,
+    "cat": "arterial",
+    "name": "三島静浦港線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.8,
+    "cat": "arterial",
+    "name": "三島静浦港線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.0,
+    "cat": "arterial_maybe",
+    "name": "三島静浦港線",
+    "highway": "secondary",
+    "snap_m": 33.3
+   },
+   {
+    "km": 6.2,
+    "cat": "arterial",
+    "name": "三島静浦港線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.4,
+    "cat": "arterial",
+    "name": "三島静浦港線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.6,
+    "cat": "arterial",
+    "name": "原木沼津線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.8,
+    "cat": "arterial",
+    "name": "原木沼津線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.0,
+    "cat": "arterial",
+    "name": "原木沼津線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.2,
+    "cat": "arterial",
+    "name": "原木沼津線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 7.4,
+    "cat": "arterial",
+    "name": "原木沼津線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 7.6,
+    "cat": "arterial",
+    "name": "原木沼津線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.8,
+    "cat": "arterial",
+    "name": "原木沼津線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.0,
+    "cat": "arterial",
+    "name": "原木沼津線",
+    "highway": "secondary",
+    "snap_m": 10.5
+   },
+   {
+    "km": 8.2,
+    "cat": "arterial",
+    "name": "原木沼津線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.4,
+    "cat": "arterial",
+    "name": "原木沼津線",
+    "highway": "secondary",
+    "snap_m": 0.3
+   },
+   {
+    "km": 8.6,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.8,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.0,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 9.2,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 9.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 24.8
+   },
+   {
+    "km": 9.6,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 9.8,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.0,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.6
+   },
+   {
+    "km": 10.2,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 10.4,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 10.6,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.8,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.3
+   },
+   {
+    "km": 11.0,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 11.5
+   },
+   {
+    "km": 11.2,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.4,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.6,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.8,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.0,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 12.2,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.4,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.6,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.8,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.0,
+    "cat": "arterial",
+    "name": "伊豆長岡三津線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 13.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 39.1
+   },
+   {
+    "km": 13.4,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 13.6,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.8,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 14.0,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.2,
+    "cat": "arterial",
+    "name": "韮山伊豆長岡修善寺線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 22.2
+   },
+   {
+    "km": 14.6,
+    "cat": "arterial",
+    "name": "国道414号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.8,
+    "cat": "arterial",
+    "name": "国道414号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.0,
+    "cat": "arterial",
+    "name": "国道414号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.2,
+    "cat": "arterial",
+    "name": "国道414号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.4,
+    "cat": "arterial",
+    "name": "国道414号",
+    "highway": "trunk",
+    "snap_m": 0.2
+   },
+   {
+    "km": 15.6,
+    "cat": "arterial",
+    "name": "国道414号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.8,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 20.2
+   },
+   {
+    "km": 16.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 16.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 17.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.6,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.8,
+    "cat": "dedicated",
+    "name": "狩野川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 18.0,
+    "cat": "dedicated",
+    "name": "狩野川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.2,
+    "cat": "dedicated",
+    "name": "狩野川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 18.4,
+    "cat": "dedicated",
+    "name": "狩野川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.6,
+    "cat": "dedicated",
+    "name": "狩野川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.8,
+    "cat": "dedicated",
+    "name": "狩野川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.0,
+    "cat": "dedicated",
+    "name": "狩野川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.2,
+    "cat": "dedicated",
+    "name": "狩野川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.4,
+    "cat": "dedicated",
+    "name": "狩野川サイクリングロード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 0.1
+   },
+   {
+    "km": 20.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 20.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 20.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.3
+   },
+   {
+    "km": 21.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.8,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "path",
+    "snap_m": 27.6
+   },
+   {
+    "km": 22.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.3
+   },
+   {
+    "km": 22.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 2.2
+   },
+   {
+    "km": 22.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.8,
+    "cat": "arterial",
+    "name": "国道136号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 20.7
+   },
+   {
+    "km": 23.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.1
+   },
+   {
+    "km": 23.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 15.1
+   },
+   {
+    "km": 24.2,
+    "cat": "arterial",
+    "name": "修善寺戸田線",
+    "highway": "primary",
+    "snap_m": 0.3
+   }
+  ]
+ },
+ "13": {
+  "day": 13,
+  "gpx": "day13_track.gpx",
+  "total_km": 31.49,
+  "by_cat_km": {
+   "arterial": 6.6,
+   "calm": 21.6,
+   "dedicated": 1.0,
+   "footway_unclear": 2.4
+  },
+  "arterial_runs": [
+   {
+    "from_km": 0.6,
+    "to_km": 5.4,
+    "cat": "arterial",
+    "names": [
+     "国道134号"
+    ],
+    "km_len": 5.0
+   },
+   {
+    "from_km": 12.8,
+    "to_km": 13.8,
+    "cat": "arterial",
+    "names": [
+     "阿久和鎌倉線"
+    ],
+    "km_len": 1.2
+   }
+  ],
+  "samples": [
+   {
+    "km": 0.0,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 1.6
+   },
+   {
+    "km": 0.2,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "pedestrian",
+    "snap_m": 0.0
+   },
+   {
+    "km": 0.4,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 3.8
+   },
+   {
+    "km": 0.6,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 3.0
+   },
+   {
+    "km": 0.8,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.0,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.2,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.1
+   },
+   {
+    "km": 1.4,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.6,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.8,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.0,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.2,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.2
+   },
+   {
+    "km": 2.4,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.6,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.8,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.0,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.1
+   },
+   {
+    "km": 3.2,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.4,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.6,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.1
+   },
+   {
+    "km": 3.8,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.2
+   },
+   {
+    "km": 4.0,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.2,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.1
+   },
+   {
+    "km": 4.4,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.2
+   },
+   {
+    "km": 4.6,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.8,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.0,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.1
+   },
+   {
+    "km": 5.2,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.1
+   },
+   {
+    "km": 5.4,
+    "cat": "arterial",
+    "name": "国道134号",
+    "highway": "trunk",
+    "snap_m": 0.1
+   },
+   {
+    "km": 5.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 21.8
+   },
+   {
+    "km": 6.0,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "path",
+    "snap_m": 7.6
+   },
+   {
+    "km": 6.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 1.4
+   },
+   {
+    "km": 6.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 46.0
+   },
+   {
+    "km": 7.2,
+    "cat": "calm",
+    "name": "長谷隧道",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.2,
+    "cat": "arterial",
+    "name": "藤沢鎌倉線",
+    "highway": "primary",
+    "snap_m": 10.6
+   },
+   {
+    "km": 8.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.3
+   },
+   {
+    "km": 9.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.1
+   },
+   {
+    "km": 9.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 10.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 9.8
+   },
+   {
+    "km": 12.0,
+    "cat": "arterial",
+    "name": "小袋谷藤沢線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 15.3
+   },
+   {
+    "km": 12.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.6,
+    "cat": "dedicated",
+    "name": "柏尾川遊歩道",
+    "highway": "footway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 12.8,
+    "cat": "arterial",
+    "name": "阿久和鎌倉線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.0,
+    "cat": "arterial",
+    "name": "阿久和鎌倉線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.2,
+    "cat": "arterial",
+    "name": "阿久和鎌倉線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.4,
+    "cat": "arterial",
+    "name": "阿久和鎌倉線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.6,
+    "cat": "arterial",
+    "name": "阿久和鎌倉線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 13.8,
+    "cat": "arterial",
+    "name": "阿久和鎌倉線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.6,
+    "cat": "dedicated",
+    "name": "柏尾川プロムナード",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 14.8,
+    "cat": "dedicated",
+    "name": "柏尾川プロムナード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.0,
+    "cat": "dedicated",
+    "name": "柏尾川プロムナード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.2,
+    "cat": "dedicated",
+    "name": "柏尾川プロムナード",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.4,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 12.1
+   },
+   {
+    "km": 15.6,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 25.9
+   },
+   {
+    "km": 15.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 16.0,
+    "cat": "calm",
+    "name": "環状3号線",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 16.2,
+    "cat": "calm",
+    "name": "環状3号線",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.4,
+    "cat": "calm",
+    "name": "環状3号線",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 16.6,
+    "cat": "calm",
+    "name": "長沼大橋",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.8,
+    "cat": "calm",
+    "name": "長沼大橋",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 17.0,
+    "cat": "calm",
+    "name": "環状3号線",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.2,
+    "cat": "calm",
+    "name": "環状3号線",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.4,
+    "cat": "calm",
+    "name": "環状3号線",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 10.1
+   },
+   {
+    "km": 17.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 22.1
+   },
+   {
+    "km": 18.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 21.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.4,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.9
+   },
+   {
+    "km": 21.6,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 7.1
+   },
+   {
+    "km": 21.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.2,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "path",
+    "snap_m": 14.9
+   },
+   {
+    "km": 22.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 7.1
+   },
+   {
+    "km": 22.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.1
+   },
+   {
+    "km": 24.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 6.4
+   },
+   {
+    "km": 24.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 28.1
+   },
+   {
+    "km": 25.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.1
+   },
+   {
+    "km": 26.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.1
+   },
+   {
+    "km": 27.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.3
+   },
+   {
+    "km": 27.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.0,
+    "cat": "calm",
+    "name": "山王橋",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.1
+   },
+   {
+    "km": 28.6,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "path",
+    "snap_m": 25.2
+   },
+   {
+    "km": 28.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.0,
+    "cat": "calm",
+    "name": "野毛の仲みち",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.2,
+    "cat": "calm",
+    "name": "野毛仲通り",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.4,
+    "cat": "calm",
+    "name": "新横浜通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.6,
+    "cat": "calm",
+    "name": "新横浜通り",
+    "highway": "tertiary",
+    "snap_m": 1.7
+   },
+   {
+    "km": 30.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.2,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 12.8
+   },
+   {
+    "km": 31.4,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 53.5
+   }
+  ]
+ },
+ "15": {
+  "day": 15,
+  "gpx": "day15_track.gpx",
+  "total_km": 37.35,
+  "by_cat_km": {
+   "arterial": 3.6,
+   "calm": 15.8,
+   "dedicated": 16.2,
+   "footway_unclear": 1.6,
+   "unknown": 0.2
+  },
+  "arterial_runs": [
+   {
+    "from_km": 3.0,
+    "to_km": 4.0,
+    "cat": "arterial",
+    "names": [
+     "豊洲有明線"
+    ],
+    "km_len": 1.2
+   },
+   {
+    "from_km": 6.6,
+    "to_km": 7.4,
+    "cat": "arterial",
+    "names": [
+     "三ツ目通り"
+    ],
+    "km_len": 1.0
+   },
+   {
+    "from_km": 7.8,
+    "to_km": 8.8,
+    "cat": "arterial",
+    "names": [
+     "葛西橋通り"
+    ],
+    "km_len": 1.2
+   }
+  ],
+  "samples": [
+   {
+    "km": 0.0,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "pedestrian",
+    "snap_m": 19.6
+   },
+   {
+    "km": 0.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 0.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 0.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 1.0
+   },
+   {
+    "km": 0.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.0,
+    "cat": "calm",
+    "name": "のぞみ橋",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 1.4,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 1.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 2.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.0,
+    "cat": "arterial",
+    "name": "豊洲有明線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.2,
+    "cat": "arterial",
+    "name": "豊洲有明線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.4,
+    "cat": "arterial",
+    "name": "豊洲有明線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.6,
+    "cat": "arterial",
+    "name": "豊洲有明線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.8,
+    "cat": "arterial",
+    "name": "豊洲有明線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.0,
+    "cat": "arterial",
+    "name": "豊洲有明線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.3
+   },
+   {
+    "km": 5.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 28.4
+   },
+   {
+    "km": 5.2,
+    "cat": "calm",
+    "name": "補助第200号線",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.4,
+    "cat": "calm",
+    "name": "補助第200号線",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.6,
+    "cat": "calm",
+    "name": "補助第200号線",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.8,
+    "cat": "calm",
+    "name": "琴平通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.0,
+    "cat": "calm",
+    "name": "琴平通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.4,
+    "cat": "unknown",
+    "name": "",
+    "highway": "",
+    "snap_m": 76.9
+   },
+   {
+    "km": 6.6,
+    "cat": "arterial",
+    "name": "三ツ目通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.8,
+    "cat": "arterial",
+    "name": "三ツ目通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.0,
+    "cat": "arterial",
+    "name": "三ツ目通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.2,
+    "cat": "arterial",
+    "name": "三ツ目通り",
+    "highway": "primary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 7.4,
+    "cat": "arterial",
+    "name": "三ツ目通り",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 29.9
+   },
+   {
+    "km": 7.8,
+    "cat": "arterial",
+    "name": "葛西橋通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.0,
+    "cat": "arterial",
+    "name": "葛西橋通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.2,
+    "cat": "arterial",
+    "name": "葛西橋通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.4,
+    "cat": "arterial",
+    "name": "葛西橋通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.6,
+    "cat": "arterial",
+    "name": "葛西橋通り",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 8.8,
+    "cat": "arterial",
+    "name": "葛西橋通り",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.6,
+    "cat": "calm",
+    "name": "仙気稲荷通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.8,
+    "cat": "calm",
+    "name": "元八幡通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.0,
+    "cat": "calm",
+    "name": "元八幡通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.2,
+    "cat": "calm",
+    "name": "元八幡通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.4,
+    "cat": "calm",
+    "name": "元八幡通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.4
+   },
+   {
+    "km": 10.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.0,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 15.0
+   },
+   {
+    "km": 11.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 11.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 12.6,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 29.0
+   },
+   {
+    "km": 12.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 14.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.4,
+    "cat": "dedicated",
+    "name": "サクラ並木",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.6,
+    "cat": "dedicated",
+    "name": "サクラ並木",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.8,
+    "cat": "dedicated",
+    "name": "サクラ並木",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.0,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 21.0
+   },
+   {
+    "km": 16.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 6.1
+   },
+   {
+    "km": 16.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 8.2
+   },
+   {
+    "km": 16.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 17.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.4
+   },
+   {
+    "km": 17.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.2,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 3.0
+   },
+   {
+    "km": 18.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 18.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 18.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 19.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 19.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 20.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.3
+   },
+   {
+    "km": 20.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 20.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 21.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 22.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 9.2
+   },
+   {
+    "km": 22.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 23.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.2,
+    "cat": "arterial",
+    "name": "新荒川葛西堤防線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 34.2
+   },
+   {
+    "km": 27.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 19.4
+   },
+   {
+    "km": 27.4,
+    "cat": "calm",
+    "name": "同潤会通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.6,
+    "cat": "calm",
+    "name": "同潤会通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.8,
+    "cat": "calm",
+    "name": "同潤会通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.0,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 1.8
+   },
+   {
+    "km": 28.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 30.0
+   },
+   {
+    "km": 29.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.0,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "path",
+    "snap_m": 55.2
+   },
+   {
+    "km": 30.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 31.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 32.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 32.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 32.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 32.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 10.2
+   },
+   {
+    "km": 32.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.1
+   },
+   {
+    "km": 33.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 33.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 33.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 33.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 33.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 34.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 34.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 34.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 3.5
+   },
+   {
+    "km": 34.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 34.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 35.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 35.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 22.1
+   },
+   {
+    "km": 35.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 35.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 35.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 36.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 36.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 36.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 36.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 36.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 1.8
+   },
+   {
+    "km": 37.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 4.5
+   },
+   {
+    "km": 37.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   }
+  ]
+ },
+ "16": {
+  "day": 16,
+  "gpx": "day16_track.gpx",
+  "total_km": 30.33,
+  "by_cat_km": {
+   "arterial": 7.6,
+   "calm": 15.4,
+   "dedicated": 6.2,
+   "footway_unclear": 1.2
+  },
+  "arterial_runs": [
+   {
+    "from_km": 2.0,
+    "to_km": 2.8,
+    "cat": "arterial",
+    "names": [
+     "江戸川堤防線"
+    ],
+    "km_len": 1.0
+   },
+   {
+    "from_km": 10.6,
+    "to_km": 11.0,
+    "cat": "arterial",
+    "names": [
+     "上笹塚谷口線"
+    ],
+    "km_len": 0.6
+   },
+   {
+    "from_km": 14.0,
+    "to_km": 19.4,
+    "cat": "arterial",
+    "names": [
+     "八潮三郷線",
+     "平方東京線",
+     "内匠橋花畑線"
+    ],
+    "km_len": 5.6
+   },
+   {
+    "from_km": 27.6,
+    "to_km": 27.8,
+    "cat": "arterial",
+    "names": [
+     "王子金町市川線"
+    ],
+    "km_len": 0.4
+   }
+  ],
+  "samples": [
+   {
+    "km": 0.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 22.5
+   },
+   {
+    "km": 0.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 0.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 0.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.1
+   },
+   {
+    "km": 0.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 6.1
+   },
+   {
+    "km": 1.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 1.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 2.0,
+    "cat": "arterial",
+    "name": "江戸川堤防線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.2,
+    "cat": "arterial",
+    "name": "江戸川堤防線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.4,
+    "cat": "arterial",
+    "name": "江戸川堤防線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 2.6,
+    "cat": "arterial",
+    "name": "江戸川堤防線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 2.8,
+    "cat": "arterial",
+    "name": "江戸川堤防線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 3.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 3.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 3.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 3.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 4.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 4.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "track",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 5.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 5.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 6.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 6.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 6.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 7.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 21.0
+   },
+   {
+    "km": 7.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 7.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 8.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 8.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.2
+   },
+   {
+    "km": 8.4,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 8.6,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.1
+   },
+   {
+    "km": 8.8,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.0,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.2,
+    "cat": "dedicated",
+    "name": "",
+    "highway": "cycleway",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 0.3
+   },
+   {
+    "km": 9.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 9.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.1
+   },
+   {
+    "km": 10.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 3.0
+   },
+   {
+    "km": 10.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.1
+   },
+   {
+    "km": 10.6,
+    "cat": "arterial",
+    "name": "上笹塚谷口線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 10.8,
+    "cat": "arterial",
+    "name": "上笹塚谷口線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.0,
+    "cat": "arterial",
+    "name": "上笹塚谷口線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 11.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 11.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 12.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 12.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 13.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.1
+   },
+   {
+    "km": 13.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 13.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 6.8
+   },
+   {
+    "km": 14.0,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.2,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.4,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 14.6,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 14.8,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.0,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.2,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 15.4,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.6,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 15.8,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.0,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.2,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.4,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.6,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 16.8,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.0,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 17.2,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.4,
+    "cat": "arterial",
+    "name": "八潮三郷線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.6,
+    "cat": "arterial",
+    "name": "平方東京線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 17.8,
+    "cat": "arterial",
+    "name": "平方東京線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 18.0,
+    "cat": "arterial",
+    "name": "平方東京線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.2,
+    "cat": "arterial",
+    "name": "平方東京線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.4,
+    "cat": "arterial",
+    "name": "平方東京線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 18.6,
+    "cat": "arterial",
+    "name": "平方東京線",
+    "highway": "secondary",
+    "snap_m": 0.2
+   },
+   {
+    "km": 18.8,
+    "cat": "arterial",
+    "name": "内匠橋花畑線",
+    "highway": "secondary",
+    "snap_m": 1.9
+   },
+   {
+    "km": 19.0,
+    "cat": "arterial",
+    "name": "内匠橋花畑線",
+    "highway": "secondary",
+    "snap_m": 0.1
+   },
+   {
+    "km": 19.2,
+    "cat": "arterial",
+    "name": "内匠橋花畑線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.4,
+    "cat": "arterial",
+    "name": "内匠橋花畑線",
+    "highway": "secondary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.6,
+    "cat": "calm",
+    "name": "花畑フラワーロード",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 19.8,
+    "cat": "calm",
+    "name": "花畑フラワーロード",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.0,
+    "cat": "calm",
+    "name": "花畑フラワーロード",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.2,
+    "cat": "calm",
+    "name": "花畑フラワーロード",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.4,
+    "cat": "calm",
+    "name": "花畑フラワーロード",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.6,
+    "cat": "calm",
+    "name": "花畑フラワーロード",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 20.8,
+    "cat": "calm",
+    "name": "花畑フラワーロード",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.0,
+    "cat": "calm",
+    "name": "花畑フラワーロード",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 21.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "service",
+    "snap_m": 13.4
+   },
+   {
+    "km": 21.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 5.8
+   },
+   {
+    "km": 21.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.1
+   },
+   {
+    "km": 21.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 5.8
+   },
+   {
+    "km": 22.0,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 20.0
+   },
+   {
+    "km": 22.2,
+    "cat": "calm",
+    "name": "舎人公園通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.4,
+    "cat": "calm",
+    "name": "舎人公園通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.6,
+    "cat": "calm",
+    "name": "舎人公園通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 22.8,
+    "cat": "calm",
+    "name": "舎人公園通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.0,
+    "cat": "calm",
+    "name": "舎人公園通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.2,
+    "cat": "calm",
+    "name": "舎人公園通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.4,
+    "cat": "calm",
+    "name": "舎人公園通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.6,
+    "cat": "calm",
+    "name": "舎人公園通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 23.8,
+    "cat": "calm",
+    "name": "舎人公園通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.0,
+    "cat": "calm",
+    "name": "舎人公園通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.2,
+    "cat": "calm",
+    "name": "舎人公園通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 24.4,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 13.2
+   },
+   {
+    "km": 24.6,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 7.5
+   },
+   {
+    "km": 24.8,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 25.2
+   },
+   {
+    "km": 25.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.6,
+    "cat": "calm",
+    "name": "六六通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 25.8,
+    "cat": "calm",
+    "name": "六六通り",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.0,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 7.3
+   },
+   {
+    "km": 26.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 26.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.0,
+    "cat": "footway_unclear",
+    "name": "",
+    "highway": "footway",
+    "snap_m": 18.1
+   },
+   {
+    "km": 27.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "unclassified",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.6,
+    "cat": "arterial",
+    "name": "王子金町市川線",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 27.8,
+    "cat": "arterial",
+    "name": "王子金町市川線",
+    "highway": "primary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 12.3
+   },
+   {
+    "km": 28.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 28.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "tertiary",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 29.4,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.1
+   },
+   {
+    "km": 29.6,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.2
+   },
+   {
+    "km": 29.8,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   },
+   {
+    "km": 30.0,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 33.1
+   },
+   {
+    "km": 30.2,
+    "cat": "calm",
+    "name": "",
+    "highway": "residential",
+    "snap_m": 0.0
+   }
+  ]
+ }
+}
