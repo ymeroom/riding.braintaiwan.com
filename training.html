@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>富士五湖行前 6 週</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: 一欄行事曆式訓練表；上方是「日本要求」與倒數，下面逐週展開，今天那一列自動標亮 */
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --ink:#1b2420; --muted:#5d6a64; --line:#d9e0dc;
+  --accent:#2f4f86;      /* 富士藍：主結構 */
+  --key:#b5521f;         /* 楓紅：關鍵騎乘 */
+  --key-bg:#fbeee6;
+  --rest:#8a948f; --rest-bg:#eef1ef;
+  --ride-bg:#e8eef8; --gym-bg:#ecf3ea; --gym:#3c6b3a;
+  --today:#fff6cc; --today-line:#d8a800;
+  --display:"Noto Serif TC","Songti TC",serif;
+  --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121715; --surface:#1a211e; --ink:#e6ece8; --muted:#9aa7a1; --line:#2c3632;
+  --accent:#8fb0e8; --key:#f08a55; --key-bg:#3a241a; --rest:#7d8883; --rest-bg:#1f2623;
+  --ride-bg:#1d2638; --gym-bg:#1e2b1e; --gym:#9bcf95; --today:#3a3313; --today-line:#e0b52a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121715; --surface:#1a211e; --ink:#e6ece8; --muted:#9aa7a1; --line:#2c3632;
+  --accent:#8fb0e8; --key:#f08a55; --key-bg:#3a241a; --rest:#7d8883; --rest-bg:#1f2623;
+  --ride-bg:#1d2638; --gym-bg:#1e2b1e; --gym:#9bcf95; --today:#3a3313; --today-line:#e0b52a; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;padding-inline:16px;padding-block:28px 64px}
+.wrap{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:clamp(1.7rem,5vw,2.4rem);font-weight:900}
+h2{font-size:1.35rem;font-weight:900;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h2 .wk{font-family:var(--mono);font-size:.85rem;font-weight:600;color:var(--accent);letter-spacing:.06em}
+h2 .dt{font-family:var(--mono);font-size:.85rem;color:var(--muted);font-weight:400}
+p{margin:0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;font-family:var(--mono)}
+header{display:flex;flex-direction:column;gap:12px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--muted);font-size:.95rem}
+.meta b{color:var(--ink);font-weight:500}
+.count{display:flex;gap:10px;flex-wrap:wrap}
+.count>div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 14px;min-width:0}
+.count .big{font-family:var(--mono);font-size:1.6rem;font-weight:600;color:var(--accent);line-height:1.1}
+.count .lbl{font-size:.8rem;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:14px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.93rem}
+td:first-child,td.num{white-space:nowrap}
+td:last-child{min-width:15em}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-weight:500;color:var(--muted);font-size:.8rem;letter-spacing:.04em;white-space:nowrap}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.bar{display:inline-block;height:8px;border-radius:2px;background:var(--key);vertical-align:middle;margin-left:6px;opacity:.85}
+.hard td:first-child{font-weight:700}
+.focus{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.focus div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.focus b{font-family:var(--display);font-size:1.02rem}
+.focus span{font-size:.88rem;color:var(--muted)}
+.strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.strip a{display:flex;flex-direction:column;gap:2px;padding:8px 8px 10px;border-radius:6px;background:var(--surface);border:1px solid var(--line);color:inherit;text-decoration:none;min-width:0}
+.strip a:hover,.strip a:focus-visible{border-color:var(--accent);outline:none}
+.strip .w{font-family:var(--mono);font-size:.78rem;color:var(--accent);font-weight:600}
+.strip .t{font-size:.8rem;line-height:1.35}
+.strip a.sim{background:var(--key-bg);border-color:var(--key)}
+.strip a.sim .w{color:var(--key)}
+.strip a.now{box-shadow:inset 0 -3px 0 var(--today-line)}
+@media (max-width:560px){.strip{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.days{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:6px;background:var(--surface);overflow:hidden}
+.day{display:grid;grid-template-columns:4.6rem 4.4rem 1fr;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);align-items:start}
+.day:last-child{border-bottom:0}
+.day .d{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.88rem;color:var(--muted);padding-top:2px}
+.day .d b{color:var(--ink);font-weight:600}
+.tag{font-size:.75rem;padding:2px 7px;border-radius:3px;text-align:center;white-space:nowrap;align-self:start;margin-top:2px}
+.t-rest{background:var(--rest-bg);color:var(--rest)}
+.t-ride{background:var(--ride-bg);color:var(--accent)}
+.t-gym{background:var(--gym-bg);color:var(--gym)}
+.t-key{background:var(--key);color:#fff}
+.t-go{background:var(--accent);color:var(--surface)}
+.day .c{min-width:0}
+.day.rest .c{color:var(--muted)}
+.day.key .c{font-weight:500}
+.day.today{background:var(--today);box-shadow:inset 4px 0 0 var(--today-line)}
+.day.today .d::after{content:"今天";display:block;font-size:.72rem;color:var(--today-line);font-weight:600}
+@media (max-width:480px){.day{grid-template-columns:3.9rem 1fr}.day .c{grid-column:1/-1}.day .tag{justify-self:start}}
+.note{border-left:3px solid var(--accent);padding:4px 0 4px 14px;font-size:.95rem;display:flex;flex-direction:column;gap:6px}
+.note.warn{border-color:var(--key)}
+.note ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:3px}
+.note strong{font-weight:700}
+code{font-family:var(--mono);font-size:.86em;background:var(--rest-bg);padding:1px 5px;border-radius:3px}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.rules div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:.92rem;min-width:0}
+.rules h3{font-family:var(--body);font-size:.85rem;font-weight:700;color:var(--accent);margin-bottom:4px}
+footer{font-size:.82rem;color:var(--muted);display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding-top:14px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <a href="index.html" style="color:var(--accent);font-size:.9rem;text-decoration:none">← 回騎旅首頁</a>
+  <span class="eyebrow">Training block · 2026/10/5 – 11/12</span>
+  <h1>東京・富士五湖 19 天騎旅<br>行前 6 週訓練</h1>
+  <div class="meta">
+    <span>出發 <b>11/13 凌晨紅眼班機</b></span>
+    <span>取車 <b>11/13 09:30 秋葉原 CycleTrip</b></span>
+    <span>全程 <b class="num">684 km · +4,900 m</b></span>
+  </div>
+  <div class="count" id="count">
+    <div><div class="big num" id="cd-trip">—</div><div class="lbl">天後出發</div></div>
+    <div><div class="big num" id="cd-week">—</div><div class="lbl">目前週次</div></div>
+    <div><div class="big num" id="cd-next">—</div><div class="lbl" id="cd-next-lbl">下一次關鍵騎乘</div></div>
+  </div>
+</header>
+
+<section>
+  <h2>日本實際要求的是什麼</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>天</th><th>日期</th><th style="text-align:right">距離</th><th style="text-align:right">爬升</th><th>重點</th></tr></thead>
+    <tbody>
+      <tr class="hard"><td>Day 1</td><td class="num">11/13</td><td class="n">78 km</td><td class="n">+327 m<span class="bar" style="width:11px"></span></td><td>最長一天；紅眼班機沒睡；第一次騎租車</td></tr>
+      <tr class="hard"><td>Day 2</td><td class="num">11/14</td><td class="n">54 km</td><td class="n">+769 m<span class="bar" style="width:26px"></span></td><td>大垂水峠 4.3 km、平均約 5%</td></tr>
+      <tr class="hard"><td>Day 3</td><td class="num">11/15</td><td class="n">58 km</td><td class="n">+892 m<span class="bar" style="width:30px"></span></td><td>都留 → 山中湖長緩坡，最高 1,026 m</td></tr>
+      <tr><td>Day 4–6</td><td class="num">11/16–18</td><td class="n">~40 km</td><td class="n">+160–383 m<span class="bar" style="width:13px"></span></td><td>湖區海拔約 1,000 m，清晨 2～5°C；Day 6 長下坡</td></tr>
+      <tr class="hard"><td>Day 9</td><td class="num">11/21</td><td class="n">47 km</td><td class="n">+862 m<span class="bar" style="width:29px"></span></td><td>冷川峠</td></tr>
+      <tr><td>Day 12</td><td class="num">11/24</td><td class="n">66 km</td><td class="n">+468 m<span class="bar" style="width:16px"></span></td><td>熱海 → 江之島</td></tr>
+    </tbody>
+  </table></div>
+  <p style="color:var(--muted);font-size:.92rem">Day 1–6 連騎 6 天，共約 <span class="num">310 km、+2,800 m</span>。19 天都有騎乘，沒有整天休息的日子。你一次能騎 6 小時，所以單日耐力已經夠了。</p>
+  <div class="focus">
+    <div><b>前三天的組合</b><span>78 km 平路 → +770 m → +890 m，練第 2、3 天的坐墊、腿和補給</span></div>
+    <div><b>載重低心率爬坡</b><span>量出每小時爬幾公尺，用來估 Day 2、3、9 的時間</span></div>
+    <div><b>冷</b><span>清晨 2～5°C，Day 6 從約 990 m 長下坡，分層衣著要先練</span></div>
+    <div><b>傷後復健優先</b><span>騎車量不加，恢復能力留給重訓和跑走</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>六週一覽</h2>
+  <nav class="strip" id="strip"></nav>
+</section>
+
+<div id="weeks" style="display:flex;flex-direction:column;gap:36px"></div>
+
+<section>
+  <h2>全程通用紀律</h2>
+  <div class="rules">
+    <div><h3>心率</h3>所有騎乘與跑走一律 ≤130。</div>
+    <div><h3>上坡</h3>最輕檔位。超過 130 撐 1 分鐘還降不下來就下車牽車走，在日本也一樣。</div>
+    <div><h3>疼痛</h3>受傷部位 ≤2/10，而且隔天早上退掉，才進下一週的跑走進度；超過就退回上一週版本。</div>
+    <div><h3>補給</h3>超過 2 小時：每 15–20 分鐘喝一口水，每 45 分鐘吃一次。日本要帶的補給先在台灣吃過。</div>
+    <div><h3>遇雨、颱風</h3>騎車日可以跟相鄰的休息日對調；連續騎乘的週末盡量不要拆開。</div>
+  </div>
+</section>
+
+<section>
+  <h2>退階規則</h2>
+  <div class="note warn"><ul>
+    <li>起床心率比平常高 <strong>5 下以上</strong>，或睡眠明顯變差 → 當天訓練砍半或改休息。</li>
+    <li>受傷部位疼痛 &gt;2/10，或隔天沒有退 → 停跑一週，騎車照常。</li>
+    <li>連續騎乘第二天，心率 130 以下的時速比第一天慢超過 20% → 下次連續騎乘不加天數，先重複同樣安排。</li>
+  </ul></div>
+</section>
+
+<footer>
+  <span>每日距離與爬升：<code>trip.json</code> 的 NAVITIME「坡少」路線；清晨氣溫：同檔 <code>weather_hist</code>（往年同日）。</span>
+</footer>
+</div>
+
+<script>
+const R='rest',E='ride',G='gym',K='key',GO='go';
+const TAG={rest:['休息','t-rest'],ride:['騎乘','t-ride'],gym:['跑走・重訓','t-gym'],key:['關鍵','t-key'],go:['出發','t-go']};
+const WEEKS=[
+ {w:'W1',range:'10/5–10/11',title:'平路基準＋問清楚租車',short:'平路基準',days:[
+  ['10-05',R,'完全休息。<strong>寫信問 CycleTrip</strong>：車款、平把或彎把、尺寸合不合 165 cm、能否換自己的坐墊和踏板、馬鞍包容量、有沒有附輪行袋、快拆或 thru-axle。'],
+  ['10-06',E,'輕鬆騎 2h'],
+  ['10-07',G,'早：跑走 1 分慢跑＋2 分快走 × 30 分。午：基礎重訓，受傷前 50% 重量。'],
+  ['10-08',R,'完全休息'],
+  ['10-09',G,'早：跑走（同週三）。午：景美溪河濱 1h，踏頻 80–90。'],
+  ['10-10',K,'<strong>60 km 不載重，心率 ≤130</strong>。記下總時間（含停車）、移動時間、平均時速、後半段心率有沒有飄。'],
+  ['10-11',G,'恢復重訓：上半身＋核心＋下肢伸展。']],
+  note:'<strong>Day 1 時間預算</strong>：09:30 取車，約 10:15 出發，16:30 日落，含午餐和停車要在 6 小時左右騎完 78 km。拿這週的移動時速打 85 折、再加 1 小時停車；算出來超過 6 小時，就在 Day 1 少停幾個點，或把淺川段當成可以搭電車的備案。'},
+ {w:'W2',range:'10/12–10/18',title:'爬坡基準＋半載重',short:'爬坡基準',days:[
+  ['10-12',R,'完全休息'],
+  ['10-13',E,'輕鬆騎 2h'],
+  ['10-14',G,'早：跑走 1:2 × 30–35 分。午：重訓 50%，可多 1 組，不加重量。'],
+  ['10-15',R,'完全休息'],
+  ['10-16',G,'早：跑走。午：河濱 1h，<strong>穿要帶去日本的車褲</strong>。'],
+  ['10-17',K,'<strong>50–60 km，半載重</strong>，路線含一段連續 30 分鐘以上、平均 3–6% 的坡（不要政大後山那種陡坡）。最輕檔、心率 ≤130、該牽就牽。補給換成日本那套。'],
+  ['10-18',G,'恢復重訓']],
+  note:'目標是量出<strong>每小時爬升幾公尺</strong>和牽車分鐘數。選坡先用 Strava 路段或高度圖確認坡度。例：Day 3 有 +892 m，如果每小時爬 300 m，光爬坡就要將近 3 小時。'},
+ {w:'W3',range:'10/19–10/25',title:'第一次連續兩天',short:'連續兩天',days:[
+  ['10-19',R,'完全休息'],
+  ['10-20',E,'輕鬆騎 1.5h（刻意縮短，留體力給週末）'],
+  ['10-21',G,'早：跑走，無痛可進到 <strong>2 分慢跑＋2 分快走 × 35 分</strong>。午：重訓 50%。'],
+  ['10-22',R,'完全休息'],
+  ['10-23',G,'早：跑走。午：河濱 1h。'],
+  ['10-24',K,'<strong>60–65 km 平路滿載</strong>（全部車包＋行李重量）。第一次滿載，先感受車重和操控。'],
+  ['10-25',K,'<strong>連續第二天：45–50 km，+500 m 以上，滿載</strong>。取代重訓，騎完伸展。']],
+  note:'第二天早上記錄：坐骨和會陰的不適、大腿沉重、晨間心率是否高 5 下以上；第二天的爬坡速度比 W2 慢多少。'},
+ {w:'W4',range:'10/26–11/1',title:'三天模擬（照 Day 1–3 的順序）',short:'三天模擬',sim:true,days:[
+  ['10-26',R,'完全休息'],
+  ['10-27',E,'輕鬆騎 1.5h'],
+  ['10-28',G,'早：跑走（W3 版本）。午：重訓 50%，<strong>出發前最後一次正常重訓</strong>。'],
+  ['10-29',R,'完全休息'],
+  ['10-30',K,'<strong>模擬 Day 1：78 km 平路，全套日本裝備</strong>。取消早上跑走，10:15 出發，看 16:30 前能不能輕鬆騎完。'],
+  ['10-31',K,'<strong>模擬 Day 2：50–55 km，+750 m</strong>，坡度選平均 5% 左右。'],
+  ['11-01',K,'<strong>模擬 Day 3：50–55 km，+900 m</strong>，盡量找一段長緩坡。']],
+  note:'這三天沒用過的裝備就不帶。照日本作息：固定時間出發、中午吃一餐、晚上洗車褲、整理馬鞍包。第 3 天的爬坡速度跟 W2 比，就是你 Day 3 那段坡的實際速度。',
+  warn:'<strong>如果第 3 天撐不住</strong>，不用再多練，先把行程裡現成的緩衝想好：<ul><li>Day 4–6 都只有約 40 km，Day 5 本來就是天候緩衝日。</li><li>Day 10–11 只有 13～17 km，是第二段的恢復空檔。</li><li>真的騎不動就用 <code>bailout_stations.json</code> 找車站、<code>rinko.json</code> 查規定，搭電車跳過一段。這是計畫內的選項。</li></ul>'},
+ {w:'W5',range:'11/2–11/8',title:'恢復＋裝備＋低溫測試',short:'恢復・裝備',days:[
+  ['11-02',R,'完全休息'],
+  ['11-03',E,'輕鬆騎 1.5h'],
+  ['11-04',G,'重訓提早到早上（組數減半），09:30 去北美館看展。看展一整天走路就當作活動量，不另外跑走。'],
+  ['11-05',R,'完全休息'],
+  ['11-06',G,'早：跑走。午：河濱 45 分鐘。'],
+  ['11-07',K,'<strong>40 km 輕鬆騎，不載重，天亮就出發</strong>。帶齊日本的分層衣物練習穿脫，練一次「下坡前停車加衣服」。'],
+  ['11-08',G,'恢復重訓＋<strong>輪行袋拆裝練習</strong>（計時）。']],
+  note:'<strong>接觸點自己帶</strong>：坐墊（可換的話）、卡鞋和踏板、車褲、手套，都要是 W4 模擬騎過的。JR 規定要把車拆開、完全收進輪行袋，先在台灣用自己的車練一次。'},
+ {w:'W6',range:'11/9–11/12',title:'出發前減量',short:'減量・出發',days:[
+  ['11-09',R,'完全休息'],
+  ['11-10',E,'河濱輕鬆騎 1h；早上跑走 20 分（無痛才跑）。'],
+  ['11-11',R,'完全休息，整理行李。不做負重重訓，只做核心徒手和伸展。'],
+  ['11-12',GO,'完全休息。<strong>下午能睡就補眠</strong>，深夜去機場搭凌晨的紅眼班機。飛機上盡量睡，落地吃一頓正餐再取車。']],
+  note:'減量期覺得「腿很想騎、有點悶」是正常的，代表恢復到位了。不要因為不安而補練。'}
+];
+const DOW='日一二三四五六';
+function d(md){return new Date(2026,+md.slice(0,2)-1,+md.slice(3))}
+const now=new Date(); const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+const same=(a,b)=>a.getTime()===b.getTime();
+let curWeek=null,nextKey=null;
+const weeksEl=document.getElementById('weeks'),strip=document.getElementById('strip');
+WEEKS.forEach((wk,i)=>{
+  const first=d(wk.days[0][0]),last=d(wk.days[wk.days.length-1][0]);
+  const isNow=today>=first&&today<=last; if(isNow)curWeek=wk.w;
+  const a=document.createElement('a');a.href='#'+wk.w.toLowerCase();
+  a.className=(wk.sim?'sim ':'')+(isNow?'now':'');
+  a.innerHTML=`<span class="w">${wk.w}</span><span class="t">${wk.short}</span>`;strip.appendChild(a);
+  const rows=wk.days.map(([md,type,txt])=>{
+    const dt=d(md);const isToday=same(dt,today);
+    if(type===K&&dt>=today&&!nextKey)nextKey=dt;
+    const [lab,cls]=TAG[type];
+    return `<div class="day ${type===R?'rest':''} ${type===K?'key':''} ${isToday?'today':''}">
+      <div class="d"><b>${+md.slice(0,2)}/${+md.slice(3)}</b> 週${DOW[dt.getDay()]}</div>
+      <span class="tag ${cls}">${lab}</span><div class="c">${txt}</div></div>`}).join('');
+  const s=document.createElement('section');s.id=wk.w.toLowerCase();
+  s.innerHTML=`<h2><span class="wk">${wk.w}</span>${wk.title}<span class="dt">${wk.range}</span></h2>
+    <div class="days">${rows}</div>
+    ${wk.note?`<div class="note">${wk.note}</div>`:''}${wk.warn?`<div class="note warn">${wk.warn}</div>`:''}`;
+  weeksEl.appendChild(s);
+});
+const trip=new Date(2026,10,13);
+const left=Math.round((trip-today)/864e5);
+document.getElementById('cd-trip').textContent=left>0?left:'0';
+document.getElementById('cd-week').textContent=curWeek||(today<d('10-05')?'明天 W1':'—');
+if(nextKey){document.getElementById('cd-next').textContent=`${nextKey.getMonth()+1}/${nextKey.getDate()}`}
+else{document.getElementById('cd-next').textContent='Day 1';document.getElementById('cd-next-lbl').textContent='下一站：東京'}
+</script>
+</body>
+</html>
