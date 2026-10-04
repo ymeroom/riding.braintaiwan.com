@@ -89,9 +89,10 @@ td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowra
 .day.today{background:var(--today);box-shadow:inset 4px 0 0 var(--today-line)}
 .day.today .d::after{content:"今天";display:block;font-size:.72rem;color:var(--today-line);font-weight:600}
 @media (max-width:480px){.day{grid-template-columns:3.9rem 1fr}.day .c{grid-column:1/-1}.day .tag{justify-self:start}}
-.note{border-left:3px solid var(--accent);padding:4px 0 4px 14px;font-size:.95rem;display:flex;flex-direction:column;gap:6px}
+.note{border-left:3px solid var(--accent);padding:4px 0 4px 14px;font-size:.95rem}
 .note.warn{border-color:var(--key)}
-.note ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:3px}
+.note.gate{border-color:var(--today-line);background:var(--surface);border-radius:0 6px 6px 0;padding:8px 12px 8px 14px}
+.note ul{margin:6px 0 0;padding-left:1.2em;display:flex;flex-direction:column;gap:3px}
 .note strong{font-weight:700}
 code{font-family:var(--mono);font-size:.86em;background:var(--rest-bg);padding:1px 5px;border-radius:3px}
 .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
@@ -147,6 +148,19 @@ footer{font-size:.82rem;color:var(--muted);display:flex;flex-direction:column;ga
   <nav class="strip" id="strip"></nav>
 </section>
 
+<section>
+  <h2>三個檢查點</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>檢查點</th><th>看什麼</th><th>不合格的話</th></tr></thead>
+    <tbody>
+      <tr><td><b>① 10/10</b> W1 後</td><td>60 km 的移動時速</td><td>打 85 折加 1 小時停車，算出 78 km 超過 6 小時：Day 1 先規劃好搭電車跳過一段，例如八王子到高尾</td></tr>
+      <tr><td><b>② 10/17</b> W2 後</td><td>半載重時每小時爬幾公尺</td><td><strong>低於 250 m/h，或牽車超過 20 分鐘</strong>：10/20、11/3 的週二輕鬆騎改成 1 小時坡道重複騎（心率 ≤130、半載重）；Day 3 提早到 07:30 出發</td></tr>
+      <tr><td><b>③ 11/1</b> W4 後</td><td>模擬第 3 天的狀態</td><td>明顯撐不住：調整行程，不是加練。Day 3 改走陰雨版的較短路線，Day 5 當成半休</td></tr>
+    </tbody>
+  </table></div>
+  <p style="color:var(--muted);font-size:.92rem">只有爬坡速度這項值得多練。另外兩項就算不合格，比較有效的做法是調整行程。</p>
+</section>
+
 <div id="weeks" style="display:flex;flex-direction:column;gap:36px"></div>
 
 <section>
@@ -184,8 +198,9 @@ const WEEKS=[
   ['10-07',G,'早：跑走 1 分慢跑＋2 分快走 × 30 分。午：基礎重訓，受傷前 50% 重量。'],
   ['10-08',R,'完全休息'],
   ['10-09',G,'早：跑走（同週三）。午：景美溪河濱 1h，踏頻 80–90。'],
-  ['10-10',K,'<strong>60 km 不載重，心率 ≤130</strong>。記下總時間（含停車）、移動時間、平均時速、後半段心率有沒有飄。'],
+  ['10-10',K,'🚦 <strong>60 km 不載重，心率 ≤130</strong>。記下總時間（含停車）、移動時間、平均時速、後半段心率有沒有飄。'],
   ['10-11',G,'恢復重訓：上半身＋核心＋下肢伸展。']],
+  gate:'🚦 <strong>檢查點①</strong>：用今天的移動時速算 Day 1。78 km 打 85 折加 1 小時停車超過 6 小時，就先把 Day 1 搭電車跳過一段（例如八王子→高尾）規劃好。',
   note:'<strong>Day 1 時間預算</strong>：09:30 取車，約 10:15 出發，16:30 日落，含午餐和停車要在 6 小時左右騎完 78 km。拿這週的移動時速打 85 折、再加 1 小時停車；算出來超過 6 小時，就在 Day 1 少停幾個點，或把淺川段當成可以搭電車的備案。'},
  {w:'W2',range:'10/12–10/18',title:'爬坡基準＋半載重',short:'爬坡基準',days:[
   ['10-12',R,'完全休息'],
@@ -193,8 +208,9 @@ const WEEKS=[
   ['10-14',G,'早：跑走 1:2 × 30–35 分。午：重訓 50%，可多 1 組，不加重量。'],
   ['10-15',R,'完全休息'],
   ['10-16',G,'早：跑走。午：河濱 1h，<strong>穿要帶去日本的車褲</strong>。'],
-  ['10-17',K,'<strong>50–60 km，半載重</strong>，路線含一段連續 30 分鐘以上、平均 3–6% 的坡（不要政大後山那種陡坡）。最輕檔、心率 ≤130、該牽就牽。補給換成日本那套。'],
+  ['10-17',K,'🚦 <strong>50–60 km，半載重</strong>，路線含一段連續 30 分鐘以上、平均 3–6% 的坡（不要政大後山那種陡坡）。最輕檔、心率 ≤130、該牽就牽。補給換成日本那套。'],
   ['10-18',G,'恢復重訓']],
+  gate:'🚦 <strong>檢查點②</strong>：爬坡速度<strong>低於 250 m/h，或牽車超過 20 分鐘</strong> → 10/20、11/3 的週二輕鬆騎改成 1 小時坡道重複騎（心率 ≤130、半載重）；Day 3 提早到 07:30 出發。',
   note:'目標是量出<strong>每小時爬升幾公尺</strong>和牽車分鐘數。選坡先用 Strava 路段或高度圖確認坡度。例：Day 3 有 +892 m，如果每小時爬 300 m，光爬坡就要將近 3 小時。'},
  {w:'W3',range:'10/19–10/25',title:'第一次連續兩天',short:'連續兩天',days:[
   ['10-19',R,'完全休息'],
@@ -212,7 +228,8 @@ const WEEKS=[
   ['10-29',R,'完全休息'],
   ['10-30',K,'<strong>模擬 Day 1：78 km 平路，全套日本裝備</strong>。取消早上跑走，10:15 出發，看 16:30 前能不能輕鬆騎完。'],
   ['10-31',K,'<strong>模擬 Day 2：50–55 km，+750 m</strong>，坡度選平均 5% 左右。'],
-  ['11-01',K,'<strong>模擬 Day 3：50–55 km，+900 m</strong>，盡量找一段長緩坡。']],
+  ['11-01',K,'🚦 <strong>模擬 Day 3：50–55 km，+900 m</strong>，盡量找一段長緩坡。']],
+  gate:'🚦 <strong>檢查點③</strong>：看模擬第 3 天的狀態。明顯撐不住就調整行程，不是加練：Day 3 改走陰雨版的較短路線，Day 5 當成半休。',
   note:'這三天沒用過的裝備就不帶。照日本作息：固定時間出發、中午吃一餐、晚上洗車褲、整理馬鞍包。第 3 天的爬坡速度跟 W2 比，就是你 Day 3 那段坡的實際速度。',
   warn:'<strong>如果第 3 天撐不住</strong>，不用再多練，先把行程裡現成的緩衝想好：<ul><li>Day 4–6 都只有約 40 km，Day 5 本來就是天候緩衝日。</li><li>Day 10–11 只有 13～17 km，是第二段的恢復空檔。</li><li>真的騎不動就用 <code>bailout_stations.json</code> 找車站、<code>rinko.json</code> 查規定，搭電車跳過一段。這是計畫內的選項。</li></ul>'},
  {w:'W5',range:'11/2–11/8',title:'恢復＋裝備＋低溫測試',short:'恢復・裝備',days:[
@@ -253,7 +270,7 @@ WEEKS.forEach((wk,i)=>{
   const s=document.createElement('section');s.id=wk.w.toLowerCase();
   s.innerHTML=`<h2><span class="wk">${wk.w}</span>${wk.title}<span class="dt">${wk.range}</span></h2>
     <div class="days">${rows}</div>
-    ${wk.note?`<div class="note">${wk.note}</div>`:''}${wk.warn?`<div class="note warn">${wk.warn}</div>`:''}`;
+    ${wk.gate?`<div class="note gate">${wk.gate}</div>`:''}${wk.note?`<div class="note">${wk.note}</div>`:''}${wk.warn?`<div class="note warn">${wk.warn}</div>`:''}`;
   weeksEl.appendChild(s);
 });
 const trip=new Date(2026,10,13);
