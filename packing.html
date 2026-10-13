@@ -1,0 +1,365 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>日本騎旅行李</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style id="s">
+/* Layout: one narrow column like a ride card — condition strip, progress, filter tabs, then grouped checklists */
+:root{
+  --bg:#eef1f4; --surface:#ffffff; --ink:#18222f; --muted:#5d6876; --line:#d7dde4;
+  --ai:#1f3f72;      /* 藍 indigo: primary */
+  --ai-soft:#e3e9f3;
+  --kaki:#c9681e;    /* 柿 persimmon: must-bring */
+  --kaki-soft:#f8e9dc;
+  --ask:#2f6f68;     /* ask CycleTrip */
+  --ask-soft:#dfeeec;
+  --done:#8a95a3;
+  --f-display:"Barlow Condensed","Noto Sans TC",system-ui,sans-serif;
+  --f-body:"Noto Sans TC",system-ui,-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10161f; --surface:#18212d; --ink:#e6ebf1; --muted:#9aa6b4; --line:#2b3644;
+  --ai:#8fb0e6; --ai-soft:#22324a; --kaki:#f0a060; --kaki-soft:#3a2a1c; --ask:#7cc3b9; --ask-soft:#1d3532; --done:#6d7886;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10161f; --surface:#18212d; --ink:#e6ebf1; --muted:#9aa6b4; --line:#2b3644;
+  --ai:#8fb0e6; --ai-soft:#22324a; --kaki:#f0a060; --kaki-soft:#3a2a1c; --ask:#7cc3b9; --ask-soft:#1d3532; --done:#6d7886;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6}
+.wrap{max-width:720px;margin:0 auto;padding-inline:16px;padding-block:20px 56px;display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-direction:column;gap:6px}
+.eyebrow{font-family:var(--f-display);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ai);font-size:14px}
+h1{font-size:28px;line-height:1.25;margin:0;text-wrap:balance;font-weight:700}
+.route{color:var(--muted);font-size:14px}
+.route b{font-family:var(--f-display);font-size:17px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.conds{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.cond{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.cond .v{font-family:var(--f-display);font-size:24px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--ai)}
+.cond .k{font-size:13px;color:var(--muted)}
+.progress{display:flex;flex-direction:column;gap:8px}
+.prow{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.pnum{font-family:var(--f-display);font-size:34px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.pnum small{font-size:18px;color:var(--muted);font-weight:500}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ai);border-radius:99px;transition:width .3s ease}
+.status{font-size:13px;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--done)}
+.status[data-s="saved"]::before{background:var(--ask)}
+.status[data-s="saving"]::before{background:var(--kaki)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--muted)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:8px;z-index:2}
+.tab{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 14px;border-radius:99px;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--ai);border-color:var(--ai);color:var(--surface)}
+.tab:focus-visible,.item input:focus-visible+.box,.reset:focus-visible{outline:2px solid var(--kaki);outline-offset:2px}
+section.cat{display:flex;flex-direction:column;gap:6px}
+.cat h2{margin:0;font-size:17px;font-weight:700;display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+.cat h2 .n{font-family:var(--f-display);font-weight:600;font-size:17px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cat h2 .n.full{color:var(--ask)}
+.cat .intro{font-size:13px;color:var(--muted);margin:2px 0 0}
+ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.item{display:grid;grid-template-columns:26px 1fr;gap:10px;padding:10px 4px;border-bottom:1px solid var(--line);cursor:pointer;align-items:start}
+.item input{position:absolute;opacity:0;width:1px;height:1px}
+.box{width:22px;height:22px;border:2px solid var(--muted);border-radius:6px;margin-top:1px;display:grid;place-items:center;background:var(--surface)}
+.box::after{content:"";width:10px;height:6px;border-left:2.5px solid var(--surface);border-bottom:2.5px solid var(--surface);transform:rotate(-45deg) translate(1px,-1px);opacity:0}
+.item input:checked+.box{background:var(--ai);border-color:var(--ai)}
+.item input:checked+.box::after{opacity:1}
+.txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.name{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.item input:checked~.txt .name>span:first-child{color:var(--done);text-decoration:line-through;text-decoration-thickness:1px}
+.note{font-size:13px;color:var(--muted)}
+.note.warn{color:var(--kaki)}
+.badge{font-size:11.5px;font-weight:700;padding:1px 7px;border-radius:99px;white-space:nowrap;letter-spacing:.02em}
+.b-m{background:var(--kaki-soft);color:var(--kaki)}
+.b-q{background:var(--ask-soft);color:var(--ask)}
+.empty{color:var(--muted);font-size:14px;padding:8px 4px}
+footer{display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--muted)}
+.reset{font:inherit;font-size:13px;align-self:flex-start;background:none;border:1px solid var(--line);color:var(--muted);padding:6px 12px;border-radius:8px;cursor:pointer}
+.reset[data-armed="1"]{border-color:var(--kaki);color:var(--kaki)}
+strong{font-weight:700}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <a href="index.html" style="color:var(--ai);font-size:14px;text-decoration:none">← 回騎旅首頁</a>
+    <div class="eyebrow">Tokyo · Fuji · Izu · 2026</div>
+    <h1>日本單車騎旅行李清單</h1>
+    <div class="route"><b>11/13</b>（五）秋葉原取車 → <b>12/1</b>（二）還車　·　<b>19</b> 天　·　<b>684</b> km　·　累積爬升 <b>4,900</b> m</div>
+  </header>
+
+  <div class="conds">
+    <div class="cond"><span class="v">2–6°C</span><span class="k">Day 3–7 富士五湖清晨（海拔約 1,000 m）</span></div>
+    <div class="cond"><span class="v">8–9 天</span><span class="k">11 月東京每月大約下雨天數</span></div>
+    <div class="cond"><span class="v">≤ 7 kg</span><span class="k">車上行李目標，全部自己載</span></div>
+  </div>
+
+  <div class="progress">
+    <div class="prow">
+      <div class="pnum" id="pnum">0<small> / 0</small></div>
+      <span class="status" id="status" data-s="local">讀取中</span>
+    </div>
+    <div class="bar"><i id="pbar" style="width:0%"></i></div>
+    <div class="legend"><span><span class="badge b-m">必帶</span> 一定要帶</span><span><span class="badge b-q">問 CycleTrip</span> 先確認租車有沒有附</span></div>
+  </div>
+
+  <div class="tabs" role="group" aria-label="篩選">
+    <button class="tab" id="f-all" data-f="all" aria-pressed="true">全部</button>
+    <button class="tab" id="f-todo" data-f="todo" aria-pressed="false">還沒準備</button>
+    <button class="tab" id="f-ask" data-f="ask" aria-pressed="false">要問 CycleTrip</button>
+  </div>
+
+  <div id="list"></div>
+
+  <footer>
+    <div>依據 <code>D:\2026東京單車騎旅\data\trip.json</code> 的路線、海拔、往年氣溫與住宿整理。氣溫是往年同日紀錄，出發前一週再看天氣預報調整衣物。</div>
+    <button class="reset" id="reset" type="button">全部取消勾選</button>
+  </footer>
+</div>
+
+<script type="application/json" id="data">
+[
+ {"id":"doc","title":"證件與錢","items":[
+  ["passport","護照","m","效期要 6 個月以上"],
+  ["flight","去回程機票","m","11/13 凌晨紅眼班機去；12/1 回程"],
+  ["rental","CycleTrip 租車確認信","m",""],
+  ["hotels","住宿確認信","m","13 晚已訂；Day 6、7、12、13、14 還沒訂"],
+  ["insure","旅平險保單，含自行車意外與責任險","m","東京、神奈川等地規定騎車要有自行車責任險"],
+  ["vjw","Visit Japan Web 入境 QR code","",""],
+  ["cards","信用卡 2 張，分開放","",""],
+  ["yen","日圓現金","","鄉下民宿、溫泉、小店常只收現金"],
+  ["suica","手機 Suica","","搭車、超商都能用"],
+  ["copies","證件影本或手機照片","",""]
+ ]},
+ {"id":"gear","title":"騎車裝備","items":[
+  ["helmet","安全帽","m","4 月摔車時有撞到安全帽的話，一定要換新的：外觀沒事，裡面的泡棉也可能壓壞了","warn"],
+  ["shoes","平踏板騎車鞋","m","W3 前買好，W4 模擬一定要穿這雙騎"],
+  ["lights","前燈（400 流明以上）＋後燈（紅色、可閃爍）","m","每天充電；11 月 16:30 就日落"],
+  ["glasses","眼鏡，有透明或黃色鏡片","m","清晨、陰天、下雨用"],
+  ["mount","手機導航架","q",""],
+  ["bottles","水壺 2 個","q","確認車上有沒有水壺架"],
+  ["lock","車鎖","q",""],
+  ["topbag","上管包或把手包","","放手機、補給、錢包，不用下車就拿得到"],
+  ["saddlebag","馬鞍包","q","確認容量，太小要自己加帶"],
+  ["rinko","輪行袋","mq","沒附就要自己買，W5 前買好；搭 JR 撤退一定要用"]
+ ]},
+ {"id":"tools","title":"修車工具","intro":"先問 CycleTrip 附了什麼，重複的就不用帶。","items":[
+  ["tubes","備用內胎 2 條：700×30C、法式氣嘴（仏式）","mq",""],
+  ["levers","挖胎棒 2 支","q",""],
+  ["pump","打氣筒，要能打法式氣嘴","q",""],
+  ["patch","補胎片","q",""],
+  ["multitool","攜帶型工具組（六角板手、十字起子）","q",""],
+  ["lube","小罐鏈條油","","下雨天騎完要上油"],
+  ["ties","束帶幾條、電工膠帶一小捲","",""]
+ ]},
+ {"id":"kit","title":"騎車服裝","intro":"洋蔥式穿法，對應 2–20°C：早上穿上、中午脫掉。","items":[
+  ["bibs","車褲（有襯墊）× 2–3 件","m","穿 W2 測試過的那款"],
+  ["jersey","車衣 × 2–3 件","",""],
+  ["base","長袖排汗或羊毛底層衣 × 2 件","",""],
+  ["warmers","袖套、腿套（或膝套）","m",""],
+  ["wind","防風背心或防風外套","m",""],
+  ["rain","雨衣＋雨褲（騎車用）","m","雨衣也可以當防風外套"],
+  ["gloves","全指保暖手套（防風）","m","富士五湖清晨手指會凍僵，捏不住煞車"],
+  ["mitts","半指手套","","白天暖和時用"],
+  ["cap","頭巾或薄帽子（戴在安全帽裡）","m",""],
+  ["buff","脖圍","",""],
+  ["covers","鞋套","m","防雨、保暖"],
+  ["socks","羊毛襪 × 3 雙","",""]
+ ]},
+ {"id":"off","title":"下車後的衣服","items":[
+  ["down","輕薄羽絨外套","","富士五湖一帶早晚很冷，也能當騎車時的保暖層"],
+  ["pants","便服長褲 × 1","",""],
+  ["tops","上衣 × 2","",""],
+  ["under","內衣褲 × 3","",""],
+  ["sleep","睡衣","","旅館多半有浴衣，背包客棧不一定有"],
+  ["sandals","輕便拖鞋或涼鞋","","可不帶，旅館多半有拖鞋"]
+ ]},
+ {"id":"elec","title":"電子產品","items":[
+  ["phone","手機＋充電線","m",""],
+  ["garmin","Garmin FR965＋充電線","m",""],
+  ["powerbank","行動電源 10,000 mAh 以上","m","只能放隨身行李，不能托運"],
+  ["charger","多孔 USB 充電器","","日本插座跟台灣一樣，不用轉接頭"],
+  ["esim","日本網路：eSIM、SIM 卡或 Wi-Fi 機","",""],
+  ["earbuds","耳機","","騎車時不要戴，日本很多地方規定禁止"]
+ ]},
+ {"id":"med","title":"藥品與保養","items":[
+  ["meds","個人常用藥","m",""],
+  ["firstaid","外傷用品：OK 繃、人工皮、紗布、消毒用品","m",""],
+  ["chamois","車褲用防磨膏","m","連騎 6 天，屁股磨傷最常見"],
+  ["otc","止痛藥、腸胃藥、過敏藥","",""],
+  ["sun","防曬乳、護唇膏","",""],
+  ["elytes","電解質錠或粉","",""],
+  ["vaseline","凡士林","","防磨、護手"]
+ ]},
+ {"id":"food","title":"補給","items":[
+  ["bars","能量棒或果膠，2 天份","","W2 起在台灣先吃過一輪；日本超商很多，帶備用就好"]
+ ]},
+ {"id":"life","title":"背包客棧與生活用品","items":[
+  ["towel","快乾小毛巾","","背包客棧常要另外租"],
+  ["toiletry","盥洗用品","","旅館多半有，背包客棧不一定"],
+  ["padlock","置物櫃鎖頭","",""],
+  ["plugs","耳塞、眼罩","","背包客棧、紅眼班機都用得到"],
+  ["laundry","洗衣片或小包洗衣粉、曬衣夾","",""],
+  ["drybag","防水袋或夾鏈袋","","裝電子產品和證件"],
+  ["tote","環保袋或小背包","","下車後逛街用"]
+ ]},
+ {"id":"flight","title":"紅眼班機","intro":"Day 1 落地當天就要騎 78 km，飛機上能睡多少算多少。","items":[
+  ["pillow","頸枕、眼罩、耳塞","m",""],
+  ["carryon","一套乾淨騎車衣服放隨身行李","","落地後直接換上"]
+ ]},
+ {"id":"todo","title":"出發前要先處理","items":[
+  ["mail","寫信問 CycleTrip","","輪行袋、修車工具、打氣筒、水壺架、車鎖、手機架、馬鞍包容量；多的行李能不能寄放在店裡"],
+  ["book5","訂好還沒訂的 5 晚住宿","","Day 6 富士宮、Day 7 三島、Day 12 江之島／藤澤、Day 13 橫濱、Day 14 台場／有明"],
+  ["insure2","確認保險包含自行車責任險","",""],
+  ["buyshoe","買平踏板騎車鞋","","W3 前"],
+  ["helmet2","檢查安全帽要不要換","",""],
+  ["sim","W4 三天模擬：全部裝備照日本的方式裝上車騎一次","","順便秤重量"]
+ ]}
+]
+</script>
+
+<script id="app">
+(function(){
+  "use strict";
+  var DATA = JSON.parse(document.getElementById("data").textContent);
+  var LS_STATE = "jp-ride-pack-state-v1", LS_FILTER = "jp-ride-pack-filter";
+  var checked = new Set();
+  var filter = "all";
+  var art = null, mode = "loading";
+  var timer = null, inflight = false, dirty = false, delay = 2500, retried = false;
+
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+  function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+  function allItems(){ var a=[]; DATA.forEach(function(c){ c.items.forEach(function(it){ a.push(it); }); }); return a; }
+
+  function setStatus(s, text){
+    var el = document.getElementById("status");
+    el.dataset.s = s; el.textContent = text;
+  }
+
+  function render(){
+    var html = "";
+    DATA.forEach(function(cat){
+      var items = cat.items.filter(function(it){
+        if (filter === "todo") return !checked.has(it[0]);
+        if (filter === "ask") return it[2].indexOf("q") >= 0;
+        return true;
+      });
+      var done = cat.items.filter(function(it){ return checked.has(it[0]); }).length;
+      if (!items.length && filter !== "all") return;
+      html += '<section class="cat" aria-labelledby="h-'+cat.id+'"><h2 id="h-'+cat.id+'"><span>'+esc(cat.title)+'</span><span class="n'+(done===cat.items.length?' full':'')+'">'+done+' / '+cat.items.length+'</span></h2>';
+      if (cat.intro) html += '<p class="intro">'+esc(cat.intro)+'</p>';
+      html += '<ul>';
+      items.forEach(function(it){
+        var id = it[0], flags = it[2], note = it[3], warn = it[4] === "warn";
+        html += '<li><label class="item" for="i-'+id+'"><input type="checkbox" id="i-'+id+'" data-id="'+id+'"'+(checked.has(id)?' checked':'')+'><span class="box" aria-hidden="true"></span><span class="txt"><span class="name"><span>'+esc(it[1])+'</span>'
+          + (flags.indexOf("m")>=0 ? '<span class="badge b-m">必帶</span>' : '')
+          + (flags.indexOf("q")>=0 ? '<span class="badge b-q">問 CycleTrip</span>' : '')
+          + '</span>' + (note ? '<span class="note'+(warn?' warn':'')+'">'+esc(note)+'</span>' : '') + '</span></label></li>';
+      });
+      html += '</ul></section>';
+    });
+    if (!html) html = '<p class="empty">這個篩選裡的項目都準備好了。</p>';
+    document.getElementById("list").innerHTML = html;
+    renderProgress();
+  }
+
+  function renderProgress(){
+    var all = allItems(), done = all.filter(function(it){ return checked.has(it[0]); }).length;
+    document.getElementById("pnum").innerHTML = done + '<small> / ' + all.length + ' 項</small>';
+    document.getElementById("pbar").style.width = (all.length ? Math.round(done/all.length*100) : 0) + "%";
+  }
+
+  function stateJSON(){ return JSON.stringify({ checked: Array.from(checked), updated: new Date().toISOString() }); }
+
+  function schedule(){
+    lsSet(LS_STATE, stateJSON());
+    if (mode !== "sync"){ return; }
+    dirty = true;
+    setStatus("saving", "等你停手後儲存…");
+    clearTimeout(timer);
+    timer = setTimeout(save, delay);
+  }
+
+  function save(){
+    if (inflight || !art) return;
+    inflight = true; dirty = false;
+    setStatus("saving", "儲存中…");
+    art.publish({ "state.json": { content: stateJSON(), contentType: "application/json" } }).then(function(){
+      inflight = false; retried = false;
+      if (dirty){ clearTimeout(timer); timer = setTimeout(save, delay); }
+      else setStatus("saved", "已同步，手機和電腦都看得到");
+    }, function(err){
+      inflight = false;
+      var code = err && err.code;
+      if (code === "conflict"){ setStatus("saving", "有新版本，重新載入中…"); return; }
+      if (code === "rate_limited"){ delay = 10000; dirty = true; clearTimeout(timer); timer = setTimeout(save, delay); setStatus("saving", "稍後再儲存…"); return; }
+      if (code === "upstream_error" && !retried){ retried = true; dirty = true; clearTimeout(timer); timer = setTimeout(save, 1000 + Math.random()*2000); return; }
+      mode = "local";
+      if (code === "not_writer" || code === "not_granted" || code === "consent_required") setStatus("local", "唯讀檢視，勾選只存在這台裝置");
+      else setStatus("local", "無法同步，勾選先存在這台裝置");
+    });
+  }
+
+  document.getElementById("list").addEventListener("change", function(e){
+    var t = e.target; if (!t || !t.dataset || !t.dataset.id) return;
+    if (t.checked) checked.add(t.dataset.id); else checked.delete(t.dataset.id);
+    if (filter === "todo" && t.checked){ setTimeout(render, 350); } else { render(); var el=document.getElementById("i-"+t.dataset.id); if (el) el.focus(); }
+    schedule();
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(b){
+    b.addEventListener("click", function(){
+      filter = b.dataset.f; lsSet(LS_FILTER, filter);
+      Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(x){ x.setAttribute("aria-pressed", x===b ? "true" : "false"); });
+      render();
+    });
+  });
+
+  var resetBtn = document.getElementById("reset"), armTimer = null;
+  resetBtn.addEventListener("click", function(){
+    if (resetBtn.dataset.armed !== "1"){
+      resetBtn.dataset.armed = "1"; resetBtn.textContent = "再按一次，清除全部勾選";
+      clearTimeout(armTimer); armTimer = setTimeout(function(){ resetBtn.dataset.armed = "0"; resetBtn.textContent = "全部取消勾選"; }, 4000);
+      return;
+    }
+    clearTimeout(armTimer); resetBtn.dataset.armed = "0"; resetBtn.textContent = "全部取消勾選";
+    checked.clear(); render(); schedule();
+  });
+
+  document.addEventListener("visibilitychange", function(){
+    if (document.hidden && dirty && mode === "sync" && !inflight){ clearTimeout(timer); save(); }
+  });
+
+  function applyState(obj){
+    if (obj && Array.isArray(obj.checked)) checked = new Set(obj.checked.filter(function(x){ return typeof x === "string"; }));
+  }
+
+  // Start: local copy first (instant), then the published state, then try to enable sync.
+  var f = lsGet(LS_FILTER); if (f === "todo" || f === "ask") filter = f;
+  Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(x){ x.setAttribute("aria-pressed", x.dataset.f===filter ? "true" : "false"); });
+  try { applyState(JSON.parse(lsGet(LS_STATE) || "null")); } catch(e){}
+  render();
+
+  var served = fetch("state.json", { cache: "no-store" }).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; });
+  var cap = (window.claude && typeof window.claude.use === "function") ? window.claude.use("artifact").catch(function(){ return null; }) : Promise.resolve(null);
+
+  served.then(function(s){
+    return cap.then(function(a){
+      if (a){
+        art = a; mode = "sync";
+        if (s){ applyState(s); lsSet(LS_STATE, JSON.stringify(s)); }
+        render();
+        setStatus("saved", "已同步，手機和電腦都看得到");
+      } else {
+        mode = "local";
+        if (!lsGet(LS_STATE) && s){ applyState(s); render(); }
+        setStatus("local", "勾選只存在這台裝置");
+      }
+    });
+  });
+})();
+</script>
+
+</body></html>
