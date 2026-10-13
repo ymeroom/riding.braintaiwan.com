@@ -86,6 +86,7 @@ td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowra
 .day .c{min-width:0}
 .day.rest .c{color:var(--muted)}
 .day.key .c{font-weight:500}
+.day .c a{color:var(--accent);font-weight:700;text-underline-offset:3px}
 .day.today{background:var(--today);box-shadow:inset 4px 0 0 var(--today-line)}
 .day.today .d::after{content:"今天";display:block;font-size:.72rem;color:var(--today-line);font-weight:600}
 @media (max-width:480px){.day{grid-template-columns:3.9rem 1fr}.day .c{grid-column:1/-1}.day .tag{justify-self:start}}
@@ -153,7 +154,7 @@ footer{font-size:.82rem;color:var(--muted);display:flex;flex-direction:column;ga
   <div class="tbl"><table>
     <thead><tr><th>檢查點</th><th>看什麼</th><th>不合格的話</th></tr></thead>
     <tbody>
-      <tr><td><b>① 10/10</b> W1 後</td><td>60 km 的移動時速</td><td>打 85 折加 1 小時停車，算出 78 km 超過 6 小時：Day 1 先規劃好搭電車跳過一段，例如八王子到高尾</td></tr>
+      <tr><td><b>① 10/14</b>（原 10/10）</td><td>60 km 的移動時速</td><td>打 85 折加 1 小時停車，算出 78 km 超過 6 小時：Day 1 先規劃好搭電車跳過一段，例如八王子到高尾</td></tr>
       <tr><td><b>② 10/17</b> W2 後</td><td>半載重時每小時爬幾公尺</td><td><strong>低於 250 m/h，或牽車超過 20 分鐘</strong>：10/20、11/3 的週二輕鬆騎改成 1 小時坡道重複騎（心率 ≤130、半載重）；Day 3 提早到 07:30 出發</td></tr>
       <tr><td><b>③ 11/1</b> W4 後</td><td>模擬第 3 天的狀態</td><td>明顯撐不住：調整行程，不是加練。Day 3 改走陰雨版的較短路線，Day 5 當成半休</td></tr>
     </tbody>
@@ -198,14 +199,14 @@ const WEEKS=[
   ['10-07',G,'早：跑走 1 分慢跑＋2 分快走 × 30 分。午：基礎重訓，受傷前 50% 重量。'],
   ['10-08',R,'完全休息'],
   ['10-09',G,'早：跑走（同週三）。午：景美溪河濱 1h，踏頻 80–90。'],
-  ['10-10',K,'🚦 <strong>60 km 不載重，心率 ≤130</strong>。記下總時間（含停車）、移動時間、平均時速、後半段心率有沒有飄。'],
+  ['10-10',E,'<s>60 km 基準測試</s> → 延到 10/14（前一晚睡太晚，先恢復）。'],
   ['10-11',G,'恢復重訓：上半身＋核心＋下肢伸展。']],
-  gate:'🚦 <strong>檢查點①</strong>：用今天的移動時速算 Day 1。78 km 打 85 折加 1 小時停車超過 6 小時，就先把 Day 1 搭電車跳過一段（例如八王子→高尾）規劃好。',
+  gate:'🚦 <strong>檢查點①</strong>（延到 10/14）：用 60 km 的移動時速算 Day 1。78 km 打 85 折加 1 小時停車超過 6 小時，就先把 Day 1 搭電車跳過一段（例如八王子→高尾）規劃好。',
   note:'<strong>Day 1 時間預算</strong>：09:30 取車，約 10:15 出發，16:30 日落，含午餐和停車要在 6 小時左右騎完 78 km。拿這週的移動時速打 85 折、再加 1 小時停車；算出來超過 6 小時，就在 Day 1 少停幾個點，或把淺川段當成可以搭電車的備案。'},
  {w:'W2',range:'10/12–10/18',title:'爬坡基準＋半載重',short:'爬坡基準',days:[
   ['10-12',R,'完全休息'],
-  ['10-13',E,'輕鬆騎 2h'],
-  ['10-14',G,'早：跑走 1:2 × 30–35 分。午：重訓 50%，可多 1 組，不加重量。'],
+  ['10-13',E,'輕鬆騎 45–60 分鐘，心率 ≤120（隔天要測 60 km，先留體力）。'],
+  ['10-14',K,'🚦 <strong>60 km 基準測試（從 10/10 延過來）</strong>：04:30 起床，05:15 出發，河濱為主，心率 ≤130。記下總時間（含停車）、移動時間、移動時速、後半段心率有沒有飄。早上靜止心率 >67 就改輕鬆騎 1h。這週跑走和重訓取消一次。<br>👉 <a href="https://claude.ai/artifact/JVnXAChWqMLTjuutBaj63e" target="_blank" rel="noopener">休息與補給計畫</a>'],
   ['10-15',R,'完全休息'],
   ['10-16',G,'早：跑走。午：河濱 1h，<strong>穿要帶去日本的車褲</strong>。'],
   ['10-17',K,'🚦 <strong>50–60 km，半載重</strong>，路線含一段連續 30 分鐘以上、平均 3–6% 的坡（不要政大後山那種陡坡）。最輕檔、心率 ≤130、該牽就牽。補給換成日本那套。'],
