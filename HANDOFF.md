@@ -34,6 +34,7 @@
 2. `<div class="seas-1m">🗓️ <strong>週間預報</strong>（M/D HH:00 JST 發布・縣）：…</small></div>`
 3. `<div class="seas-1m">👕 <strong>穿搭建議</strong>（依 M/D 週間預報）：…</div>`
 4. `<div class="seas-1m">📅 <strong>1 個月預報</strong>（M/D 發布，…）：…</div>`
+5. `<div class="seas-1m">🎥 <strong>Insta360 拍攝</strong>（X3）：…</div>`（每天的拍攝路段，手寫的，更新天氣時保留不動）
 
 總覽表每列的天氣 `<td>` 內有 `<div class="wx-outlook">🗓️ <strong>週間預報</strong>（M/D）：…</div>`。
 
