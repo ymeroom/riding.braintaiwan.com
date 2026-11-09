@@ -1,0 +1,356 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Day 1 手繪行程圖</title><meta name="description" content="Day 1 11/13（五） 出城篇：繪卷、旅のしおり、鳥瞰圖、木版畫"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Yuji+Syuku&family=Noto+Serif+TC:wght@500&display=swap"><style>
+:root{--paper:#f3ecdf;--card:#fbf7ef;--ink:#2b2622;--muted:#6e6458;--shu:#b8442c;--line:#dccfb8;
+--f-hand:"Klee One","Noto Serif TC","Hiragino Mincho ProN",serif;--f-body:-apple-system,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;color-scheme:light}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);line-height:1.6}
+.wrap{max-width:860px;margin:0 auto;padding:24px max(16px,env(safe-area-inset-right,0px)) 56px max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:34px}
+a{color:var(--shu)}
+.top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:14px}
+h1{font-family:var(--f-hand);font-weight:600;font-size:clamp(24px,6vw,34px);margin:4px 0 0;text-wrap:balance}
+.lead{margin:4px 0 0;color:var(--muted);font-size:14.5px}
+nav.v{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+nav.v a,.days a{font-family:var(--f-hand);font-size:15px;color:var(--ink);text-decoration:none;border:1.5px solid var(--ink);border-radius:999px;padding:2px 12px;background:var(--card)}
+nav.v a:hover,.days a:hover,.days a.on{background:var(--ink);color:var(--card)}
+.days{display:flex;flex-wrap:wrap;gap:6px}.days a{font-size:13px;padding:1px 9px}
+section{display:flex;flex-direction:column;gap:8px;scroll-margin-top:12px}
+h2{font-family:var(--f-hand);font-weight:600;font-size:21px;margin:0}
+.tag{font-family:var(--f-hand);font-size:13px;letter-spacing:.12em;color:var(--shu)}
+.plate{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:10px}
+.plate svg{display:block;width:100%;height:auto}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.scroll svg{max-width:none}
+.portrait{max-width:520px}.hint{font-size:12.5px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.grid a{display:flex;flex-direction:column;gap:4px;text-decoration:none;color:var(--ink);font-family:var(--f-hand);font-size:14px}
+.grid svg{width:100%;height:auto;display:block;border:1px solid var(--line)}
+footer{border-top:1px dashed var(--line);padding-top:14px;color:var(--muted);font-size:13.5px}
+</style></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3.2"/></filter>
+    <filter id="rough2" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="11"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter>
+    <filter id="crayon" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter>
+    <filter id="stamp" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="9" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.5" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in" result="c"/><feDisplacementMap in="c" in2="n" scale="2"/></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="7"/><feColorMatrix type="matrix" values="0 0 0 0 0.42  0 0 0 0 0.34  0 0 0 0 0.22  0 0 0 0.22 0"/></filter>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#bcd3e6" stroke-width="0.8"/></pattern>
+    <pattern id="tape1" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="12" height="12" fill="#e9b7a9"/><rect width="6" height="12" fill="#f3d2c7"/></pattern>
+    <pattern id="tape2" width="14" height="14" patternUnits="userSpaceOnUse"><rect width="14" height="14" fill="#b9d3c2"/><circle cx="7" cy="7" r="2.6" fill="#e8f1ea"/></pattern>
+    <pattern id="seigaiha" width="28" height="14" patternUnits="userSpaceOnUse"><rect width="28" height="14" fill="#27405f"/><path d="M0 14a14 14 0 0 1 28 0M4 14a10 10 0 0 1 20 0M8 14a6 6 0 0 1 12 0M-14 7a14 14 0 0 1 28 0M14 7a14 14 0 0 1 28 0" fill="none" stroke="#e9dcc0" stroke-width="1.3"/></pattern>
+    <symbol id="bike" viewBox="0 -14 60 58" overflow="visible">
+      <g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="34" r="9"/><circle cx="48" cy="34" r="9"/>
+        <path d="M48 34L30 34L40 16L48 34M30 34L20 16L12 34M20 16L40 16M20 16L16 11"/>
+        <path d="M40 13L25 2M25 2L16 11M40 13L33 23L30 34"/>
+      </g>
+      <circle cx="20" cy="-4" r="5.5" fill="currentColor"/>
+    </symbol>
+    <symbol id="leaf" viewBox="-12 -12 24 26" overflow="visible">
+      <path d="M0-11L2.6-4.5L9-7L6-1L11.5 1.5L5 3L6.5 8.5L1.5 5.2L0 11.5L-1.5 5.2L-6.5 8.5L-5 3L-11.5 1.5L-6-1L-9-7L-2.6-4.5Z"/>
+    </symbol>
+  <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe0e8"/><stop offset="1" stop-color="#f2ead6"/></linearGradient></defs></svg><div class="wrap"><header><div class="top"><a href="../index.html#day-1">← 回 Day 1 行程</a><a href="index.html">全部 19 天 ↗</a></div><div class="tag">東京單車騎旅 ・ 手繪行程圖</div><h1>Day 1　出城篇</h1><p class="lead">11/13（五）秋葉原 ➔ 銀座/品川 ➔ 國道15號(第一京濱) ➔ 六鄉橋 ➔ 多摩川自行車道 ➔ 府中 (50.4km) ➔ 高尾山口 (Mt. Takao Base Camp 190m)<br>78.1 km、爬升 327 m。時刻與畫面為示意。</p><nav class="v" aria-label="版本"><a href="#v1">① 繪卷</a><a href="#v2">② 旅のしおり</a><a href="#v3">③ 鳥瞰圖</a><a href="#v4">④ 木版畫</a></nav></header><section id="v1"><div class="tag">① 繪卷</div><div class="plate scroll" tabindex="0" aria-label="繪卷，可左右捲動"><svg viewBox="0 0 1800 540" style="width:1500px" role="img" aria-label="Day 1 繪卷：秋葉原到高尾山口">
+    <rect width="1800" height="540" fill="#eee1c3"/>
+    <rect width="1800" height="540" filter="url(#grain)"/>
+    <g filter="url(#rough)">
+      <!-- scroll edges -->
+      <path d="M0 14H1800M0 22H1800M0 518H1800M0 526H1800" stroke="#8a6a3c" stroke-width="2" fill="none"/>
+      <!-- gold suyari-gasumi -->
+      <g fill="#dcb85e" stroke="#a9853a" stroke-width="1.6" opacity=".92">
+        <path d="M-20 40H560a26 26 0 0 1 0 52H210a22 22 0 0 0 0 44H-20Z"/>
+        <path d="M690 30H1180a24 24 0 0 1 0 48H820a20 20 0 0 0 0 40H600a24 24 0 0 1 0-48H690a20 20 0 0 0 0-40Z"/>
+        <path d="M1320 34H1820V150H1500a22 22 0 0 1 0-44H1420a18 18 0 0 0 0-36H1320a18 18 0 0 1 0-36Z"/>
+        <path d="M-20 470H420a22 22 0 0 0 0-44H700a26 26 0 0 1 0 52H1000a20 20 0 0 1 0 40H-20Z"/>
+        <path d="M1240 486H1600a22 22 0 0 0 0-44H1820V540H1240Z"/>
+      </g>
+
+      <!-- Takao mountain (left end) -->
+      <path d="M-10 420C40 330 90 200 170 170C230 150 260 230 330 300C370 340 400 380 430 420Z" fill="#6f8a55" stroke="#3e4a2c" stroke-width="2"/>
+      <path d="M60 330C90 300 120 290 150 300M150 220C175 210 200 225 215 250M230 300C250 290 280 300 300 320" stroke="#3e4a2c" stroke-width="1.6" fill="none"/>
+      <g fill="#c4532f"><circle cx="110" cy="300" r="14"/><circle cx="140" cy="285" r="11"/><circle cx="250" cy="320" r="13"/><circle cx="200" cy="260" r="10"/></g>
+      <g fill="#d9902f"><circle cx="125" cy="315" r="10"/><circle cx="270" cy="335" r="10"/><circle cx="180" cy="240" r="8"/></g>
+      <!-- inn + onsen -->
+      <path d="M70 420V378H140V420Z" fill="#f4ead2" stroke="#3a2f22" stroke-width="2"/>
+      <path d="M60 380L105 352L150 380Z" fill="#5b4632" stroke="#3a2f22" stroke-width="2"/>
+      <path d="M165 418a20 8 0 0 0 40 0Z" fill="#3a2f22"/>
+      <path d="M175 404c-6-8 6-12 0-20M185 404c-6-8 6-12 0-20M195 404c-6-8 6-12 0-20" stroke="#3a2f22" stroke-width="2" fill="none"/>
+
+      <!-- Asakawa thin river + maples -->
+      <path d="M200 440C300 430 380 450 470 438C540 430 600 446 640 440" stroke="#3f6b8f" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <g fill="#c4532f" stroke="#5a2a18" stroke-width="1.2">
+        <path d="M330 404l-14-38 -14 38z"/><path d="M390 404l-16-46 -16 46z"/><path d="M455 404l-13-34 -13 34z"/><path d="M520 404l-15-42 -15 42z"/>
+      </g>
+      <g fill="#d9902f" stroke="#5a2a18" stroke-width="1.2"><path d="M360 404l-11-30 -11 30z"/><path d="M490 404l-12-32 -12 32z"/></g>
+      <path d="M316 404v8M374 404v8M442 404v8M505 404v8" stroke="#5a2a18" stroke-width="2"/>
+
+      <!-- Tama river wide -->
+      <path d="M560 455C700 440 820 462 960 448C1060 438 1140 456 1230 446L1230 492C1120 500 1040 486 940 496C820 506 700 488 560 495Z" fill="#3f6b8f" stroke="#26435d" stroke-width="2"/>
+      <path d="M600 470q10-7 20 0t20 0M720 478q10-7 20 0t20 0M860 468q10-7 20 0t20 0M1000 476q10-7 20 0t20 0M1130 466q10-7 20 0t20 0" stroke="#e7dcc0" stroke-width="1.6" fill="none"/>
+
+      <!-- Fuchu-yotsuya bridge (cable stayed) -->
+      <path d="M560 444H720" stroke="#3a2f22" stroke-width="4"/>
+      <path d="M640 444V330" stroke="#3a2f22" stroke-width="5"/>
+      <path d="M640 336L575 444M640 336L595 444M640 336L615 444M640 336L705 444M640 336L685 444M640 336L665 444" stroke="#3a2f22" stroke-width="1.4"/>
+
+      <!-- susuki at Futako -->
+      <g stroke="#a57f3b" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M760 440q4-40 -12-70M772 440q2-44 14-76M784 440q6-36 26-58M800 440q0-30 -18-52"/>
+        <path d="M860 440q4-40 -12-70M872 440q2-44 14-76M884 440q6-36 26-58"/>
+        <path d="M940 440q4-34 -10-60M952 440q2-40 12-66"/>
+      </g>
+      <g fill="#e8cf8c" stroke="#a57f3b" stroke-width="1"><ellipse cx="748" cy="368" rx="5" ry="12" transform="rotate(-25 748 368)"/><ellipse cx="786" cy="364" rx="5" ry="12" transform="rotate(20 786 364)"/><ellipse cx="810" cy="382" rx="5" ry="11" transform="rotate(45 810 382)"/><ellipse cx="848" cy="368" rx="5" ry="12" transform="rotate(-25 848 368)"/><ellipse cx="886" cy="364" rx="5" ry="12" transform="rotate(20 886 364)"/><ellipse cx="964" cy="374" rx="5" ry="11" transform="rotate(15 964 374)"/></g>
+
+      <!-- Maruko bridge (arches) -->
+      <path d="M1020 444H1140" stroke="#3a2f22" stroke-width="4"/>
+      <path d="M1030 444q20-40 40 0M1070 444q20-40 40 0M1110 444q15-30 30 0" stroke="#3a2f22" stroke-width="2.4" fill="none"/>
+
+      <!-- Rokugo bridge red arch -->
+      <path d="M1180 444H1290" stroke="#3a2f22" stroke-width="4"/>
+      <path d="M1185 444q50-70 100 0" stroke="#b8442c" stroke-width="5" fill="none"/>
+      <path d="M1205 420v24M1225 404v40M1245 400v44M1265 408v36" stroke="#b8442c" stroke-width="1.6"/>
+
+      <!-- Kamata tonkatsu vignette -->
+      <ellipse cx="1350" cy="300" rx="52" ry="18" fill="#f8f2e2" stroke="#3a2f22" stroke-width="2"/>
+      <g fill="#d39a43" stroke="#7a4f1c" stroke-width="1.5"><rect x="1318" y="282" width="14" height="16" rx="3"/><rect x="1334" y="280" width="14" height="17" rx="3"/><rect x="1350" y="281" width="14" height="16" rx="3"/></g>
+      <path d="M1368 290q8-10 14 0q6-10 12 0q-6 10 -12 6q-6 6 -14-6Z" fill="#9fbf6a" stroke="#4f6a2a" stroke-width="1.2"/>
+
+      <!-- Daiichi-Keihin road + city -->
+      <path d="M1290 444H1800" stroke="#7d7466" stroke-width="16"/>
+      <path d="M1300 444h20M1350 444h20M1400 444h20M1450 444h20M1500 444h20M1550 444h20M1600 444h20M1650 444h20M1700 444h20" stroke="#efe6cf" stroke-width="2"/>
+      <g stroke="#3a2f22" stroke-width="2">
+        <rect x="1420" y="300" width="50" height="136" fill="#d8cdb2"/><rect x="1480" y="340" width="40" height="96" fill="#c9b994"/><rect x="1530" y="270" width="54" height="166" fill="#e4d9bf"/>
+        <rect x="1600" y="230" width="60" height="206" fill="#d8cdb2"/><rect x="1668" y="290" width="44" height="146" fill="#c9b994"/>
+      </g>
+      <g stroke="#3a2f22" stroke-width="1.2" fill="none"><path d="M1430 320h30M1430 340h30M1430 360h30M1540 290h34M1540 310h34M1540 330h34M1540 350h34M1610 250h40M1610 270h40M1610 290h40M1610 310h40"/></g>
+      <!-- Akihabara signboards -->
+      <g stroke="#3a2f22" stroke-width="1.6"><rect x="1586" y="250" width="12" height="70" fill="#c4532f"/><rect x="1662" y="246" width="12" height="80" fill="#e0b13c"/><rect x="1714" y="300" width="12" height="60" fill="#5e8fb3"/></g>
+      <g fill="#6b6152" stroke="#3a2f22" stroke-width="1.2"><rect x="1340" y="432" width="26" height="12" rx="3"/><rect x="1560" y="432" width="30" height="12" rx="3"/></g>
+
+      <!-- route -->
+      <path d="M1745 430H1295L1230 436C1100 432 980 438 860 434C760 430 680 432 600 432C520 432 420 428 320 428C230 428 180 424 150 420" fill="none" stroke="#b8442c" stroke-width="3.2" stroke-dasharray="10 8" stroke-linecap="round"/>
+    </g>
+    <use href="#bike" x="880" y="380" width="46" height="44" color="#2b2622"/>
+
+    <!-- title cartouche -->
+    <g filter="url(#rough)"><rect x="1730" y="40" width="54" height="250" fill="#f6efdc" stroke="#3a2f22" stroke-width="2"/><rect x="1736" y="46" width="42" height="238" fill="none" stroke="#3a2f22" stroke-width="1"/></g>
+    <g font-family="Yuji Syuku, Klee One, serif" fill="#2b2622" style="writing-mode:vertical-rl">
+      <text x="1757" y="62" font-size="24" letter-spacing="2">単車旅絵巻 第一日</text>
+    </g>
+    <g font-family="Klee One, serif" fill="#2b2622" font-size="18" style="writing-mode:vertical-rl">
+      <text x="1700" y="170">秋葉原 九時半 出立</text>
+      <text x="1490" y="190">第一京浜 南下</text>
+      <text x="1400" y="200" font-size="16">蒲田 昼餉 とんかつ</text>
+      <text x="1236" y="250">六郷橋 川沿いへ</text>
+      <text x="1080" y="270">丸子橋</text>
+      <text x="880" y="160">二子玉川 すすき原</text>
+      <text x="676" y="190">府中四谷橋 浅川へ</text>
+      <text x="430" y="170">浅川 南浅川 紅葉</text>
+      <text x="40" y="150" font-size="20" font-weight="600">高尾山口 着</text>
+      <text x="196" y="300" font-size="15">極楽湯</text>
+    </g>
+    <g font-family="Klee One, serif" fill="#7a4f1c" font-size="14" text-anchor="middle">
+      <text x="1745" y="512">〇粁</text><text x="1235" y="512">二三粁</text><text x="880" y="512">三六粁</text><text x="640" y="512">五七粁</text><text x="410" y="512">七〇粁</text><text x="150" y="512">七八粁</text>
+    </g>
+  </svg>
+</div><div class="hint">← 左右滑動，由右往左讀。</div></section><section id="v2"><div class="tag">② 旅のしおり</div><div class="plate portrait"><svg viewBox="0 0 600 1060" role="img" aria-label="Day 1 旅のしおり">
+    <rect width="600" height="1060" fill="#fdfbf5"/>
+    <rect width="600" height="1060" fill="url(#grid)"/>
+    <rect width="600" height="1060" filter="url(#grain)" opacity=".5"/>
+    <rect x="30" y="-6" width="130" height="34" fill="url(#tape1)" opacity=".9" transform="rotate(-6 95 11)"/>
+    <rect x="440" y="-4" width="130" height="34" fill="url(#tape2)" opacity=".9" transform="rotate(5 505 13)"/>
+
+    <g font-family="Klee One, serif" fill="#2b2622">
+      <text x="40" y="78" font-size="18" fill="#b8442c" letter-spacing="3">旅のしおり</text>
+      <text x="40" y="122" font-size="40" font-weight="600">Day 1　出城篇</text>
+      <text x="40" y="156" font-size="18">11月13日（金）秋葉原 → 高尾山口</text>
+    </g>
+    <path d="M40 170q130 6 260 0t240 2" stroke="#b8442c" stroke-width="2.4" fill="none" filter="url(#rough)"/>
+
+    <!-- stat bubbles -->
+    <g filter="url(#rough)" fill="none" stroke-width="2">
+      <ellipse cx="105" cy="214" rx="66" ry="26" stroke="#27405f"/>
+      <ellipse cx="260" cy="214" rx="72" ry="26" stroke="#27405f"/>
+      <ellipse cx="452" cy="214" rx="108" ry="26" stroke="#d08a2b"/>
+    </g>
+    <g font-family="Klee One, serif" font-size="19" text-anchor="middle" fill="#2b2622">
+      <text x="105" y="221">78.1 km</text><text x="260" y="221">登り 238 m</text><text x="452" y="221">晴時々曇 10–21°C</text>
+    </g>
+
+    <!-- timeline -->
+    <path d="M100 270V860" stroke="#2b2622" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round"/>
+    <g filter="url(#rough)" stroke="#2b2622" stroke-width="2">
+      <circle cx="100" cy="280" r="11" fill="#b8442c"/><circle cx="100" cy="355" r="9" fill="#fdfbf5"/><circle cx="100" cy="430" r="9" fill="#e0b13c"/>
+      <circle cx="100" cy="505" r="11" fill="#5e8fb3"/><circle cx="100" cy="580" r="9" fill="#fdfbf5"/><circle cx="100" cy="655" r="9" fill="#5e8fb3"/>
+      <circle cx="100" cy="730" r="9" fill="#fdfbf5"/><circle cx="100" cy="810" r="13" fill="#b8442c"/>
+    </g>
+    <g font-family="Klee One, serif" fill="#2b2622">
+      <g font-size="17" fill="#6e6458" text-anchor="end">
+        <text x="78" y="286">09:30</text><text x="78" y="361">09:50</text><text x="78" y="436">11:00</text><text x="78" y="511">12:15</text>
+        <text x="78" y="586">13:05</text><text x="78" y="661">14:20</text><text x="78" y="736">15:15</text><text x="78" y="816">15:50</text>
+      </g>
+      <g font-size="21" font-weight="600">
+        <text x="124" y="286">秋葉原　出発</text><text x="124" y="361">銀座・品川</text><text x="124" y="436">蒲田　ランチ</text><text x="124" y="511">六郷橋</text>
+        <text x="124" y="586">二子玉川</text><text x="124" y="661">府中四谷橋</text><text x="124" y="736">鶴巻橋</text><text x="124" y="816">高尾山口　到着</text>
+      </g>
+      <g font-size="15" fill="#6e6458">
+        <text x="124" y="308">0 km ・ 取車、胎壓、裝手機架</text>
+        <text x="124" y="383">4 km ・ 第一京浜（国道15号）南下</text>
+        <text x="124" y="458">19.5 km ・ とんかつ 檍</text>
+        <text x="124" y="533">22.9 km ・ 多摩川サイクリングロードへ</text>
+        <text x="124" y="608">35.9 km ・ すすきの堤防</text>
+        <text x="124" y="683">57.2 km ・ 浅川ゆったりロードへ</text>
+        <text x="124" y="758">70.2 km ・ 南浅川へ</text>
+        <text x="124" y="838">78.1 km ・ Mt. Takao Base Camp</text>
+      </g>
+      <text x="40" y="880" font-size="13" fill="#6e6458">※ 時刻は目安</text>
+    </g>
+
+    <!-- stamps -->
+    <g filter="url(#stamp)">
+      <g transform="rotate(-8 480 330)" stroke="#b8442c" fill="none" stroke-width="3">
+        <circle cx="480" cy="330" r="56"/><circle cx="480" cy="330" r="47" stroke-width="1.5"/>
+        <path d="M455 360V318H470V360M474 360V305H490V360M494 360V325H506V360M450 360H510" stroke-width="2.4"/>
+        <path d="M478 312h8M478 322h8M478 332h8" stroke-width="1.6"/>
+      </g>
+      <g transform="rotate(-8 480 330)" font-family="Klee One, serif" fill="#b8442c" text-anchor="middle">
+        <text x="480" y="298" font-size="15" font-weight="600">秋葉原</text><text x="480" y="378" font-size="11">電気街 出発記念</text>
+      </g>
+      <g transform="rotate(7 482 585)" stroke="#27405f" fill="none" stroke-width="3">
+        <circle cx="482" cy="585" r="56"/><circle cx="482" cy="585" r="47" stroke-width="1.5"/>
+        <path d="M446 590q36-40 72 0M446 590h72M458 590v-10M470 590v-17M482 590v-20M494 590v-17M506 590v-10" stroke-width="2.2"/>
+        <path d="M448 606q8-6 16 0t16 0t16 0t16 0" stroke-width="2"/>
+      </g>
+      <g transform="rotate(7 482 585)" font-family="Klee One, serif" fill="#27405f" text-anchor="middle">
+        <text x="482" y="556" font-size="15" font-weight="600">多摩川</text><text x="482" y="630" font-size="11">六郷橋〜府中</text>
+      </g>
+      <g transform="rotate(-4 482 820)" stroke="#3f6b3a" fill="none" stroke-width="3">
+        <circle cx="482" cy="820" r="56"/><circle cx="482" cy="820" r="47" stroke-width="1.5"/>
+        <path d="M444 838L474 796L490 816L500 804L522 838Z" stroke-width="2.4"/>
+        <path d="M462 838v-14l-5 6M462 824l5 6M506 838v-12l-4 5M506 826l4 5" stroke-width="1.6"/>
+      </g>
+      <g transform="rotate(-4 482 820)" font-family="Klee One, serif" fill="#3f6b3a" text-anchor="middle">
+        <text x="482" y="790" font-size="15" font-weight="600">高尾山</text><text x="482" y="862" font-size="11">一日目 到着</text>
+      </g>
+    </g>
+
+    <!-- sticky note -->
+    <g transform="rotate(-2 200 975)">
+      <rect x="40" y="905" width="300" height="130" fill="#f7e7a1" filter="url(#rough)"/>
+      <rect x="150" y="896" width="80" height="22" fill="url(#tape2)" opacity=".85"/>
+      <g font-family="Klee One, serif" fill="#2b2622">
+        <text x="58" y="944" font-size="17" font-weight="600">取車前に買う・確認</text>
+        <text x="58" y="972" font-size="15">□ 六角レンチ 4・5・6mm</text>
+        <text x="58" y="996" font-size="15">□ スマホホルダー・サドルバッグ</text>
+        <text x="58" y="1020" font-size="15">□ 空気圧・CDW 保険</text>
+      </g>
+    </g>
+    <g transform="rotate(2 470 975)">
+      <rect x="370" y="912" width="200" height="118" fill="#f6d7cf" filter="url(#rough)"/>
+      <g font-family="Klee One, serif" fill="#2b2622">
+        <text x="386" y="946" font-size="17" font-weight="600">晩ごはん</text>
+        <text x="386" y="974" font-size="14.5">A 高橋家 とろろそば</text>
+        <text x="386" y="994" font-size="13" fill="#6e6458">16:30 までに着けば</text>
+        <text x="386" y="1018" font-size="14.5">B 極楽湯の食堂</text>
+      </g>
+    </g>
+  </svg>
+</div></section><section id="v3"><div class="tag">③ 鳥瞰圖</div><div class="plate"><svg viewBox="0 0 1000 720" role="img" aria-label="Day 1 鳥瞰圖">
+    <defs><linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe0e8"/><stop offset="1" stop-color="#f2ead6"/></linearGradient></defs>
+    <rect width="1000" height="720" fill="url(#sky3)"/>
+    <rect y="250" width="1000" height="470" fill="#ece3c6"/>
+    <rect width="1000" height="720" filter="url(#grain)" opacity=".7"/>
+    <g filter="url(#rough)">
+      <!-- far mountains & Fuji -->
+      <path d="M0 260L60 200L120 230L190 170L260 220L330 190L420 240L520 215L600 250H0Z" fill="#a9b9c4" stroke="#6d7f8c" stroke-width="1.5"/>
+      <path d="M150 210L235 92L320 210Z" fill="#9fb2c2" stroke="#55697a" stroke-width="1.8"/>
+      <path d="M210 126L235 92L260 126L250 122L242 132L232 120L222 130Z" fill="#fbfbf7" stroke="#55697a" stroke-width="1.4"/>
+      <!-- Takao & Tanzawa foothills -->
+      <path d="M-10 470C20 380 60 330 110 340C150 348 170 400 220 420C260 436 300 440 330 450L330 480H-10Z" fill="#7f9a5c" stroke="#465a2e" stroke-width="2"/>
+      <g fill="#c4532f"><circle cx="70" cy="390" r="9"/><circle cx="110" cy="372" r="8"/><circle cx="150" cy="400" r="9"/></g>
+      <g fill="#d9902f"><circle cx="90" cy="410" r="7"/><circle cx="130" cy="390" r="6"/><circle cx="190" cy="420" r="7"/></g>
+      <!-- Tokyo bay -->
+      <path d="M1000 400L935 410C925 440 918 480 900 520C890 560 880 610 868 660L860 720H1000Z" fill="#8fb4cc" stroke="#4f7896" stroke-width="2"/>
+      <g stroke="#f4f0e2" stroke-width="1.6" fill="none"><path d="M915 600q8-6 16 0t16 0M940 660q8-6 16 0t16 0M955 540q8-6 16 0t16 0"/></g>
+      <!-- Tama river (follows route) -->
+      <path d="M868 690C860 660 848 640 846 634C832 626 830 604 830 601C800 580 790 576 760 521C740 510 720 498 688 467C620 450 600 443 574 419C540 410 520 402 513 402C490 392 485 378 380 375C378 382 362 385 343 363C300 340 270 310 220 280C190 260 160 245 120 236" stroke="#5e8fb3" stroke-width="12" fill="none" stroke-linecap="round"/>
+      <!-- Asakawa -->
+      <path d="M343 363C320 352 300 349 270 361C250 375 240 394 214 399C195 386 186 366 167 351C140 345 118 347 117 359" stroke="#7fa7c4" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <!-- city blocks -->
+      <g fill="#d9cdb0" stroke="#7d6f55" stroke-width="1.4">
+        <rect x="905" y="270" width="22" height="30"/><rect x="935" y="262" width="18" height="38"/><rect x="960" y="282" width="26" height="22"/>
+        <rect x="900" y="320" width="20" height="26"/><rect x="928" y="330" width="24" height="18"/><rect x="960" y="318" width="18" height="30"/>
+        <rect x="850" y="300" width="22" height="20"/><rect x="870" y="360" width="18" height="24"/><rect x="820" y="350" width="20" height="22"/>
+        <rect x="880" y="400" width="18" height="22"/><rect x="845" y="430" width="20" height="18"/><rect x="800" y="420" width="18" height="20"/>
+      </g>
+      <!-- susuki dots on embankment -->
+      <g stroke="#a57f3b" stroke-width="1.6" fill="none"><path d="M640 448q2-14 -4-24M648 448q1-16 6-26M700 478q2-14 -4-24M708 478q1-16 6-26M560 418q2-14 -4-24M568 418q1-16 6-26"/></g>
+    </g>
+    <!-- route from GPX -->
+    <polyline transform="translate(0 230)" points="961,48 964,57 952,64 955,84 943,115 926,135 925,156 902,173 900,213 890,218 899,230 898,253 872,307 878,344 872,355 873,391 840,404 823,397 824,371 783,346 755,291 722,274 682,237 588,213 568,189 507,172 479,148 374,145 372,152 355,155 337,133 304,119 264,131 234,164 208,169 184,136 161,121 113,117 111,129 89,152 41,178 38,198" fill="none" stroke="#fdfbf5" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+    <polyline transform="translate(0 230)" points="961,48 964,57 952,64 955,84 943,115 926,135 925,156 902,173 900,213 890,218 899,230 898,253 872,307 878,344 872,355 873,391 840,404 823,397 824,371 783,346 755,291 722,274 682,237 588,213 568,189 507,172 479,148 374,145 372,152 355,155 337,133 304,119 264,131 234,164 208,169 184,136 161,121 113,117 111,129 89,152 41,178 38,198" fill="none" stroke="#b8442c" stroke-width="3.6" stroke-dasharray="9 6" stroke-linejoin="round" stroke-linecap="round" filter="url(#rough)"/>
+    <!-- markers -->
+    <g stroke="#2b2622" stroke-width="2" filter="url(#rough)">
+      <circle cx="961" cy="278" r="9" fill="#b8442c"/><circle cx="847" cy="583" r="6" fill="#e0b13c"/><circle cx="840" cy="634" r="7" fill="#fdfbf5"/>
+      <circle cx="686" cy="473" r="6" fill="#fdfbf5"/><circle cx="338" cy="364" r="7" fill="#fdfbf5"/><circle cx="138" cy="353" r="6" fill="#fdfbf5"/><circle cx="38" cy="428" r="10" fill="#b8442c"/>
+    </g>
+    <use href="#bike" x="560" y="400" width="40" height="38" color="#2b2622"/>
+    <g font-family="Klee One, serif" fill="#2b2622" font-size="17">
+      <text x="930" y="250" text-anchor="end" font-weight="600" font-size="20">秋葉原 スタート</text>
+      <text x="830" y="578" text-anchor="end">蒲田 とんかつ</text>
+      <text x="830" y="662" text-anchor="end" font-weight="600">六郷橋 ここから川沿い</text>
+      <text x="700" y="508">二子玉川</text>
+      <text x="350" y="400">府中四谷橋</text>
+      <text x="150" y="330">鶴巻橋</text>
+      <text x="20" y="470" font-weight="600" font-size="20">高尾山口 ゴール</text>
+      <text x="235" y="76" text-anchor="middle" font-size="15" fill="#55697a">富士山</text>
+      <text x="610" y="560" font-size="22" fill="#3f6b8f" letter-spacing="6">多摩川</text>
+      <text x="930" y="700" text-anchor="middle" font-size="18" fill="#3f6b8f">東京湾</text>
+    </g>
+    <!-- compass + cartouche -->
+    <g transform="translate(920 110)" filter="url(#rough)" stroke="#2b2622" stroke-width="1.8">
+      <circle r="34" fill="#f6efdc"/><path d="M0-30L8 0L0 30L-8 0Z" fill="#fdfbf5"/><path d="M0-30L8 0L-8 0Z" fill="#b8442c"/>
+    </g>
+    <text x="920" y="66" text-anchor="middle" font-family="Klee One, serif" font-size="14" fill="#2b2622">北</text>
+    <g filter="url(#rough)"><rect x="30" y="24" width="330" height="70" fill="#f6efdc" stroke="#2b2622" stroke-width="2"/></g>
+    <g font-family="Klee One, serif" fill="#2b2622"><text x="48" y="58" font-size="26" font-weight="600">第一日 出城篇 鳥瞰図</text><text x="48" y="82" font-size="14" fill="#6e6458">78.1 km ・ 標高 1 → 192 m ・ 11月13日</text></g>
+  </svg>
+</div></section><section id="v4"><div class="tag">④ 木版畫</div><div class="plate portrait"><svg viewBox="0 0 600 860" role="img" aria-label="Day 1 木版畫海報">
+    <defs>
+      <linearGradient id="bokashi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#27405f"/><stop offset=".32" stop-color="#7d93ab"/><stop offset=".55" stop-color="#efe2c6"/></linearGradient>
+      <clipPath id="frame4"><rect x="18" y="18" width="564" height="824"/></clipPath>
+    </defs>
+    <rect width="600" height="860" fill="#efe2c6"/>
+    <g clip-path="url(#frame4)">
+      <rect x="18" y="18" width="564" height="560" fill="url(#bokashi)"/>
+      <circle cx="300" cy="200" r="64" fill="#c8442f"/>
+      <!-- Fuji & ridges -->
+      <path d="M18 400L150 260L200 300L240 280L340 380L582 360V600H18Z" fill="#8ea3b8"/>
+      <path d="M150 260L178 236L205 262L193 258L180 270L168 256Z" fill="#f6efdc"/>
+      <path d="M18 470C90 410 150 380 220 400C280 418 330 450 400 440C470 430 530 400 582 410V620H18Z" fill="#3d5a7a"/>
+      <!-- Takao front mountain -->
+      <path d="M18 600C60 520 120 470 190 470C250 470 300 520 360 560C400 588 440 600 480 610V660H18Z" fill="#1f3a5f"/>
+      <g fill="#c8442f"><use href="#leaf" x="70" y="530" width="20" height="22"/><use href="#leaf" x="120" y="505" width="18" height="20"/><use href="#leaf" x="180" y="495" width="22" height="24"/><use href="#leaf" x="240" y="520" width="18" height="20"/><use href="#leaf" x="300" y="560" width="20" height="22"/></g>
+      <g fill="#d9a441"><use href="#leaf" x="95" y="560" width="16" height="18"/><use href="#leaf" x="210" y="540" width="16" height="18"/><use href="#leaf" x="150" y="540" width="14" height="16"/></g>
+      <!-- embankment + river -->
+      <path d="M18 660C120 640 240 640 340 650C440 660 520 640 582 630V700H18Z" fill="#d9a441"/>
+      <path d="M18 700C140 680 260 690 360 702C460 714 530 700 582 690V760H18Z" fill="url(#seigaiha)"/>
+      <!-- cyclist silhouette -->
+      <use href="#bike" x="250" y="602" width="58" height="54" color="#1d1d1b"/>
+      <!-- susuki foreground -->
+      <g stroke="#1d1d1b" stroke-width="2.4" fill="none" stroke-linecap="round"><path d="M500 760q-4-60 -30-110M512 760q4-70 30-120M524 760q10-50 46-80M488 760q-14-40 -50-60"/></g>
+      <g fill="#d9a441"><ellipse cx="470" cy="650" rx="5" ry="16" transform="rotate(-30 470 650)"/><ellipse cx="542" cy="642" rx="5" ry="16" transform="rotate(25 542 642)"/><ellipse cx="568" cy="682" rx="5" ry="14" transform="rotate(55 568 682)"/><ellipse cx="440" cy="702" rx="5" ry="14" transform="rotate(-60 440 702)"/></g>
+      <!-- falling maple leaves -->
+      <g fill="#c8442f"><use href="#leaf" x="60" y="80" width="26" height="28" transform="rotate(-20 73 94)"/><use href="#leaf" x="120" y="150" width="18" height="20"/><use href="#leaf" x="40" y="220" width="22" height="24" transform="rotate(25 51 232)"/></g>
+      <g fill="#d9a441"><use href="#leaf" x="160" y="90" width="16" height="18"/><use href="#leaf" x="95" y="250" width="14" height="16"/></g>
+      <!-- bottom band -->
+      <rect x="18" y="760" width="564" height="82" fill="#1d1d1b"/>
+    </g>
+    <rect x="18" y="18" width="564" height="824" fill="none" stroke="#1d1d1b" stroke-width="6"/>
+    <!-- vertical title -->
+    <rect x="500" y="46" width="62" height="250" fill="#efe2c6" stroke="#c8442f" stroke-width="3"/>
+    <text x="531" y="66" font-family="Yuji Syuku, Klee One, serif" font-size="44" fill="#1d1d1b" style="writing-mode:vertical-rl" letter-spacing="10">出城</text>
+    <text x="470" y="56" font-family="Yuji Syuku, Klee One, serif" font-size="19" fill="#f6efdc" style="writing-mode:vertical-rl" letter-spacing="3">多摩川ヲ遡リ高尾ニ至ル</text>
+    <!-- seal -->
+    <rect x="510" y="312" width="42" height="42" fill="#c8442f" filter="url(#stamp)"/>
+    <text x="531" y="341" font-family="Yuji Syuku, Klee One, serif" font-size="20" fill="#efe2c6" text-anchor="middle">初日</text>
+    <g font-family="Klee One, serif" fill="#efe2c6">
+      <text x="40" y="794" font-size="19" font-weight="600" letter-spacing="2">第一日 ・ 十一月十三日 ・ 七十八粁 ・ 登 二百三十八米</text>
+      <text x="40" y="824" font-size="15" fill="#d9a441" letter-spacing="1">秋葉原 → 六郷橋 → 多摩川 → 浅川 → 高尾山口</text>
+    </g>
+  </svg>
+</div></section><script>document.querySelectorAll(".scroll").forEach(function(e){e.scrollLeft=e.scrollWidth})</script><footer><div class="top"><span></span><a href="day2.html">Day 2 →</a></div><div class="days" style="margin-top:10px"><a href="day1.html" class=on>1</a><a href="day2.html">2</a><a href="day3.html">3</a><a href="day4.html">4</a><a href="day5.html">5</a><a href="day6.html">6</a><a href="day7.html">7</a><a href="day8.html">8</a><a href="day9.html">9</a><a href="day10.html">10</a><a href="day11.html">11</a><a href="day12.html">12</a><a href="day13.html">13</a><a href="day14.html">14</a><a href="day15.html">15</a><a href="day16.html">16</a><a href="day17.html">17</a><a href="day18.html">18</a><a href="day19.html">19</a></div></footer></div></body></html>

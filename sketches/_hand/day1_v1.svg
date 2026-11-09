@@ -1,0 +1,103 @@
+<svg viewBox="0 0 1800 540" role="img" aria-label="Day 1 繪卷：秋葉原到高尾山口">
+    <rect width="1800" height="540" fill="#eee1c3"/>
+    <rect width="1800" height="540" filter="url(#grain)"/>
+    <g filter="url(#rough)">
+      <!-- scroll edges -->
+      <path d="M0 14H1800M0 22H1800M0 518H1800M0 526H1800" stroke="#8a6a3c" stroke-width="2" fill="none"/>
+      <!-- gold suyari-gasumi -->
+      <g fill="#dcb85e" stroke="#a9853a" stroke-width="1.6" opacity=".92">
+        <path d="M-20 40H560a26 26 0 0 1 0 52H210a22 22 0 0 0 0 44H-20Z"/>
+        <path d="M690 30H1180a24 24 0 0 1 0 48H820a20 20 0 0 0 0 40H600a24 24 0 0 1 0-48H690a20 20 0 0 0 0-40Z"/>
+        <path d="M1320 34H1820V150H1500a22 22 0 0 1 0-44H1420a18 18 0 0 0 0-36H1320a18 18 0 0 1 0-36Z"/>
+        <path d="M-20 470H420a22 22 0 0 0 0-44H700a26 26 0 0 1 0 52H1000a20 20 0 0 1 0 40H-20Z"/>
+        <path d="M1240 486H1600a22 22 0 0 0 0-44H1820V540H1240Z"/>
+      </g>
+
+      <!-- Takao mountain (left end) -->
+      <path d="M-10 420C40 330 90 200 170 170C230 150 260 230 330 300C370 340 400 380 430 420Z" fill="#6f8a55" stroke="#3e4a2c" stroke-width="2"/>
+      <path d="M60 330C90 300 120 290 150 300M150 220C175 210 200 225 215 250M230 300C250 290 280 300 300 320" stroke="#3e4a2c" stroke-width="1.6" fill="none"/>
+      <g fill="#c4532f"><circle cx="110" cy="300" r="14"/><circle cx="140" cy="285" r="11"/><circle cx="250" cy="320" r="13"/><circle cx="200" cy="260" r="10"/></g>
+      <g fill="#d9902f"><circle cx="125" cy="315" r="10"/><circle cx="270" cy="335" r="10"/><circle cx="180" cy="240" r="8"/></g>
+      <!-- inn + onsen -->
+      <path d="M70 420V378H140V420Z" fill="#f4ead2" stroke="#3a2f22" stroke-width="2"/>
+      <path d="M60 380L105 352L150 380Z" fill="#5b4632" stroke="#3a2f22" stroke-width="2"/>
+      <path d="M165 418a20 8 0 0 0 40 0Z" fill="#3a2f22"/>
+      <path d="M175 404c-6-8 6-12 0-20M185 404c-6-8 6-12 0-20M195 404c-6-8 6-12 0-20" stroke="#3a2f22" stroke-width="2" fill="none"/>
+
+      <!-- Asakawa thin river + maples -->
+      <path d="M200 440C300 430 380 450 470 438C540 430 600 446 640 440" stroke="#3f6b8f" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <g fill="#c4532f" stroke="#5a2a18" stroke-width="1.2">
+        <path d="M330 404l-14-38 -14 38z"/><path d="M390 404l-16-46 -16 46z"/><path d="M455 404l-13-34 -13 34z"/><path d="M520 404l-15-42 -15 42z"/>
+      </g>
+      <g fill="#d9902f" stroke="#5a2a18" stroke-width="1.2"><path d="M360 404l-11-30 -11 30z"/><path d="M490 404l-12-32 -12 32z"/></g>
+      <path d="M316 404v8M374 404v8M442 404v8M505 404v8" stroke="#5a2a18" stroke-width="2"/>
+
+      <!-- Tama river wide -->
+      <path d="M560 455C700 440 820 462 960 448C1060 438 1140 456 1230 446L1230 492C1120 500 1040 486 940 496C820 506 700 488 560 495Z" fill="#3f6b8f" stroke="#26435d" stroke-width="2"/>
+      <path d="M600 470q10-7 20 0t20 0M720 478q10-7 20 0t20 0M860 468q10-7 20 0t20 0M1000 476q10-7 20 0t20 0M1130 466q10-7 20 0t20 0" stroke="#e7dcc0" stroke-width="1.6" fill="none"/>
+
+      <!-- Fuchu-yotsuya bridge (cable stayed) -->
+      <path d="M560 444H720" stroke="#3a2f22" stroke-width="4"/>
+      <path d="M640 444V330" stroke="#3a2f22" stroke-width="5"/>
+      <path d="M640 336L575 444M640 336L595 444M640 336L615 444M640 336L705 444M640 336L685 444M640 336L665 444" stroke="#3a2f22" stroke-width="1.4"/>
+
+      <!-- susuki at Futako -->
+      <g stroke="#a57f3b" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M760 440q4-40 -12-70M772 440q2-44 14-76M784 440q6-36 26-58M800 440q0-30 -18-52"/>
+        <path d="M860 440q4-40 -12-70M872 440q2-44 14-76M884 440q6-36 26-58"/>
+        <path d="M940 440q4-34 -10-60M952 440q2-40 12-66"/>
+      </g>
+      <g fill="#e8cf8c" stroke="#a57f3b" stroke-width="1"><ellipse cx="748" cy="368" rx="5" ry="12" transform="rotate(-25 748 368)"/><ellipse cx="786" cy="364" rx="5" ry="12" transform="rotate(20 786 364)"/><ellipse cx="810" cy="382" rx="5" ry="11" transform="rotate(45 810 382)"/><ellipse cx="848" cy="368" rx="5" ry="12" transform="rotate(-25 848 368)"/><ellipse cx="886" cy="364" rx="5" ry="12" transform="rotate(20 886 364)"/><ellipse cx="964" cy="374" rx="5" ry="11" transform="rotate(15 964 374)"/></g>
+
+      <!-- Maruko bridge (arches) -->
+      <path d="M1020 444H1140" stroke="#3a2f22" stroke-width="4"/>
+      <path d="M1030 444q20-40 40 0M1070 444q20-40 40 0M1110 444q15-30 30 0" stroke="#3a2f22" stroke-width="2.4" fill="none"/>
+
+      <!-- Rokugo bridge red arch -->
+      <path d="M1180 444H1290" stroke="#3a2f22" stroke-width="4"/>
+      <path d="M1185 444q50-70 100 0" stroke="#b8442c" stroke-width="5" fill="none"/>
+      <path d="M1205 420v24M1225 404v40M1245 400v44M1265 408v36" stroke="#b8442c" stroke-width="1.6"/>
+
+      <!-- Kamata tonkatsu vignette -->
+      <ellipse cx="1350" cy="300" rx="52" ry="18" fill="#f8f2e2" stroke="#3a2f22" stroke-width="2"/>
+      <g fill="#d39a43" stroke="#7a4f1c" stroke-width="1.5"><rect x="1318" y="282" width="14" height="16" rx="3"/><rect x="1334" y="280" width="14" height="17" rx="3"/><rect x="1350" y="281" width="14" height="16" rx="3"/></g>
+      <path d="M1368 290q8-10 14 0q6-10 12 0q-6 10 -12 6q-6 6 -14-6Z" fill="#9fbf6a" stroke="#4f6a2a" stroke-width="1.2"/>
+
+      <!-- Daiichi-Keihin road + city -->
+      <path d="M1290 444H1800" stroke="#7d7466" stroke-width="16"/>
+      <path d="M1300 444h20M1350 444h20M1400 444h20M1450 444h20M1500 444h20M1550 444h20M1600 444h20M1650 444h20M1700 444h20" stroke="#efe6cf" stroke-width="2"/>
+      <g stroke="#3a2f22" stroke-width="2">
+        <rect x="1420" y="300" width="50" height="136" fill="#d8cdb2"/><rect x="1480" y="340" width="40" height="96" fill="#c9b994"/><rect x="1530" y="270" width="54" height="166" fill="#e4d9bf"/>
+        <rect x="1600" y="230" width="60" height="206" fill="#d8cdb2"/><rect x="1668" y="290" width="44" height="146" fill="#c9b994"/>
+      </g>
+      <g stroke="#3a2f22" stroke-width="1.2" fill="none"><path d="M1430 320h30M1430 340h30M1430 360h30M1540 290h34M1540 310h34M1540 330h34M1540 350h34M1610 250h40M1610 270h40M1610 290h40M1610 310h40"/></g>
+      <!-- Akihabara signboards -->
+      <g stroke="#3a2f22" stroke-width="1.6"><rect x="1586" y="250" width="12" height="70" fill="#c4532f"/><rect x="1662" y="246" width="12" height="80" fill="#e0b13c"/><rect x="1714" y="300" width="12" height="60" fill="#5e8fb3"/></g>
+      <g fill="#6b6152" stroke="#3a2f22" stroke-width="1.2"><rect x="1340" y="432" width="26" height="12" rx="3"/><rect x="1560" y="432" width="30" height="12" rx="3"/></g>
+
+      <!-- route -->
+      <path d="M1745 430H1295L1230 436C1100 432 980 438 860 434C760 430 680 432 600 432C520 432 420 428 320 428C230 428 180 424 150 420" fill="none" stroke="#b8442c" stroke-width="3.2" stroke-dasharray="10 8" stroke-linecap="round"/>
+    </g>
+    <use href="#bike" x="880" y="380" width="46" height="44" color="#2b2622"/>
+
+    <!-- title cartouche -->
+    <g filter="url(#rough)"><rect x="1730" y="40" width="54" height="250" fill="#f6efdc" stroke="#3a2f22" stroke-width="2"/><rect x="1736" y="46" width="42" height="238" fill="none" stroke="#3a2f22" stroke-width="1"/></g>
+    <g font-family="Yuji Syuku, Klee One, serif" fill="#2b2622" style="writing-mode:vertical-rl">
+      <text x="1757" y="62" font-size="24" letter-spacing="2">単車旅絵巻 第一日</text>
+    </g>
+    <g font-family="Klee One, serif" fill="#2b2622" font-size="18" style="writing-mode:vertical-rl">
+      <text x="1700" y="170">秋葉原 九時半 出立</text>
+      <text x="1490" y="190">第一京浜 南下</text>
+      <text x="1400" y="200" font-size="16">蒲田 昼餉 とんかつ</text>
+      <text x="1236" y="250">六郷橋 川沿いへ</text>
+      <text x="1080" y="270">丸子橋</text>
+      <text x="880" y="160">二子玉川 すすき原</text>
+      <text x="676" y="190">府中四谷橋 浅川へ</text>
+      <text x="430" y="170">浅川 南浅川 紅葉</text>
+      <text x="40" y="150" font-size="20" font-weight="600">高尾山口 着</text>
+      <text x="196" y="300" font-size="15">極楽湯</text>
+    </g>
+    <g font-family="Klee One, serif" fill="#7a4f1c" font-size="14" text-anchor="middle">
+      <text x="1745" y="512">〇粁</text><text x="1235" y="512">二三粁</text><text x="880" y="512">三六粁</text><text x="640" y="512">五七粁</text><text x="410" y="512">七〇粁</text><text x="150" y="512">七八粁</text>
+    </g>
+  </svg>

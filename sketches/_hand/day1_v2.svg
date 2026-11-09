@@ -1,0 +1,102 @@
+<svg viewBox="0 0 600 1060" role="img" aria-label="Day 1 旅のしおり">
+    <rect width="600" height="1060" fill="#fdfbf5"/>
+    <rect width="600" height="1060" fill="url(#grid)"/>
+    <rect width="600" height="1060" filter="url(#grain)" opacity=".5"/>
+    <rect x="30" y="-6" width="130" height="34" fill="url(#tape1)" opacity=".9" transform="rotate(-6 95 11)"/>
+    <rect x="440" y="-4" width="130" height="34" fill="url(#tape2)" opacity=".9" transform="rotate(5 505 13)"/>
+
+    <g font-family="Klee One, serif" fill="#2b2622">
+      <text x="40" y="78" font-size="18" fill="#b8442c" letter-spacing="3">旅のしおり</text>
+      <text x="40" y="122" font-size="40" font-weight="600">Day 1　出城篇</text>
+      <text x="40" y="156" font-size="18">11月13日（金）秋葉原 → 高尾山口</text>
+    </g>
+    <path d="M40 170q130 6 260 0t240 2" stroke="#b8442c" stroke-width="2.4" fill="none" filter="url(#rough)"/>
+
+    <!-- stat bubbles -->
+    <g filter="url(#rough)" fill="none" stroke-width="2">
+      <ellipse cx="105" cy="214" rx="66" ry="26" stroke="#27405f"/>
+      <ellipse cx="260" cy="214" rx="72" ry="26" stroke="#27405f"/>
+      <ellipse cx="452" cy="214" rx="108" ry="26" stroke="#d08a2b"/>
+    </g>
+    <g font-family="Klee One, serif" font-size="19" text-anchor="middle" fill="#2b2622">
+      <text x="105" y="221">78.1 km</text><text x="260" y="221">登り 238 m</text><text x="452" y="221">晴時々曇 10–21°C</text>
+    </g>
+
+    <!-- timeline -->
+    <path d="M100 270V860" stroke="#2b2622" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round"/>
+    <g filter="url(#rough)" stroke="#2b2622" stroke-width="2">
+      <circle cx="100" cy="280" r="11" fill="#b8442c"/><circle cx="100" cy="355" r="9" fill="#fdfbf5"/><circle cx="100" cy="430" r="9" fill="#e0b13c"/>
+      <circle cx="100" cy="505" r="11" fill="#5e8fb3"/><circle cx="100" cy="580" r="9" fill="#fdfbf5"/><circle cx="100" cy="655" r="9" fill="#5e8fb3"/>
+      <circle cx="100" cy="730" r="9" fill="#fdfbf5"/><circle cx="100" cy="810" r="13" fill="#b8442c"/>
+    </g>
+    <g font-family="Klee One, serif" fill="#2b2622">
+      <g font-size="17" fill="#6e6458" text-anchor="end">
+        <text x="78" y="286">09:30</text><text x="78" y="361">09:50</text><text x="78" y="436">11:00</text><text x="78" y="511">12:15</text>
+        <text x="78" y="586">13:05</text><text x="78" y="661">14:20</text><text x="78" y="736">15:15</text><text x="78" y="816">15:50</text>
+      </g>
+      <g font-size="21" font-weight="600">
+        <text x="124" y="286">秋葉原　出発</text><text x="124" y="361">銀座・品川</text><text x="124" y="436">蒲田　ランチ</text><text x="124" y="511">六郷橋</text>
+        <text x="124" y="586">二子玉川</text><text x="124" y="661">府中四谷橋</text><text x="124" y="736">鶴巻橋</text><text x="124" y="816">高尾山口　到着</text>
+      </g>
+      <g font-size="15" fill="#6e6458">
+        <text x="124" y="308">0 km ・ 取車、胎壓、裝手機架</text>
+        <text x="124" y="383">4 km ・ 第一京浜（国道15号）南下</text>
+        <text x="124" y="458">19.5 km ・ とんかつ 檍</text>
+        <text x="124" y="533">22.9 km ・ 多摩川サイクリングロードへ</text>
+        <text x="124" y="608">35.9 km ・ すすきの堤防</text>
+        <text x="124" y="683">57.2 km ・ 浅川ゆったりロードへ</text>
+        <text x="124" y="758">70.2 km ・ 南浅川へ</text>
+        <text x="124" y="838">78.1 km ・ Mt. Takao Base Camp</text>
+      </g>
+      <text x="40" y="880" font-size="13" fill="#6e6458">※ 時刻は目安</text>
+    </g>
+
+    <!-- stamps -->
+    <g filter="url(#stamp)">
+      <g transform="rotate(-8 480 330)" stroke="#b8442c" fill="none" stroke-width="3">
+        <circle cx="480" cy="330" r="56"/><circle cx="480" cy="330" r="47" stroke-width="1.5"/>
+        <path d="M455 360V318H470V360M474 360V305H490V360M494 360V325H506V360M450 360H510" stroke-width="2.4"/>
+        <path d="M478 312h8M478 322h8M478 332h8" stroke-width="1.6"/>
+      </g>
+      <g transform="rotate(-8 480 330)" font-family="Klee One, serif" fill="#b8442c" text-anchor="middle">
+        <text x="480" y="298" font-size="15" font-weight="600">秋葉原</text><text x="480" y="378" font-size="11">電気街 出発記念</text>
+      </g>
+      <g transform="rotate(7 482 585)" stroke="#27405f" fill="none" stroke-width="3">
+        <circle cx="482" cy="585" r="56"/><circle cx="482" cy="585" r="47" stroke-width="1.5"/>
+        <path d="M446 590q36-40 72 0M446 590h72M458 590v-10M470 590v-17M482 590v-20M494 590v-17M506 590v-10" stroke-width="2.2"/>
+        <path d="M448 606q8-6 16 0t16 0t16 0t16 0" stroke-width="2"/>
+      </g>
+      <g transform="rotate(7 482 585)" font-family="Klee One, serif" fill="#27405f" text-anchor="middle">
+        <text x="482" y="556" font-size="15" font-weight="600">多摩川</text><text x="482" y="630" font-size="11">六郷橋〜府中</text>
+      </g>
+      <g transform="rotate(-4 482 820)" stroke="#3f6b3a" fill="none" stroke-width="3">
+        <circle cx="482" cy="820" r="56"/><circle cx="482" cy="820" r="47" stroke-width="1.5"/>
+        <path d="M444 838L474 796L490 816L500 804L522 838Z" stroke-width="2.4"/>
+        <path d="M462 838v-14l-5 6M462 824l5 6M506 838v-12l-4 5M506 826l4 5" stroke-width="1.6"/>
+      </g>
+      <g transform="rotate(-4 482 820)" font-family="Klee One, serif" fill="#3f6b3a" text-anchor="middle">
+        <text x="482" y="790" font-size="15" font-weight="600">高尾山</text><text x="482" y="862" font-size="11">一日目 到着</text>
+      </g>
+    </g>
+
+    <!-- sticky note -->
+    <g transform="rotate(-2 200 975)">
+      <rect x="40" y="905" width="300" height="130" fill="#f7e7a1" filter="url(#rough)"/>
+      <rect x="150" y="896" width="80" height="22" fill="url(#tape2)" opacity=".85"/>
+      <g font-family="Klee One, serif" fill="#2b2622">
+        <text x="58" y="944" font-size="17" font-weight="600">取車前に買う・確認</text>
+        <text x="58" y="972" font-size="15">□ 六角レンチ 4・5・6mm</text>
+        <text x="58" y="996" font-size="15">□ スマホホルダー・サドルバッグ</text>
+        <text x="58" y="1020" font-size="15">□ 空気圧・CDW 保険</text>
+      </g>
+    </g>
+    <g transform="rotate(2 470 975)">
+      <rect x="370" y="912" width="200" height="118" fill="#f6d7cf" filter="url(#rough)"/>
+      <g font-family="Klee One, serif" fill="#2b2622">
+        <text x="386" y="946" font-size="17" font-weight="600">晩ごはん</text>
+        <text x="386" y="974" font-size="14.5">A 高橋家 とろろそば</text>
+        <text x="386" y="994" font-size="13" fill="#6e6458">16:30 までに着けば</text>
+        <text x="386" y="1018" font-size="14.5">B 極楽湯の食堂</text>
+      </g>
+    </g>
+  </svg>

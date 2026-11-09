@@ -84,6 +84,13 @@
   注意：Day 4／5 的 gpx 與地圖 demo 仍是舊規劃（Day 4 收本栖湖、Day 5 浩庵繞圈），訂房已改為 Day 4 住河口湖船津、Day 5 河口湖→本栖湖。使用者決定看天氣再定，尚未重跑。
 - 改完用繁體中文、精簡回報（使用者在路上看手機）。
 
+## 8.5 手繪行程圖（sketches/）
+
+- `sketches/dayN.html`（19 頁）＋ `sketches/index.html`（木版畫海報總覽），每天四種：① 繪卷 ② 旅のしおり ③ 鳥瞰圖 ④ 木版畫。
+- 由 `scripts_v2/build_sketches.py` 產生：只讀 `data/trip.json`、`dayN_track.gpx`，只寫 `sketches/`，**可以安全重跑**（跟 build_site 不同）。
+- Day 1 用 `sketches/_hand/day1_v*.svg` 的手繪版，其他天由程式依里程點、GPX、景物關鍵字畫。改路線後重跑即可。
+- `index.html` 每天卡片的 `day-content` 開頭有一個 `sketch-link` 連結；頂部按鈕列有「🎨 19 日手繪行程圖」。
+
 ## 9. Git 慣例
 
 - commit 訊息英文；推 main 被拒就 `git pull --rebase origin main` 後重跑閘門再推。

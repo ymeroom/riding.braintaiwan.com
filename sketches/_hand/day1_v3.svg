@@ -1,0 +1,60 @@
+<svg viewBox="0 0 1000 720" role="img" aria-label="Day 1 鳥瞰圖">
+    <defs><linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe0e8"/><stop offset="1" stop-color="#f2ead6"/></linearGradient></defs>
+    <rect width="1000" height="720" fill="url(#sky3)"/>
+    <rect y="250" width="1000" height="470" fill="#ece3c6"/>
+    <rect width="1000" height="720" filter="url(#grain)" opacity=".7"/>
+    <g filter="url(#rough)">
+      <!-- far mountains & Fuji -->
+      <path d="M0 260L60 200L120 230L190 170L260 220L330 190L420 240L520 215L600 250H0Z" fill="#a9b9c4" stroke="#6d7f8c" stroke-width="1.5"/>
+      <path d="M150 210L235 92L320 210Z" fill="#9fb2c2" stroke="#55697a" stroke-width="1.8"/>
+      <path d="M210 126L235 92L260 126L250 122L242 132L232 120L222 130Z" fill="#fbfbf7" stroke="#55697a" stroke-width="1.4"/>
+      <!-- Takao & Tanzawa foothills -->
+      <path d="M-10 470C20 380 60 330 110 340C150 348 170 400 220 420C260 436 300 440 330 450L330 480H-10Z" fill="#7f9a5c" stroke="#465a2e" stroke-width="2"/>
+      <g fill="#c4532f"><circle cx="70" cy="390" r="9"/><circle cx="110" cy="372" r="8"/><circle cx="150" cy="400" r="9"/></g>
+      <g fill="#d9902f"><circle cx="90" cy="410" r="7"/><circle cx="130" cy="390" r="6"/><circle cx="190" cy="420" r="7"/></g>
+      <!-- Tokyo bay -->
+      <path d="M1000 400L935 410C925 440 918 480 900 520C890 560 880 610 868 660L860 720H1000Z" fill="#8fb4cc" stroke="#4f7896" stroke-width="2"/>
+      <g stroke="#f4f0e2" stroke-width="1.6" fill="none"><path d="M915 600q8-6 16 0t16 0M940 660q8-6 16 0t16 0M955 540q8-6 16 0t16 0"/></g>
+      <!-- Tama river (follows route) -->
+      <path d="M868 690C860 660 848 640 846 634C832 626 830 604 830 601C800 580 790 576 760 521C740 510 720 498 688 467C620 450 600 443 574 419C540 410 520 402 513 402C490 392 485 378 380 375C378 382 362 385 343 363C300 340 270 310 220 280C190 260 160 245 120 236" stroke="#5e8fb3" stroke-width="12" fill="none" stroke-linecap="round"/>
+      <!-- Asakawa -->
+      <path d="M343 363C320 352 300 349 270 361C250 375 240 394 214 399C195 386 186 366 167 351C140 345 118 347 117 359" stroke="#7fa7c4" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <!-- city blocks -->
+      <g fill="#d9cdb0" stroke="#7d6f55" stroke-width="1.4">
+        <rect x="905" y="270" width="22" height="30"/><rect x="935" y="262" width="18" height="38"/><rect x="960" y="282" width="26" height="22"/>
+        <rect x="900" y="320" width="20" height="26"/><rect x="928" y="330" width="24" height="18"/><rect x="960" y="318" width="18" height="30"/>
+        <rect x="850" y="300" width="22" height="20"/><rect x="870" y="360" width="18" height="24"/><rect x="820" y="350" width="20" height="22"/>
+        <rect x="880" y="400" width="18" height="22"/><rect x="845" y="430" width="20" height="18"/><rect x="800" y="420" width="18" height="20"/>
+      </g>
+      <!-- susuki dots on embankment -->
+      <g stroke="#a57f3b" stroke-width="1.6" fill="none"><path d="M640 448q2-14 -4-24M648 448q1-16 6-26M700 478q2-14 -4-24M708 478q1-16 6-26M560 418q2-14 -4-24M568 418q1-16 6-26"/></g>
+    </g>
+    <!-- route from GPX -->
+    <polyline transform="translate(0 230)" points="961,48 964,57 952,64 955,84 943,115 926,135 925,156 902,173 900,213 890,218 899,230 898,253 872,307 878,344 872,355 873,391 840,404 823,397 824,371 783,346 755,291 722,274 682,237 588,213 568,189 507,172 479,148 374,145 372,152 355,155 337,133 304,119 264,131 234,164 208,169 184,136 161,121 113,117 111,129 89,152 41,178 38,198" fill="none" stroke="#fdfbf5" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+    <polyline transform="translate(0 230)" points="961,48 964,57 952,64 955,84 943,115 926,135 925,156 902,173 900,213 890,218 899,230 898,253 872,307 878,344 872,355 873,391 840,404 823,397 824,371 783,346 755,291 722,274 682,237 588,213 568,189 507,172 479,148 374,145 372,152 355,155 337,133 304,119 264,131 234,164 208,169 184,136 161,121 113,117 111,129 89,152 41,178 38,198" fill="none" stroke="#b8442c" stroke-width="3.6" stroke-dasharray="9 6" stroke-linejoin="round" stroke-linecap="round" filter="url(#rough)"/>
+    <!-- markers -->
+    <g stroke="#2b2622" stroke-width="2" filter="url(#rough)">
+      <circle cx="961" cy="278" r="9" fill="#b8442c"/><circle cx="847" cy="583" r="6" fill="#e0b13c"/><circle cx="840" cy="634" r="7" fill="#fdfbf5"/>
+      <circle cx="686" cy="473" r="6" fill="#fdfbf5"/><circle cx="338" cy="364" r="7" fill="#fdfbf5"/><circle cx="138" cy="353" r="6" fill="#fdfbf5"/><circle cx="38" cy="428" r="10" fill="#b8442c"/>
+    </g>
+    <use href="#bike" x="560" y="400" width="40" height="38" color="#2b2622"/>
+    <g font-family="Klee One, serif" fill="#2b2622" font-size="17">
+      <text x="930" y="250" text-anchor="end" font-weight="600" font-size="20">秋葉原 スタート</text>
+      <text x="830" y="578" text-anchor="end">蒲田 とんかつ</text>
+      <text x="830" y="662" text-anchor="end" font-weight="600">六郷橋 ここから川沿い</text>
+      <text x="700" y="508">二子玉川</text>
+      <text x="350" y="400">府中四谷橋</text>
+      <text x="150" y="330">鶴巻橋</text>
+      <text x="20" y="470" font-weight="600" font-size="20">高尾山口 ゴール</text>
+      <text x="235" y="76" text-anchor="middle" font-size="15" fill="#55697a">富士山</text>
+      <text x="610" y="560" font-size="22" fill="#3f6b8f" letter-spacing="6">多摩川</text>
+      <text x="930" y="700" text-anchor="middle" font-size="18" fill="#3f6b8f">東京湾</text>
+    </g>
+    <!-- compass + cartouche -->
+    <g transform="translate(920 110)" filter="url(#rough)" stroke="#2b2622" stroke-width="1.8">
+      <circle r="34" fill="#f6efdc"/><path d="M0-30L8 0L0 30L-8 0Z" fill="#fdfbf5"/><path d="M0-30L8 0L-8 0Z" fill="#b8442c"/>
+    </g>
+    <text x="920" y="66" text-anchor="middle" font-family="Klee One, serif" font-size="14" fill="#2b2622">北</text>
+    <g filter="url(#rough)"><rect x="30" y="24" width="330" height="70" fill="#f6efdc" stroke="#2b2622" stroke-width="2"/></g>
+    <g font-family="Klee One, serif" fill="#2b2622"><text x="48" y="58" font-size="26" font-weight="600">第一日 出城篇 鳥瞰図</text><text x="48" y="82" font-size="14" fill="#6e6458">78.1 km ・ 標高 1 → 192 m ・ 11月13日</text></g>
+  </svg>
