@@ -63,7 +63,7 @@ def short(name, limit=11):
 
 
 MOTIF_RULES = [
-    ("fireworks", "花火"), ("pagoda", "五重塔"), ("sea", "城崎|城ケ崎"), ("castle", "城"),
+    ("fireworks", "花火"), ("xmas", "聖誕|點燈|燈海|燈飾"), ("pagoda", "五重塔"), ("sea", "城崎|城ケ崎"), ("castle", "城"),
     ("waterfall", "瀑"), ("plane", "機場|Skyliner"), ("onsen", "溫泉|温泉|之湯|名湯"),
     ("ginkgo", "銀杏|大學"), ("conifer", "水杉|樹海|松原|林蔭|風穴|冰穴"),
     ("torii", "寺|神社|神宮|明神|帝釋天|雷門|淺草"), ("pass", "峠"), ("bridge", "橋"),
@@ -72,7 +72,7 @@ MOTIF_RULES = [
     ("susuki", "牧場|高原|芒"), ("river", "川|水岸|CR|自行車道|專用道|綠道"),
     ("town", "市區|站|街|銀座|秋葉原|品川|三島|富士宮|國道|縣道"),
 ]
-DESC_OK = {"sea", "lake", "river", "bridge", "susuki", "maple", "conifer", "onsen", "waterfall"}
+DESC_OK = {"xmas", "sea", "lake", "river", "bridge", "susuki", "maple", "conifer", "onsen", "waterfall"}
 
 
 def motif_of(p):
@@ -151,6 +151,12 @@ def motif(kind, x, y, s, P):
         b = (bg + f'<path d="{rays}" fill="none" stroke="{P["gold"]}" stroke-width="{sw*1.2:.2f}"/>'
              f'<circle cx="0" cy="-50" r="6" fill="{P["red"]}" stroke="none"/>'
              + ("" if P.get("bare") else f'<path d="M-50 0V-8Q0 -14 50 -8V0Z" fill="{P["water"]}" {S}/>'))
+    elif kind == "xmas":
+        lay = "".join(f'<path d="M{-w} {y0}L0 {y0-h}L{w} {y0}Z" fill="{P["green_d"]}" {S}/>' for w, y0, h in ((30, -10, 34), (24, -32, 30), (17, -52, 26)))
+        dots = "".join(f'<circle cx="{x}" cy="{y}" r="2.6" fill="{c}" stroke="none"/>' for x, y, c in
+                       ((-16, -16, P["gold"]), (8, -20, P["red"]), (18, -14, P["gold"]), (-10, -38, P["red"]), (10, -40, P["gold"]), (-4, -58, P["gold"]), (6, -62, P["red"])))
+        b = (f'<path d="M-4 0V-10H4V0Z" fill="{P["trunk"]}" {S}/>' + lay + dots
+             + f'<path d="M0 -86L3 -80L9 -79L4 -75L6 -69L0 -72L-6 -69L-4 -75L-9 -79L-3 -80Z" fill="{P["gold"]}" {S}/>')
     elif kind == "plane":
         b = (f'<path d="M-46 -40Q-10 -46 36 -44Q48 -42 46 -38Q30 -34 -40 -34Z" fill="{P["wall"]}" {S}/>'
              f'<path d="M-4 -40L16 -64H24L14 -40ZM-2 -36L14 -18H22L14 -36ZM-40 -40L-46 -56H-38L-30 -40Z" fill="{P["ink2"]}" {S}/>'
@@ -237,10 +243,15 @@ def flags(d):
     )
 
 
+def gain_of(d):
+    """Climb for the planned route: route_gain (BRouter re-route) wins over the NAVITIME figure."""
+    return d.get("route_gain", d["nav"]["gain"])
+
+
 def est_times(d):
     tl = d["timeline"]
     km_tot = max(p["km"] for p in tl) or 1
-    hours = km_tot / 15 + d["nav"]["gain"] / 450
+    hours = km_tot / 15 + gain_of(d) / 450
     start = 9.5 if d["day"] == 1 else 9.0
     out, lunch_added = [], False
     for p in tl:
@@ -250,7 +261,14 @@ def est_times(d):
         out.append(t)
         if not lunch_added and p["km"] > km_tot * 0.35 and km_tot > 20:
             lunch_added = True
-    return [f"{int(t)%24:02d}:{int(round((t%1)*60/5)*5)%60:02d}" for t in out]
+    res = []
+    for p, t in zip(tl, out):
+        if p.get("time"):
+            res.append(p["time"])
+            continue
+        m = int(round(t * 60 / 5) * 5)
+        res.append(f"{(m // 60) % 24:02d}:{m % 60:02d}")
+    return res
 
 
 def endpoints(d):
@@ -267,7 +285,7 @@ def label(d, i, limit=11):
     return t
 
 
-RANK = ["fireworks", "pagoda", "castle", "torii", "waterfall", "ginkgo", "bridge", "pass", "onsen", "lake",
+RANK = ["fireworks", "xmas", "pagoda", "castle", "torii", "waterfall", "ginkgo", "bridge", "pass", "onsen", "lake",
         "conifer", "susuki", "maple", "sea", "plane", "river", "town", "inn", "trees"]
 
 
@@ -374,7 +392,7 @@ def v2(d, F, rnd):
          '<g filter="url(#rough)" fill="none" stroke-width="2"><ellipse cx="105" cy="214" rx="66" ry="26" stroke="#27405f"/>'
          '<ellipse cx="260" cy="214" rx="72" ry="26" stroke="#27405f"/><ellipse cx="452" cy="214" rx="108" ry="26" stroke="#d08a2b"/></g>',
          '<g font-family="Klee One,Noto Serif TC,serif" font-size="19" text-anchor="middle" fill="#2b2622">'
-         f'<text x="105" y="221">{max(p["km"] for p in tl):.1f} km</text><text x="260" y="221">登り {nav["gain"]} m</text>'
+         f'<text x="105" y="221">{max(p["km"] for p in tl):.1f} km</text><text x="260" y="221">登り {gain_of(d)} m</text>'
          f'<text x="452" y="221" font-size="16">去年 {E(wh.get("text",""))} {wh.get("lo","")}–{wh.get("hi","")}°C</text></g>',
          f'<path d="M100 {top-10}V{tl_end+10}" stroke="#2b2622" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round"/>']
     cols = dict(start="#b8442c", end="#b8442c", pivot="#5e8fb3", scenic="#e0b13c", rest="#9fbf6a", warning="#d08a2b")
@@ -388,7 +406,8 @@ def v2(d, F, rnd):
         o.append(f'<text x="78" y="{y+6}" font-size="17" fill="#6e6458" text-anchor="end">{times[i]}</text>'
                  f'<text x="124" y="{y+6}" font-size="21" font-weight="600">{E(short(p["name"],12))}</text>'
                  f'<text x="124" y="{y+30}" font-size="15" fill="#6e6458">{p["km"]:.1f} km ・ {TYPE_JA.get(p["type"],"")}</text>')
-    o.append(f'<text x="40" y="{tl_end+50}" font-size="13" fill="#6e6458">※ 時刻は目安（平均 15 km/h＋登り＋昼休み）</text></g>')
+    note = "※ 時刻は予定（夕方からイルミネーション）" if any(p.get("time") for p in tl) else "※ 時刻は目安（平均 15 km/h＋登り＋昼休み）"
+    o.append(f'<text x="40" y="{tl_end+50}" font-size="13" fill="#6e6458">{note}</text></g>')
     # stamps: start, best scenic, end
     mid = next((i for i, p in enumerate(tl) if p["type"] == "scenic"), n // 2)
     picks = [(0, "#b8442c", -8), (mid, "#27405f", 7), (n - 1, "#3f6b3a", -4)] if n > 2 else [(0, "#b8442c", -8), (n - 1, "#3f6b3a", -4)]
@@ -556,6 +575,8 @@ def v4(d, F, rnd):
         o.append('<path d="M18 700H582V760H18Z" fill="#d9a441"/>')
     if not (F["night"] and hero == "fireworks"):
         o.append(motif(hero, 150, 640, 1.9, PAL_WOOD))
+    if re.search("聖誕|點燈", d["route_line"]) and hero != "xmas":
+        o.append(motif("xmas", 430, 640, 1.5, PAL_WOOD))
     o.append('<use href="#bike" x="300" y="584" width="58" height="54" color="#1d1d1b"/>')
     leafc = "#d9a441" if F["ginkgo"] else "#c8442f"
     if F["momiji"] or F["ginkgo"]:
@@ -571,7 +592,7 @@ def v4(d, F, rnd):
              f'<rect x="510" y="{62+th}" width="42" height="42" fill="#c8442f" filter="url(#stamp)"/>'
              f'<text x="531" y="{91+th}" font-family="Yuji Syuku,Noto Serif TC,serif" font-size="{20 if d["day"]<11 else 15}" fill="#efe2c6" text-anchor="middle">{"初日" if d["day"]==1 else "結" if d["day"]==19 else kanji_num(d["day"])}</text>'
              '<g font-family="Klee One,Noto Serif TC,serif" fill="#efe2c6">'
-             f'<text x="40" y="794" font-size="18" font-weight="600" letter-spacing="1">第{kanji_num(d["day"])}日 ・ {kanji_num(mo)}月{kanji_num(da)}日 ・ {kanji_num(round(km))}粁 ・ 登 {kanji_num(d["nav"]["gain"])}米</text>'
+             f'<text x="40" y="794" font-size="18" font-weight="600" letter-spacing="1">第{kanji_num(d["day"])}日 ・ {kanji_num(mo)}月{kanji_num(da)}日 ・ {kanji_num(round(km))}粁 ・ 登 {kanji_num(gain_of(d))}米</text>'
              f'<text x="40" y="824" font-size="14" fill="#d9a441">{E(" → ".join(label(d,i,6) for i in range(0,len(tl),max(1,len(tl)//4))))}</text></g></svg>')
     return "".join(o)
 
@@ -648,7 +669,7 @@ def day_page(d, days):
     h = [head(f"Day {n} 手繪行程圖", f"Day {n} {d['date']} {d.get('subtitle','')}：繪卷、旅のしおり、鳥瞰圖、木版畫"), defs_block(),
          '<div class="wrap"><header><div class="top"><a href="../index.html#day-%d">← 回 Day %d 行程</a><a href="index.html">全部 19 天 ↗</a></div>' % (n, n),
          f'<div class="tag">東京單車騎旅 ・ 手繪行程圖</div><h1>Day {n}　{E(d.get("subtitle",""))}</h1>',
-         f'<p class="lead">{mo}/{da}（{d["date"][-2]}）{E(d["route_line"])}<br>{km:.1f} km、爬升 {d["nav"]["gain"]} m。時刻與畫面為示意。</p>{note45}',
+         f'<p class="lead">{mo}/{da}（{d["date"][-2]}）{E(d["route_line"])}<br>{km:.1f} km、爬升 {gain_of(d)} m。時刻與畫面為示意。</p>{note45}',
          f'<div class="dl"><a href="print/day{n}-postcard.pdf" download>🖨️ 下載明信片 PDF</a><a class="alt" href="print/day{n}-a5.pdf" download>🖨️ 下載 A5 PDF</a>'
          '<small>每個 PDF 4 頁（四種風格），已含四邊 3 mm 出血；自己印請選「實際大小」，送印店直接給檔案即可。</small></div>'
          '<nav class="v" aria-label="版本"><a href="#v1">① 繪卷</a><a href="#v2">② 旅のしおり</a><a href="#v3">③ 鳥瞰圖</a><a href="#v4">④ 木版畫</a></nav></header>',
