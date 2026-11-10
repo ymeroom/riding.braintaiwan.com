@@ -89,6 +89,8 @@
 - `sketches/dayN.html`（19 頁）＋ `sketches/index.html`（木版畫海報總覽），每天四種：① 繪卷 ② 旅のしおり ③ 鳥瞰圖 ④ 木版畫。
 - 由 `scripts_v2/build_sketches.py` 產生：只讀 `data/trip.json`、`dayN_track.gpx`，只寫 `sketches/`，**可以安全重跑**（跟 build_site 不同）。
 - Day 1 用 `sketches/_hand/day1_v*.svg` 的手繪版，其他天由程式依里程點、GPX、景物關鍵字畫。改路線後重跑即可。
+- 列印檔 `sketches/print/`：`dayN-postcard.pdf`、`dayN-a5.pdf`（各 4 頁）、`all-postcard.pdf`、`all-a5.pdf`（76 頁），含 3 mm 出血。
+  改圖後依序跑 `python3 scripts_v2/build_sketches.py` → `node scripts_v2/build_print.js`（全部約 5 分鐘；`node scripts_v2/build_print.js 4 5` 只重做指定天，不更新全集檔）。
 - `index.html` 每天卡片的 `day-content` 開頭有一個 `sketch-link` 連結；頂部按鈕列有「🎨 19 日手繪行程圖」。
 
 ## 9. Git 慣例

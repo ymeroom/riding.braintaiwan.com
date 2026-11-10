@@ -602,6 +602,10 @@ h2{font-family:var(--f-hand);font-weight:600;font-size:21px;margin:0}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
 .grid a{display:flex;flex-direction:column;gap:4px;text-decoration:none;color:var(--ink);font-family:var(--f-hand);font-size:14px}
 .grid svg{width:100%;height:auto;display:block;border:1px solid var(--line)}
+.dl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.dl a{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:#fbf7ef;background:var(--shu);text-decoration:none;border-radius:8px;padding:8px 14px}
+.dl a.alt{background:#27405f}.dl a:hover,.dl a:focus-visible{filter:brightness(1.1);outline:2px solid var(--ink);outline-offset:1px}
+.dl small{flex-basis:100%;color:var(--muted);font-size:12.5px}
 footer{border-top:1px dashed var(--line);padding-top:14px;color:var(--muted);font-size:13.5px}
 """
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
@@ -645,6 +649,8 @@ def day_page(d, days):
          '<div class="wrap"><header><div class="top"><a href="../index.html#day-%d">← 回 Day %d 行程</a><a href="index.html">全部 19 天 ↗</a></div>' % (n, n),
          f'<div class="tag">東京單車騎旅 ・ 手繪行程圖</div><h1>Day {n}　{E(d.get("subtitle",""))}</h1>',
          f'<p class="lead">{mo}/{da}（{d["date"][-2]}）{E(d["route_line"])}<br>{km:.1f} km、爬升 {d["nav"]["gain"]} m。時刻與畫面為示意。</p>{note45}',
+         f'<div class="dl"><a href="print/day{n}-postcard.pdf" download>🖨️ 下載明信片 PDF</a><a class="alt" href="print/day{n}-a5.pdf" download>🖨️ 下載 A5 PDF</a>'
+         '<small>每個 PDF 4 頁（四種風格），已含四邊 3 mm 出血；自己印請選「實際大小」，送印店直接給檔案即可。</small></div>'
          '<nav class="v" aria-label="版本"><a href="#v1">① 繪卷</a><a href="#v2">② 旅のしおり</a><a href="#v3">③ 鳥瞰圖</a><a href="#v4">④ 木版畫</a></nav></header>',
          f'<section id="v1"><div class="tag">① 繪卷</div><div class="plate scroll" tabindex="0" aria-label="繪卷，可左右捲動">{plates[0]}</div><div class="hint">← 左右滑動，由右往左讀。</div></section>',
          f'<section id="v2"><div class="tag">② 旅のしおり</div><div class="plate portrait">{plates[1]}</div></section>',
@@ -667,7 +673,9 @@ def main():
     idx = [head("手繪行程圖 19 天", "東京單車騎旅 19 天日式手繪行程圖：繪卷、旅のしおり、鳥瞰圖、木版畫"), defs_block(),
            '<div class="wrap"><header><div class="top"><a href="../index.html">← 回行程網站</a></div>',
            '<div class="tag">東京單車騎旅 ・ 手繪行程圖</div><h1>19 日手繪行程</h1>',
-           '<p class="lead">每天四種日式手繪風格：① 繪卷 ② 旅のしおり ③ 鳥瞰圖 ④ 木版畫。點海報進入當天。</p></header>',
+           '<p class="lead">每天四種日式手繪風格：① 繪卷 ② 旅のしおり ③ 鳥瞰圖 ④ 木版畫。點海報進入當天。</p>'
+           '<div class="dl"><a href="print/all-postcard.pdf" download>🖨️ 全部 19 天・明信片 PDF</a><a class="alt" href="print/all-a5.pdf" download>🖨️ 全部 19 天・A5 PDF</a>'
+           '<small>76 頁（19 天 × 4 種風格），已含四邊 3 mm 出血。單日檔案在每天的頁面。</small></div></header>',
            f'<div class="grid">{"".join(cards)}</div></div></body></html>']
     (OUT / "index.html").write_text("".join(idx), encoding="utf-8")
     print("wrote", len(days) + 1, "pages to", OUT)
