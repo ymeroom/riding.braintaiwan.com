@@ -270,11 +270,21 @@ a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 """
 
 
+# Hand-set titles where the route text does not name places (buffer/branch days).
+TITLE_FIX = {4: ("河口湖", "本栖湖"), 5: ("本栖湖", "富士五湖・溫泉休整"), 11: ("南熱海", "熱海・花火"), 12: ("熱海", "江之島")}
+
+
 def page(d, days, emg, navi):
     n = d["day"]
     tl = d["timeline"]
     parts = [re.sub(r"【[^】]*】|\s*[（(][^）)]*[）)]", "", x).strip() for x in d["route_line"].split("➔")]
-    start, end = parts[0], parts[-1]
+
+    def pick(part, stop):
+        if len(part) <= 10 and not re.search(r"[/:+]", part):
+            return part
+        return re.sub(r"\s*[（(][^）)]*[）)]|\s*/.*$", "", stop_name(stop["name"]))
+    start, end = pick(parts[0], tl[0]), pick(parts[-1], tl[-1])
+    start, end = TITLE_FIX.get(n, (start, end))
     km = d.get("planned_km") or max(p["km"] for p in tl)
     gain = d.get("route_gain", d["nav"]["gain"])
     prev_ = f'<a href="day{n-1}.html">← Day {n-1}</a>' if n > 1 else "<span></span>"

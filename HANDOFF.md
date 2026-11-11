@@ -93,6 +93,14 @@
   改圖後依序跑 `python3 scripts_v2/build_sketches.py` → `node scripts_v2/build_print.js`（全部約 5 分鐘；`node scripts_v2/build_print.js 4 5` 只重做指定天，不更新全集檔）。
 - `index.html` 每天卡片的 `day-content` 開頭有一個 `sketch-link` 連結；頂部按鈕列有「🎨 19 日手繪行程圖」。
 
+## 8.6 一日一頁「今日重點」（daily/、today/）
+
+- `daily/dayN.html`：手機版當天重點（天氣・穿搭、路線里程點＋地圖鈕、吃飯、住宿、撤退車站、單車店・醫院、緊急電話）。
+- 由 `scripts_v2/build_daily.py` 產生：讀 `data/trip.json`＋從 `index.html` 抓最新週間預報與穿搭，只寫 `daily/`，可安全重跑。
+  **每次更新天氣後要跑一次 `python3 scripts_v2/build_daily.py`**，兩邊天氣才會一致（自動排程的指令還沒加這一步）。
+- `today/`：依日本時間自動顯示當天那頁（行程前顯示 Day 1、結束後顯示 Day 19），可加到手機主畫面。
+- 主網站頂部按鈕「📱 今日重點」、每天卡片的 `daily-link`。
+
 ## 9. Git 慣例
 
 - commit 訊息英文；推 main 被拒就 `git pull --rebase origin main` 後重跑閘門再推。
