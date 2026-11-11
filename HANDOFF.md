@@ -103,7 +103,7 @@
 
 ## 8.7 拍攝檢查表（filming.html）
 
-- `filming.html`：Insta360 X3（360° 5.7K 30fps）＋ GO 3S（2.7K 30fps）設定與每日拍攝／備份檢查表，手寫靜態頁，勾選存在瀏覽器 localStorage。
+- `filming.html`：Insta360 X3（360° 5.7K 30fps）＋ GO 3S（2.7K 30fps）＋ S23 Ultra 手機（4K 30fps、HDR10+ 關、位置標籤開）設定與每日拍攝／備份檢查表，手寫靜態頁，勾選存在瀏覽器 localStorage。
 - 主網站頂部按鈕「🎥 拍攝檢查表」。
 
 ## 9. Git 慣例
