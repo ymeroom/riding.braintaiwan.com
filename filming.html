@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>騎旅拍攝檢查表</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#eef1f4; --surface:#ffffff; --ink:#18222f; --muted:#5d6876; --line:#d7dde4;
+  --ai:#1f3f72; --ai-soft:#e3e9f3; --kaki:#c9681e; --kaki-soft:#f8e9dc;
+  --x3:#2f6f68; --x3-soft:#dfeeec; --go:#7a3fa0; --go-soft:#efe4f6; --done:#8a95a3;
+  --f-display:"Barlow Condensed","Noto Sans TC",system-ui,sans-serif;
+  --f-body:"Noto Sans TC",system-ui,-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10161f; --surface:#18212d; --ink:#e6ebf1; --muted:#9aa6b4; --line:#2b3644;
+  --ai:#8fb0e6; --ai-soft:#22324a; --kaki:#f0a060; --kaki-soft:#3a2a1c;
+  --x3:#7cc3b9; --x3-soft:#1d3532; --go:#c9a2e6; --go-soft:#33243f; --done:#6d7886; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10161f; --surface:#18212d; --ink:#e6ebf1; --muted:#9aa6b4; --line:#2b3644;
+  --ai:#8fb0e6; --ai-soft:#22324a; --kaki:#f0a060; --kaki-soft:#3a2a1c;
+  --x3:#7cc3b9; --x3-soft:#1d3532; --go:#c9a2e6; --go-soft:#33243f; --done:#6d7886; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 56px;display:flex;flex-direction:column;gap:22px}
+header{display:flex;flex-direction:column;gap:6px}
+header a{color:var(--ai);font-size:14px;text-decoration:none}
+.eyebrow{font-family:var(--f-display);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ai);font-size:14px}
+h1{font-size:28px;line-height:1.25;margin:0;font-weight:700;text-wrap:balance}
+.lead{color:var(--muted);font-size:14px;margin:0}
+.top3{background:var(--kaki-soft);border-left:4px solid var(--kaki);border-radius:8px;padding:10px 14px;font-size:14.5px}
+.top3 b{color:var(--kaki)}
+.cams{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.cam{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.cam h3{margin:0;font-family:var(--f-display);font-size:22px;font-weight:700;letter-spacing:.02em}
+.cam.x3 h3{color:var(--x3)} .cam.go h3{color:var(--go)}
+.spec{font-family:var(--f-display);font-size:26px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.cam .k{font-size:13px;color:var(--muted)}
+.cam ul{margin:0;padding-left:18px;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--ai-soft);font-weight:700;font-size:13px}
+tr:last-child td{border-bottom:0}
+.tablewrap{overflow-x:auto}
+.progress{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:8px 0;z-index:2;border-bottom:1px solid var(--line)}
+.pnum{font-family:var(--f-display);font-size:30px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.pnum small{font-size:17px;color:var(--muted);font-weight:500}
+section.cat{display:flex;flex-direction:column;gap:6px}
+.cat h2{margin:0;font-size:17px;font-weight:700;display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+.cat h2 .n{font-family:var(--f-display);font-weight:600;font-size:17px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cat h2 .n.full{color:var(--x3)}
+.cat .intro{font-size:13px;color:var(--muted);margin:2px 0 0}
+.cat ul{list-style:none;margin:0;padding:0}
+.item{display:grid;grid-template-columns:26px 1fr;gap:10px;padding:10px 4px;border-bottom:1px solid var(--line);cursor:pointer;align-items:start}
+.item input{position:absolute;opacity:0;width:1px;height:1px}
+.box{width:22px;height:22px;border:2px solid var(--muted);border-radius:6px;margin-top:1px;display:grid;place-items:center;background:var(--surface)}
+.box::after{content:"";width:10px;height:6px;border-left:2.5px solid var(--surface);border-bottom:2.5px solid var(--surface);transform:rotate(-45deg) translate(1px,-1px);opacity:0}
+.item input:checked+.box{background:var(--ai);border-color:var(--ai)}
+.item input:checked+.box::after{opacity:1}
+.item input:focus-visible+.box,.reset:focus-visible{outline:2px solid var(--kaki);outline-offset:2px}
+.txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.name{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.item input:checked~.txt .name>span:first-child{color:var(--done);text-decoration:line-through;text-decoration-thickness:1px}
+.note{font-size:13px;color:var(--muted)}
+.badge{font-size:11.5px;font-weight:700;padding:1px 7px;border-radius:99px;white-space:nowrap}
+.b-x3{background:var(--x3-soft);color:var(--x3)} .b-go{background:var(--go-soft);color:var(--go)}
+.reset{font:inherit;font-size:13px;background:none;border:1px solid var(--line);color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.reset[data-armed="1"]{border-color:var(--kaki);color:var(--kaki)}
+.cat .rowbtn{display:flex;justify-content:flex-end;padding-top:6px}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:13px;overflow-x:auto;margin:0}
+footer{font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="index.html">← 回騎旅首頁</a>
+    <div class="eyebrow">Insta360 X3 · GO 3S</div>
+    <h1>騎旅拍攝檢查表</h1>
+    <p class="lead">目標：回家後交給 Claude 剪片時，素材好找、時間對得上、角度固定。</p>
+  </header>
+
+  <div class="top3"><b>最重要的三件事</b>：兩台時間都要準 ・ 開錄先講一句標記 ・ 每晚每台一個資料夾，原樣備份</div>
+
+  <div class="cams">
+    <div class="cam x3">
+      <h3>X3</h3>
+      <div class="spec">360° 5.7K · 30fps</div>
+      <div class="k">隱形自拍桿 ・ 風景、自拍、騎在大景裡</div>
+      <ul><li>開 FlowState＋水平鎖定</li><li>每天自拍桿同一個位置和高度</li></ul>
+    </div>
+    <div class="cam go">
+      <h3>GO 3S</h3>
+      <div class="spec">2.7K · 30fps</div>
+      <div class="k">胸前／安全帽／龍頭 ・ 第一人稱騎乘；下車拍 vlog</div>
+      <ul><li>開 FlowState＋水平鎖定</li><li>收音較近，口述標記、旁白交給它</li></ul>
+    </div>
+  </div>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>場景</th><th>X3 模式</th></tr></thead>
+    <tbody>
+      <tr><td>一般騎乘、風景（主力）</td><td>360° 5.7K 30fps</td></tr>
+      <tr><td>逆光、日出、雪景富士山</td><td>360° Active HDR 5.7K 30fps</td></tr>
+      <tr><td>已經知道只拍某個方向</td><td>單鏡頭 4K 30fps（出來就是平面）</td></tr>
+      <tr><td>平淡的長路段</td><td>TimeShift／縮時，不要一直錄</td></tr>
+      <tr><td>傍晚、夜間</td><td>低光（PureVideo）模式</td></tr>
+      <tr><td>避免</td><td>360° 4K 60fps（轉平面後偏糊）</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="progress">
+    <div class="pnum" id="pnum">0<small> / 0</small></div>
+    <span class="note">勾選只存在這支手機的瀏覽器</span>
+  </div>
+
+  <div id="list"></div>
+
+  <section class="cat">
+    <h2>每晚資料夾</h2>
+    <pre>Day03_1115/
+  X3/     ← 整張卡原樣複製（.insv＋.lrv）
+  GO3S/   ← 整張卡原樣複製</pre>
+    <p class="intro">容量：X3 5.7K 約 50 GB／小時，GO 3S 2.7K 約 20–30 GB／小時。兩台合計每天錄 1 小時，19 天約 1.3 TB。</p>
+  </section>
+
+  <section class="cat">
+    <h2>回家後</h2>
+    <ul class="note" style="list-style:disc;padding-left:18px;font-size:14px">
+      <li>X3 360° 素材先用 Insta360 Studio 匯出等距長方 MP4（不調角度），再請 Claude 用 ffmpeg 轉固定視角。</li>
+      <li>GO 3S 若是 .mp4 可直接剪；若是 .insv，同樣先用 Studio 匯出。</li>
+      <li>給 Claude 的資料：兩台素材資料夾＋Garmin 的 FIT／GPX＋口述標記。成品 2.7K 或 1080p、30fps。</li>
+      <li>在自己電腦上的 Claude Code 剪（素材太大，不適合雲端 session），可用 daily-film 技能做精華配樂。</li>
+    </ul>
+  </section>
+
+  <footer>雙機同時開錄時，拍一下手或講「同步」，Claude 可以用聲音波形對齊兩台。</footer>
+</div>
+
+<script type="application/json" id="data">
+[
+ {"id":"once","title":"出發前設定（一次就好）","items":[
+  ["tz","手機時區改成日本","",""],
+  ["sync-x3","X3 連一次 App，同步時間","x3",""],
+  ["sync-go","GO 3S 連一次 App，同步時間","go",""],
+  ["mode-x3","X3：360° 5.7K 30fps","x3",""],
+  ["mode-go","GO 3S：2.7K 30fps","go",""],
+  ["flow-x3","X3：開 FlowState＋水平鎖定","x3",""],
+  ["flow-go","GO 3S：開 FlowState＋水平鎖定","go","掛胸前晃動大"],
+  ["wind","兩台都開抗風噪","","風切聲會讓語音標記辨識失準"],
+  ["prerec","GO 3S：看有沒有事前錄影（Pre-Rec）","go","有的話打開，突然出現的富士山也抓得到"],
+  ["cards","記憶卡、行動硬碟容量夠","","19 天約 1.3 TB"]
+ ]},
+ {"id":"daily","title":"每天出門前","daily":true,"items":[
+  ["bat-x3","X3 電池充滿","x3",""],
+  ["bat-go","GO 3S＋Action Pod 都充滿","go","機身單獨撐不久，主要靠 Pod 補電"],
+  ["space","兩台記憶卡已清出空間（昨晚已備份）","",""],
+  ["stick","X3 自拍桿裝在固定位置","x3",""],
+  ["mount","GO 3S 磁吸扣好（胸前／安全帽／龍頭）","go",""]
+ ]},
+ {"id":"ride","title":"騎乘中","daily":true,"intro":"這區是提醒，每天可以重新勾。","items":[
+  ["tag","每段開錄先講一句標記","","例：「Day 3、本栖湖、富士山超清楚」"],
+  ["short","分段拍，一段 1–5 分鐘","","無聊路段不拍或改縮時"],
+  ["clap","兩台同時錄時拍手或講「同步」","",""],
+  ["memo","特別瞬間在手機記一句時間","","例：14:20 看到富士山"],
+  ["garmin","Garmin 有在記錄這趟","","FIT／GPX 回家對時間用"]
+ ]},
+ {"id":"night","title":"每晚備份","daily":true,"items":[
+  ["folder","建當天資料夾 DayNN_MMDD","",""],
+  ["copy-x3","X3 整張卡複製到 X3/","x3","不要改 .insv 檔名；保留 .lrv"],
+  ["copy-go","GO 3S 整張卡複製到 GO3S/","go",""],
+  ["verify","確認複製完整再清卡","",""],
+  ["charge","兩台＋Pod 充電","",""]
+ ]}
+]
+</script>
+<script>
+(function(){
+  "use strict";
+  var DATA = JSON.parse(document.getElementById("data").textContent);
+  var KEY = "jp-ride-film-state-v1";
+  var checked = new Set();
+  function esc(s){ return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];}); }
+  try { var raw = localStorage.getItem(KEY); if (raw) JSON.parse(raw).forEach(function(k){ checked.add(k); }); } catch(e){}
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(Array.from(checked))); } catch(e){} }
+  var BADGE = {x3:'<span class="badge b-x3">X3</span>', go:'<span class="badge b-go">GO 3S</span>'};
+  function render(){
+    var html = "", total = 0, done = 0;
+    DATA.forEach(function(c){
+      var n = 0;
+      c.items.forEach(function(it){ total++; if (checked.has(c.id+":"+it[0])) { n++; done++; } });
+      html += '<section class="cat"><h2>'+esc(c.title)+'<span class="n'+(n===c.items.length?' full':'')+'">'+n+' / '+c.items.length+'</span></h2>';
+      if (c.intro) html += '<p class="intro">'+esc(c.intro)+'</p>';
+      html += '<ul>';
+      c.items.forEach(function(it){
+        var id = c.id+":"+it[0];
+        html += '<li><label class="item"><input type="checkbox" data-id="'+esc(id)+'"'+(checked.has(id)?' checked':'')+'><span class="box"></span><span class="txt"><span class="name"><span>'+esc(it[1])+'</span>'+(BADGE[it[2]]||"")+'</span>'+(it[3]?'<span class="note">'+esc(it[3])+'</span>':'')+'</span></label></li>';
+      });
+      html += '</ul>';
+      if (c.daily) html += '<div class="rowbtn"><button class="reset" type="button" data-cat="'+c.id+'">明天重來（清除這區）</button></div>';
+      html += '</section>';
+    });
+    document.getElementById("list").innerHTML = html;
+    document.getElementById("pnum").innerHTML = done+'<small> / '+total+'</small>';
+  }
+  document.getElementById("list").addEventListener("change", function(e){
+    var id = e.target.getAttribute("data-id"); if (!id) return;
+    if (e.target.checked) checked.add(id); else checked.delete(id);
+    save(); render();
+  });
+  document.getElementById("list").addEventListener("click", function(e){
+    var b = e.target.closest(".reset"); if (!b) return;
+    if (b.dataset.armed !== "1") { b.dataset.armed = "1"; b.textContent = "再按一次確認"; setTimeout(function(){ if (b.isConnected){ b.dataset.armed = ""; b.textContent = "明天重來（清除這區）"; } }, 3000); return; }
+    var p = b.dataset.cat + ":";
+    Array.from(checked).forEach(function(k){ if (k.indexOf(p) === 0) checked.delete(k); });
+    save(); render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>

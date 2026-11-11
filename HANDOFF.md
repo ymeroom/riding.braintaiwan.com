@@ -101,6 +101,11 @@
 - `today/`：依日本時間自動顯示當天那頁（行程前顯示 Day 1、結束後顯示 Day 19），可加到手機主畫面。
 - 主網站頂部按鈕「📱 今日重點」、每天卡片的 `daily-link`。
 
+## 8.7 拍攝檢查表（filming.html）
+
+- `filming.html`：Insta360 X3（360° 5.7K 30fps）＋ GO 3S（2.7K 30fps）設定與每日拍攝／備份檢查表，手寫靜態頁，勾選存在瀏覽器 localStorage。
+- 主網站頂部按鈕「🎥 拍攝檢查表」。
+
 ## 9. Git 慣例
 
 - commit 訊息英文；推 main 被拒就 `git pull --rebase origin main` 後重跑閘門再推。
