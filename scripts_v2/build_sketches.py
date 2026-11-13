@@ -70,7 +70,7 @@ MOTIF_RULES = [
     ("inn", "旅館|飯店|旅舍|HOSTEL|Hostel|Inn|Base|Camp|浩庵|水口|MARUYA|Apt|seaview|宿|guest house"),
     ("maple", "紅葉|楓"), ("lake", "湖|湧泉|八海"), ("sea", "海|灣|港|濱|浜|江之島|台場|羽田"),
     ("susuki", "牧場|高原|芒"), ("river", "川|水岸|CR|自行車道|專用道|綠道"),
-    ("town", "市區|站|街|銀座|秋葉原|品川|三島|富士宮|國道|縣道"),
+    ("town", "市區|站|街|銀座|秋葉原|品川|三島|富士宮|國道|縣道|渋谷|三軒茶屋"),
 ]
 DESC_OK = {"xmas", "sea", "lake", "river", "bridge", "susuki", "maple", "conifer", "onsen", "waterfall"}
 
@@ -200,8 +200,8 @@ def load_days():
     return trip["days"]
 
 
-def load_gpx(n):
-    f = ROOT / f"day{n}_track.gpx"
+def load_gpx(n, path=None):
+    f = ROOT / (path or f"day{n}_track.gpx")
     if not f.exists():
         return [], []
     s = f.read_text(encoding="utf-8")
@@ -406,7 +406,7 @@ def v2(d, F, rnd):
         o.append(f'<text x="78" y="{y+6}" font-size="17" fill="#6e6458" text-anchor="end">{times[i]}</text>'
                  f'<text x="124" y="{y+6}" font-size="21" font-weight="600">{E(short(p["name"],12))}</text>'
                  f'<text x="124" y="{y+30}" font-size="15" fill="#6e6458">{p["km"]:.1f} km ・ {TYPE_JA.get(p["type"],"")}</text>')
-    note = "※ 時刻は予定（夕方からイルミネーション）" if any(p.get("time") for p in tl) else "※ 時刻は目安（平均 15 km/h＋登り＋昼休み）"
+    note = "※ 実走記録（Garmin）" if d.get("_actual") else "※ 時刻は予定（夕方からイルミネーション）" if any(p.get("time") for p in tl) else "※ 時刻は目安（平均 15 km/h＋登り＋昼休み）"
     o.append(f'<text x="40" y="{tl_end+50}" font-size="13" fill="#6e6458">{note}</text></g>')
     # stamps: start, best scenic, end
     mid = next((i for i, p in enumerate(tl) if p["type"] == "scenic"), n // 2)
@@ -446,7 +446,7 @@ def v2(d, F, rnd):
 # ---------------------------------------------------------------- ③ 鳥瞰図
 
 def v3(d, F, rnd):
-    pts, _ = load_gpx(d["day"])
+    pts, _ = load_gpx(d["day"], d.get("_gpx"))
     tl = d["timeline"]
     if not pts:
         pts = [(p["coord"][1], p["coord"][0]) for p in tl]
@@ -651,12 +651,24 @@ def hand(n, v):
     return f.read_text(encoding="utf-8") if f.exists() else None
 
 
+def apply_actual(d):
+    """Once a day has been ridden, draw the sketches from the actual ride (data/actual_rides.json)."""
+    f = ROOT / "data/actual_rides.json"
+    a = json.loads(f.read_text(encoding="utf-8")).get(str(d["day"])) if f.exists() else None
+    if not a or not a.get("timeline"):
+        return d
+    d = dict(d, timeline=a["timeline"], route_line=a["route_line"], planned_km=a["km"], route_gain=a["gain"],
+             meals=a.get("meals", {}), _actual=True, _gpx=a.get("gpx"))
+    return d
+
+
 def day_page(d, days):
+    d = apply_actual(d)
     n = d["day"]
     F = flags(d)
     plates = []
     for v, fn in ((1, v1), (2, v2), (3, v3), (4, v4)):
-        svg = hand(n, v) or fn(d, F, random.Random(n * 10 + v))
+        svg = (None if d.get("_actual") else hand(n, v)) or fn(d, F, random.Random(n * 10 + v))
         if v == 1:
             svg = svg.replace('<svg viewBox="0 0 1800 540"', '<svg viewBox="0 0 1800 540" style="width:1500px"', 1)
         plates.append(svg)
@@ -669,7 +681,7 @@ def day_page(d, days):
     h = [head(f"Day {n} 手繪行程圖", f"Day {n} {d['date']} {d.get('subtitle','')}：繪卷、旅のしおり、鳥瞰圖、木版畫"), defs_block(),
          '<div class="wrap"><header><div class="top"><a href="../index.html#day-%d">← 回 Day %d 行程</a><a href="index.html">全部 19 天 ↗</a></div>' % (n, n),
          f'<div class="tag">東京單車騎旅 ・ 手繪行程圖</div><h1>Day {n}　{E(d.get("subtitle",""))}</h1>',
-         f'<p class="lead">{mo}/{da}（{d["date"][-2]}）{E(d["route_line"])}<br>{km:.1f} km、爬升 {gain_of(d)} m。時刻與畫面為示意。</p>{note45}',
+         f'<p class="lead">{mo}/{da}（{d["date"][-2]}）{E(d["route_line"])}<br>{km:.1f} km、爬升 {gain_of(d)} m。{"依 Garmin 實騎紀錄繪製（路線、里程、時刻為實際）。" if d.get("_actual") else "時刻與畫面為示意。"}</p>{note45}',
          f'<div class="dl"><a href="print/day{n}-postcard.pdf" download>🖨️ 下載明信片 PDF</a><a class="alt" href="print/day{n}-a5.pdf" download>🖨️ 下載 A5 PDF</a>'
          '<small>每個 PDF 4 頁（四種風格），已含四邊 3 mm 出血；自己印請選「實際大小」，送印店直接給檔案即可。</small></div>'
          '<nav class="v" aria-label="版本"><a href="#v1">① 繪卷</a><a href="#v2">② 旅のしおり</a><a href="#v3">③ 鳥瞰圖</a><a href="#v4">④ 木版畫</a></nav></header>',
