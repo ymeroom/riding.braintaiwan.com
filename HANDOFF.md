@@ -109,6 +109,13 @@
 - `filming.html`：Insta360 X3（360° 5.7K 30fps）＋ GO 3S（2.7K 30fps）＋ S23 Ultra 手機（4K 30fps、HDR10+ 關、位置標籤開）設定與每日拍攝／備份檢查表，手寫靜態頁，勾選存在瀏覽器 localStorage。
 - 主網站頂部按鈕「🎥 拍攝檢查表」。
 
+## 8.7 實騎紀錄（actual/）
+
+- 使用者每天會上傳 Garmin 的 FIT（zip）。解析後只公開：距離、騎乘／全程時間、爬升、出發／抵達時間、簡化軌跡。
+  **心率、卡路里、原始 FIT、逐點時間戳一律不進 repo**（repo 公開）。
+- 軌跡：`actual/dayN_actual.gpx`（RDP 簡化、無時間）；摘要：`data/actual_rides.json`（build_daily.py 會在今日重點頁最上面顯示）。
+- 地圖：在 `dayN_route_map_demo.html` 的 `map.fitBounds(...)` 後加紅色虛線 `actualLine`＋圖層切換，`#map` 下方加 `actual-ride` 說明框；主網站該天卡片 `daily-link` 後加 `actual-ride` 區塊。
+
 ## 9. Git 慣例
 
 - commit 訊息英文；推 main 被拒就 `git pull --rebase origin main` 後重跑閘門再推。

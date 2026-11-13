@@ -86,6 +86,17 @@ def weather_blocks(n):
 
 # ---------------------------------------------------------------- sections
 
+def sec_actual(d):
+    f = ROOT / "data/actual_rides.json"
+    r = json.loads(f.read_text(encoding="utf-8")).get(str(d["day"])) if f.exists() else None
+    if not r:
+        return ""
+    return (f'<section id="actual" style="border-color:var(--accent)"><h2>實騎紀錄 <small>{E(r["date"])}</small></h2>'
+            f'<ul class="chips"><li>{r["km"]} km</li><li>騎乘 {E(r["moving"])}</li><li>全程 {E(r["elapsed"])}</li><li>爬升 {r["gain"]} m</li>'
+            f'<li>{E(r["start"])} → {E(r["end"])}</li></ul><p class="meta">{E(r["route_note"])}</p>'
+            f'<p class="meta"><a href="../day{d["day"]}_route_map_demo.html#map">看實騎路線地圖</a> ・ <a href="../{E(r["gpx"])}" download>下載實騎 GPX</a></p></section>')
+
+
 def sec_weather(d):
     w = weather_blocks(d["day"])
     wh = d.get("weather_hist", {})
@@ -289,7 +300,7 @@ def page(d, days, emg, navi):
     gain = d.get("route_gain", d["nav"]["gain"])
     prev_ = f'<a href="day{n-1}.html">← Day {n-1}</a>' if n > 1 else "<span></span>"
     next_ = f'<a href="day{n+1}.html">Day {n+1} →</a>' if n < len(days) else "<span></span>"
-    secs = [sec_weather(d), sec_route(d), sec_meals(d), sec_hotel(d), sec_bailout(d), sec_support(d), sec_sos(d, emg)]
+    secs = [sec_actual(d), sec_weather(d), sec_route(d), sec_meals(d), sec_hotel(d), sec_bailout(d), sec_support(d), sec_sos(d, emg)]
     jump = "".join(f'<a href="#{i}">{t}</a>' for i, t in (("wx", "天氣"), ("route", "路線"), ("eat", "吃飯"), ("hotel", "住宿"),
                                                          ("out", "撤退"), ("help", "補給"), ("sos", "緊急")) if f'id="{i}"' in "".join(secs))
     links = [f'<a href="../index.html#day-{n}">完整行程（主網站 Day {n}）</a>',
