@@ -406,7 +406,7 @@ def v2(d, F, rnd):
         o.append(f'<text x="78" y="{y+6}" font-size="17" fill="#6e6458" text-anchor="end">{times[i]}</text>'
                  f'<text x="124" y="{y+6}" font-size="21" font-weight="600">{E(short(p["name"],12))}</text>'
                  f'<text x="124" y="{y+30}" font-size="15" fill="#6e6458">{p["km"]:.1f} km ・ {TYPE_JA.get(p["type"],"")}</text>')
-    note = "※ 実走記録（Garmin）" if d.get("_actual") else "※ 時刻は予定（夕方からイルミネーション）" if any(p.get("time") for p in tl) else "※ 時刻は目安（平均 15 km/h＋登り＋昼休み）"
+    note = "※ 実走記録（Garmin）" if d.get("_actual") else "※ 時刻は予定" if any(p.get("time") for p in tl) else "※ 時刻は目安（平均 15 km/h＋登り＋昼休み）"
     o.append(f'<text x="40" y="{tl_end+50}" font-size="13" fill="#6e6458">{note}</text></g>')
     # stamps: start, best scenic, end
     mid = next((i for i, p in enumerate(tl) if p["type"] == "scenic"), n // 2)
