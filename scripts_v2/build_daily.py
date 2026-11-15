@@ -282,7 +282,7 @@ a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 
 
 # Hand-set titles where the route text does not name places (buffer/branch days).
-TITLE_FIX = {4: ("河口湖", "本栖湖"), 5: ("本栖湖", "富士五湖・溫泉休整"), 11: ("南熱海", "熱海・花火"), 12: ("熱海", "江之島")}
+TITLE_FIX = {4: ("河口湖大橋", "山中湖一圈・船津"), 5: ("本栖湖", "富士五湖・溫泉休整"), 11: ("南熱海", "熱海・花火"), 12: ("熱海", "江之島")}
 
 
 def page(d, days, emg, navi):
