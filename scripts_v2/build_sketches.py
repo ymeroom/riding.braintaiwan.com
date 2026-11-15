@@ -677,7 +677,7 @@ def day_page(d, days):
     chips = "".join(f'<a href="day{x["day"]}.html"{" class=on" if x["day"]==n else ""}>{x["day"]}</a>' for x in days)
     prev_ = f'<a href="day{n-1}.html">← Day {n-1}</a>' if n > 1 else '<span></span>'
     next_ = f'<a href="day{n+1}.html">Day {n+1} →</a>' if n < len(days) else '<span></span>'
-    note45 = '<p class="lead">※ Day 4／5 的 GPX 仍是舊規劃，鳥瞰圖軌跡以舊路線為準。</p>' if n in (4, 5) else ""
+    note45 = '<p class="lead">※ Day 5 的 GPX 仍是舊規劃，鳥瞰圖軌跡以舊路線為準。</p>' if n == 5 else ""
     h = [head(f"Day {n} 手繪行程圖", f"Day {n} {d['date']} {d.get('subtitle','')}：繪卷、旅のしおり、鳥瞰圖、木版畫"), defs_block(),
          '<div class="wrap"><header><div class="top"><a href="../index.html#day-%d">← 回 Day %d 行程</a><a href="index.html">全部 19 天 ↗</a></div>' % (n, n),
          f'<div class="tag">東京單車騎旅 ・ 手繪行程圖</div><h1>Day {n}　{E(d.get("subtitle",""))}</h1>',
