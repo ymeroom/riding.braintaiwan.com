@@ -115,6 +115,7 @@
   **心率、卡路里、原始 FIT、逐點時間戳一律不進 repo**（repo 公開）。
 - 軌跡：`actual/dayN_actual.gpx`（RDP 簡化、無時間）；摘要：`data/actual_rides.json`（build_daily.py 會在今日重點頁最上面顯示）。
 - 手繪圖：`data/actual_rides.json` 該天有 `timeline`（含 time、coord）＋`route_line` 時，`build_sketches.py` 改用實騎資料畫（Day 1 不再用 `_hand/` 手繪版），之後重跑 `build_print.js`。
+- 照片：使用者傳的照片 → 去掉 EXIF（含 GPS）、縮到 1600 px 存 `assets/photos/`；在 `data/actual_rides.json` 該天加 `photos`（今日重點會顯示），主網站卡片在 `actual-ride` 後加 `photo-strip`。
 - 地圖：在 `dayN_route_map_demo.html` 的 `map.fitBounds(...)` 後加紅色虛線 `actualLine`＋圖層切換，`#map` 下方加 `actual-ride` 說明框；主網站該天卡片 `daily-link` 後加 `actual-ride` 區塊。
 
 ## 9. Git 慣例

@@ -598,6 +598,20 @@
     }
    ],
    "dinner": []
-  }
+  },
+  "photos": [
+   {
+    "src": "assets/photos/day5-motosuko-0635.jpg",
+    "caption": "06:35 日出前的金色雲與富士山"
+   },
+   {
+    "src": "assets/photos/day5-motosuko-0642-wide.jpg",
+    "caption": "06:42 從浩庵上方俯瞰本栖湖"
+   },
+   {
+    "src": "assets/photos/day5-motosuko-0642-fuji.jpg",
+    "caption": "06:42 雲纏山腰的富士山"
+   }
+  ]
  }
 }

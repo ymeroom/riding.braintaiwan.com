@@ -94,7 +94,17 @@ def sec_actual(d):
     return (f'<section id="actual" style="border-color:var(--accent)"><h2>實騎紀錄 <small>{E(r["date"])}</small></h2>'
             f'<ul class="chips"><li>{r["km"]} km</li><li>騎乘 {E(r["moving"])}</li><li>全程 {E(r["elapsed"])}</li><li>爬升 {r["gain"]} m</li>'
             f'<li>{E(r["start"])} → {E(r["end"])}</li></ul><p class="meta">{E(r["route_note"])}</p>'
-            f'<p class="meta"><a href="../day{d["day"]}_route_map_demo.html#map">看實騎路線地圖</a> ・ <a href="../{E(r["gpx"])}" download>下載實騎 GPX</a></p></section>')
+            f'<p class="meta"><a href="../day{d["day"]}_route_map_demo.html#map">看實騎路線地圖</a> ・ <a href="../{E(r["gpx"])}" download>下載實騎 GPX</a></p>'
+            + photos(r) + '</section>')
+
+
+def photos(r):
+    ps = r.get("photos") or []
+    if not ps:
+        return ""
+    return ('<div style="display:flex;gap:8px;overflow-x:auto;margin-top:10px">'
+            + "".join(f'<a href="../{E(p["src"])}" target="_blank" rel="noopener" style="flex:0 0 auto"><img src="../{E(p["src"])}" alt="{E(p["caption"])}" loading="lazy" '
+                      f'style="height:150px;width:auto;border-radius:8px;display:block"></a>' for p in ps) + "</div>")
 
 
 def sec_weather(d):
