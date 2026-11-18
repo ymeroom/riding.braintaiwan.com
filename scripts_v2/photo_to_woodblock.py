@@ -25,6 +25,11 @@ PALETTE = np.array([  # RGB
     (0xC8, 0x44, 0x2F),  # 朱
     (0x2E, 0x3D, 0x33),  # 山(深緑)
     (0x5B, 0x4A, 0x3A),  # 焦茶
+    (0x6E, 0x8F, 0x45),  # 草色
+    (0x9F, 0xBF, 0x5A),  # 若草・萌黄
+    (0xC9, 0xD6, 0x5E),  # 黄緑（外套・銀杏）
+    (0xE8, 0xBE, 0x96),  # 肌（明）
+    (0xC4, 0x8A, 0x62),  # 肌（影）
 ], dtype=np.float32)
 
 
@@ -39,8 +44,10 @@ def remove_stamp(a):
     return cv2.inpaint(a, mask, 9, cv2.INPAINT_TELEA)
 
 
-def stylize(img, k=18, pull=0.35):
-    a = remove_stamp(cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR))
+def stylize(img, k=18, pull=0.35, stamp=True):
+    a = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
+    if stamp:
+        a = remove_stamp(a)
     a = cv2.pyrMeanShiftFiltering(a, sp=12, sr=22)
     for _ in range(2):
         a = cv2.bilateralFilter(a, 9, 60, 60)
@@ -119,10 +126,13 @@ def main():
     ap.add_argument("--seal", default="富士")
     ap.add_argument("--fonts", required=True)
     ap.add_argument("--width", type=int, default=2000)
+    ap.add_argument("--k", type=int, default=18, help="number of flat colours")
+    ap.add_argument("--pull", type=float, default=0.35, help="0–1, how far colours move toward the palette (lower for faces)")
+    ap.add_argument("--no-stamp", action="store_true", help="photo has no date stamp; skip the inpainting")
     a = ap.parse_args()
     img = ImageOps.exif_transpose(Image.open(a.photo)).convert("RGB")
     img.thumbnail((a.width, a.width))
-    art = frame(stylize(img), a.title, a.sub, a.seal, a.fonts)
+    art = frame(stylize(img, k=a.k, pull=a.pull, stamp=not a.no_stamp), a.title, a.sub, a.seal, a.fonts)
     clean = Image.new("RGB", art.size)
     clean.paste(art)
     clean.save(a.out, "JPEG", quality=85, optimize=True, progressive=True)
