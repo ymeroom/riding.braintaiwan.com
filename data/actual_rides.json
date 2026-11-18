@@ -617,5 +617,129 @@
     "caption": "06:42 雲纏山腰的富士山"
    }
   ]
+ },
+ "6": {
+  "date": "11/18",
+  "km": 48.9,
+  "moving": "3:17",
+  "elapsed": "6:20",
+  "gain": 173,
+  "start": "10:06",
+  "end": "16:23",
+  "start_place": "本栖湖",
+  "end_place": "富士市吉原（鯛屋旅館）",
+  "route_note": "大晴天：本栖湖 → 朝霧高原（牧場、芒草原拍富士山）→ 白糸之瀑 → 富士宮（午餐）→ 淺間大社 → 富士市吉原。下降約 1,050 m，幾乎一路下坡；田貫湖這次沒繞進去。",
+  "stops": [
+   "11:38–11:56 朝霧高原（13.8 km）",
+   "13:13–14:12 富士宮（32.4 km）午餐"
+  ],
+  "gpx": "actual/day6_actual.gpx",
+  "source": "Garmin（碼錶紀錄，已移除心率與時間戳）",
+  "route_line": "本栖湖 ➔ 朝霧高原 ➔ 白糸之瀑 ➔ 富士宮 ➔ 富士市吉原",
+  "timeline": [
+   {
+    "name": "起點：本栖湖",
+    "km": 0.0,
+    "type": "start",
+    "time": "10:06",
+    "coord": [
+     138.58353,
+     35.47482
+    ],
+    "desc": "雨後大晴天出發。"
+   },
+   {
+    "name": "道の駅 朝霧高原",
+    "km": 11.7,
+    "type": "scenic",
+    "time": "11:20",
+    "coord": [
+     138.58151,
+     35.40096
+    ],
+    "desc": "牧場與富士山。"
+   },
+   {
+    "name": "朝霧高原 芒草原",
+    "km": 13.8,
+    "type": "rest",
+    "time": "11:38",
+    "coord": [
+     138.57239,
+     35.38531
+    ],
+    "desc": "拍照休息。"
+   },
+   {
+    "name": "白糸之瀑",
+    "km": 23.1,
+    "type": "scenic",
+    "time": "12:37",
+    "coord": [
+     138.58866,
+     35.31233
+    ],
+    "desc": "之後長下坡。"
+   },
+   {
+    "name": "富士宮 午餐",
+    "km": 32.4,
+    "type": "rest",
+    "time": "13:13",
+    "coord": [
+     138.60982,
+     35.24213
+    ],
+    "desc": "休息約 1 小時。"
+   },
+   {
+    "name": "富士宮 淺間大社",
+    "km": 37.9,
+    "type": "scenic",
+    "time": "15:09",
+    "coord": [
+     138.60964,
+     35.2238
+    ],
+    "desc": "富士山本宮。"
+   },
+   {
+    "name": "終點：富士市吉原 鯛屋旅館",
+    "km": 48.6,
+    "type": "end",
+    "time": "16:23",
+    "coord": [
+     138.68214,
+     35.16434
+    ],
+    "desc": "抵達。"
+   }
+  ],
+  "meals": {
+   "lunch": [
+    {
+     "name": "富士宮で昼ごはん"
+    }
+   ],
+   "dinner": []
+  },
+  "photos": [
+   {
+    "src": "assets/photos/day6-asagiri-bike-woodblock.jpg",
+    "caption": "朝霧高原 牧場與單車"
+   },
+   {
+    "src": "assets/photos/day6-asagiri-susuki-woodblock.jpg",
+    "caption": "芒草原與富士山"
+   },
+   {
+    "src": "assets/photos/day6-fuji-ginkgo-woodblock.jpg",
+    "caption": "銀杏與富士山"
+   },
+   {
+    "src": "assets/photos/day6-familymart-asagiri-woodblock.jpg",
+    "caption": "全家 富士宮朝霧店"
+   }
+  ]
  }
 }
