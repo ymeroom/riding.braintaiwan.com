@@ -753,5 +753,33 @@
     "caption": "隔天 06:26 吉原 紅富士（全景）"
    }
   ]
+ },
+ "7": {
+  "date": "11/19",
+  "km": 16.3,
+  "moving": "1:17",
+  "elapsed": "5:15",
+  "gain": 110,
+  "start": "10:16",
+  "end": "15:31",
+  "start_place": "富士市吉原",
+  "end_place": "伊豆長岡（HOTEL555）",
+  "route_note": "大晴天、西風順風：吉原 → 田子の浦港（10:36–11:30 停留）→ 千本松原海堤（12:20）。碼錶在 12:28（16.3 km、千本松原東段）後停止紀錄，之後經沼津港到伊豆長岡約 20 km 沒有軌跡；全程估計約 36 km，前面的里程、騎乘時間與爬升只算有紀錄的部分。",
+  "stops": [
+   "10:36–11:30 田子の浦港（3.5–4.3 km）"
+  ],
+  "gpx": "actual/day7_actual.gpx",
+  "source": "Garmin（碼錶紀錄，已移除心率與時間戳；12:28 後缺紀錄）",
+  "route_line": "富士市吉原 ➔ 田子の浦港 ➔ 千本松原 ➔（未記錄）沼津港 ➔ 伊豆長岡",
+  "photos": [
+   {
+    "src": "assets/photos/day7-yoshiwara-akafuji-0627-woodblock.jpg",
+    "caption": "06:27 吉原 紅富士"
+   },
+   {
+    "src": "assets/photos/day7-yoshiwara-akafuji-0626-woodblock.jpg",
+    "caption": "06:26 吉原 紅富士（全景）"
+   }
+  ]
  }
 }
