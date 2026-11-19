@@ -79,13 +79,14 @@ def stylize(img, k=18, pull=0.35, stamp=True):
 
 
 def frame(img, title, sub, seal, fonts):
-    W, H = img.size
+    W0, H = img.size
+    W = max(W0, H)  # size the frame and lettering by the long side so portrait photos get a readable cartouche
     pad = int(W * 0.035)
-    canvas = Image.new("RGB", (W + 2 * pad, H + 2 * pad), (239, 226, 198))
+    canvas = Image.new("RGB", (W0 + 2 * pad, H + 2 * pad), (239, 226, 198))
     canvas.paste(img, (pad, pad))
     d = ImageDraw.Draw(canvas)
     lw = max(6, W // 300)
-    d.rectangle([pad - lw, pad - lw, pad + W + lw - 1, pad + H + lw - 1], outline=(29, 29, 27), width=lw)
+    d.rectangle([pad - lw, pad - lw, pad + W0 + lw - 1, pad + H + lw - 1], outline=(29, 29, 27), width=lw)
     big = ImageFont.truetype(f"{fonts}/yuji.ttf", int(W * 0.05))
     small = ImageFont.truetype(f"{fonts}/yuji.ttf", int(W * 0.022))
     # vertical title cartouche (top-left, over the sky)
