@@ -993,6 +993,56 @@
     }
    ],
    "dinner": []
-  }
+  },
+  "photos": [
+   {
+    "src": "assets/photos/day8-nirayama-1021-woodblock.jpg",
+    "caption": "10:21 韮山反射炉（世界遺產）"
+   },
+   {
+    "src": "assets/photos/day8-kanogawa-fuji-1154-woodblock.jpg",
+    "caption": "11:54 沼津 狩野川與富士山"
+   },
+   {
+    "src": "assets/photos/day8-tokko-1559-woodblock.jpg",
+    "caption": "15:59 修善寺 獨鈷之湯"
+   },
+   {
+    "src": "assets/photos/day8-shuzenji-gate-1559-woodblock.jpg",
+    "caption": "15:59 修禪寺 山門石階"
+   },
+   {
+    "src": "assets/photos/day8-shuzenji-sanmon-1600-woodblock.jpg",
+    "caption": "16:00 修禪寺 山門"
+   },
+   {
+    "src": "assets/photos/day8-shuzenji-hondo-1600-woodblock.jpg",
+    "caption": "16:00 修禪寺 本堂與紅葉"
+   },
+   {
+    "src": "assets/photos/day8-tokko-sunset-1613-woodblock.jpg",
+    "caption": "16:13 獨鈷之湯 夕照"
+   },
+   {
+    "src": "assets/photos/day8-katsuragawa-bridge-1617-woodblock.jpg",
+    "caption": "16:17 桂川 朱紅小橋與紅葉"
+   },
+   {
+    "src": "assets/photos/day8-bamboo-path-1620-woodblock.jpg",
+    "caption": "16:20 竹林小徑 黃昏"
+   },
+   {
+    "src": "assets/photos/day8-katsuragawa-1622-woodblock.jpg",
+    "caption": "16:22 桂川 紅葉與竹林"
+   },
+   {
+    "src": "assets/photos/day8-shuzenji-night-1915-woodblock.jpg",
+    "caption": "19:15 修禪寺 夜間點燈"
+   },
+   {
+    "src": "assets/photos/day8-bamboo-night-1923-woodblock.jpg",
+    "caption": "19:23 竹林小徑 夜燈"
+   }
+  ]
  }
 }
