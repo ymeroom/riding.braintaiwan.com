@@ -931,7 +931,7 @@
 
     <div class="main-layout">
         <div id="map"></div>
-        <div class="actual-ride" style="margin:12px 0;padding:12px 14px;border:2px solid #DC2626;border-radius:10px;background:#FEF2F2;color:#1F2937;font-size:14px;line-height:1.7;"><strong style="color:#B91C1C;">🚴 11/21 實騎紀錄</strong>（地圖上的紅色虛線；藍線是原計畫）<br><strong>33.0 km</strong> ・ 騎乘 <strong>3:29</strong>（全程 7:20）・ 爬升 <strong>586 m</strong> ・ 09:37 修善寺（温泉宿 水口） → 16:57 伊東（kawana seaview）<br>大晴天、西風順風：修善寺 → 中伊豆（10:21–10:32 休息）→ 冷川峠一帶最高點約 378 m（11:53）→ 一碧湖（13:38–14:58 停留約 80 分）→ 伊東南部（15:14–15:47）→ 伊東 kawana。實際走的是冷川峠＋一碧湖，不是計畫的亀石峠。<br><small>休息：10:21–10:32 中伊豆（7.2 km）、11:31–11:43 冷川峠前（14.8 km）、13:38–14:58 一碧湖（25.1 km）、15:14–15:47 伊東南部（27.9 km）。資料來源：Garmin（碼錶紀錄，已移除心率與時間戳；爬升為過濾雜訊後的值，碼錶原始 604 m）。 <a href="actual/day9_actual.gpx" download>下載實騎 GPX</a></small></div><!-- /actual-ride -->
+        <div class="actual-ride" style="margin:12px 0;padding:12px 14px;border:2px solid #DC2626;border-radius:10px;background:#FEF2F2;color:#1F2937;font-size:14px;line-height:1.7;"><strong style="color:#B91C1C;">🚴 11/21 實騎紀錄</strong>（地圖上的紅色虛線；藍線是原計畫）<br><strong>33.0 km</strong> ・ 騎乘 <strong>3:29</strong>（全程 7:20）・ 爬升 <strong>586 m</strong> ・ 09:37 修善寺（温泉宿 水口） → 16:57 伊東（kawana seaview）<br>大晴天、西風順風：修善寺 → 中伊豆（10:21–10:32 休息）→ 冷川峠一帶最高點約 378 m（11:53）→ 途中經過另一座湖（12:55–13:07）→ 一碧湖，走湖一圈（13:38–14:58）→ 伊東 UNIQLO 買衣服（15:14–15:47）→ 經公園上山頂觀景台取景（16:15–16:55）→ 伊東 kawana。實際走的是冷川峠＋一碧湖，不是計畫的亀石峠。<br><small>休息：10:21–10:32 中伊豆（7.2 km）、11:31–11:43 冷川峠前（14.8 km）、12:55–13:07 另一座湖（22.1 km）、13:38–14:58 一碧湖 散步一圈（25.1 km）、15:14–15:47 UNIQLO 買衣服（27.9 km）、16:15–16:55 公園・山頂觀景台（32.5 km）。資料來源：Garmin（碼錶紀錄，已移除心率與時間戳；爬升為過濾雜訊後的值，碼錶原始 604 m）。 <a href="actual/day9_actual.gpx" download>下載實騎 GPX</a></small></div><!-- /actual-ride -->
         <div class="sidebar">
             <h3>
                 <span>📍 關鍵節點與轉折導引</span>
@@ -999,6 +999,7 @@ const actualLine = L.polyline(actualCoords.map(c => [c[1], c[0]]), { color: '#DC
 L.control.layers(null, { "計畫路線（藍）": polyline, "11/21 實騎路線（紅虛線）": actualLine }, { collapsed: false, position: 'bottomleft' }).addTo(map);
 map.fitBounds(polyline.getBounds().extend(actualLine.getBounds()), { padding: [30, 30] });
 // end actual ride
+
 
 
 // 3. Render Waypoints
