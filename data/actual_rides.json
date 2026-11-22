@@ -1264,6 +1264,36 @@
   "meals": {
    "lunch": [],
    "dinner": []
-  }
+  },
+  "photos": [
+   {
+    "src": "assets/photos/day10-kawana-window-0547-woodblock.jpg",
+    "caption": "05:47 kawana 窗外的黎明"
+   },
+   {
+    "src": "assets/photos/day10-ito-beni-fuji-0623-woodblock.jpg",
+    "caption": "06:23 伊東望紅富士"
+   },
+   {
+    "src": "assets/photos/day10-sagami-sunrise-0627-woodblock.jpg",
+    "caption": "06:27 相模灣日出"
+   },
+   {
+    "src": "assets/photos/day10-omuro-summit-south-1232-woodblock.jpg",
+    "caption": "12:32 大室山頂 望伊豆七島"
+   },
+   {
+    "src": "assets/photos/day10-omuro-crater-1238-woodblock.jpg",
+    "caption": "12:38 大室山火口"
+   },
+   {
+    "src": "assets/photos/day10-omuro-foot-1325-woodblock.jpg",
+    "caption": "13:25 大室山山腳"
+   },
+   {
+    "src": "assets/photos/day10-usami-coast-1531-woodblock.jpg",
+    "caption": "15:31 宇佐美海岸 國道 135"
+   }
+  ]
  }
 }
