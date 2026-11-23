@@ -1377,6 +1377,56 @@
   "meals": {
    "lunch": [],
    "dinner": []
-  }
+  },
+  "photos": [
+   {
+    "src": "assets/photos/day11-sagami-cliff-1143-woodblock.jpg",
+    "caption": "11:43 網代往熱海的海岸斷崖"
+   },
+   {
+    "src": "assets/photos/day11-atami-port-1211-woodblock.jpg",
+    "caption": "12:11 熱海港全景"
+   },
+   {
+    "src": "assets/photos/day11-baien-stream-1302-woodblock.jpg",
+    "caption": "13:02 熱海梅園 溪流紅葉"
+   },
+   {
+    "src": "assets/photos/day11-baien-bridge-1302-woodblock.jpg",
+    "caption": "13:02 熱海梅園 木橋"
+   },
+   {
+    "src": "assets/photos/day11-baien-maple-1306-woodblock.jpg",
+    "caption": "13:06 熱海梅園 紅葉"
+   },
+   {
+    "src": "assets/photos/day11-kinomiya-kaguraden-1343-woodblock.jpg",
+    "caption": "13:43 來宮神社 神樂殿"
+   },
+   {
+    "src": "assets/photos/day11-kinomiya-okusu-1346-woodblock.jpg",
+    "caption": "13:46 來宮神社 大楠神木"
+   },
+   {
+    "src": "assets/photos/day11-shinsui-moonrise-1655-woodblock.jpg",
+    "caption": "16:55 親水公園 月出"
+   },
+   {
+    "src": "assets/photos/day11-fireworks-red-2031-woodblock.jpg",
+    "caption": "20:31 熱海海上花火 紅"
+   },
+   {
+    "src": "assets/photos/day11-fireworks-green-2032-woodblock.jpg",
+    "caption": "20:32 熱海海上花火 綠"
+   },
+   {
+    "src": "assets/photos/day11-fireworks-blue-2033-woodblock.jpg",
+    "caption": "20:33 熱海海上花火 藍"
+   },
+   {
+    "src": "assets/photos/day11-fireworks-gold-2039-woodblock.jpg",
+    "caption": "20:39 熱海海上花火 終幕"
+   }
+  ]
  }
 }
