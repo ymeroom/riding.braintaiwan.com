@@ -13780,7 +13780,7 @@
     "range": "Day 12 – Day 15"
    },
    "subtitle": "古寺篇",
-   "route_line": "茅ヶ崎（8HOTEL）➔ 江之島 ➔ 鎌倉高校前平交道 ➔ 長谷寺 ➔ 柏尾川水岸 ➔ 橫濱港未來",
+   "route_line": "茅ヶ崎（8HOTEL）➔ 江之島 ➔ 鎌倉長谷寺 ➔ 柏尾川水岸 ➔ 橫濱港未來夜景 ➔ 福富町（Dolce）",
    "nav": {
     "pref": "坡少",
     "km": 31.49,
@@ -13872,24 +13872,35 @@
      "time": "13:00"
     },
     {
-     "name": "終點：橫濱港未來飯店",
-     "km": 42.0,
-     "type": "end",
+     "name": "橫濱港未來 黃昏・點燈",
+     "type": "scenic",
+     "time": "16:00",
      "coord": [
       139.635,
       35.455
      ],
-     "desc": "傍晚漫步紅磚倉庫與港未來摩天輪夜景。",
-     "time": "15:00"
+     "desc": "大摩天輪、紅磚倉庫（有單車停車場）；日落約 16:30、17:00 後點燈。入住後能否再外出已去信詢問。",
+     "km": 42.0
+    },
+    {
+     "name": "終點：Dolce（大人專用）",
+     "type": "end",
+     "time": "17:45",
+     "coord": [
+      139.6303,
+      35.4432
+     ],
+     "desc": "橫濱市中區福富町西通り 36；入住 15:00–18:00，請在 18:00 前到。單車停放已去信詢問。位置為概略。",
+     "km": 44.0
     }
    ],
-   "planned_km": 42.0,
+   "planned_km": 44.0,
    "hotel": {
-    "name": "橫濱港未來飯店",
-    "addr": "神奈川縣橫濱市中區/西區",
-    "url": "https://www.google.com/maps/search/?api=1&query=%E6%A9%AB%E6%BF%B1%E6%B8%AF%E6%9C%AA%E4%BE%86",
-    "booked": false,
-    "bike": "🚲 都會港灣飯店，可向櫃檯確認停放",
+    "name": "Dolce（大人專用）",
+    "addr": "神奈川縣橫濱市中區福富町西通り36",
+    "url": "https://www.google.com/maps/search/?api=1&query=%E6%A8%AA%E6%B5%9C%E5%B8%82%E4%B8%AD%E5%8C%BA%E7%A6%8F%E5%AF%8C%E7%94%BA%E8%A5%BF%E9%80%9A%E3%82%8A36%20Dolce",
+    "booked": true,
+    "bike": "單車室內停放、入住後可否外出：已去信詢問",
     "tel": null
    },
    "weather_hist": {
@@ -15112,7 +15123,7 @@
      "tel": null
     }
    },
-   "route_gain": 158
+   "route_gain": 160
   },
   {
    "day": 14,
