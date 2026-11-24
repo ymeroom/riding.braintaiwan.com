@@ -1428,5 +1428,122 @@
     "caption": "20:39 熱海海上花火 終幕"
    }
   ]
+ },
+ "12": {
+  "date": "11/24",
+  "km": 49.4,
+  "moving": "3:52",
+  "elapsed": "4:58",
+  "gain": 240,
+  "start": "07:46",
+  "end": "12:43",
+  "start_place": "熱海銀座（guest house MARUYA）",
+  "end_place": "茅ヶ崎（8HOTEL CHIGASAKI）",
+  "route_note": "冷鋒來襲前搶騎：熱海 06:20 先拍朝霞、07:46 出發 → 伊豆山（最高約 114 m）→ 真鶴、湯河原沿海 → 小田原（09:52）→ 國道 1 號 → 二宮（10:55–11:20 休息）→ 大磯、平塚 → 茅ヶ崎 12:43 抵達，中午 13:00 在徳多屋吃鮪魚丼，大雨前到。",
+  "stops": [
+   "10:55–11:20 二宮（35.5 km）"
+  ],
+  "gpx": "actual/day12_actual.gpx",
+  "source": "Garmin 碼錶紀錄（已移除心率與時間戳；爬升為過濾雜訊後的值，碼錶原始 353 m）",
+  "route_line": "熱海 ➔ 伊豆山 ➔ 小田原 ➔ 二宮 ➔ 大磯 ➔ 茅ヶ崎",
+  "timeline": [
+   {
+    "name": "起點：熱海銀座 guest house MARUYA",
+    "km": 0.0,
+    "type": "start",
+    "time": "07:46",
+    "coord": [
+     139.074,
+     35.0967
+    ],
+    "desc": "拍完朝霞出發。"
+   },
+   {
+    "name": "伊豆山（今天最高點約 114 m）",
+    "km": 5.4,
+    "type": "pivot",
+    "time": "08:27",
+    "coord": [
+     139.1017,
+     35.1266
+    ],
+    "desc": "出熱海的爬坡。"
+   },
+   {
+    "name": "小田原",
+    "km": 23.1,
+    "type": "scenic",
+    "time": "09:52",
+    "coord": [
+     139.155,
+     35.25
+    ],
+    "desc": "雨前到小田原。"
+   },
+   {
+    "name": "二宮 休息",
+    "km": 35.5,
+    "type": "rest",
+    "time": "10:55",
+    "coord": [
+     139.268,
+     35.302
+    ],
+    "desc": "休息 25 分。"
+   },
+   {
+    "name": "終點：茅ヶ崎 8HOTEL",
+    "km": 49.4,
+    "type": "end",
+    "time": "12:43",
+    "coord": [
+     139.4095,
+     35.3297
+    ],
+    "desc": "大雨前抵達，午餐徳多屋鮪魚丼。"
+   }
+  ],
+  "meals": {
+   "lunch": [
+    {
+     "name": "三崎魚問屋 徳多屋（鮪魚丼）"
+    }
+   ],
+   "dinner": []
+  },
+  "photos": [
+   {
+    "src": "assets/photos/day12-atami-ginza-dawn-0620-woodblock.jpg",
+    "caption": "06:20 熱海銀座的黎明"
+   },
+   {
+    "src": "assets/photos/day12-atami-marina-0623-woodblock.jpg",
+    "caption": "06:23 熱海港 朝霞"
+   },
+   {
+    "src": "assets/photos/day12-atami-castle-0623-woodblock.jpg",
+    "caption": "06:23 朝霞中的熱海城"
+   },
+   {
+    "src": "assets/photos/day12-shinsui-dawn-0624-woodblock.jpg",
+    "caption": "06:24 親水公園 熱海的早晨"
+   },
+   {
+    "src": "assets/photos/day12-atami-port-0625-woodblock.jpg",
+    "caption": "06:25 港灣朝燒"
+   },
+   {
+    "src": "assets/photos/day12-atami-depart-0628-woodblock.jpg",
+    "caption": "06:28 出發前的熱海街道"
+   },
+   {
+    "src": "assets/photos/day12-chigasaki-tokudaya-1306-woodblock.jpg",
+    "caption": "13:06 茅ヶ崎 三崎魚問屋 徳多屋"
+   },
+   {
+    "src": "assets/photos/day12-chigasaki-maguro-don-1325-woodblock.jpg",
+    "caption": "13:25 徳多屋 鮪魚丼午餐"
+   }
+  ]
  }
 }
