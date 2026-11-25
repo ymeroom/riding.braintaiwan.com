@@ -1545,5 +1545,202 @@
     "caption": "13:25 徳多屋 鮪魚丼午餐"
    }
   ]
+ },
+ "13": {
+  "date": "11/25",
+  "km": 45.1,
+  "moving": "3:50",
+  "elapsed": "8:34",
+  "gain": 120,
+  "start": "09:20",
+  "end": "17:54",
+  "start_place": "茅ヶ崎（8HOTEL）",
+  "end_place": "橫濱福富町（Dolce）",
+  "route_note": "冷鋒過後大晴天：茅ヶ崎海岸望富士 → 江之島（10:30 前後，弁天橋看海上富士）→ 鎌倉高校前平交道（11:04）→ 長谷寺（11:47–12:25 紅葉與由比濱）→ 鎌倉大佛（12:30–12:55，進大佛胎內）→ 北鎌倉 点心庵吃建長汁（13:36–14:35）→ 大船・戶塚 → 港未來 → 大棧橋看日落（16:51–17:11）→ Dolce。",
+  "stops": [
+   "11:47–12:25 長谷寺（17.8 km）",
+   "12:30–12:55 鎌倉大佛（18.3 km）",
+   "13:43–14:35 北鎌倉 点心庵 建長汁（22.6 km）",
+   "16:51–17:11 橫濱大棧橋（42.8 km）"
+  ],
+  "gpx": "actual/day13_actual.gpx",
+  "source": "Garmin 碼錶紀錄（已移除心率與時間戳；爬升為過濾雜訊後的值，碼錶原始 177 m）",
+  "route_line": "茅ヶ崎 ➔ 江之島 ➔ 鎌倉高校前 ➔ 長谷寺 ➔ 鎌倉大佛 ➔ 北鎌倉 ➔ 橫濱大棧橋 ➔ 福富町",
+  "timeline": [
+   {
+    "name": "起點：8HOTEL 茅ヶ崎",
+    "km": 0.0,
+    "type": "start",
+    "time": "09:20",
+    "coord": [
+     139.4095,
+     35.3297
+    ],
+    "desc": "海岸望富士。"
+   },
+   {
+    "name": "江之島",
+    "km": 9.5,
+    "type": "scenic",
+    "time": "10:30",
+    "coord": [
+     139.48,
+     35.3005
+    ],
+    "desc": "弁天橋、青銅鳥居、海上富士。"
+   },
+   {
+    "name": "鎌倉高校前平交道",
+    "km": 13.5,
+    "type": "scenic",
+    "time": "11:04",
+    "coord": [
+     139.5005,
+     35.3066
+    ],
+    "desc": "灌籃高手場景。"
+   },
+   {
+    "name": "長谷寺",
+    "km": 17.8,
+    "type": "scenic",
+    "time": "11:47",
+    "coord": [
+     139.5335,
+     35.3125
+    ],
+    "desc": "紅葉、觀音堂、見晴台團子。"
+   },
+   {
+    "name": "鎌倉大佛",
+    "km": 18.3,
+    "type": "scenic",
+    "time": "12:30",
+    "coord": [
+     139.5357,
+     35.3167
+    ],
+    "desc": "進大佛胎內。"
+   },
+   {
+    "name": "北鎌倉 点心庵（午餐）",
+    "km": 22.6,
+    "type": "rest",
+    "time": "13:43",
+    "coord": [
+     139.553,
+     35.3304
+    ],
+    "desc": "建長寺門前，建長汁。"
+   },
+   {
+    "name": "橫濱大棧橋",
+    "km": 42.8,
+    "type": "scenic",
+    "time": "16:51",
+    "coord": [
+     139.647,
+     35.4512
+    ],
+    "desc": "日落與港未來點燈。"
+   },
+   {
+    "name": "終點：Dolce（福富町）",
+    "km": 45.1,
+    "type": "end",
+    "time": "17:54",
+    "coord": [
+     139.6301,
+     35.446
+    ],
+    "desc": "入住。"
+   }
+  ],
+  "meals": {
+   "lunch": [
+    {
+     "name": "点心庵 建長汁"
+    }
+   ],
+   "dinner": []
+  },
+  "photos": [
+   {
+    "src": "assets/photos/day13-chigasaki-fuji-0950-woodblock.jpg",
+    "caption": "09:50 茅ヶ崎海岸 望富士山"
+   },
+   {
+    "src": "assets/photos/day13-katase-river-1025-woodblock.jpg",
+    "caption": "10:25 片瀨境川 望江之島"
+   },
+   {
+    "src": "assets/photos/day13-enoshima-fuji-1033-woodblock.jpg",
+    "caption": "10:33 江之島 海上富士"
+   },
+   {
+    "src": "assets/photos/day13-benten-bridge-1032-woodblock.jpg",
+    "caption": "10:32 弁天橋 單車與富士"
+   },
+   {
+    "src": "assets/photos/day13-bronze-torii-1036-woodblock.jpg",
+    "caption": "10:36 江之島 青銅鳥居"
+   },
+   {
+    "src": "assets/photos/day13-kamakura-koko-1110-woodblock.jpg",
+    "caption": "11:10 鎌倉高校前平交道"
+   },
+   {
+    "src": "assets/photos/day13-hasedera-gate-1148-woodblock.jpg",
+    "caption": "11:48 長谷寺 山門紅燈籠"
+   },
+   {
+    "src": "assets/photos/day13-hasedera-maple-1157-woodblock.jpg",
+    "caption": "11:57 長谷寺 紅葉"
+   },
+   {
+    "src": "assets/photos/day13-hasedera-maple2-1157-woodblock.jpg",
+    "caption": "11:57 長谷寺 紅葉"
+   },
+   {
+    "src": "assets/photos/day13-hasedera-dango-1201-woodblock.jpg",
+    "caption": "12:01 長谷寺 團子與由比濱"
+   },
+   {
+    "src": "assets/photos/day13-hasedera-kannon-1159-woodblock.jpg",
+    "caption": "11:59 長谷寺 觀音堂"
+   },
+   {
+    "src": "assets/photos/day13-hasedera-view-1215-woodblock.jpg",
+    "caption": "12:15 長谷寺 見晴台"
+   },
+   {
+    "src": "assets/photos/day13-hasedera-hall-1216-woodblock.jpg",
+    "caption": "12:16 長谷寺 觀音堂"
+   },
+   {
+    "src": "assets/photos/day13-hasedera-ginkgo-1217-woodblock.jpg",
+    "caption": "12:17 長谷寺 銀杏"
+   },
+   {
+    "src": "assets/photos/day13-hasedera-maple-hall-1219-woodblock.jpg",
+    "caption": "12:19 長谷寺 紅葉與觀音堂"
+   },
+   {
+    "src": "assets/photos/day13-daibutsu-maple-1238-woodblock.jpg",
+    "caption": "12:38 鎌倉大佛與紅葉"
+   },
+   {
+    "src": "assets/photos/day13-daibutsu-stone-1239-woodblock.jpg",
+    "caption": "12:39 國寶 鎌倉大佛"
+   },
+   {
+    "src": "assets/photos/day13-daibutsu-inside-1245-woodblock.jpg",
+    "caption": "12:45 大佛胎內"
+   },
+   {
+    "src": "assets/photos/day13-daibutsu-red-1248-woodblock.jpg",
+    "caption": "12:48 紅葉大佛"
+   }
+  ]
  }
 }
