@@ -1782,5 +1782,191 @@
     "caption": "17:08 大棧橋 港未來夜景"
    }
   ]
+ },
+ "14": {
+  "date": "11/26",
+  "km": 55.0,
+  "moving": "4:50",
+  "elapsed": "8:55",
+  "gain": 120,
+  "start": "10:46",
+  "end": "19:41",
+  "start_place": "橫濱福富町（Dolce）",
+  "end_place": "三田（Wasabi Mita Hotel）",
+  "route_note": "晴轉多雲、風小：橫濱 → 國道 15 號第一京濱 → 川崎宿・六鄉橋過多摩川（12:30）→ 羽田 平和大鳥居、羽田 Innovation City 午餐（13:21–14:02，看到彩雲）→ 大森・品川 → 田町一帶（15:35–15:50）→ 築地・勝鬨 → 豐洲 → 有明 Big Sight（17:07）→ 富士電視台（17:34）→ 台場海濱公園看彩虹大橋夜景（17:44–17:56）→ 彩虹大橋旁、汐留 → 三田。晚上搭電車去鳥心吃烤雞串和親子丼（電車那兩段已從紀錄中扣除）。",
+  "stops": [
+   "13:21–14:02 羽田 午餐（20.0 km）",
+   "15:35–15:50 田町（33.6 km）",
+   "17:44–17:56 台場海濱公園（45.5 km）",
+   "19:18–19:32 田町站東口停車場（54.5 km）"
+  ],
+  "gpx": "actual/day14_actual.gpx",
+  "source": "Garmin 碼錶紀錄（已移除心率與時間戳；晚上搭電車往返那兩段已扣除；爬升為過濾雜訊後的值）",
+  "route_line": "橫濱 ➔ 第一京濱 ➔ 川崎・多摩川 ➔ 羽田 ➔ 品川・田町 ➔ 豐洲 ➔ 有明 Big Sight ➔ 台場 ➔ 三田",
+  "timeline": [
+   {
+    "name": "起點：Dolce（橫濱福富町）",
+    "km": 0.0,
+    "type": "start",
+    "time": "10:46",
+    "coord": [
+     139.6299,
+     35.4459
+    ],
+    "desc": "退房出發。"
+   },
+   {
+    "name": "川崎宿・六鄉橋（多摩川）",
+    "km": 14.5,
+    "type": "scenic",
+    "time": "12:30",
+    "coord": [
+     139.7086,
+     35.5396
+    ],
+    "desc": "東海道川崎宿。"
+   },
+   {
+    "name": "羽田 平和大鳥居・午餐",
+    "km": 20.0,
+    "type": "rest",
+    "time": "13:21",
+    "coord": [
+     139.7564,
+     35.547
+    ],
+    "desc": "羽田 Innovation City，彩雲。"
+   },
+   {
+    "name": "有明 東京 Big Sight",
+    "km": 42.9,
+    "type": "scenic",
+    "time": "17:07",
+    "coord": [
+     139.7941,
+     35.6298
+    ],
+    "desc": "倒金字塔。"
+   },
+   {
+    "name": "富士電視台",
+    "km": 45.0,
+    "type": "scenic",
+    "time": "17:34",
+    "coord": [
+     139.7737,
+     35.627
+    ],
+    "desc": "夜間點燈。"
+   },
+   {
+    "name": "台場海濱公園",
+    "km": 45.5,
+    "type": "scenic",
+    "time": "17:44",
+    "coord": [
+     139.7766,
+     35.6302
+    ],
+    "desc": "彩虹大橋與東京鐵塔夜景。"
+   },
+   {
+    "name": "終點：Wasabi Mita Hotel",
+    "km": 55.0,
+    "type": "end",
+    "time": "19:41",
+    "coord": [
+     139.7447,
+     35.6432
+    ],
+    "desc": "單車停田町東口停車場；晚上搭電車去鳥心。"
+   }
+  ],
+  "meals": {
+   "lunch": [],
+   "dinner": [
+    {
+     "name": "鳥心（烤雞串、親子丼）"
+    }
+   ]
+  },
+  "photos": [
+   {
+    "src": "assets/photos/day14-kawasaki-juku-1229-woodblock.jpg",
+    "caption": "12:29 東海道 川崎宿"
+   },
+   {
+    "src": "assets/photos/day14-tamagawa-1232-woodblock.jpg",
+    "caption": "12:32 多摩川 六鄉橋"
+   },
+   {
+    "src": "assets/photos/day14-haneda-torii-1307-woodblock.jpg",
+    "caption": "13:07 羽田 平和大鳥居"
+   },
+   {
+    "src": "assets/photos/day14-haneda-iridescent-1404-woodblock.jpg",
+    "caption": "14:04 羽田 彩雲"
+   },
+   {
+    "src": "assets/photos/day14-haneda-bike-parking-1406-woodblock.jpg",
+    "caption": "14:06 羽田 單車停車場"
+   },
+   {
+    "src": "assets/photos/day14-ariake-dusk-1633-woodblock.jpg",
+    "caption": "16:33 有明暮色"
+   },
+   {
+    "src": "assets/photos/day14-rainbow-sunset-1643-woodblock.jpg",
+    "caption": "16:43 夕燒與彩虹大橋"
+   },
+   {
+    "src": "assets/photos/day14-ariake-overpass-1650-woodblock.jpg",
+    "caption": "16:50 有明高架"
+   },
+   {
+    "src": "assets/photos/day14-bigsight-dusk-1653-woodblock.jpg",
+    "caption": "16:53 Big Sight 黃昏"
+   },
+   {
+    "src": "assets/photos/day14-fujitv-night-1730-woodblock.jpg",
+    "caption": "17:30 富士電視台 夜"
+   },
+   {
+    "src": "assets/photos/day14-bigsight-night-1714-woodblock.jpg",
+    "caption": "17:14 Big Sight 夜"
+   },
+   {
+    "src": "assets/photos/day14-rainbow-night-1756-woodblock.jpg",
+    "caption": "17:56 台場 彩虹大橋夜景"
+   },
+   {
+    "src": "assets/photos/day14-tokyo-tower-yakatabune-1843-woodblock.jpg",
+    "caption": "18:43 東京鐵塔與屋形船"
+   },
+   {
+    "src": "assets/photos/day14-ariake-night-1828-woodblock.jpg",
+    "caption": "18:28 夜晚的橋上"
+   },
+   {
+    "src": "assets/photos/day14-tokyo-tower-mita-2014-woodblock.jpg",
+    "caption": "20:14 三田望東京鐵塔"
+   },
+   {
+    "src": "assets/photos/day14-torishin-yakitori-2131-woodblock.jpg",
+    "caption": "21:31 鳥心 烤雞串"
+   },
+   {
+    "src": "assets/photos/day14-torishin-ginkgo-2109-woodblock.jpg",
+    "caption": "21:09 鳥心 銀杏串"
+   },
+   {
+    "src": "assets/photos/day14-torishin-bowl-2208-woodblock.jpg",
+    "caption": "22:08 鳥心 親子丼"
+   },
+   {
+    "src": "assets/photos/day14-torishin-oyakodon-2208-woodblock.jpg",
+    "caption": "22:08 鳥心 親子丼"
+   }
+  ]
  }
 }
