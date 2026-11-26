@@ -931,7 +931,7 @@
 
     <div class="main-layout">
         <div id="map"></div>
-        <div class="actual-ride" style="margin:12px 0;padding:12px 14px;border:2px solid #DC2626;border-radius:10px;background:#FEF2F2;color:#1F2937;font-size:14px;line-height:1.7;"><strong style="color:#B91C1C;">🚴 11/26 實騎紀錄</strong>（地圖上的紅色虛線；藍線是原計畫）<br><strong>55.0 km</strong> ・ 騎乘 <strong>4:50</strong>（全程 8:55）・ 爬升 <strong>120 m</strong> ・ 10:46 橫濱福富町（Dolce） → 19:41 三田（Wasabi Mita Hotel）<br>晴轉多雲、風小：橫濱 → 國道 15 號第一京濱 → 川崎宿・六鄉橋過多摩川（12:30）→ 羽田 平和大鳥居、羽田 Innovation City 午餐（13:21–14:02，看到彩雲）→ 大森・品川 → 田町一帶（15:35–15:50）→ 築地・勝鬨 → 豐洲 → 有明 Big Sight（17:07）→ 富士電視台（17:34）→ 台場海濱公園看彩虹大橋夜景（17:44–17:56）→ 彩虹大橋旁、汐留 → 三田。晚上搭電車去鳥心吃烤雞串和親子丼（電車那兩段已從紀錄中扣除）。<br><small>休息：13:21–14:02 羽田 午餐（20.0 km）、15:35–15:50 田町（33.6 km）、17:44–17:56 台場海濱公園（45.5 km）、19:18–19:32 田町站東口停車場（54.5 km）。資料來源：Garmin 碼錶紀錄（已移除心率與時間戳；晚上搭電車往返那兩段已扣除；爬升為過濾雜訊後的值）。 <a href="actual/day14_actual.gpx" download>下載實騎 GPX</a></small></div><!-- /actual-ride -->
+        <div class="actual-ride" style="margin:12px 0;padding:12px 14px;border:2px solid #DC2626;border-radius:10px;background:#FEF2F2;color:#1F2937;font-size:14px;line-height:1.7;"><strong style="color:#B91C1C;">🚴 11/26 實騎紀錄</strong>（地圖上的紅色虛線；藍線是原計畫）<br><strong>55.0 km</strong> ・ 騎乘 <strong>4:50</strong>（全程 8:55）・ 爬升 <strong>120 m</strong> ・ 10:46 橫濱福富町（Dolce） → 19:41 三田（Wasabi Mita Hotel）<br>晴轉多雲、風小：橫濱 → 國道 15 號第一京濱 → 川崎宿・六鄉橋過多摩川（12:30）→ 羽田 平和大鳥居、羽田 Innovation City 午餐（13:21–14:02，看到彩雲）→ 大森・品川 → 田町一帶（15:35–15:50）→ 築地・勝鬨 → 豐洲 → 有明 Big Sight（17:07）→ 富士電視台（17:34）→ 台場海濱公園看彩虹大橋夜景（17:44–17:56）→ 彩虹大橋旁、汐留 → 三田。晚上搭電車去五反田「鳥心」吃烤雞串和親子丼（電車那兩段已從紀錄中扣除）。<br><small>休息：13:21–14:02 羽田 午餐（20.0 km）、15:35–15:50 田町（33.6 km）、17:44–17:56 台場海濱公園（45.5 km）、19:18–19:32 田町站東口停車場（54.5 km）。資料來源：Garmin 碼錶紀錄（已移除心率與時間戳；晚上搭電車往返那兩段已扣除；爬升為過濾雜訊後的值）。 <a href="actual/day14_actual.gpx" download>下載實騎 GPX</a></small></div><!-- /actual-ride -->
         <div class="sidebar">
             <h3>
                 <span>📍 關鍵節點與轉折導引</span>
@@ -999,6 +999,7 @@ const actualLine = L.polyline(actualCoords.map(c => [c[1], c[0]]), { color: '#DC
 L.control.layers(null, { "計畫路線（藍）": polyline, "11/26 實騎路線（紅虛線）": actualLine }, { collapsed: false, position: 'bottomleft' }).addTo(map);
 map.fitBounds(polyline.getBounds().extend(actualLine.getBounds()), { padding: [30, 30] });
 // end actual ride
+
 
 
 // 3. Render Waypoints
