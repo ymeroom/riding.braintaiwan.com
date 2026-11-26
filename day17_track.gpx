@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx version="1.1" creator="TokyoCycling2026 (BRouter trekking)" xmlns="http://www.topografix.com/GPX/1/1">
   <metadata>
-    <name>Day 17: 金町退房 ➔ 水元公園水杉林 ➔ 隅田川 ➔ 淺草（文化觀光中心・金色火焰）➔ 東京都現代美術館 ➔ 清澄白河 Blue Bottle ➔ 藏前 Nui Hostel</name>
-    <desc>22.1 km | +28m / -18m</desc>
+    <name>Day 17: 金町退房 ➔ 水元公園水杉林 ➔ 隅田川 ➔ 淺草（文化觀光中心・金色火焰）➔ 東京都現代美術館 ➔ 清澄白河 Blue Bottle・清澄庭園 ➔ 藏前 Nui Hostel</name>
+    <desc>22.5 km | +28m / -18m</desc>
   </metadata>
   <trk>
-    <name>Day 17: 金町退房 ➔ 水元公園水杉林 ➔ 隅田川 ➔ 淺草（文化觀光中心・金色火焰）➔ 東京都現代美術館 ➔ 清澄白河 Blue Bottle ➔ 藏前 Nui Hostel</name>
+    <name>Day 17: 金町退房 ➔ 水元公園水杉林 ➔ 隅田川 ➔ 淺草（文化觀光中心・金色火焰）➔ 東京都現代美術館 ➔ 清澄白河 Blue Bottle・清澄庭園 ➔ 藏前 Nui Hostel</name>
     <trkseg>
       <trkpt lat="35.786983" lon="139.870102"><ele>3.8</ele></trkpt>
       <trkpt lat="35.786853" lon="139.870072"><ele>3.8</ele></trkpt>
@@ -678,7 +678,22 @@
       <trkpt lat="35.680582" lon="139.798933"><ele>6.5</ele></trkpt>
       <trkpt lat="35.680739" lon="139.798915"><ele>6.8</ele></trkpt>
       <trkpt lat="35.681268" lon="139.798849"><ele>8.0</ele></trkpt>
-      <trkpt lat="35.681906" lon="139.798763"><ele>9.0</ele></trkpt>
+      <trkpt lat="35.681264" lon="139.798769"><ele>8.2</ele></trkpt>
+      <trkpt lat="35.681213" lon="139.797868"><ele>9.0</ele></trkpt>
+      <trkpt lat="35.681192" lon="139.797482"><ele>9.5</ele></trkpt>
+      <trkpt lat="35.681182" lon="139.797159"><ele>12.2</ele></trkpt>
+      <trkpt lat="35.681179" lon="139.797107"><ele>12.8</ele></trkpt>
+      <trkpt lat="35.681153" lon="139.796676"><ele>11.0</ele></trkpt>
+      <trkpt lat="35.681179" lon="139.797107"><ele>12.8</ele></trkpt>
+      <trkpt lat="35.681215" lon="139.797104"><ele>12.8</ele></trkpt>
+      <trkpt lat="35.681541" lon="139.797077"><ele>11.0</ele></trkpt>
+      <trkpt lat="35.681849" lon="139.797052"><ele>10.2</ele></trkpt>
+      <trkpt lat="35.681932" lon="139.797045"><ele>10.0</ele></trkpt>
+      <trkpt lat="35.681939" lon="139.797155"><ele>10.0</ele></trkpt>
+      <trkpt lat="35.681955" lon="139.797436"><ele>9.8</ele></trkpt>
+      <trkpt lat="35.681978" lon="139.797823"><ele>10.0</ele></trkpt>
+      <trkpt lat="35.682007" lon="139.798306"><ele>10.8</ele></trkpt>
+      <trkpt lat="35.682025" lon="139.798616"><ele>9.5</ele></trkpt>
       <trkpt lat="35.682033" lon="139.798745"><ele>9.0</ele></trkpt>
       <trkpt lat="35.682169" lon="139.798728"><ele>9.0</ele></trkpt>
       <trkpt lat="35.682567" lon="139.798673"><ele>8.8</ele></trkpt>
