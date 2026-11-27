@@ -931,7 +931,7 @@
 
     <div class="main-layout">
         <div id="map"></div>
-        <div class="actual-ride" style="margin:12px 0;padding:12px 14px;border:2px solid #DC2626;border-radius:10px;background:#FEF2F2;color:#1F2937;font-size:14px;line-height:1.7;"><strong style="color:#B91C1C;">🚴 11/27 實騎紀錄</strong>（地圖上的紅色虛線；藍線是原計畫）<br><strong>36.2 km</strong> ・ 騎乘 <strong>3:26</strong>（全程 8:40）・ 爬升 <strong>146 m</strong> ・ 09:25 三田（田町站東口停車場） → 18:05 葛飾金町（花庵）<br>晴、風小：田町 → 目黑 神乃珈琲（10:11–10:59）→ 中目黑 ONIBUS COFFEE（11:14–11:44）→ 星巴克臻選東京烘焙工坊，午餐、2 樓 Teavana 抹茶（11:54–13:16）→ 代官山 → 澀谷 → 青山・神宮外苑銀杏 → 赤坂 → 皇居外苑 → 日本橋一帶休息（15:38–16:23）→ 淺草橋・藏前 → 淺草 → 押上・墨田 → 荒川・四つ木 → 立石 → 金町。咖啡巡禮和都心賞楓花了比較多時間，改走市區往北，葛西臨海公園和柴又這次沒去。<br><small>休息：10:11–10:59 神乃珈琲 目黑（6.4 km）、11:14–11:44 ONIBUS COFFEE（8.9 km）、11:54–13:16 星巴克烘焙工坊（10.2 km）、15:38–16:23 日本橋一帶（22.5 km）。資料來源：Garmin 碼錶紀錄（已移除心率與時間戳；爬升為過濾雜訊後的值）。 <a href="actual/day15_actual.gpx" download>下載實騎 GPX</a></small></div><!-- /actual-ride -->
+        <div class="actual-ride" style="margin:12px 0;padding:12px 14px;border:2px solid #DC2626;border-radius:10px;background:#FEF2F2;color:#1F2937;font-size:14px;line-height:1.7;"><strong style="color:#B91C1C;">🚴 11/27 實騎紀錄</strong>（地圖上的紅色虛線；藍線是原計畫）<br><strong>36.2 km</strong> ・ 騎乘 <strong>3:26</strong>（全程 8:40）・ 爬升 <strong>146 m</strong> ・ 09:25 三田（田町站東口停車場） → 18:05 葛飾金町（花庵）<br>晴、風小：田町 → 目黑 神乃珈琲（10:11–10:59）→ 中目黑 ONIBUS COFFEE（11:14–11:44）→ 星巴克臻選東京烘焙工坊，午餐、2 樓 Teavana 抹茶（11:54–13:16）→ 代官山 → 澀谷 → 青山・神宮外苑銀杏 → 赤坂 → 皇居外苑 → 日本橋「金子半之助」吃江戶前天丼（15:38–16:23）→ 淺草橋・藏前 → 淺草 → 押上・墨田 → 荒川・四つ木 → 立石 → 金町。咖啡巡禮和都心賞楓花了比較多時間，改走市區往北，葛西臨海公園和柴又這次沒去。<br><small>休息：10:11–10:59 神乃珈琲 目黑（6.4 km）、11:14–11:44 ONIBUS COFFEE（8.9 km）、11:54–13:16 星巴克烘焙工坊（10.2 km）、15:38–16:23 日本橋 金子半之助 天丼（22.5 km）。資料來源：Garmin 碼錶紀錄（已移除心率與時間戳；爬升為過濾雜訊後的值）。 <a href="actual/day15_actual.gpx" download>下載實騎 GPX</a></small></div><!-- /actual-ride -->
         <div class="sidebar">
             <h3>
                 <span>📍 關鍵節點與轉折導引</span>
@@ -999,6 +999,7 @@ const actualLine = L.polyline(actualCoords.map(c => [c[1], c[0]]), { color: '#DC
 L.control.layers(null, { "計畫路線（藍）": polyline, "11/27 實騎路線（紅虛線）": actualLine }, { collapsed: false, position: 'bottomleft' }).addTo(map);
 map.fitBounds(polyline.getBounds().extend(actualLine.getBounds()), { padding: [30, 30] });
 // end actual ride
+
 
 
 // 3. Render Waypoints
