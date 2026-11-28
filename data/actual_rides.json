@@ -2175,5 +2175,198 @@
     "caption": "17:03 荒川 暮色"
    }
   ]
+ },
+ "16": {
+  "date": "11/28",
+  "km": 24.3,
+  "moving": "2:00",
+  "elapsed": "5:45",
+  "gain": 16,
+  "start": "11:40",
+  "end": "17:25",
+  "start_place": "葛飾金町（花庵）",
+  "end_place": "葛飾金町（花庵）",
+  "route_note": "上午雨，11:40 雨停後出發、不帶行李：花庵 → 柴又，川千家吃鰻重「竹」、帝釋天、山本亭（約 12:00–14:20，步行）→ 江戶川河堤往北到三鄉一帶 → 小合溜 → 水元公園，落葉、水渠倒影、楓葉 → 16:19 起水杉林、大草原看夕燒雲 → 回花庵。碼錶 14:34 才開始記錄，花庵到柴又、柴又到河堤這兩段（約 3.9 km）用計畫路線補上。",
+  "stops": [
+   "12:00–14:20 柴又 川千家・帝釋天・山本亭（2.0 km，步行參觀）",
+   "15:16–15:22 江戶川河堤北端（12.3 km）",
+   "16:19–16:37 水元公園 大草原 夕燒（19.5 km）",
+   "16:54–17:14 水元公園南側（22.7 km）"
+  ],
+  "gpx": "actual/day16_actual.gpx",
+  "source": "Garmin 碼錶紀錄（已移除心率與時間戳；14:34 前的 3.9 km 依計畫路線補上；爬升為過濾雜訊後的值）",
+  "route_line": "金町花庵 ➔ 柴又 川千家・帝釋天・山本亭 ➔ 江戶川河堤（往北）➔ 小合溜 ➔ 水元公園 水杉林・大草原夕燒 ➔ 金町花庵",
+  "timeline": [
+   {
+    "name": "起點：花庵（金町）",
+    "km": 0.0,
+    "type": "start",
+    "time": "11:40",
+    "coord": [
+     139.8659,
+     35.7673
+    ],
+    "desc": "雨停後出發（此段補記）。"
+   },
+   {
+    "name": "🍱 柴又 川千家",
+    "km": 2.0,
+    "type": "rest",
+    "time": "12:00",
+    "coord": [
+     139.8772,
+     35.7591
+    ],
+    "desc": "鰻重「竹」。"
+   },
+   {
+    "name": "⛩️ 帝釋天・🏯 山本亭",
+    "km": 2.0,
+    "type": "scenic",
+    "time": "13:14",
+    "coord": [
+     139.879,
+     35.7582
+    ],
+    "desc": "二天門、紅葉、山本亭長廊與大正洋室。"
+   },
+   {
+    "name": "江戶川河堤（開始記錄）",
+    "km": 3.9,
+    "type": "pivot",
+    "time": "14:34",
+    "coord": [
+     139.8785,
+     35.7686
+    ],
+    "desc": "上河堤往北。"
+   },
+   {
+    "name": "江戶川河堤北端（三鄉）",
+    "km": 12.3,
+    "type": "waypoint",
+    "time": "15:16",
+    "coord": [
+     139.8695,
+     35.8197
+    ],
+    "desc": "折向西。"
+   },
+   {
+    "name": "🍁 水元公園",
+    "km": 15.6,
+    "type": "scenic",
+    "time": "15:43",
+    "coord": [
+     139.8609,
+     35.7976
+    ],
+    "desc": "落葉、小合溜、水渠倒影、楓。"
+   },
+   {
+    "name": "🌇 水杉林・大草原夕燒",
+    "km": 19.5,
+    "type": "scenic",
+    "time": "16:19",
+    "coord": [
+     139.8621,
+     35.7944
+    ],
+    "desc": "夕燒雲與薄霧。"
+   },
+   {
+    "name": "終點：花庵（連住）",
+    "km": 24.3,
+    "type": "end",
+    "time": "17:25",
+    "coord": [
+     139.8659,
+     35.7673
+    ],
+    "desc": "回到金町。"
+   }
+  ],
+  "photos": [
+   {
+    "src": "assets/photos/day16-sando-1240-woodblock.jpg",
+    "caption": "12:40 柴又帝釋天參道"
+   },
+   {
+    "src": "assets/photos/day16-kawachiya-1240-woodblock.jpg",
+    "caption": "12:40 川千家 老舖"
+   },
+   {
+    "src": "assets/photos/day16-kawachiya-sign-1241-woodblock.jpg",
+    "caption": "12:41 寅さんの故郷 百年の味"
+   },
+   {
+    "src": "assets/photos/day16-koi-tank-1241-woodblock.jpg",
+    "caption": "12:41 店門口的鯉魚池"
+   },
+   {
+    "src": "assets/photos/day16-nitenmon-kimono-1242-woodblock.jpg",
+    "caption": "12:42 和服與二天門"
+   },
+   {
+    "src": "assets/photos/day16-unaju-1247-woodblock.jpg",
+    "caption": "12:47 川千家 鰻重「竹」"
+   },
+   {
+    "src": "assets/photos/day16-nitenmon-1314-woodblock.jpg",
+    "caption": "13:14 帝釋天 二天門"
+   },
+   {
+    "src": "assets/photos/day16-momiji-1325-woodblock.jpg",
+    "caption": "13:25 柴又 紅葉"
+   },
+   {
+    "src": "assets/photos/day16-yamamototei-garden-1335-woodblock.jpg",
+    "caption": "13:35 山本亭 長廊與庭園"
+   },
+   {
+    "src": "assets/photos/day16-yamamototei-salon-1335-woodblock.jpg",
+    "caption": "13:35 山本亭 大正洋室"
+   },
+   {
+    "src": "assets/photos/day16-mizumoto-gate-1543-woodblock.jpg",
+    "caption": "15:43 水元公園 落葉入口"
+   },
+   {
+    "src": "assets/photos/day16-koaidame-1547-woodblock.jpg",
+    "caption": "15:47 小合溜 水面"
+   },
+   {
+    "src": "assets/photos/day16-backlight-1549-woodblock.jpg",
+    "caption": "15:49 逆光與水渠"
+   },
+   {
+    "src": "assets/photos/day16-canal-1550-woodblock.jpg",
+    "caption": "15:50 水渠倒影"
+   },
+   {
+    "src": "assets/photos/day16-maple-1553-woodblock.jpg",
+    "caption": "15:53 水元公園 楓"
+   },
+   {
+    "src": "assets/photos/day16-kawasemi-1619-woodblock.jpg",
+    "caption": "16:19 水元かわせみの里"
+   },
+   {
+    "src": "assets/photos/day16-metasequoia-1628-woodblock.jpg",
+    "caption": "16:28 水杉林"
+   },
+   {
+    "src": "assets/photos/day16-meadow-sky-1631-woodblock.jpg",
+    "caption": "16:31 大草原 夕空"
+   },
+   {
+    "src": "assets/photos/day16-meadow-bike-1631-woodblock.jpg",
+    "caption": "16:31 大草原與單車"
+   },
+   {
+    "src": "assets/photos/day16-sunset-trees-1639-woodblock.jpg",
+    "caption": "16:39 樹影夕陽"
+   }
+  ]
  }
 }
